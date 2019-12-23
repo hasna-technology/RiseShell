@@ -1,0 +1,9 @@
+.text_image
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .text, .image{
+        flex: 1;
+    }
+}

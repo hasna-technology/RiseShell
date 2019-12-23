@@ -1,0 +1,114 @@
+<div class="main">
+
+  <div [className]="menu_close ? 'menu close' : 'menu'">
+    <div class="menu_title">
+      <div class="menu_header">
+        {{this.content.settings.title}}
+      </div>
+      <div class="course_progress">
+        <div class="progress"></div>
+        100%
+      </div>
+    </div>
+    <ul>
+      <li *ngFor="let item of this.course; let i = index">
+        <div class="section" *ngIf="item.header == true && item.children.length > 0">
+          <section>
+            <div class="sec_title">{{item.title}}</div>
+            <ul>
+              <li *ngFor="let list of item.children; let j = index">
+                <a class="link" [routerLink]="['/page', i, j]">
+                  <div class="icon">
+                    <mat-icon> notes</mat-icon>
+                  </div>
+                  <div class="text">{{list.title}}</div>
+                  <div class="status_indicator"></div>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="section" *ngIf="item.header != true">
+          <a class="link" [routerLink]="['/page', i, -1]">
+            <div class="icon">
+              <mat-icon> notes</mat-icon>
+            </div>
+            <div class="text">{{item.title}}</div>
+            <div class="status_indicator"></div>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+
+  <div [@changeState]="currentState" (@changeState.done)="animEnd($event)"
+    [className]="menu_close ? 'page open' : 'page'">
+    {{currentState}}
+    <div class="navigation grey-bg align-center" *ngIf="prevString != null">
+
+      <mat-icon>keyboard_arrow_up</mat-icon>
+
+      <div>
+        <div class="cursor" (click)="prev()">
+          {{this.common_text.lesson}} {{currentNumber - 1}} - {{this.service.getLessonName(prevString)}}
+        </div>
+      </div>
+    </div>
+
+    <!-- first page to home-->
+    <div class="navigation grey-bg align-center" *ngIf="prevString == null">
+      <mat-icon>keyboard_arrow_up</mat-icon>
+      <div>
+        <a routerLink="/">
+          Home
+        </a>
+      </div>
+    </div>
+
+
+    <div class="page_wrapper">
+      <div class="menu_icon ">
+        <mat-icon class="cursor" (click)="menu_close = !menu_close"> menu</mat-icon>
+      </div>
+      <div class="content">
+
+        <div class="page_header ">
+          <div class="pageNo">
+            {{this.common_text.lesson}} {{currentNumber}} of {{this.service.getTotalPage()}}
+          </div>
+          <div class="title">
+            {{this.page.title}}
+          </div>
+          <hr class="header_hr">
+        </div>
+      </div>
+      <div class="progress">
+        <div class="progress_container">
+          <div class="progress_indicator brand--background"></div>
+        </div>
+      </div>
+
+      <!-- Place the content type here-->
+      <div class="content">
+        <div class="block" *ngFor="let item of this.page.page.block">
+          <app-text *ngIf="item.type == 'text'" [value]="item"></app-text>
+          <app-text-image
+            *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' "
+            [value]="item"></app-text-image>
+        </div>
+      </div>
+      <!-- content type end-->
+    </div>
+    <div class="navigation grey-bg align-center" *ngIf="nextString != null">
+      <div>
+
+        <div class="cursor" (click)="next()">
+          {{this.common_text.lesson}} {{currentNumber + 1}} - {{this.service.getLessonName(nextString)}}
+        </div>
+      </div>
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+  </div>
+</div>
