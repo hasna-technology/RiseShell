@@ -1,10 +1,13 @@
 @import '../_variable.scss';
+$menu_width: 280px;
+$admin_panel_width: 450px;
+$page_width: $menu_width + $admin_panel_width;
 
 .navigation {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
   font-size: 1.4rem;
   align-items: center;
   justify-content: center;
@@ -14,25 +17,28 @@
   position: relative;
   overflow: hidden;
 
-  &:hover{
-    mat-icon
-    {
+  &:hover {
+    mat-icon {
       color: $brand_color;
     }
-    a{
+
+    a {
       color: $brand_color;
     }
   }
+
   a {
     color: #313537;
     text-decoration: none;
     text-align: center;
   }
 }
-.menu_title{
+
+.menu_title {
   padding: 5rem 3rem 1rem 2rem;
   background-color: rgba(0, 0, 0, 0.4);
-  .menu_header{
+
+  .menu_header {
     font-size: 2.8rem;
     line-height: 1.2;
     font-weight: 900;
@@ -40,21 +46,29 @@
     text-decoration: none;
   }
 
-  .course_progress{
+  .course_progress {
     margin: 5.1rem 0 1rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .12rem;
     font-size: 1.1rem;
     color: #fff;
-    .progress{
+
+    .progress {
       height: 0.2rem;
       width: 100%;
       background-color: #ffffff;
       margin-bottom: .6rem;
+
+      .value {
+        height: 0.2rem;
+        background-color: $brand_color;
+        transition: width 1s ease;
+      }
     }
   }
 }
+
 .menu_icon {
   padding: 1.7rem;
 }
@@ -67,9 +81,17 @@
 }
 
 .page {
-  margin-left: 280px;
+  margin-left: $menu_width;
+  width: calc(100% -  #{$page_width});
   flex: 1;
   transition: all 0.5s ease;
+  /*position: fixed;
+  overflow: auto;*/
+  
+  height: 100vh;
+  &.admin_panel_open {
+    margin-right: 451px;
+  }
 
   &.open {
     margin-left: 0px;
@@ -126,11 +148,13 @@
   padding-bottom: 4.5rem;
   margin-left: 8.33333%
 }
-.page_wrapper{
- 
+
+.page_wrapper {
+
   min-height: 100vh;
 }
-.cursor{
+
+.cursor {
   cursor: pointer;
 }
 
@@ -139,21 +163,22 @@
   background-color: white;
 
   .menu {
-    width: 280px;
+    width: $menu_width;
     height: 100vh;
     border-right: 1px solid rgba(49, 53, 55, .1);
     opacity: 1;
     transition: all 0.5s ease;
     position: fixed;
     overflow: auto;
-    &:after{
+
+    &:after {
       content: "";
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       width: 2rem;
-      box-shadow: inset -2rem 0 2rem -2rem rgba(0,0,0,.24);
+      box-shadow: inset -2rem 0 2rem -2rem rgba(0, 0, 0, .24);
       pointer-events: none;
       z-index: 1;
     }
@@ -171,6 +196,7 @@
   .block {
     margin: 3rem 0;
   }
+
   .menu {
     ul {
       list-style: none;
@@ -195,6 +221,7 @@
       align-items: center;
       text-decoration: none;
       transition: background-color .3s;
+      cursor: pointer;
 
       .icon {
         color: #aaa;
@@ -203,7 +230,7 @@
 
       }
 
-      
+
 
       .text {
         flex: 1;
@@ -216,6 +243,19 @@
         text-decoration: none;
         color: #313537;
       }
+
+
     }
   }
+}
+
+.admin_panel {
+  position: fixed;
+  right: 0px;
+  min-width: $admin_panel_width;
+ 
+  top: 0px;
+  bottom: 0px;
+  overflow: auto;
+  overflow-x: hidden;
 }

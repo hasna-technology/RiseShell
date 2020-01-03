@@ -1,0 +1,9 @@
+<div class="page_value">
+  <button> Add New Page</button>
+  <div *ngFor="let page of data.course">
+    {{page.title}}
+    <div *ngFor="let page1 of page.children">
+      {{page1.title}}
+    </div>
+  </div>
+</div>

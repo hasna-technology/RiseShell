@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import data from '../../data/en/content.json';
 import { MainService } from '../service/main.service.js';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, sequence, keyframes, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-page',
@@ -10,16 +9,38 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   styleUrls: ['./page.component.scss'],
   animations: [
     trigger('changeState', [
-      state('state1', style({
-        backgroundColor: 'green',
-        transform: 'translate3d(0, -3rem, 0)'
-      })),
-      state('state2', style({
-        backgroundColor: 'red',
-        transform: 'translate3d(0, 100vh, 0)'
-      })),
-      transition('*=>state1', animate('500ms')),
-      transition('*=>state2', animate('2000ms'))
+      state('top_bottom', style({ transform: 'translateX(0)' })),
+      state('bottom_top', style({ transform: 'translateY(0)' })),
+      transition('*=>top_bottom', [
+        style({
+          transform: 'translateY(0%)',
+          position: 'static'
+        }),
+        sequence([
+          animate(
+            '1s ease-in-out',
+            keyframes([
+              style({ transform: 'translateY(-100%)' }),
+              style({ transform: 'translateY(0%)' }),
+            ])
+          ),
+        ])
+      ]),
+      transition('*=>bottom_top', [
+        style({
+          transform: 'translateY(100%)',
+          position: 'static'
+        }),
+        sequence([
+          animate(
+            '1s ease-in-out',
+            keyframes([
+              style({ transform: 'translateY(100%)' }),
+              style({ transform: 'translateY(0%)' }),
+            ])
+          ),
+        ])
+      ])
     ])
   ]
 })
@@ -27,48 +48,73 @@ export class PageComponent implements OnInit {
 
   lesson_no; page_no; content; course; page; common_text;
   menu_close = false;
+  admin_panel = true;
   currentState;
-  constructor(public route: ActivatedRoute, public service:MainService, private router:Router) {
+  constructor(public route: ActivatedRoute, public service: MainService, private router: Router) {
     this.route.paramMap.subscribe(params => {
+      var data = service.getData();
       this.lesson_no = params.get('i');
       this.page_no = params.get('j');
-      
-      //console.log("this.lesson_no = " + this.lesson_no);
-      //console.log("this.page_no = " + this.page_no);
       this.course = data.course;
       this.content = data;
       this.common_text = data.common_text;
-      if(this.page_no == -1)
+      if (this.page_no == -1)
         this.page = data.course[this.lesson_no];
       else
         this.page = data.course[this.lesson_no].children[this.page_no];
 
-        //this.currentState = this.currentState  == 'state1' ? 'state2' : 'state1';
-
-      if(this.ngOnInit)
+      if (this.ngOnInit)
         this.ngOnInit()
     });
   }
 
-  currentNumber;prevString;nextString;
+  currentNumber; prevString; nextString;
 
-  prev(){
+  prev() {
     //let routerLink="/page/"+this.prevString;
     this.currentState = "top_bottom"
-    this.router.navigate(['page/'+this.prevString]);
+    this.router.navigate(['page/' + this.prevString]);
+  }
+  sequence;
+  next() {
+    //let routerLink="/page/"+this.nextString;
+    this.currentState = 'bottom_top';
+    this.router.navigate(['page/' + this.nextString]);
   }
 
-  next(){
-    //let routerLink="/page/"+this.nextString;
-    console.log(this.nextString)
-    this.router.navigate(['page/'+this.nextString]);
+  goto(i, j) {
+    this.currentState = '';
+    var gotoPage = this.service.getPage(i, j)
+    console.log(gotoPage+" < "+this.currentNumber);
+    if (gotoPage < this.currentNumber) {
+      this.currentState = 'top_bottom';
+      
+    } else {
+      this.currentState = 'bottom_top';
+      
+    }
+    this.router.navigate(['page/' + i + "/" + j]);
   }
+
   ngOnInit() {
     this.prevString = this.service.prevPage(this.lesson_no, this.page_no)
     this.nextString = this.service.nextPage(this.lesson_no, this.page_no);
     this.currentNumber = this.service.getPage(this.lesson_no, this.page_no)
   }
-  animEnd(event){
-    console.log(event);
+  animEnd(event) {
+
+    /*if (this.nextString != null && this.sequence == 'next') {
+      this.sequence = '';
+     
+
+    } else {
+      var menu_icon = document.getElementById('menu_icon');
+      document.body.scrollTop = menu_icon.offsetTop;
+      menu_icon.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    }*/
+    var menu_icon = document.getElementById('menu_icon');
+    document.body.scrollTop = menu_icon.offsetTop;
+    menu_icon.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    this.currentState = 'current';
   }
 }

@@ -1,13 +1,22 @@
 <div class="main">
 
+  <div [className]="admin_panel ? 'admin_panel close' : 'admin_panel'">
+    <admin-panel [data]="page"></admin-panel>
+  </div>
+
+
   <div [className]="menu_close ? 'menu close' : 'menu'">
     <div class="menu_title">
       <div class="menu_header">
         {{this.content.settings.title}}
       </div>
       <div class="course_progress">
-        <div class="progress"></div>
-        100%
+        <div class="progress">
+          <div class="value" [style.width.%]="this.service.getProgress()">
+          
+          </div>  
+        </div>
+        {{this.service.getProgress()}} %
       </div>
     </div>
     <ul>
@@ -17,7 +26,7 @@
             <div class="sec_title">{{item.title}}</div>
             <ul>
               <li *ngFor="let list of item.children; let j = index">
-                <a class="link" [routerLink]="['/page', i, j]">
+                <a class="link" (click)="goto(i, j)">
                   <div class="icon">
                     <mat-icon> notes</mat-icon>
                   </div>
@@ -30,7 +39,7 @@
         </div>
 
         <div class="section" *ngIf="item.header != true">
-          <a class="link" [routerLink]="['/page', i, -1]">
+          <a class="link" (click)="goto(i, -1)">
             <div class="icon">
               <mat-icon> notes</mat-icon>
             </div>
@@ -42,10 +51,12 @@
     </ul>
   </div>
 
-
+<!-- [className]="menu_close ? 'page open' : 'page'" -->
   <div [@changeState]="currentState" (@changeState.done)="animEnd($event)"
-    [className]="menu_close ? 'page open' : 'page'">
-    {{currentState}}
+       [ngClass]="{'page open':menu_close, 'page': menu_close != true, 'admin_panel_open':admin_panel}"
+
+    >
+    
     <div class="navigation grey-bg align-center" *ngIf="prevString != null">
 
       <mat-icon>keyboard_arrow_up</mat-icon>
@@ -69,7 +80,7 @@
 
 
     <div class="page_wrapper">
-      <div class="menu_icon ">
+      <div id="menu_icon" class="menu_icon ">
         <mat-icon class="cursor" (click)="menu_close = !menu_close"> menu</mat-icon>
       </div>
       <div class="content">
@@ -95,7 +106,7 @@
         <div class="block" *ngFor="let item of this.page.page.block">
           <app-text *ngIf="item.type == 'text'" [value]="item"></app-text>
           <app-text-image
-            *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' "
+            *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' || item.type == 'text_image_top' || item.type == 'text_image_bottom' "
             [value]="item"></app-text-image>
         </div>
       </div>
@@ -111,4 +122,9 @@
       <mat-icon>keyboard_arrow_down</mat-icon>
     </div>
   </div>
+
+
+
+
+
 </div>
