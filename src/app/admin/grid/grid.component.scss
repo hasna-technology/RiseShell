@@ -1,0 +1,13 @@
+.input,
+select>option {
+  font-family: "Roboto";
+  font-size: 1.7rem;
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  margin-right: -1rem;
+}
+.panel{
+    background-color: #eee;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}

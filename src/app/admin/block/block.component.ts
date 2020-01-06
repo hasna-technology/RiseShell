@@ -35,4 +35,8 @@ export class BlockComponent implements OnInit {
       "content": "Text to be added"
     })
   }
+  
+  addGridImageText(){
+ 
+}
 }

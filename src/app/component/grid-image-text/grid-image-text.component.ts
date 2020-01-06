@@ -12,6 +12,7 @@ export class GridImageTextComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

@@ -74,7 +74,7 @@
               <label class="label">Content</label>
             </div>
             <div>
-              <quill-editor [(ngModel)]="selectedBlock.content" theme="snow"></quill-editor>
+              <quill-editor [(ngModel)]="selectedBlock.title" theme="snow"></quill-editor>
             </div>
             <div>
               <label class="label">Image</label>
@@ -83,6 +83,8 @@
               <admin-image [src]="selectedBlock.image"></admin-image>
             </div>
           </div>
+
+          <admin-grid [data]="selectedBlock" *ngIf="selectedBlock.type == 'grid_image_text' || selectedBlock.type == 'accordion' || selectedBlock.type == 'tab'"></admin-grid>
 
 
         </div>
