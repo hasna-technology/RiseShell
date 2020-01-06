@@ -1,8 +1,6 @@
 <div class="main">
 
-  <div [className]="admin_panel ? 'admin_panel close' : 'admin_panel'">
-    <admin-panel [data]="page"></admin-panel>
-  </div>
+  <admin-panel [data]="page"></admin-panel>
 
 
   <div [className]="menu_close ? 'menu close' : 'menu'">
@@ -13,18 +11,18 @@
       <div class="course_progress">
         <div class="progress">
           <div class="value" [style.width.%]="this.service.getProgress()">
-          
-          </div>  
+
+          </div>
         </div>
         {{this.service.getProgress()}} %
       </div>
     </div>
     <ul>
       <li *ngFor="let item of this.course; let i = index">
-        <div class="section" *ngIf="item.header == true && item.children.length > 0">
+        <div class="section" *ngIf="item.header == true">
           <section>
             <div class="sec_title">{{item.title}}</div>
-            <ul>
+            <!-- <ul>
               <li *ngFor="let list of item.children; let j = index">
                 <a class="link" (click)="goto(i, j)">
                   <div class="icon">
@@ -34,12 +32,12 @@
                   <div class="status_indicator"></div>
                 </a>
               </li>
-            </ul>
+            </ul> -->
           </section>
         </div>
 
         <div class="section" *ngIf="item.header != true">
-          <a class="link" (click)="goto(i, -1)">
+          <a class="link" (click)="goto(i)">
             <div class="icon">
               <mat-icon> notes</mat-icon>
             </div>
@@ -51,13 +49,11 @@
     </ul>
   </div>
 
-<!-- [className]="menu_close ? 'page open' : 'page'" -->
+  <!-- [className]="menu_close ? 'page open' : 'page'" -->
   <div [@changeState]="currentState" (@changeState.done)="animEnd($event)"
-       [ngClass]="{'page open':menu_close, 'page': menu_close != true, 'admin_panel_open':admin_panel}"
+    [ngClass]="{'page open':menu_close, 'page': menu_close != true, 'admin_panel_open':admin_panel}">
 
-    >
-    
-    <div class="navigation grey-bg align-center" *ngIf="prevString != null">
+    <div class="navigation grey-bg align-center" *ngIf="prevString != -1">
 
       <mat-icon>keyboard_arrow_up</mat-icon>
 
@@ -69,7 +65,7 @@
     </div>
 
     <!-- first page to home-->
-    <div class="navigation grey-bg align-center" *ngIf="prevString == null">
+    <div class="navigation grey-bg align-center" *ngIf="prevString == -1">
       <mat-icon>keyboard_arrow_up</mat-icon>
       <div>
         <a routerLink="/">
@@ -102,17 +98,30 @@
       </div>
 
       <!-- Place the content type here-->
-      <div class="content">
+
+      <div class="content" *ngIf="this.page.page != undefined">
         <div class="block" *ngFor="let item of this.page.page.block">
+          <!-- Text Component -->
           <app-text *ngIf="item.type == 'text'" [value]="item"></app-text>
+          
+          <!-- Image Component -->
           <app-text-image
             *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' || item.type == 'text_image_top' || item.type == 'text_image_bottom' "
             [value]="item"></app-text-image>
+
+          <!-- Gird Component -->
+          <app-grid-image-text *ngIf="item.type == 'grid_image_text'" [value]="item"></app-grid-image-text>
+
+          <!-- Tab Component -->
+
+          <!-- Accordion Component -->
+
+
         </div>
       </div>
       <!-- content type end-->
     </div>
-    <div class="navigation grey-bg align-center" *ngIf="nextString != null">
+    <div class="navigation grey-bg align-center" *ngIf="nextString != course.length">
       <div>
 
         <div class="cursor" (click)="next()">

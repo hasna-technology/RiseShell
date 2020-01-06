@@ -89,8 +89,9 @@ $page_width: $menu_width + $admin_panel_width;
   overflow: auto;*/
   
   height: 100vh;
+  
   &.admin_panel_open {
-    margin-right: 451px;
+    /*margin-right: 451px;*/
   }
 
   &.open {
@@ -249,13 +250,4 @@ $page_width: $menu_width + $admin_panel_width;
   }
 }
 
-.admin_panel {
-  position: fixed;
-  right: 0px;
-  min-width: $admin_panel_width;
- 
-  top: 0px;
-  bottom: 0px;
-  overflow: auto;
-  overflow-x: hidden;
-}
+

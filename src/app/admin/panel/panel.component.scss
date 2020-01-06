@@ -1,9 +1,43 @@
+$admin_panel_width : 450px;
+.admin_btn {
+  position: fixed;
+  right: 0px;
+  top: 20px;
+  background-color: #333;
+  display: flex;
+  /*border: 1px solid #ccc;*/
+  width: 50px;
+  height: 50px;
+  color: #eee;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.admin_panel {
+  position: fixed;
+  right: 0px;
+  min-width: $admin_panel_width;
+  transform: translateX(500px);
+  top: 0px;
+  bottom: 0px;
+  right: 10px;
+  overflow: auto;
+  overflow-x: hidden;
+  
+  background-color: white;
+  z-index: 101;
+  box-shadow: -5px 0 5px 0 #dadada;
+}
+
 .admin {
   height: calc(100% - 4px);
+
   /*border: 1px solid #333;*/
   overflow-x: hidden;
 
-  &:before {
+  /*&:before {
     content: "";
     position: absolute;
     top: 0;
@@ -12,13 +46,11 @@
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
     pointer-events: none;
     z-index: -1;
-  }
-
+  }*/
 
   header {
     display: flex;
     background-color: #333;
-
   }
 
   .left {
@@ -55,7 +87,8 @@
     color: #aaaaaa;
   }
 
-  .input, select>option {
+  .input,
+  select>option {
     font-family: "Roboto";
     font-size: 1.7rem;
     width: calc(100% - 2rem);
@@ -65,8 +98,6 @@
 
   .page_content {
     margin-top: 1rem;
-
-
 
     .btn_add {
       margin-top: 10px;
@@ -80,7 +111,8 @@
 
   }
 
-  .block_value, .sidePanel {
+  .block_value,
+  .sidePanel {
     position: absolute;
     background-color: #ffffff;
     top: 50px;

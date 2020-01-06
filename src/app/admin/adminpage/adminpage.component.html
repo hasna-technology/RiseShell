@@ -1,9 +1,19 @@
 <div class="page_value">
-  <button> Add New Page</button>
-  <div *ngFor="let page of data.course">
-    {{page.title}}
-    <div *ngFor="let page1 of page.children">
-      {{page1.title}}
+  <button class="full-button" (click)="addPage()"> Add New Page</button>
+  <div cdkDropList (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let page of data.course; let i = index" cdkDrag (click)="gotoPage(i)">
+      <div class="page" [ngClass]="{'page_header':page.header}">
+        <mat-icon cdkDragHandle>drag_indicator</mat-icon>
+        {{page.title}}
+      </div>
+      <!--<div cdkDropList (cdkDropListDropped)="drop($event, page)">
+        <div *ngFor="let page1 of page.children">
+          <div class="page" cdkDrag>
+            <mat-icon cdkDragHandle>drag_indicator</mat-icon>
+            {{page1.title}}
+          </div>
+        </div>
+      </div>-->
     </div>
   </div>
 </div>

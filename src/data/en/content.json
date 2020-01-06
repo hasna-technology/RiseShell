@@ -26,50 +26,77 @@
         {
             "title": "AK-CC55 CONNECT APP",
             "header": true,
-            "children": [
-                {
-                    "title": "AK-CC55 Connect app",
-                    "page": {
-                        "block": [
-                            {
-                                "type": "text_image_left",
-                                "image": "assets/p1.jpg",
-                                "content": "<ul><li>AK-CC55 Connect app</span><ul><li>AK-CC55 system view</li><li>Bluetooth &amp; AK-CC55 Connect app</li><li>Dashboard</li><li>Alarms, Controls and I/O</li><li>Menu functions&nbsp;</li></ul></li><li>KoolProg<ul><li>Set Parameters</li><li>Copy to Controller</li><li>Service and Test</li></ul></li><li>SM-8xx Bluetooth lock function</li><li>Quiz</li></ul>"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "title": "AK-CC55: System view",
-                    "page": {
-                        "block": [
-                            {
-                                "type": "text",
-                                "content": "<p>AK-<span style='color: rgb(107, 36, 178);'>CC55 </span>Case <span style='background-color: rgb(230, 0, 0);'>Controller </span>system view is a connection that consists of case controllers (AK-CC55 Compact, Single Coil, Single Coil UI and Multi Coil), displays (AK-UI Bluetooth, Set and Info), KoolProg and the Connect App.</p>"
+            "level": 1
+        },
+        {
+            "title": "AK-CC55 Connect app",
+            "page": {
+                "block": [
+                    {
+                        "type": "text_image_left",
+                        "image": "assets/p1.jpg",
+                        "content": "<ul><li>AK-CC55 Connect app</span><ul><li>AK-CC55 system view</li><li>Bluetooth &amp; AK-CC55 Connect app</li><li>Dashboard</li><li>Alarms, Controls and I/O</li><li>Menu functions&nbsp;</li></ul></li><li>KoolProg<ul><li>Set Parameters</li><li>Copy to Controller</li><li>Service and Test</li></ul></li><li>SM-8xx Bluetooth lock function</li><li>Quiz</li></ul>"
+                    },
+                    {
+                        "type": "grid_image_text",
+                        "content": {
+                            "setting": {
+                                "row" : 4,
+                                "border": 1,
+                                "image_position" : "top",
+                                "border-color": "#eee"
                             },
-                            {
-                                "type": "image",
-                                "image": "assets/p1.jpg"
-                            }
-                        ]
+                            "data": [
+                                {
+                                    "title": "Grid 1",
+                                    "image": "assets/icon1.jpg",
+                                    "desc": "Description of the text to be added in the part."
+                                },
+                                {
+                                    "title": "Grid 2",
+                                    "image": "assets/icon2.jpg",
+                                    "desc": "Description of the text to be added in the part."
+                                },
+                                {
+                                    "title": "Grid 3",
+                                    "image": "assets/icon3.jpg",
+                                    "desc": "Description of the text to be added in the part."
+                                }
+                            ]
+                        }
                     }
-                },
-                {
-                    "title": "AK-CC55: Bluetooth & AK-CC55 Connect app",
-                    "page": {
-                        "block": [
-                            {
-                                "type": "text",
-                                "content": "<p>AK-CC55 Case Controller system view is a connection that consists of case controllers (AK-CC55 Compact, Single Coil, Single Coil UI and Multi Coil), displays (AK-UI Bluetooth, Set and Info), KoolProg and the Connect App. </p>"
-                            },
-                            {
-                                "type": "image",
-                                "image": "assets/p1.jpg"
-                            }
-                        ]
+                ]
+            }
+        },
+        {
+            "title": "AK-CC55: System view",
+            "page": {
+                "block": [
+                    {
+                        "type": "text",
+                        "content": "<p>AK-<span style='color: rgb(107, 36, 178);'>CC55 </span>Case <span style='background-color: rgb(230, 0, 0);'>Controller </span>system view is a connection that consists of case controllers (AK-CC55 Compact, Single Coil, Single Coil UI and Multi Coil), displays (AK-UI Bluetooth, Set and Info), KoolProg and the Connect App.</p>"
+                    },
+                    {
+                        "type": "image",
+                        "image": "assets/p1.jpg"
                     }
-                }
-            ]
+                ]
+            }
+        },
+        {
+            "title": "AK-CC55: Bluetooth & AK-CC55 Connect app",
+            "page": {
+                "block": [
+                    {
+                        "type": "text",
+                        "content": "<p>AK-CC55 Case Controller system view is a connection that consists of case controllers (AK-CC55 Compact, Single Coil, Single Coil UI and Multi Coil), displays (AK-UI Bluetooth, Set and Info), KoolProg and the Connect App. </p>"
+                    },
+                    {
+                        "type": "image",
+                        "image": "assets/p1.jpg"
+                    }
+                ]
+            }
         }
     ]
 }

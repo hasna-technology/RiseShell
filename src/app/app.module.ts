@@ -12,11 +12,14 @@ import { PageComponent } from './page/page.component';
 import { TextComponent } from './component/text/text.component';
 import { TextImageComponent } from './component/text-image/text-image.component';
 import { PanelComponent } from './admin/panel/panel.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageComponent } from './admin/image/image.component';
 import { QuillModule } from 'ngx-quill';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AdminPageComponent } from './admin/adminpage/adminpage.component';
+import { BlockComponent } from './admin/block/block.component';
+import { GridImageTextComponent } from './component/grid-image-text/grid-image-text.component';
+import { HttpClientModule } from '@angular/common/http';
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
   declarations: [
@@ -29,15 +32,20 @@ import { AdminPageComponent } from './admin/adminpage/adminpage.component';
     TextComponent,
     TextImageComponent,
     PanelComponent,
-    ImageComponent
+    ImageComponent,
+    BlockComponent,
+    GridImageTextComponent,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatIconModule,
     DragDropModule,
+    HttpClientModule,
     QuillModule.forRoot({
       modules: {
         toolbar: [

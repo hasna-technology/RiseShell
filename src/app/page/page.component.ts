@@ -14,14 +14,15 @@ import { trigger, sequence, keyframes, state, style, animate, transition } from 
       transition('*=>top_bottom', [
         style({
           transform: 'translateY(0%)',
+          opacity : 0,
           position: 'static'
         }),
         sequence([
           animate(
             '1s ease-in-out',
             keyframes([
-              style({ transform: 'translateY(-100%)' }),
-              style({ transform: 'translateY(0%)' }),
+              style({ transform: 'translateY(-100%)', opacity : 0 }),
+              style({ transform: 'translateY(0%)', opacity : 1 }),
             ])
           ),
         ])
@@ -35,8 +36,8 @@ import { trigger, sequence, keyframes, state, style, animate, transition } from 
           animate(
             '1s ease-in-out',
             keyframes([
-              style({ transform: 'translateY(100%)' }),
-              style({ transform: 'translateY(0%)' }),
+              style({ transform: 'translateY(100%)', opacity : 0 }),
+              style({ transform: 'translateY(0%)', opacity : 1 }),
             ])
           ),
         ])
@@ -46,7 +47,9 @@ import { trigger, sequence, keyframes, state, style, animate, transition } from 
 })
 export class PageComponent implements OnInit {
 
-  lesson_no; page_no; content; course; page; common_text;
+  lesson_no; 
+  //page_no; 
+  content; course; page; common_text;
   menu_close = false;
   admin_panel = true;
   currentState;
@@ -54,14 +57,15 @@ export class PageComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       var data = service.getData();
       this.lesson_no = params.get('i');
-      this.page_no = params.get('j');
+      //this.page_no = params.get('j');
       this.course = data.course;
       this.content = data;
       this.common_text = data.common_text;
-      if (this.page_no == -1)
+      this.page = data.course[this.lesson_no];
+      /*if (this.page_no == -1)
         this.page = data.course[this.lesson_no];
       else
-        this.page = data.course[this.lesson_no].children[this.page_no];
+        this.page = data.course[this.lesson_no].children[this.page_no];*/
 
       if (this.ngOnInit)
         this.ngOnInit()
@@ -82,9 +86,9 @@ export class PageComponent implements OnInit {
     this.router.navigate(['page/' + this.nextString]);
   }
 
-  goto(i, j) {
+  goto(i) {
     this.currentState = '';
-    var gotoPage = this.service.getPage(i, j)
+    var gotoPage = this.service.getPage(i)
     console.log(gotoPage+" < "+this.currentNumber);
     if (gotoPage < this.currentNumber) {
       this.currentState = 'top_bottom';
@@ -93,13 +97,13 @@ export class PageComponent implements OnInit {
       this.currentState = 'bottom_top';
       
     }
-    this.router.navigate(['page/' + i + "/" + j]);
+    this.router.navigate(['page/' + i]);
   }
 
   ngOnInit() {
-    this.prevString = this.service.prevPage(this.lesson_no, this.page_no)
-    this.nextString = this.service.nextPage(this.lesson_no, this.page_no);
-    this.currentNumber = this.service.getPage(this.lesson_no, this.page_no)
+    this.prevString = (Number(this.lesson_no) - 1)
+    this.nextString = (Number(this.lesson_no) + 1);
+    this.currentNumber = this.service.getPage(this.lesson_no)
   }
   animEnd(event) {
 

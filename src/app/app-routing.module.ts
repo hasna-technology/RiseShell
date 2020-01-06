@@ -7,7 +7,7 @@ const routes: Routes = [{
   path:"",
   component:OverviewComponent
 },{
-  path:"page/:i/:j",
+  path:"page/:i",
   component:PageComponent
 }];
 

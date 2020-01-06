@@ -3,7 +3,7 @@
     <div class="title container_middle">
       <h1>{{this.content.settings.title}}</h1>
       <div>
-        <a routerLink="/page/0/-1" class="btn btn_white uppercase over_btn">{{this.content.common_text.start_course}}</a>
+        <a routerLink="/page/0" class="btn btn_white uppercase over_btn">{{this.content.common_text.start_course}}</a>
         <a href="#" class="btn btn_white_text uppercase">{{this.content.common_text.details}}
           <span class="down_arrow">
             <mat-icon>keyboard_arrow_down</mat-icon>
@@ -20,10 +20,10 @@
       <ul>
         <li *ngFor="let item of this.content.course; let i = index">
 
-          <div class="section" *ngIf="item.header == true && item.children.length > 0">
+          <div class="section" *ngIf="item.header == true">
             <section>
               <div class="sec_title">{{item.title}}</div>
-              <ul>
+              <!-- <ul>
                 <li *ngFor="let list of item.children; let j = index">
                   <a class="link" [routerLink]="['page', i, j]">
                     <div class="icon">
@@ -33,12 +33,11 @@
                     <div class="status_indicator"></div>
                   </a>
                 </li>
-              </ul>
+              </ul> -->
             </section>
           </div>
-
           <div class="section" *ngIf="item.header != true">
-            <a class="link" [routerLink]="['page', i, -1]">
+            <a class="link" [routerLink]="['page', i]">
               <div class="icon">
                 <mat-icon> notes</mat-icon>
               </div>

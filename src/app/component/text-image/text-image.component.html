@@ -1,3 +1,4 @@
+{{value | json}}
 <div class="image" *ngIf="value.type == 'image'">
   <img src="{{value.image}}" alt="">
 </div>
@@ -7,14 +8,16 @@
   <div class="image">
     <img src="{{value.image}}" alt="">
   </div>
-
-  <quill-editor [(ngModel)]="value.content" theme="bubble"></quill-editor>
-
+  <div class="text">
+    <quill-editor [(ngModel)]="value.content" theme="bubble"></quill-editor>
+  </div>
 
 </div>
 
 <div class="text_image" *ngIf="value.type == 'text_image_right'">
-  <quill-editor [(ngModel)]="value.content" theme="bubble"></quill-editor>
+  <div class="text">
+    <quill-editor [(ngModel)]="value.content" theme="bubble"></quill-editor>
+  </div>
   <div class="image">
     <img src="{{value.image}}" alt="">
   </div>
