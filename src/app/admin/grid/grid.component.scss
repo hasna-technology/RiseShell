@@ -1,4 +1,4 @@
-.input,
+.input1,
 select>option {
   font-family: "Roboto";
   font-size: 1.7rem;
@@ -10,4 +10,42 @@ select>option {
     background-color: #eee;
     padding: 1rem;
     margin-bottom: 1rem;
+}
+
+.input{
+  border: 0px solid #fff;
+  background-color: #eee;
+  font-family: "Roboto";
+  font-size: 1.7rem;
+  width: calc(100% - 9rem);
+  padding: 1rem;
+  margin-right: -1rem;
+
+}
+mat-icon{
+  background: #eee;
+  padding: 2px;
+  padding-bottom: 14px;
+  /*border: 1px solid #fff;*/
+  cursor: pointer;
+ 
+
+}
+button.small{
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+button.add{
+  background-color: #00e;
+  color: #fff;
+  padding: 5px;
+  border:0;
+  border-radius: 5px;
+}
+button.danger{
+  background-color: #e00;
+  color: #fff;
+  padding: 5px;
+  border:0;
+  border-radius: 5px;
 }

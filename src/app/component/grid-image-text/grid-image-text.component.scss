@@ -13,9 +13,17 @@
   /*background-color: #ccc;*/
   &.left{
       display: flex;
-      .text{
-          margin-left:1%;
+      .image{
+        width: 35%;
       }
+      .text{
+          margin-left:5%;
+          width: 65%;
+          word-wrap: break-all;
+      }
+  }
+  .title{
+    font-weight: bold;
   }
 }
 

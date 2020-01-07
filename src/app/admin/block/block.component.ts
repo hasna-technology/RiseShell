@@ -37,6 +37,6 @@ export class BlockComponent implements OnInit {
   }
   
   addGridImageText(){
- 
+   
 }
 }

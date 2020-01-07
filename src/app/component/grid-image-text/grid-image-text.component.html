@@ -1,16 +1,16 @@
 <div class="flex-row wrap">
-  <!-- [style.width]="((100 / value.content.setting.row) - ((value.content.setting.row -1) *2)) + '%'" -->
-  <div class="item" *ngFor="let data of this.value.content.data"
+  
+  <div class="item"  *ngFor="let data of this.value.content.data"
     [style.width]="((100 / value.content.setting.row) - 3)+'%'"
     [style.backgroundColor]="value.content.setting.background_color"
     [ngClass]="{'left': value.content.setting.image_position == 'left'}">
-
+    
     <div class="image"
       *ngIf="value.content.setting.image_position == 'top' || value.content.setting.image_position == 'left'">
       <img class="fill-width" src="{{data.image}}" alt="">
     </div>
     <div class="text">
-      <div [innerHTML]="data.title"></div>
+      <div class="title" [innerHTML]="data.title"></div>
       <div [innerHTML]="data.desc"></div>
     </div>
     <div class="image" *ngIf="value.content.setting.image_position == 'bottom'">
@@ -18,4 +18,6 @@
     </div>
 
   </div>
+
+  
 </div>

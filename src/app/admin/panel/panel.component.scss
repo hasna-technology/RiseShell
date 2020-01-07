@@ -56,7 +56,6 @@ $admin_panel_width : 450px;
   .left {
     display: flex;
     flex: 1;
-
   }
 
   .right {
@@ -111,8 +110,9 @@ $admin_panel_width : 450px;
 
   }
 
-  .block_value,
-  .sidePanel {
+  
+  .sidePanel 
+  {
     position: absolute;
     background-color: #ffffff;
     top: 50px;
@@ -131,6 +131,16 @@ $admin_panel_width : 450px;
 
 }
 
+.block_value{
+    position: absolute;
+    background-color: #ffffff;
+    top: 50px;
+    left: 0px;
+    right: 15px;
+    bottom: 0px;
+    padding-top: 10px;
+    padding-right: 5px;
+}
 .block {
   background-color: #eeeeee;
   padding: 1rem;

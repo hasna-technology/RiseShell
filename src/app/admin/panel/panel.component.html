@@ -40,25 +40,29 @@
           <div class="block" *ngFor="let item of data.page.block" (click)="gotoSetting(item)" cdkDrag>
             <mat-icon cdkDragHandle>drag_indicator</mat-icon>
             {{item.type.split("_").join(" ").toUpperCase()}}
+            
           </div>
-
+          
+        
 
           <div class="btn_add" (click)="openBlock()">Add Block</div>
 
         </div>
 
         <div class="block_value" [@changeState]="currentState" *ngIf="selectedBlock != undefined">
-
+          
+            <!-- Text block -->
           <div *ngIf="selectedBlock.type == 'text'">
             <!-- <textarea class="input" [(ngModel)]="selectedBlock.content" cols="30" rows="10"></textarea> -->
             <quill-editor [(ngModel)]="selectedBlock.content" theme="snow"></quill-editor>
           </div>
 
+           <!-- Image block -->
           <div *ngIf="selectedBlock.type == 'image'">
             <admin-image [src]="selectedBlock.image"></admin-image>
           </div>
 
-
+          <!-- Text & Image block -->
           <div *ngIf="selectedBlock.type == 'text_image_right' || selectedBlock.type == 'text_image_left'
                     || selectedBlock.type == 'text_image_top' || selectedBlock.type == 'text_image_bottom'">
             <div>
@@ -84,8 +88,9 @@
             </div>
           </div>
 
-          <admin-grid [data]="selectedBlock" *ngIf="selectedBlock.type == 'grid_image_text' || selectedBlock.type == 'accordion' || selectedBlock.type == 'tab'"></admin-grid>
-
+          <!-- Grid Image block -->
+          <admin-grid [data]="selectedBlock" *ngIf="selectedBlock.type == 'grid_image_text' || selectedBlock.type == 'accordion' || selectedBlock.type == 'tab'">
+          </admin-grid>
 
         </div>
 
