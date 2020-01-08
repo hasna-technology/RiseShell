@@ -9,7 +9,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   animations: [
     trigger('changeState', [
       state('Open', style({ transform: 'translateX(10px)' })),
-      state('Close', style({ transform: 'translateX(500px)' })),
+      state('Close', style({ transform: 'translateX(550px)' })),
       transition('*=>Open', animate('500ms ease-out')),
       transition('*=>Close', animate('500ms ease-in'))
     ])
@@ -18,15 +18,21 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export class PanelComponent implements OnInit {
 
   @Input() data;
+  @Input() selectedPage;
+
   setBack;
   pageState;
+  propertyState;
   currentState;
+  settingState;
   selectedBlock;
   blockState;
-
+  selectedTab = 1;
+  
   constructor() { }
 
   ngOnInit() {
+    this.propertyState = 'Open';
   }
 
   gotoSetting(item) {
@@ -35,25 +41,46 @@ export class PanelComponent implements OnInit {
     this.setBack = true;
   }
   goBack() {
+    this.propertyState = 'Open';
     this.currentState = 'Close';
     this.pageState = 'Close';
     this.blockState = 'Close';
+    this.settingState = 'Close';
     this.setBack = false;
+  }
+  showSettings(){
+    this.goBack();
+    this.propertyState = 'Close';
+    this.settingState = 'Open';
+  }
+  showMenu() {
+    this.goBack();
+    this.propertyState = 'Close';
+    this.pageState = 'Open';
+    //this.setBack = true;
+  }
+  showProperty()
+  {
+    this.goBack();
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.data.page.block, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.selectedPage.page.block, event.previousIndex, event.currentIndex);
   }
 
-  pageStateToggle() {
-    this.pageState = this.pageState == 'Open' ? 'Close' : 'Open';
-    this.setBack = true;
-  }
   closePanel() {
+    this.selectedTab = 1;
     this.goBack();
   }
+
   openBlock() {
     this.blockState = 'Open';
     this.setBack = true;
   }
+
+  doSomething(event){
+    console.log(event);
+    //this.admin.save();
+  }
+ 
 }

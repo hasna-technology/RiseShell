@@ -1,38 +1,86 @@
-import { Injectable } from '@angular/core';
-import data from '../../data/en/content.json';
+import { Injectable, KeyValueDiffer, KeyValueDiffers, KeyValueChanges } from '@angular/core';
+//import data1 from '../../data/en/content.json';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { RequestMethod } from "@angular/http";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MainService {
 
-
-  constructor() {
+  baseUrl = environment.apiUrl;
+  //data;
+  startSaving;
+  json;
+  prevData;
+  constructor(private http: HttpClient) {
     this.progArr = [];
+    //this.startSaving = false;
+  }
+  doCheck(): void {
+    var jsonValue = this.jsonEqual(this.prevData, this.json);
+    if(jsonValue == false){
+      this.prevData = JSON.parse(JSON.stringify(this.json));
+      console.log("prevData Changed");
+      this.save();
+    }
   }
 
-  getData(): any {
-    return data;
+  jsonEqual(a, b) {
+    //console.log(JSON.stringify(a)+" === "+JSON.stringify(b));
+    return JSON.stringify(a) === JSON.stringify(b);
   }
+  loadJson() {
+    return this.request("File/load/content.json", RequestMethod.Get);
 
-  
-  
-  getPage(lessonNo) {
-    //var count = 0;
-    var count = data.course.filter(s => s.header == true && data.course.indexOf(s) < lessonNo).length;
-    /*for (var i = 0; i <= lessonNo; i++) {
-      if (data.course[i].header == true) {
-        if (i == lessonNo && pageNo != -1) {
-          count += Number(pageNo) + 1;
-        } else if (i == lessonNo && pageNo == -1) {
-          count += 1;
-        } else if (i != lessonNo) {
-          count += data.course[i].children.length;
-        }
-      } else {
-        count += 1;
+    /*.subscribe(
+      res => {
+       this.json = JSON.parse(res.data);
+        this.startSaving = true;
+      }, err => {
+        console.error(err.message);
+      });*/
+  }
+  request(url: string, method: RequestMethod, body?: Object, showLoader: boolean = true) {
+    const _url = `${this.baseUrl}${url}`;
+    if (method == RequestMethod.Get) {
+      return this.http.get<any>(_url);
+    } else if (method == RequestMethod.Post) {
+      if (body) {
+        console.log("body = ", body);
+        return this.http.post<any>(_url, body);
       }
-    }*/
+
+    }
+  }
+  setData(d) {
+    this.json = d;
+    console.log(this.json)
+  }
+  getData(): any {
+    return this.json;
+  }
+
+  saving = false;
+  
+  save() {
+    if (this.saving == false) {
+      this.saving = true;
+      this.request("File/save", RequestMethod.Post, JSON.stringify(this.json)).subscribe(
+        res => {
+          console.log(res);
+          this.saving = false
+        }, err => {
+          console.error(err.message);
+          this.saving = false
+        });
+    }
+  }
+
+  getPage(lessonNo) {
+    var count = this.json.course.filter(s => s.header == true && this.json.course.indexOf(s) < lessonNo).length;
     var index = Number(lessonNo) + 1 - count;
     this.progArr[index - 1] = true;
     return index;
@@ -43,26 +91,6 @@ export class MainService {
     lessonNo = Number(lessonNo);
     pageNo = Number(pageNo);
     var result = null;
-    /*if (lessonNo != 0) {
-      if (data.course[lessonNo].header == false) {
-        if (data.course[lessonNo - 1].header == true) {
-          result = (lessonNo - 1) + "/" + (data.course[lessonNo - 1].children.length - 1);
-        } else {
-          result = (lessonNo - 1) + "/" + -1;
-        }
-      } else {
-        if (pageNo > 0) {
-          result = lessonNo + "/" + (pageNo - 1);
-        } else {
-          if (data.course[lessonNo - 1].header == false) {
-            result = (lessonNo - 1) + "/" + (-1);
-          } else {
-            result = (lessonNo - 1) + "/" + (data.course[lessonNo - 1].children.length - 1);
-          }
-        }
-      }
-    }
-    //console.log("previous " , result);*/
     return result;
   }
 
@@ -70,32 +98,6 @@ export class MainService {
     lessonNo = Number(lessonNo);
     pageNo = Number(pageNo);
     var result = null;
-    /*if (lessonNo < data.course.length - 1) {
-      //console.log(data.course[lessonNo].header);
-      if (data.course[lessonNo].header == true) {
-        if (pageNo < data.course[lessonNo].children.length - 1) {
-          result = lessonNo + "/" + (pageNo + 1);
-        } else {
-          if (data.course[lessonNo + 1].header == false)
-            result = (lessonNo + 1) + "/" + -1;
-          else
-            result = (lessonNo + 1) + "/" + 0;
-        }
-      } else {
-        //console.log(data.course[Number(lessonNo) + 1].header);
-        if (data.course[lessonNo + 1].header == false)
-          result = (lessonNo + 1) + "/" + -1;
-        else
-          result = (lessonNo + 1) + "/" + 0;
-      }
-    } else {
-      if (data.course[lessonNo].header == true) {
-        if (pageNo < data.course[lessonNo].children.length - 1) {
-          result = lessonNo + "/" + (pageNo + 1);
-        }
-      }
-    }*/
-    //console.log("next = ", result);
     return result;
   }
   getLessonName(num) {
@@ -103,30 +105,14 @@ export class MainService {
       return null;
     }
     else {
-      if (Number(num) < data.course.length)
-        return data.course[Number(num)].title
+      if (Number(num) < this.json.course.length)
+        return this.json.course[Number(num)].title
     }
-    //var arr = name.split('/');
-    /*if (Number(arr[1]) == -1) {
-      return data.course[Number(arr[0])].title
-    } else {
-      return data.course[Number(arr[0])].children[Number(arr[1])].title;
-    }*/
-
   }
   getTotalPage() {
-
-    var headerCount = data.course.filter(s => s.header == true).length;
-    /*data.course.map(item => {
-      if (item.header == true) {
-        count += item.children.length;
-      } else {
-        count += 1;
-      }
-    })*/
-    return data.course.length - headerCount;
+    var headerCount = this.json.course.filter(s => s.header == true).length;
+    return this.json.course.length - headerCount;
   }
-
 
   progArr;
   getProgress() {

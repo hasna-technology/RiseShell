@@ -1,0 +1,33 @@
+<div>
+  <div>
+    <label class="label">Source</label>
+  </div>
+
+  <div *ngIf="item.type == 'audio'">
+
+    <input type="file" accept=".mp3,audio/*" #file class="hidden" (change)="onFileSelect($event)" />
+
+    <div class="group">
+      <input type="text" [(ngModel)]="item.source" class="full-width">
+      <button (click)="file.click()">Browse</button>
+    </div>
+  </div>
+
+  <div *ngIf="item.type == 'video'">
+
+    <input type="file" accept=".mp4,video/*" #file class="hidden" (change)="onFileSelect($event)" />
+
+    <div class="group">
+      <input type="text" [(ngModel)]="item.source" class="full-width">
+      <button (click)="file.click()">Browse</button>
+    </div>
+  </div>
+
+  <div class="progress">
+    <div class="progress_bar" [style.width]="progress+'%'"></div>
+  </div>
+
+  <div>
+    <input type="checkbox" [(ngModel)]="item.autoplay"> AutoPlay
+  </div>
+</div>

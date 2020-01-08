@@ -16,6 +16,16 @@
             "page": {
                 "block": [
                     {
+                        "type": "audio",
+                        "autoplay": false,
+                        "source": "assets/audio/sample_audio.mp3"
+                    },
+                    {
+                        "type": "video",
+                        "autoplay": false,
+                        "source": "assets/video/video_sample.mp4"
+                    },
+                    {
                         "type": "text_image_right",
                         "image": "assets/p1.jpg",
                         "content": "<ul><li>AK-CC55 Connect app</span><ul><li>AK-CC55 system view</li><li>Bluetooth &amp; AK-CC55 Connect app</li><li>Dashboard</li><li>Alarms, Controls and I/O</li><li>Menu functions&nbsp;</li></ul></li><li>KoolProg<ul><li>Set Parameters</li><li>Copy to Controller</li><li>Service and Test</li></ul></li><li>SM-8xx Bluetooth lock function</li><li>Quiz</li></ul>"
@@ -41,9 +51,9 @@
                         "type": "grid_image_text",
                         "content": {
                             "setting": {
-                                "row" : 4,
+                                "row": 4,
                                 "border": 1,
-                                "image_position" : "top",
+                                "image_position": "top",
                                 "border-color": "#eee"
                             },
                             "data": [

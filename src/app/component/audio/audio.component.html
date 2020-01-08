@@ -1,0 +1,10 @@
+<div class="center">
+  <audio *ngIf="value.autoplay" controls autoplay>
+    <source src="{{value.source}}">
+    Your browser does not support the audio element.
+  </audio>
+  <audio *ngIf="value.autoplay == false" controls>
+    <source src="{{value.source}}">
+    Your browser does not support the audio element.
+  </audio>
+</div>

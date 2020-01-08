@@ -1,6 +1,10 @@
+
 <div class="menu_btn admin_btn" title="Settings" (click)="adminPanelState = 'Open'">
   <mat-icon>list_alt</mat-icon>
 </div>
+
+<!-- <input type="text" [(ngModel)]="selectedPage.title" (ngModelChange)="doSomething($event)" /> -->
+
 <div class="admin_panel" [@changeState]="adminPanelState">
   <div class="admin">
     <header>
@@ -10,43 +14,53 @@
         </div>
       </div>
       <div class="right">
-        <div class="menu_btn page" title="Page" (click)="pageStateToggle()">
+        <!--<div class="menu_btn page" title="Page" (click)="showMenu()">
           <mat-icon>pages</mat-icon>
         </div>
         <div class="menu_btn settings" title="Settings">
           <mat-icon>settings_applications</mat-icon>
-        </div>
+        </div>-->
         <div class="menu_btn settings" title="Settings" (click)="adminPanelState = 'Close'">
           <mat-icon>close</mat-icon>
         </div>
       </div>
     </header>
+    <div class="tab">
+      <div class="tabHeader" [ngClass]="{'selected' : selectedTab == 1}" (click)="showProperty(); selectedTab = 1">
+        Property</div>
+      <div class="tabHeader" [ngClass]="{'selected' : selectedTab == 2}" (click)="showMenu(); selectedTab = 2">Menu
+      </div>
+      <div class="tabHeader" [ngClass]="{'selected' : selectedTab == 3}" (click)="showSettings(); selectedTab = 3">
+        Settings</div>
+    </div>
     <div class="body">
 
       <div class="page_settings">
-        <div>
-          <input type="checkbox" [(ngModel)]="data.header"> Header
+
+        <div class="sidePanel property" [@changeState]="propertyState">
           <div>
-            <label class="label">Title</label>
+            <input type="checkbox" [(ngModel)]="selectedPage.header"> Header
+            <div>
+              <label class="label">Title</label>
+            </div>
+            <div>
+              <input class="input" type="text" [(ngModel)]="selectedPage.title">
+            </div>
           </div>
-          <div>
-            <input class="input" type="text" [(ngModel)]="data.title">
+
+          <div class="page_content" *ngIf="selectedPage.header != true" cdkDropList (cdkDropListDropped)="drop($event)">
+
+            <div class="block" *ngFor="let item of selectedPage.page.block" (click)="gotoSetting(item)" cdkDrag>
+              <mat-icon cdkDragHandle>drag_indicator</mat-icon>
+              {{item.type.split("_").join(" ").toUpperCase()}}
+            </div>
+
+
+            <div class="btn_add" (click)="openBlock()">Add Block</div>
+
           </div>
+
         </div>
-
-
-        <div class="page_content" *ngIf="data.header != true" cdkDropList (cdkDropListDropped)="drop($event)">
-
-          <div class="block" *ngFor="let item of data.page.block" (click)="gotoSetting(item)" cdkDrag>
-            <mat-icon cdkDragHandle>drag_indicator</mat-icon>
-            {{item.type.split("_").join(" ").toUpperCase()}}
-          </div>
-
-
-          <div class="btn_add" (click)="openBlock()">Add Block</div>
-
-        </div>
-
         <div class="block_value" [@changeState]="currentState" *ngIf="selectedBlock != undefined">
 
           <div *ngIf="selectedBlock.type == 'text'">
@@ -55,7 +69,12 @@
           </div>
 
           <div *ngIf="selectedBlock.type == 'image'">
-            <admin-image [src]="selectedBlock.image"></admin-image>
+            <admin-image [(src)]="selectedBlock.image"></admin-image>
+          </div>
+
+
+          <div *ngIf="selectedBlock.type == 'audio' || selectedBlock.type == 'video'">
+            <admin-media [(item)]="selectedBlock"></admin-media>
           </div>
 
 
@@ -80,7 +99,7 @@
               <label class="label">Image</label>
             </div>
             <div>
-              <admin-image [src]="selectedBlock.image"></admin-image>
+              <admin-image [(src)]="selectedBlock.image"></admin-image>
             </div>
           </div>
 
@@ -88,11 +107,11 @@
         </div>
 
 
-        <admin-page class="sidePanel" (closeEvent)="closePanel()" [@changeState]="pageState"></admin-page>
+        <admin-page class="sidePanel" (closeEvent)="closePanel()" [data]="data"  [@changeState]="pageState"></admin-page>
 
-        <app-block class="sidePanel" (closeEvent)="closePanel()" [data]="data.page.block" [@changeState]="blockState">
-        </app-block>
+        <app-block class="sidePanel" (closeEvent)="closePanel()" [data]="selectedPage.page.block" [@changeState]="blockState"></app-block>
 
+        <admin-settings class="sidePanel" (closeEvent)="closePanel()" [data]="data"  [@changeState]="settingState"></admin-settings>
 
       </div>
 

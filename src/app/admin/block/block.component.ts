@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-block',
@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BlockComponent implements OnInit {
 
   @Input() data;
-
+  @Output() closeEvent = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
@@ -17,22 +17,44 @@ export class BlockComponent implements OnInit {
   addText() {
     this.data.push({
       "type": "text",
-      "content": "<p>Sample text to be added</p>"
+      "content": `
+      <p>
+        <b>Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </p>`
     })
+    this.closeEvent.emit();
+  }
+
+  addTextWidthHeader(){
+    this.data.push({
+      "type": "text",
+      "content": `<h1>Heading + text</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </p>`
+    })
+    this.closeEvent.emit();
   }
 
   addImage() {
     this.data.push({
       "type": "image",
-      "image": "assets/p1.jpg"
+      "image": "assets/admin/image_only.png"
     })
+    this.closeEvent.emit();
   }
 
   addTextImage() {
     this.data.push({
       "type": "text_image_right",
-      "image": "assets/p1.jpg",
-      "content": "Text to be added"
+      "image": "assets/admin/watermelon.png",
+      "content": `<p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
+    </p>`
     })
+    this.closeEvent.emit();
   }
 }

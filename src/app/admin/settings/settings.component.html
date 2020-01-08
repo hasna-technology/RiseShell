@@ -1,0 +1,34 @@
+<div class="setting">
+  <div>
+    <label class="label">Course Title</label>
+  </div>
+  <div>
+    <input class="input" type="text" [(ngModel)]="data.settings.title">
+  </div>
+  <div>
+    <label class="label">Description</label>
+  </div>
+  <div>
+    <quill-editor [(ngModel)]="data.settings.description" theme="snow"></quill-editor>
+  </div>
+  <div>
+    <label class="label">Cover Image</label>
+  </div>
+  <div>
+    <admin-image [(src)]="data.settings.image"></admin-image>
+  </div>
+
+  <div>
+    <label class="label">Translation</label>
+  </div>
+  <div>
+    <button class="btn-dark">Export Xliff</button>
+    <button class="btn-dark">Import Xliff</button>
+  </div>
+  <div>
+    <label class="label">Course</label>
+  </div>
+  <div>
+    <button class="btn-dark full-width">Export Course</button>
+  </div>
+</div>

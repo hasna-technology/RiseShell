@@ -1,11 +1,11 @@
 $admin_panel_width : 450px;
+
 .admin_btn {
   position: fixed;
   right: 0px;
-  top: 20px;
-  background-color: #333;
+  top: 40px;
+  background-color: #2196F3;
   display: flex;
-  /*border: 1px solid #ccc;*/
   width: 50px;
   height: 50px;
   color: #eee;
@@ -13,22 +13,25 @@ $admin_panel_width : 450px;
   align-items: center;
   cursor: pointer;
   z-index: 100;
+  border-radius: 25px;
+  box-shadow: 0 0 5px 5px #d4d4d4;
 }
 
 .admin_panel {
   position: fixed;
   right: 0px;
-  min-width: $admin_panel_width;
-  transform: translateX(500px);
-  top: 0px;
-  bottom: 0px;
-  right: 10px;
+  min-width: 450px;
+  transform: translateX(550px);
+  top: 10px;
+  bottom: 10px;
+  right: 60px;
   overflow: auto;
   overflow-x: hidden;
-  
   background-color: white;
+  border-radius: 10px;
+  border-right: 6px solid #2196f3;
   z-index: 101;
-  box-shadow: -5px 0 5px 0 #dadada;
+  box-shadow: -5px 0px 5px 5px #dadada;
 }
 
 .admin {
@@ -50,7 +53,8 @@ $admin_panel_width : 450px;
 
   header {
     display: flex;
-    background-color: #333;
+    /*background-color: #333;*/
+    background-color: #f7f7f7;
   }
 
   .left {
@@ -63,12 +67,29 @@ $admin_panel_width : 450px;
     display: flex;
   }
 
+  .tab {
+    display: flex;
+  }
+
+  .tabHeader {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 4px solid #eee;
+    background-color: #f7f7f7;
+    cursor: pointer;
+  }
+
+  .tabHeader.selected {
+    border-color: #2196f3;
+  }
+
   .menu_btn {
     display: flex;
     /*border: 1px solid #ccc;*/
     width: 50px;
     height: 50px;
-    color: #eee;
+    color: #bdbdbd;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -90,14 +111,17 @@ $admin_panel_width : 450px;
   .input,
   select>option {
     font-family: "Roboto";
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     width: calc(100% - 2rem);
     padding: 1rem;
     margin-right: -1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }
 
   .page_content {
     margin-top: 1rem;
+    
 
     .btn_add {
       margin-top: 10px;
@@ -107,6 +131,7 @@ $admin_panel_width : 450px;
       cursor: pointer;
       padding: 1rem;
       font-size: 1.3rem;
+      border-radius: 5px;
     }
 
   }
@@ -115,13 +140,15 @@ $admin_panel_width : 450px;
   .sidePanel {
     position: absolute;
     background-color: #ffffff;
-    top: 50px;
+    top: 100px;
     left: 0px;
     right: 15px;
     bottom: 0px;
     padding-top: 10px;
     padding-right: 5px;
     transform: translateX(450px);
+    overflow: auto;
+    overflow-x: hidden;
 
     .input {
       width: calc(100% - 4rem);
@@ -131,15 +158,43 @@ $admin_panel_width : 450px;
 
 }
 
+
+
+.sidePanel::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.sidePanel::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.sidePanel::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+
 .block {
-  background-color: #eeeeee;
+  background-color: #d9eeff;
   padding: 1rem;
   margin-bottom: 1px;
   cursor: pointer;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #a3cdef;
+  color: #2c89d2;
 
   .mat-icon {
     font-size: 16px;
-    color: #aaaaaa;
+    color: #5699d0;
     display: contents;
   }
 }
