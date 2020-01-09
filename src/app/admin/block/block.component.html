@@ -1,14 +1,40 @@
 <div class="block_container">
   <div class="block" (click)="addText()">
-    Text
-  </div>
-  <div class="block" (click)="addImage()">
-    Image
+      <p>
+          <b>Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua.
+        </p>
   </div>
 
-  <div class="block" (click)="addTextImage()">
-    Text & Image
+  <div class="block" (click)="addTextWidthHeader()">
+      <h1>Heading + text</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </p>
   </div>
+  <div class="block" (click)="addTextImage()">
+      <p class="heading">Text & Image</p>
+      <div class="flex">
+        <div class="item left">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </p>
+        </div>
+        <div class="item">
+            <img src="assets/admin/watermelon.png" />
+          </div>
+      </div>
+    </div>
+  <div class="block" (click)="addImage()">
+      <p class="heading">Image Only</p>
+      <div class="item">
+        <img class="full-width" src="assets/admin/image_only.png" />
+      </div>
+  </div>
+
+  
 
 
   <div class="block" (click)="addGridImageText()">

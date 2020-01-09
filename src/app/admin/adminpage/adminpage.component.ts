@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { trigger, animate, state, style, transition } from '@angular/animations';
 import { MainService } from 'src/app/service/main.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -11,10 +11,11 @@ import { Router } from '@angular/router';
 })
 export class AdminPageComponent implements OnInit {
 
-  data;
+  @Input() data;
+
   @Output() closeEvent = new EventEmitter<string>();
-  constructor(public service: MainService, private router: Router) {
-    this.data = service.getData();
+  constructor(private router: Router) {
+    
   }
 
   ngOnInit() {
@@ -36,7 +37,6 @@ export class AdminPageComponent implements OnInit {
       }
     }
     this.data.course.push(page);
-
-  }
+  } 
 }
 

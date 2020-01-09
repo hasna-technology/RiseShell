@@ -82,7 +82,7 @@ $page_width: $menu_width + $admin_panel_width;
 
 .page {
   margin-left: $menu_width;
-  width: calc(100% -  #{$page_width});
+  /*width: calc(100% -  #{$page_width});*/
   flex: 1;
   transition: all 0.5s ease;
   /*position: fixed;
@@ -160,7 +160,7 @@ $page_width: $menu_width + $admin_panel_width;
 }
 
 .main {
-  display: flex;
+  /*display: flex;*/
   background-color: white;
 
   .menu {

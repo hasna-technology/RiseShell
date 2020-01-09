@@ -1,16 +1,5 @@
-.page {
-  background-color: #eeeeee;
-  padding: 1rem;
-  margin-bottom: 1px;
-  cursor: pointer;
+@import '../admin.scss';
 
-  &.page_header {
-    font-size: 1rem;
-    background-color: #ffffff;
-    text-transform: uppercase;
-    color: #aaaaaa;
-  }
-}
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 4px;

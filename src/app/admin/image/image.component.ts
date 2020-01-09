@@ -1,7 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { HttpClient, HttpEvent, HttpErrorResponse, HttpEventType, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpErrorResponse, HttpEventType, HttpResponse, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { MainService } from 'src/app/service/main.service';
+import { RequestMethod } from '@angular/http';
 
 @Component({
   selector: 'admin-image',
@@ -10,11 +13,24 @@ import { map } from 'rxjs/operators';
 })
 export class ImageComponent implements OnInit {
 
-  SERVER_URL: string = "http://localhost/upload";
+  SERVER_URL: string = "http://localhost/CI_Upload/index.php/file/upload";
 
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { }
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private service: MainService) { }
 
-  @Input() src;
+  image_src;
+
+  @Input() 
+  get src(){
+    return this.image_src;
+  }
+  
+  set src(val){
+    this.image_src = val;
+    this.srcChange.emit(this.image_src);
+  };
+  @Output()
+  srcChange = new EventEmitter<string>();
+
   form;
   percentage;
   file_info;
@@ -24,32 +40,119 @@ export class ImageComponent implements OnInit {
     });
   }
   onFileSelect(event) {
+
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.form.get('asset').setValue(file);
       const formData = new FormData();
       formData.append('asset', this.form.get('asset').value);
-
-      this.uploadFile(formData).subscribe(
-        event => {
-          if (event.type == HttpEventType.UploadProgress) {
-            this.percentage = Math.round(100 * event.loaded / event.total);
-            console.log(`File is ${this.percentage}% loaded.`);
-          } else if (event instanceof HttpResponse) {
-            console.log(event.body);
-            this.file_info = event.body;
-          }
-        },
-        (err) => {
-          console.log(err);
+      this.httpClient.post<any>(this.SERVER_URL, formData, {
+        reportProgress: true,
+        observe: 'events'
+      }).subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+   
+          // calculate the progress percentage
+          const percentDone = Math.round(100 * event.loaded / event.total);
+          console.log("percentDone = " + percentDone);
+          // pass the percentage into the progress-stream
+          //progress.next(percentDone);
+        } else if (event instanceof HttpResponse) {
+   
+          // Close the progress-stream if we get an answer form the API
+          // The upload is complete
+          console.log("percentDone = completed");
+          console.log(event.body.data);
+          this.src = event.body.data.filePath;
+          //progress.complete();
         }
-      );
-
+      })
     }
-  }
+      /*this.service.request("file/upload", RequestMethod.Post, formData).subscribe(
+        res => {
+          console.log(res);
+        }, err => {
+          alert(err.message);
+        });
+    }*/
+      /*this.httpClient.get("http://jsonplaceholder.typicode.com/todos/1").subscribe(
+        data =>
+        {
+          console.log(data);
+        }
+      )*/
+      /*this.httpClient.post(this.SERVER_URL, formData, {
+        reportProgress: true,
+        observe:'events'
+      }).subscribe(event => {
+        console.log(event);
+      })
+      /*const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true'
+        })
+      };
+      this.httpClient.post(this.SERVER_URL, httpOptions)
+        .pipe(map(user => {
+          if (user) {
+            // some logic
+          }
+          return user;
+        }));*/
+
+      /*const req = new HttpRequest('POST', this.SERVER_URL, formData, {
+        reportProgress: true,
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'http://localhost:4200',
+          'Access-Control-Allow-Credentials': 'true'
+        })
+      });
+      const progress = new Subject<number>();
+   
+      this.httpClient.request(req).subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+   
+          // calculate the progress percentage
+          const percentDone = Math.round(100 * event.loaded / event.total);
+   
+          // pass the percentage into the progress-stream
+          progress.next(percentDone);
+        } else if (event instanceof HttpResponse) {
+   
+          // Close the progress-stream if we get an answer form the API
+          // The upload is complete
+          progress.complete();
+        }
+      });
+   
+      /*      this.uploadFile(formData).subscribe(
+              
+              event => {
+                console.log(event); // handle event here
+                if (event.type == HttpEventType.UploadProgress) {
+                  this.percentage = Math.round(100 * event.loaded / event.total);
+                  console.log(`File is ${this.percentage}% loaded.`);
+                } else if (event instanceof HttpResponse) {
+                  console.log(event.body);
+                  this.file_info = event.body;
+                }
+              },
+              (err) => {
+                console.log(err);
+              }
+            );*/
+
+      //}
+    }
 
   public uploadFile(data) {
     let uploadURL = `${this.SERVER_URL}`;
-    return this.httpClient.post<any>(uploadURL, data);
+    return this.httpClient.post<any>(uploadURL, data, {
+      reportProgress: true,
+      observe: 'events'
+    });
   }
 }

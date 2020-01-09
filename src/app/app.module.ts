@@ -20,6 +20,11 @@ import { AdminPageComponent } from './admin/adminpage/adminpage.component';
 import { BlockComponent } from './admin/block/block.component';
 import { GridImageTextComponent } from './component/grid-image-text/grid-image-text.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ColorPickerComponent } from './admin/color-picker/color-picker.component';
+import { AudioComponent } from './component/audio/audio.component';
+import { VideoComponent } from './component/video/video.component';
+import { MediaComponent } from './admin/media/media.component';
+import { SettingsComponent } from './admin/settings/settings.component';
 import { GridComponent } from './admin/grid/grid.component';
 import { TabImageTextComponent } from './component/tab-image-text/tab-image-text.component';
 import { AccordianComponent } from './component/accordian/accordian.component';
@@ -40,6 +45,11 @@ import { TruncatePipe } from './filters/TruncatePipe';
     ImageComponent,
     BlockComponent,
     GridImageTextComponent,
+    ColorPickerComponent,
+    AudioComponent,
+    VideoComponent,
+    MediaComponent,
+    SettingsComponent,
     GridComponent,
     TabImageTextComponent,
     AccordianComponent,

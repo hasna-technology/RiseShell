@@ -1,6 +1,6 @@
-<div class="main">
+<div class="main" *ngIf="page">
 
-  <admin-panel [data]="page"></admin-panel>
+  <admin-panel [data]="this.content" [selectedPage]="page"></admin-panel>
 
 
   <div [className]="menu_close ? 'menu close' : 'menu'">
@@ -117,6 +117,12 @@
           <!-- Accordion Component -->
           <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
 
+           <!-- Audio Component -->
+           <app-audio *ngIf="item.type == 'audio'" [value]="item"></app-audio>
+
+           <!-- Video Component -->
+           <app-video *ngIf="item.type == 'video'"  [value]="item"></app-video>
+
         </div>
       </div>
       <!-- content type end-->
@@ -131,9 +137,5 @@
       <mat-icon>keyboard_arrow_down</mat-icon>
     </div>
   </div>
-
-
-
-
 
 </div>

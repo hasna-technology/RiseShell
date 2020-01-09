@@ -1,0 +1,23 @@
+.group
+{
+    display: flex;
+    .full-width{
+        font-family: 'Roboto';
+        font-size: 1.4rem;
+        flex: 1;
+        padding: 1rem;
+    }
+    button{
+        background-color: #333;
+        color: #eee;
+        border:0px;
+        padding: 1rem;
+    }
+}
+.progress{
+    background-color: #ddd;
+    .progress_bar{
+        height: 2px;
+        background-color: #b2000F;
+    }
+}

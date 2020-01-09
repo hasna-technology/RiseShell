@@ -14,15 +14,15 @@ import { trigger, sequence, keyframes, state, style, animate, transition } from 
       transition('*=>top_bottom', [
         style({
           transform: 'translateY(0%)',
-          opacity : 0,
+          opacity: 0,
           position: 'static'
         }),
         sequence([
           animate(
             '1s ease-in-out',
             keyframes([
-              style({ transform: 'translateY(-100%)', opacity : 0 }),
-              style({ transform: 'translateY(0%)', opacity : 1 }),
+              style({ transform: 'translateY(-100%)', opacity: 0 }),
+              style({ transform: 'translateY(0%)', opacity: 1 }),
             ])
           ),
         ])
@@ -36,8 +36,8 @@ import { trigger, sequence, keyframes, state, style, animate, transition } from 
           animate(
             '1s ease-in-out',
             keyframes([
-              style({ transform: 'translateY(100%)', opacity : 0 }),
-              style({ transform: 'translateY(0%)', opacity : 1 }),
+              style({ transform: 'translateY(100%)', opacity: 0 }),
+              style({ transform: 'translateY(0%)', opacity: 1 }),
             ])
           ),
         ])
@@ -47,41 +47,59 @@ import { trigger, sequence, keyframes, state, style, animate, transition } from 
 })
 export class PageComponent implements OnInit {
 
-  lesson_no; 
+  lesson_no;
   //page_no; 
   content; course; page; common_text;
   menu_close = false;
   admin_panel = true;
   currentState;
-  constructor(public route: ActivatedRoute, public service: MainService, private router: Router) {
-    this.route.paramMap.subscribe(params => {
-      var data = service.getData();
-      this.lesson_no = params.get('i');
-      //this.page_no = params.get('j');
-      this.course = data.course;
-      this.content = data;
-      this.common_text = data.common_text;
-      this.page = data.course[this.lesson_no];
-      /*if (this.page_no == -1)
-        this.page = data.course[this.lesson_no];
-      else
-        this.page = data.course[this.lesson_no].children[this.page_no];*/
-
-      if (this.ngOnInit)
-        this.ngOnInit()
-    });
+  constructor(public route: ActivatedRoute, private service: MainService, private router: Router) {
+    this.init();
   }
 
+  init() {
+    this.route.paramMap.subscribe(params => {
+      var data = this.service.getData();
+      //console.log("init", data);
+      if (data != undefined) {
+        this.lesson_no = params.get('i');
+        //this.page_no = params.get('j');
+        this.course = this.service.getData().course;
+        this.content = this.service.getData();
+        this.common_text = this.service.getData().common_text;
+        this.page = this.service.getData().course[this.lesson_no];
+      
+        if (this.ngOnInit)
+          this.ngOnInit()
+      } else {
+     
+        this.service.loadJson().subscribe(
+          res => {
+            this.service.setData(JSON.parse(res.data));
+            data = this.service.getData();
+            this.init();
+          },
+          err => {
+            console.log(err);
+          }
+        )
+      }
+
+    });
+  }
   currentNumber; prevString; nextString;
 
+  ngDoCheck(): void {
+    this.service.doCheck();
+   
+  }
+
   prev() {
-    //let routerLink="/page/"+this.prevString;
     this.currentState = "top_bottom"
     this.router.navigate(['page/' + this.prevString]);
   }
   sequence;
   next() {
-    //let routerLink="/page/"+this.nextString;
     this.currentState = 'bottom_top';
     this.router.navigate(['page/' + this.nextString]);
   }
@@ -89,33 +107,26 @@ export class PageComponent implements OnInit {
   goto(i) {
     this.currentState = '';
     var gotoPage = this.service.getPage(i)
-    console.log(gotoPage+" < "+this.currentNumber);
+    console.log(gotoPage + " < " + this.currentNumber);
     if (gotoPage < this.currentNumber) {
       this.currentState = 'top_bottom';
-      
+
     } else {
       this.currentState = 'bottom_top';
-      
+
     }
     this.router.navigate(['page/' + i]);
   }
 
   ngOnInit() {
-    this.prevString = (Number(this.lesson_no) - 1)
-    this.nextString = (Number(this.lesson_no) + 1);
-    this.currentNumber = this.service.getPage(this.lesson_no)
+    if (this.course != undefined) {
+      this.prevString = (Number(this.lesson_no) - 1)
+      this.nextString = (Number(this.lesson_no) + 1);
+      this.currentNumber = this.service.getPage(this.lesson_no)
+    }
+
   }
   animEnd(event) {
-
-    /*if (this.nextString != null && this.sequence == 'next') {
-      this.sequence = '';
-     
-
-    } else {
-      var menu_icon = document.getElementById('menu_icon');
-      document.body.scrollTop = menu_icon.offsetTop;
-      menu_icon.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-    }*/
     var menu_icon = document.getElementById('menu_icon');
     document.body.scrollTop = menu_icon.offsetTop;
     menu_icon.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
