@@ -102,7 +102,7 @@
       <div class="content" *ngIf="this.page.page != undefined">
         <div class="block" *ngFor="let item of this.page.page.block">
           <!-- Text Component -->
-          <app-text *ngIf="item.type == 'text'" [value]="item"></app-text>
+          <app-text *ngIf="item.type == 'text'" [value]="item.content"></app-text>
           
           <!-- Image Component -->
           <app-text-image

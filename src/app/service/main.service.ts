@@ -21,7 +21,7 @@ export class MainService {
   }
   doCheck(): void {
     var jsonValue = this.jsonEqual(this.prevData, this.json);
-    if(jsonValue == false){
+    if (jsonValue == false) {
       this.prevData = JSON.parse(JSON.stringify(this.json));
       console.log("prevData Changed");
       this.save();
@@ -49,7 +49,7 @@ export class MainService {
       return this.http.get<any>(_url);
     } else if (method == RequestMethod.Post) {
       if (body) {
-        console.log("body = ", body);
+        //console.log("body = ", body);
         return this.http.post<any>(_url, body);
       }
 
@@ -64,7 +64,7 @@ export class MainService {
   }
 
   saving = false;
-  
+
   save() {
     if (this.saving == false) {
       this.saving = true;

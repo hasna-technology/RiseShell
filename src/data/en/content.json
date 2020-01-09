@@ -51,13 +51,26 @@
                         "type": "grid_image_text",
                         "content": {
                             "setting": {
-                                "row": 4,
-                                "border": 1,
-                                "image_position": "top",
-                                "border-color": "#eee"
+                                "row" : 3,
+                                "image_position" : "left", 
+                                "background_color": "#efefef"
                             },
                             "data": [
                                 {
+                                    "title": "Grid 1",
+                                    "image": "assets/icon1.jpg",
+                                    "desc": "Description of the text to be added in the part."
+                                },
+                                {
+                                    "title": "Grid 2",
+                                    "image": "assets/icon2.jpg",
+                                    "desc": "Description of the text to be added in the part."
+                                },
+                                {
+                                    "title": "Grid 3",
+                                    "image": "assets/icon3.jpg",
+                                    "desc": "Description of the text to be added in the part."
+                                },{
                                     "title": "Grid 1",
                                     "image": "assets/icon1.jpg",
                                     "desc": "Description of the text to be added in the part."

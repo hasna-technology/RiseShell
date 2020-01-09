@@ -25,6 +25,7 @@ import { AudioComponent } from './component/audio/audio.component';
 import { VideoComponent } from './component/video/video.component';
 import { MediaComponent } from './admin/media/media.component';
 import { SettingsComponent } from './admin/settings/settings.component';
+import { GridComponent } from './admin/grid/grid.component';
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SettingsComponent } from './admin/settings/settings.component';
     VideoComponent,
     MediaComponent,
     SettingsComponent,
+    GridComponent,
     
   ],
   imports: [
