@@ -1,9 +1,9 @@
 <div class="page_value">
-  <button class="full-button" (click)="addPage()"> Add New Page</button>
+  <button class="btn-dark full-width" (click)="addPage()"> Add New Page</button>
   <div cdkDropList (cdkDropListDropped)="drop($event)">
     <div *ngFor="let page of data.course; let i = index" cdkDrag (click)="gotoPage(i)">
-      <div class="page" [ngClass]="{'page_header':page.header}">
-        <mat-icon cdkDragHandle>drag_indicator</mat-icon>
+      <div class="page block" [ngClass]="{'page_header':page.header}">
+        <mat-icon cdkDragHandle>line_style</mat-icon>
         {{page.title}}
       </div>
       <!--<div cdkDropList (cdkDropListDropped)="drop($event, page)">
