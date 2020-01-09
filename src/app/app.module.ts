@@ -21,6 +21,10 @@ import { BlockComponent } from './admin/block/block.component';
 import { GridImageTextComponent } from './component/grid-image-text/grid-image-text.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GridComponent } from './admin/grid/grid.component';
+import { TabImageTextComponent } from './component/tab-image-text/tab-image-text.component';
+import { AccordianComponent } from './component/accordian/accordian.component';
+import { TruncatePipe } from './filters/TruncatePipe';
+
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
   declarations: [
@@ -37,6 +41,9 @@ import { GridComponent } from './admin/grid/grid.component';
     BlockComponent,
     GridImageTextComponent,
     GridComponent,
+    TabImageTextComponent,
+    AccordianComponent,
+    TruncatePipe
     
   ],
   imports: [

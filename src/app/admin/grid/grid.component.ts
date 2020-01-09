@@ -19,13 +19,10 @@ export class GridComponent implements OnInit {
   selectedtab;
   tab(n) {
     this.selectedtab = n;
-    this.show = false;
-    this.hide = true;
   }
   close() {
     this.selectedtab = -1;
-    this.show = true;
-    this.hide = false;
+  
   }
   drop(event: CdkDragDrop<string[]>) {
     //console.log(page)

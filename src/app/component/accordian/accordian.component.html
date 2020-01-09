@@ -1,0 +1,19 @@
+<div class="row accordion">
+  <div class="item" [ngClass]="{'selected': selectedtab == i}"
+    *ngFor="let data of this.value.content.data; let i = index"
+    id="{{'item'+i}}">
+    <div class="title">
+      <div class="text">
+        {{data.title}}
+      </div>
+      <mat-icon (click)="tab(i)" *ngIf="selectedtab != i">add</mat-icon>
+      <mat-icon (click)="close(i)" *ngIf="selectedtab == i">minimize</mat-icon>
+    </div>
+    <section class="content" *ngIf="selectedtab == i">
+      <app-text class="text" [(value)]="data.desc"></app-text>
+      <div *ngIf="data.image" class="image">
+        <img src="{{data.image}}">
+      </div>
+    </section>
+  </div>
+</div>
