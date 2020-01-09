@@ -26,6 +26,10 @@ import { VideoComponent } from './component/video/video.component';
 import { MediaComponent } from './admin/media/media.component';
 import { SettingsComponent } from './admin/settings/settings.component';
 import { GridComponent } from './admin/grid/grid.component';
+import { TabImageTextComponent } from './component/tab-image-text/tab-image-text.component';
+import { AccordianComponent } from './component/accordian/accordian.component';
+import { TruncatePipe } from './filters/TruncatePipe';
+
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
   declarations: [
@@ -47,6 +51,9 @@ import { GridComponent } from './admin/grid/grid.component';
     MediaComponent,
     SettingsComponent,
     GridComponent,
+    TabImageTextComponent,
+    AccordianComponent,
+    TruncatePipe
     
   ],
   imports: [

@@ -1,0 +1,125 @@
+<div class="menu_btn admin_btn" title="Settings" (click)="adminPanelState = 'Open'">
+  <mat-icon>list_alt</mat-icon>
+</div>
+
+<!-- <input type="text" [(ngModel)]="selectedPage.title" (ngModelChange)="doSomething($event)" /> -->
+
+<div class="admin_panel" [@changeState]="adminPanelState">
+  <div class="admin">
+    <header>
+      <div class="left">
+        <div class="menu_btn back" title="Back" *ngIf="setBack==true" (click)="goBack()">
+          <mat-icon>chevron_left</mat-icon>
+        </div>
+      </div>
+      <div class="right">
+        <!--<div class="menu_btn page" title="Page" (click)="showMenu()">
+          <mat-icon>pages</mat-icon>
+        </div>
+        <div class="menu_btn settings" title="Settings">
+          <mat-icon>settings_applications</mat-icon>
+        </div>-->
+        <div class="menu_btn settings" title="Settings" (click)="adminPanelState = 'Close'">
+          <mat-icon>close</mat-icon>
+        </div>
+      </div>
+    </header>
+    <div class="tab">
+      <div class="tabHeader" [ngClass]="{'selected' : selectedTab == 1}" (click)="showProperty(); selectedTab = 1">
+        Property</div>
+      <div class="tabHeader" [ngClass]="{'selected' : selectedTab == 2}" (click)="showMenu(); selectedTab = 2">Menu
+      </div>
+      <div class="tabHeader" [ngClass]="{'selected' : selectedTab == 3}" (click)="showSettings(); selectedTab = 3">
+        Settings</div>
+    </div>
+    <div class="body">
+
+      <div class="page_settings">
+
+        <div class="sidePanel property" [@changeState]="propertyState">
+          <div>
+            <input type="checkbox" [(ngModel)]="selectedPage.header"> Header
+            <div>
+              <label class="label">Title</label>
+            </div>
+            <div>
+              <input class="input" type="text" [(ngModel)]="selectedPage.title">
+            </div>
+          </div>
+
+          <div class="page_content" *ngIf="selectedPage.header != true" cdkDropList (cdkDropListDropped)="drop($event)">
+
+            <div class="block" *ngFor="let item of selectedPage.page.block" (click)="gotoSetting(item)" cdkDrag>
+              <mat-icon cdkDragHandle>drag_indicator</mat-icon>
+              {{item.type.split("_").join(" ").toUpperCase()}}
+            </div>
+            <div class="btn_add" (click)="openBlock()">Add Block</div>
+            
+          </div>
+
+        </div>
+        <div class="block_value" [@changeState]="currentState" *ngIf="selectedBlock != undefined">
+
+          <!-- Text block -->
+          <div *ngIf="selectedBlock.type == 'text'">
+            <!-- <textarea class="input" [(ngModel)]="selectedBlock.content" cols="30" rows="10"></textarea> -->
+            <quill-editor [(ngModel)]="selectedBlock.content" theme="snow"></quill-editor>
+          </div>
+
+          <!-- Image block -->
+          <div *ngIf="selectedBlock.type == 'image'">
+            <admin-image [(src)]="selectedBlock.image"></admin-image>
+          </div>
+
+
+          <div *ngIf="selectedBlock.type == 'audio' || selectedBlock.type == 'video'">
+            <admin-media [(item)]="selectedBlock"></admin-media>
+          </div>
+
+          <!-- Text & Image block -->
+          <div *ngIf="selectedBlock.type == 'text_image_right' || selectedBlock.type == 'text_image_left'
+                    || selectedBlock.type == 'text_image_top' || selectedBlock.type == 'text_image_bottom'">
+            <div>
+              <label class="label">Type</label>
+            </div>
+            <select class="input" [(ngModel)]="selectedBlock.type">
+              <option value="text_image_right">Text Image Right</option>
+              <option value="text_image_left">Text Image Left</option>
+              <option value="text_image_top">Text Image Top</option>
+              <option value="text_image_bottom">Text Image Bottom</option>
+            </select>
+            <div>
+              <label class="label">Content</label>
+            </div>
+            <div>
+              <quill-editor [(ngModel)]="selectedBlock.title" theme="snow"></quill-editor>
+            </div>
+            <div>
+              <label class="label">Image</label>
+            </div>
+            <div>
+              <admin-image [(src)]="selectedBlock.image"></admin-image>
+            </div>
+          </div>
+
+          <!-- Grid Image block -->
+          <admin-grid [data]="selectedBlock"
+            *ngIf="selectedBlock.type == 'grid_image_text' || selectedBlock.type == 'accordion' || selectedBlock.type == 'tab'">
+          </admin-grid>
+
+        </div>
+
+
+        <admin-page class="sidePanel" (closeEvent)="closePanel()" [data]="data" [@changeState]="pageState"></admin-page>
+
+        <app-block class="sidePanel" (closeEvent)="closePanel()" [data]="selectedPage.page.block"
+          [@changeState]="blockState"></app-block>
+
+        <admin-settings class="sidePanel" (closeEvent)="closePanel()" [data]="data" [@changeState]="settingState">
+        </admin-settings>
+
+      </div>
+
+    </div>
+  </div>
+</div>

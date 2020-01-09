@@ -1,0 +1,27 @@
+<div class="row">
+
+  <div class="tabbable full-width-tabs">
+
+
+    <ul class="nav nav-tabs">
+      <li *ngFor="let data of this.value.content.data; let i = index" class="nav-item">
+        <div (click)="tab(i)" data-toggle="tab" [ngClass]="{'selected': selectedtab == i}" class="nav-link">
+          {{data.title | truncate:[24]}}</div>
+      </li>
+    </ul>
+  </div>
+
+  <section>
+    <div *ngIf="this.value.content.data != undefined">
+      <ul *ngFor="let data of this.value.content.data; let i = index">
+        <div *ngIf="selectedtab == i">
+          <div class="text">{{data.desc}}</div>
+          <div *ngIf="data.image" class="image">
+            <img src="{{data.image}}">
+          </div>
+        </div>
+      </ul>
+
+    </div>
+  </section>
+</div>
