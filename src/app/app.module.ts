@@ -29,9 +29,13 @@ import { GridComponent } from './admin/grid/grid.component';
 import { TabImageTextComponent } from './component/tab-image-text/tab-image-text.component';
 import { AccordianComponent } from './component/accordian/accordian.component';
 import { TruncatePipe } from './filters/TruncatePipe';
+<<<<<<< HEAD
 import { BulletsComponent } from './component/bullets/bullets.component';
 import { TimelineComponent } from './component/timeline/timeline.component';
 
+=======
+import { DropdownComponent } from './component/dropdown/dropdown.component';
+>>>>>>> 1710324d88274f6c9963afce0e3b9a09ea50d61d
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
@@ -57,8 +61,12 @@ import { TimelineComponent } from './component/timeline/timeline.component';
     TabImageTextComponent,
     AccordianComponent,
     TruncatePipe,
+<<<<<<< HEAD
     BulletsComponent,
     TimelineComponent
+=======
+    DropdownComponent
+>>>>>>> 1710324d88274f6c9963afce0e3b9a09ea50d61d
     
   ],
   imports: [

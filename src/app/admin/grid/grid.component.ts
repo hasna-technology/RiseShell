@@ -10,8 +10,7 @@ export class GridComponent implements OnInit {
 
   @Input() data;
 
-  show = true;
-  hide = true;
+  
   constructor() { }
 
   ngOnInit() {
