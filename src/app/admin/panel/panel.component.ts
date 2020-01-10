@@ -31,6 +31,23 @@ export class PanelComponent implements OnInit {
   
   constructor() { }
 
+  drop_down = [{
+    name:"Duplicate",
+    action:this.duplicateAction,
+  },
+  {
+    name:"Delete",
+    action:this.deleteAction,
+  }]
+
+  duplicateAction(i){
+    console.log("duplicateAction", i )
+
+  }
+  deleteAction(i){
+    console.log("deleteAction", i )
+  }
+
   ngOnInit() {
     this.propertyState = 'Open';
   }

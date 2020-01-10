@@ -29,6 +29,7 @@ import { GridComponent } from './admin/grid/grid.component';
 import { TabImageTextComponent } from './component/tab-image-text/tab-image-text.component';
 import { AccordianComponent } from './component/accordian/accordian.component';
 import { TruncatePipe } from './filters/TruncatePipe';
+import { DropdownComponent } from './component/dropdown/dropdown.component';
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
@@ -53,7 +54,8 @@ import { TruncatePipe } from './filters/TruncatePipe';
     GridComponent,
     TabImageTextComponent,
     AccordianComponent,
-    TruncatePipe
+    TruncatePipe,
+    DropdownComponent
     
   ],
   imports: [

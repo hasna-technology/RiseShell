@@ -1,0 +1,30 @@
+<div class="more" [ngClass]="{'show-more-menu' : showMenu}">
+    <button id="more-btn" class="more-btn" (click)="toggleMenu()">
+    <span class="more-dot"></span>
+    <span class="more-dot"></span>
+    <span class="more-dot"></span>
+  </button>
+  <div class="more-menu" >
+    <div class="more-menu-caret">
+      <div class="more-menu-caret-outer"></div>
+      <div class="more-menu-caret-inner"></div>
+    </div>
+    <ul class="more-menu-items" tabindex="-1" role="menu" aria-labelledby="more-btn" aria-hidden="true">
+      <li class="more-menu-item" role="presentation" *ngFor="let item of data">
+        <button type="button" class="more-menu-btn" (click)="item.action(index); hideMenu()" role="menuitem">{{item.name}}</button>
+      </li>
+      <!-- <li class="more-menu-item" role="presentation">
+        <button type="button" class="more-menu-btn" role="menuitem">Copy</button>
+      </li>
+      <li class="more-menu-item" role="presentation">
+        <button type="button" class="more-menu-btn" role="menuitem">Embed</button>
+      </li>
+      <li class="more-menu-item" role="presentation">
+        <button type="button" class="more-menu-btn" role="menuitem">Block</button>
+      </li>
+      <li class="more-menu-item" role="presentation">
+        <button type="button" class="more-menu-btn" role="menuitem">Report</button>
+      </li> -->
+    </ul>
+  </div>
+</div>
