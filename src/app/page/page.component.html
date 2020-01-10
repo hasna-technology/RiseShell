@@ -114,14 +114,21 @@
 
           <!-- Tab Component -->
           <app-tab-image-text *ngIf="item.type == 'tab_image_text'" [value]="item"></app-tab-image-text>
+          
           <!-- Accordion Component -->
           <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
+
+          <!-- Timeline Component -->
+          <app-timeline *ngIf="item.type == 'timeline'" [value]="item"></app-timeline>
 
            <!-- Audio Component -->
            <app-audio *ngIf="item.type == 'audio'" [value]="item"></app-audio>
 
            <!-- Video Component -->
            <app-video *ngIf="item.type == 'video'"  [value]="item"></app-video>
+
+           <!-- bullets component -->
+           <app-bullets *ngIf="item.type == 'checklist' || item.type == 'orderedlist' || item.type == 'unorderedlist'"  [value]="item"></app-bullets>
 
         </div>
       </div>

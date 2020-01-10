@@ -37,7 +37,7 @@ export class GridComponent implements OnInit {
       {
         "title": "Grid Title",
         "image": "assets/icon1.jpg",
-        "desc": "Description of the text to be added in the part."
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore"
       }
     )
   }

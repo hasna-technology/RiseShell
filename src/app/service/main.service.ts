@@ -1,5 +1,5 @@
 import { Injectable, KeyValueDiffer, KeyValueDiffers, KeyValueChanges } from '@angular/core';
-//import data1 from '../../data/en/content.json';
+
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { RequestMethod } from "@angular/http";
@@ -11,8 +11,10 @@ import { RequestMethod } from "@angular/http";
 export class MainService {
 
   baseUrl = environment.apiUrl;
-  //data;
-  startSaving;
+  
+  //set the below boolean to true to save the files in server
+  startSaving  = false;
+
   json;
   prevData;
   constructor(private http: HttpClient) {
@@ -66,7 +68,7 @@ export class MainService {
   saving = false;
 
   save() {
-    if (this.saving == false) {
+    if (this.saving == false && this.startSaving == true) {
       this.saving = true;
       this.request("File/save", RequestMethod.Post, JSON.stringify(this.json)).subscribe(
         res => {

@@ -60,7 +60,7 @@
         </div>
         <div class="block_value" [@changeState]="currentState" *ngIf="selectedBlock != undefined">
 
-          <!-- Text block -->
+          <!-- Text block  -->
           <div *ngIf="selectedBlock.type == 'text'">
             <!-- <textarea class="input" [(ngModel)]="selectedBlock.content" cols="30" rows="10"></textarea> -->
             <quill-editor [(ngModel)]="selectedBlock.content" theme="snow"></quill-editor>
@@ -104,7 +104,7 @@
 
           <!-- Grid Image block -->
           <admin-grid [data]="selectedBlock"
-            *ngIf="selectedBlock.type == 'grid_image_text' || selectedBlock.type == 'accordion' || selectedBlock.type == 'tab'">
+            *ngIf="selectedBlock.type == 'grid_image_text' || selectedBlock.type == 'accordion' || selectedBlock.type == 'tab_image_text'">
           </admin-grid>
 
         </div>

@@ -57,8 +57,4 @@ export class BlockComponent implements OnInit {
     })
     this.closeEvent.emit();
   }
-  
-  addGridImageText(){
-   
-}
 }

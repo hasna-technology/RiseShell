@@ -1,0 +1,41 @@
+@import '../../_variable.scss';
+.timeline{
+    border-left: 4px solid $brand_color;
+    border-radius: 5px;
+    padding: 5rem 5rem 5rem;
+    box-sizing: border-box;
+    box-shadow: 0 0.4rem 1.2rem 0.2rem rgba(0, 0, 0, 0.05);
+    transition: opacity .3s;
+    margin-bottom: 80px;
+    background-color: #fff;
+    .text{
+        margin-bottom: 15px;
+    }
+    .data{
+        font-size: 2rem;
+        line-height: 1.85;
+       // font-family: lato,sans-serif;
+        font-weight: 700;
+        letter-spacing: .02rem;
+        font-style: oblique;
+        color: $brand_color;
+    }
+    .title{
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        line-height: 1.85;
+       // font-family: lato,sans-serif;
+        font-weight: 700;
+        letter-spacing: .02rem;
+       
+       
+    }
+    .desc{
+        line-height: 2;
+    }
+}
+.row{
+    background-color:rgb(223, 215, 215);
+    padding:50px 20px;
+   padding-bottom: 10px;
+}

@@ -1,5 +1,6 @@
 import { Component, KeyValueDiffer, KeyValueDiffers, KeyValueChanges } from '@angular/core';
 import { MainService } from './service/main.service';
+import localdata from '../data/en/content.json';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,12 @@ export class AppComponent {
 
   ngOnInit() {
     
-    this.service.loadJson().subscribe(
+    /* comment below 2 lines for loading data from server*/
+    this.service.setData(localdata);
+    this.data = this.service.getData();
+
+    /* Following code to get data from server*/
+    /*this.service.loadJson().subscribe(
       res => {
         this.service.setData(JSON.parse(res.data));
         this.data = this.service.getData();
@@ -26,7 +32,7 @@ export class AppComponent {
       err =>{
         console.log(err);
       }
-    )
+    )*/
     
   }
 }

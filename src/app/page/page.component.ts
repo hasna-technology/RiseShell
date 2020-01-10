@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../service/main.service.js';
+import localdata from '../../data/en/content.json';
 import { trigger, sequence, keyframes, state, style, animate, transition } from '@angular/animations';
 
 @Component({
@@ -60,6 +61,12 @@ export class PageComponent implements OnInit {
   init() {
     this.route.paramMap.subscribe(params => {
       var data = this.service.getData();
+      
+      /* comment below 2 lines for loading data from server*/
+      this.service.setData(localdata);
+       data = this.service.getData();
+
+
       //console.log("init", data);
       if (data != undefined) {
         this.lesson_no = params.get('i');

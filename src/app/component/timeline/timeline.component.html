@@ -1,0 +1,10 @@
+{{value | json}}
+<div class="row">
+<div *ngFor="let data of this.value.content.data" class="timeline">
+    <div class="text data" >{{data.date}}</div>
+    <div class="text title">{{data.title}}</div>
+    <div class="text desc">{{data.desc}}</div>
+</div>
+
+
+</div>

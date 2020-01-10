@@ -1,0 +1,27 @@
+
+<div *ngFor="let data of this.value.data">
+    <div *ngIf="this.value.type == 'checklist'" class="title checklist"  >
+        <label class="main"> <input type="checkbox" checked class="checkbox"><span class="geekmark"></span></label>
+  <app-text class="text" [(value)]="data.text"></app-text>
+</div>
+
+<div class="unorderlist">
+    <ul  *ngIf="this.value.type == 'unorderedlist'">
+         <li class="title">
+        <app-text class="text" [(value)]="data.text"></app-text>
+      </li>
+    </ul>
+  </div>
+</div>
+
+   <div class="orderlist " *ngFor="let data of this.value.data" >
+     <ol *ngIf="this.value.type == 'orderedlist'" >
+        <li class="title"> 
+           <div class="number"> </div><app-text [(value)]="data.text" class="text"></app-text> 
+        </li>
+     </ol>
+  </div>
+
+
+    
+ 
