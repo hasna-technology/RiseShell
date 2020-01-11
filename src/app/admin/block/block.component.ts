@@ -59,7 +59,6 @@ export class BlockComponent implements OnInit {
   }
 
   addGridImageText() {
-<<<<<<< HEAD
     this.data.push({
 
       "type": "grid_image_text",
@@ -192,14 +191,6 @@ export class BlockComponent implements OnInit {
     this.closeEvent.emit();
   }
 
-=======
 
   }
-  addTab() {
-
-  }
-  addAccordion() {
-
-  }
->>>>>>> 3e1b2f3f4bb59098f109bbdf5d989e109ecc90b5
-}
+  

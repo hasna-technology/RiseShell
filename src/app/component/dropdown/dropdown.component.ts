@@ -10,7 +10,7 @@ export class DropdownComponent implements OnInit {
   @Input() data;
   @Input() index;
   @Input() selectedData;
-
+ 
   constructor(private _eref: ElementRef) { }
 
   ngOnInit() {

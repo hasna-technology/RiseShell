@@ -5,7 +5,7 @@
 export const environment = {
   //apiUrl: "http://localhost/CI_Upload/index.php/",
   apiUrl: "http://192.168.1.6/CI_Upload/index.php/",
-  production: false
+  production: false 
 };
 
 /*

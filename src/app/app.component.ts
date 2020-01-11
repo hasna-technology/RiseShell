@@ -1,11 +1,8 @@
 import { Component, KeyValueDiffer, KeyValueDiffers, KeyValueChanges } from '@angular/core';
 import { MainService } from './service/main.service';
-<<<<<<< HEAD
-import localdata from '../data/en/content.json';
-=======
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
->>>>>>> 3e1b2f3f4bb59098f109bbdf5d989e109ecc90b5
+import localdata  from '../data/en/content.json';
 
 @Component({
   selector: 'app-root',
@@ -37,17 +34,15 @@ export class AppComponent {
         console.log(err);
       }
     )
-  }
+  } 
 
   ngOnInit() {
-<<<<<<< HEAD
     
     /* comment below 2 lines for loading data from server*/
     this.service.setData(localdata);
     this.data = this.service.getData();
 
     /* Following code to get data from server*/
-=======
 
     if (environment.production == true) {
       this.route.queryParams.subscribe(params => {
@@ -59,7 +54,6 @@ export class AppComponent {
       this.loadcourse(1);
     }
 
->>>>>>> 3e1b2f3f4bb59098f109bbdf5d989e109ecc90b5
     /*this.service.loadJson().subscribe(
       res => {
         this.service.setData(JSON.parse(res.data));
@@ -69,10 +63,7 @@ export class AppComponent {
         console.log(err);
       }
     )*/
-<<<<<<< HEAD
     
-=======
 
->>>>>>> 3e1b2f3f4bb59098f109bbdf5d989e109ecc90b5
   }
 }
