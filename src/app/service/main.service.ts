@@ -9,6 +9,9 @@ import { RequestMethod } from "@angular/http";
 })
 
 export class MainService {
+  filename: any;
+  
+  
 
   baseUrl = environment.apiUrl;
   
@@ -29,8 +32,12 @@ export class MainService {
       this.save();
     }
   }
-
+  setPath(filename: any) {
+    this.filename = filename;
+  }
+  
   jsonEqual(a, b) {
+
     //console.log(JSON.stringify(a)+" === "+JSON.stringify(b));
     return JSON.stringify(a) === JSON.stringify(b);
   }
@@ -44,6 +51,10 @@ export class MainService {
       }, err => {
         console.error(err.message);
       });*/
+  }
+
+  load_course(course_id: number) {
+    return this.request("File/load_course/"+course_id, RequestMethod.Get);
   }
   request(url: string, method: RequestMethod, body?: Object, showLoader: boolean = true) {
     const _url = `${this.baseUrl}${url}`;

@@ -13,8 +13,11 @@ body {
     font-size: 1.7em;
     line-height: 1.5;
     color: $_font_black;
+    background-color: #ffffff;
 }
-
+a.noline{
+    text-decoration: none;
+}
 .btn{
     font-family: Lato;
     

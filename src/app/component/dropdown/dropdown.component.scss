@@ -1,8 +1,22 @@
+.more {
+  margin-top: -2px;
+}
+
 .more-menu {
   width: 100px;
 }
 
 /* More Button / Dropdown Menu */
+.show-more-menu{
+  .outside{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    cursor: default;
+  }
+}
 
 .more-btn,
 .more-menu-btn {
@@ -21,13 +35,12 @@
 
 .more-dot {
   background-color: #aab8c2;
-  margin: 0 auto;
+  margin: 0 2px 0 auto;
   display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 1px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
-  transition: background-color 0.3s;
+  transition: background-color .3s;
 }
 
 .more-menu {
@@ -35,6 +48,7 @@
   /*top: 100%;*/
   z-index: 900;
   float: left;
+  right: 10px;
   padding: 10px 0;
   margin-top: 9px;
   background-color: #fff;
@@ -50,7 +64,7 @@
 .more-menu-caret {
   position: absolute;
   top: -10px;
-  left: 12px;
+  right: 12px;
   width: 18px;
   height: 10px;
   float: left;

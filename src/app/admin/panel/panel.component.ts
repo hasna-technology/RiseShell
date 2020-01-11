@@ -27,6 +27,7 @@ export class PanelComponent implements OnInit {
   settingState;
   selectedBlock;
   blockState;
+  adminPanelState;
   selectedTab = 1;
   
   constructor() { }
@@ -42,10 +43,15 @@ export class PanelComponent implements OnInit {
 
   duplicateAction(i){
     console.log("duplicateAction", i )
+    console.log(this.selectedPage)
+    //var new_obj = JSON.parse(JSON.stringify(this.selectedPage.block[i]));
+    //this.selectedPage.page.block.splice(i, 0, new_obj);
+    
 
   }
   deleteAction(i){
     console.log("deleteAction", i )
+    console.log(this)
   }
 
   ngOnInit() {
