@@ -34,6 +34,7 @@ export class ImageComponent implements OnInit {
   form;
   percentage;
   file_info;
+  progress;
   ngOnInit() {
     this.form = this.formBuilder.group({
       asset: ['']

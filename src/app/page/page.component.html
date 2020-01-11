@@ -5,17 +5,19 @@
 
   <div [className]="menu_close ? 'menu close' : 'menu'">
     <div class="menu_title">
-      <div class="menu_header">
-        {{this.content.settings.title}}
-      </div>
-      <div class="course_progress">
-        <div class="progress">
-          <div class="value" [style.width.%]="this.service.getProgress()">
-
-          </div>
+      <a class="noline" routerLink="/">
+        <div class="menu_header">
+          {{this.content.settings.title}}
         </div>
-        {{this.service.getProgress()}} %
-      </div>
+        <div class="course_progress">
+          <div class="progress">
+            <div class="value" [style.width.%]="this.service.getProgress()">
+
+            </div>
+          </div>
+          {{this.service.getProgress()}} %
+        </div>
+      </a>
     </div>
     <ul>
       <li *ngFor="let item of this.course; let i = index">
@@ -103,7 +105,7 @@
         <div class="block" *ngFor="let item of this.page.page.block">
           <!-- Text Component -->
           <app-text *ngIf="item.type == 'text'" [value]="item.content"></app-text>
-          
+
           <!-- Image Component -->
           <app-text-image
             *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' || item.type == 'text_image_top' || item.type == 'text_image_bottom' "
@@ -117,11 +119,11 @@
           <!-- Accordion Component -->
           <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
 
-           <!-- Audio Component -->
-           <app-audio *ngIf="item.type == 'audio'" [value]="item"></app-audio>
+          <!-- Audio Component -->
+          <app-audio *ngIf="item.type == 'audio'" [value]="item"></app-audio>
 
-           <!-- Video Component -->
-           <app-video *ngIf="item.type == 'video'"  [value]="item"></app-video>
+          <!-- Video Component -->
+          <app-video *ngIf="item.type == 'video'" [value]="item"></app-video>
 
         </div>
       </div>

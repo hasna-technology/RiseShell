@@ -26,7 +26,7 @@ export class BlockComponent implements OnInit {
     this.closeEvent.emit();
   }
 
-  addTextWidthHeader(){
+  addTextWidthHeader() {
     this.data.push({
       "type": "text",
       "content": `<h1>Heading + text</h1>
@@ -57,8 +57,14 @@ export class BlockComponent implements OnInit {
     })
     this.closeEvent.emit();
   }
-  
-  addGridImageText(){
-   
-}
+
+  addGridImageText() {
+
+  }
+  addTab() {
+
+  }
+  addAccordion() {
+
+  }
 }

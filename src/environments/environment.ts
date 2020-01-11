@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiUrl: "http://localhost/CI_Upload/index.php/",
+  apiUrl: "http://localhost/course/",
   production: false
 };
 

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../service/main.service.js';
 import { trigger, sequence, keyframes, state, style, animate, transition } from '@angular/animations';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-page',
@@ -43,9 +44,19 @@ import { trigger, sequence, keyframes, state, style, animate, transition } from 
         ])
       ])
     ])
-  ]
+  ],
+  host: {
+    '(window:resize)': 'onResize($event)'
+  }
 })
 export class PageComponent implements OnInit {
+
+  onResize(event){
+    //\console.log(window.innerWidth); // window width
+    if(event.target.innerWidth < 980){
+      this.menu_close = true;
+    }
+  }
 
   lesson_no;
   //page_no; 
@@ -53,10 +64,33 @@ export class PageComponent implements OnInit {
   menu_close = false;
   admin_panel = true;
   currentState;
+  course_id;
   constructor(public route: ActivatedRoute, private service: MainService, private router: Router) {
     this.init();
-  }
 
+    if (environment.production == true) {
+      this.route.queryParams.subscribe(params => {
+        this.course_id = params['id'];
+        this.loadcourse(this.course_id)
+      });
+    } else {
+      this.loadcourse(1)
+    }
+  }
+  loadcourse(course_id){
+    console.log("page course_id", course_id);
+    this.service.load_course(course_id).subscribe(
+      res => {
+        //console.log(res);
+        this.service.setPath(res.data.filename);
+        this.service.setData(JSON.parse(res.data.json));
+        this.init();
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
   init() {
     this.route.paramMap.subscribe(params => {
       var data = this.service.getData();
@@ -73,19 +107,26 @@ export class PageComponent implements OnInit {
           this.ngOnInit()
       } else {
      
-        this.service.loadJson().subscribe(
-          res => {
-            this.service.setData(JSON.parse(res.data));
-            data = this.service.getData();
-            this.init();
-          },
-          err => {
-            console.log(err);
-          }
-        )
+        setTimeout( ()=>{
+          // var filename = this.service.getFilename();
+          // this.service.loadJson().subscribe(
+          //   res => {
+              
+          //     this.service.setData(JSON.parse(res.data.json));
+          //     data = this.service.getData();
+          //     this.init();
+          //   },
+          //   err => {
+          //     console.log(err);
+          //   }
+          // )
+          this.loadcourse(this.course_id);
+        }, 5000)
+        
       }
 
     });
+    //this.onResize();
   }
   currentNumber; prevString; nextString;
 
