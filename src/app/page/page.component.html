@@ -2,7 +2,6 @@
 
   <admin-panel [data]="this.content" [selectedPage]="page"></admin-panel>
 
-
   <div [className]="menu_close ? 'menu close' : 'menu'">
     <div class="menu_title">
       <div class="menu_header">
@@ -128,7 +127,7 @@
            <app-video *ngIf="item.type == 'video'"  [value]="item"></app-video>
 
            <!-- bullets component -->
-           <app-bullets *ngIf="item.type == 'checklist' || item.type == 'orderedlist' || item.type == 'unorderedlist'"  [value]="item"></app-bullets>
+           <app-bullets *ngIf="item.type == 'checklist' || item.type == 'ordered_list' || item.type == 'unordered_list'"  [value]="item"></app-bullets>
 
         </div>
       </div>

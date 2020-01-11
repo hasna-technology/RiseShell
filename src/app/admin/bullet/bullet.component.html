@@ -1,0 +1,25 @@
+
+<div>
+    <label class="label">Bullet Type</label>
+  </div>
+  <select class="input1" [(ngModel)]="data.type">
+    <option value="checklist">CheckLIst</option>
+    <option value="ordered_list">Ordered List</option>
+    <option value="unordered_list">Unordered List</option>
+  </select>
+  
+  <hr>
+
+<div cdkDropList (cdkDropListDropped)="drop($event)" >
+   <div *ngFor="let item of this.data.data; let i=index" cdkDrag class="panel">
+
+ <div>
+    <mat-icon class="drag" cdkDragHandle>more_vert</mat-icon>
+      <mat-icon class="delete" (click)="deleteItem(i)">delete</mat-icon>
+     </div>
+   <quill-editor class="text" [(ngModel)]="item.text" theme="snow"></quill-editor>
+  </div>
+
+</div>
+
+<button class="small add" (click)="addItem()">Add Item</button>

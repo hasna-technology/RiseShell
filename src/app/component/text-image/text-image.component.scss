@@ -1,3 +1,5 @@
+@import "../../variable";
+
 .text_image {
   display: flex;
   flex-direction: row;
@@ -6,10 +8,27 @@
   .text {
     padding: 0 1rem;
   }
+  .image {
+    text-align: center;
+  }
 
   .text,
   .image {
     width: 50%;
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+@include sm {
+  .text_image {
+    display: block;
+    .text,
+    .image {
+      width: 100%;
+      
+    }
   }
 }
 

@@ -107,8 +107,13 @@
 
           <!-- Grid Image block -->
           <admin-grid [data]="selectedBlock"
-            *ngIf="selectedBlock.type == 'grid_image_text' || selectedBlock.type == 'accordion' || selectedBlock.type == 'tab_image_text'">
+            *ngIf="selectedBlock.type == 'grid_image_text' || selectedBlock.type == 'accordion' || selectedBlock.type == 'tab_image_text' || selectedBlock.type == 'timeline'">
           </admin-grid>
+
+          <!--Bullet Block-->
+          <app-bullet [data]="selectedBlock"
+            *ngIf="selectedBlock.type == 'checklist' || selectedBlock.type == 'ordered_list' || selectedBlock.type == 'unordered_list'">
+          </app-bullet>          
 
         </div>
 

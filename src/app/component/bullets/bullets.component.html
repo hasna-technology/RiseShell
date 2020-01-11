@@ -5,8 +5,8 @@
   <app-text class="text" [(value)]="data.text"></app-text>
 </div>
 
-<div class="unorderlist">
-    <ul  *ngIf="this.value.type == 'unorderedlist'">
+<div>
+    <ul class="unorderlist" *ngIf="this.value.type == 'unordered_list'">
          <li class="title">
         <app-text class="text" [(value)]="data.text"></app-text>
       </li>
@@ -15,7 +15,7 @@
 </div>
 
    <div class="orderlist " *ngFor="let data of this.value.data" >
-     <ol *ngIf="this.value.type == 'orderedlist'" >
+     <ol *ngIf="this.value.type == 'ordered_list'" >
         <li class="title"> 
            <div class="number"> </div><app-text [(value)]="data.text" class="text"></app-text> 
         </li>

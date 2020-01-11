@@ -1,0 +1,52 @@
+
+.panel{
+    background-color: #eee;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    .text{
+      border: 0px solid #fff;
+      background-color: #eee;
+      font-family: "Roboto";
+      font-size: 1.7rem;
+      width: calc(100% - 3rem); 
+    }
+    
+    .drag{
+      cursor: grab;
+      
+     
+    }
+    .delete{
+      float: right;
+      cursor: pointer;
+    }
+    
+}
+.panel:hover{
+  background-color: rgb(230, 221, 221);
+}
+
+button.add{
+  
+    margin-top: 10px;
+    background-color: #333333;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+  
+}
+.input1,
+select>option {
+  font-family: "Roboto";
+  font-size: 1.7rem;
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  margin-right: -1rem;
+}
+

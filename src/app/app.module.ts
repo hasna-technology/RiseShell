@@ -21,7 +21,7 @@ import { BlockComponent } from './admin/block/block.component';
 import { GridImageTextComponent } from './component/grid-image-text/grid-image-text.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ColorPickerComponent } from './admin/color-picker/color-picker.component';
-import { AudioComponent } from './component/audio/audio.component';
+import { AudioComponent } from './component/audio/audio.component'; 
 import { VideoComponent } from './component/video/video.component';
 import { MediaComponent } from './admin/media/media.component';
 import { SettingsComponent } from './admin/settings/settings.component';
@@ -29,13 +29,11 @@ import { GridComponent } from './admin/grid/grid.component';
 import { TabImageTextComponent } from './component/tab-image-text/tab-image-text.component';
 import { AccordianComponent } from './component/accordian/accordian.component';
 import { TruncatePipe } from './filters/TruncatePipe';
-<<<<<<< HEAD
 import { BulletsComponent } from './component/bullets/bullets.component';
 import { TimelineComponent } from './component/timeline/timeline.component';
 
-=======
 import { DropdownComponent } from './component/dropdown/dropdown.component';
->>>>>>> 1710324d88274f6c9963afce0e3b9a09ea50d61d
+import { BulletComponent } from './admin/bullet/bullet.component';
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
@@ -61,12 +59,10 @@ import { DropdownComponent } from './component/dropdown/dropdown.component';
     TabImageTextComponent,
     AccordianComponent,
     TruncatePipe,
-<<<<<<< HEAD
     BulletsComponent,
-    TimelineComponent
-=======
-    DropdownComponent
->>>>>>> 1710324d88274f6c9963afce0e3b9a09ea50d61d
+    TimelineComponent,
+    DropdownComponent,
+    BulletComponent
     
   ],
   imports: [

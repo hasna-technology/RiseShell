@@ -7,9 +7,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TimelineComponent implements OnInit {
   @Input() value;
-  constructor() { }
-
-  ngOnInit() {
+  data;
+  hideme=false;
+  
+  constructor() { 
+    
+    
   }
 
+  ngOnInit() {
+   
+  }
+  
+ 
+    
+ 
 }

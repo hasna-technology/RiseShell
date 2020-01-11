@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../service/main.service.js';
 import localdata from '../../data/en/content.json';
@@ -46,12 +46,13 @@ import { trigger, sequence, keyframes, state, style, animate, transition } from 
     ])
   ]
 })
+//@HostListener('window:resize', ['$event'])
 export class PageComponent implements OnInit {
 
   lesson_no;
   //page_no; 
   content; course; page; common_text;
-  menu_close = false;
+  menu_close = true;
   admin_panel = true;
   currentState;
   constructor(public route: ActivatedRoute, private service: MainService, private router: Router) {
@@ -139,4 +140,7 @@ export class PageComponent implements OnInit {
     menu_icon.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     this.currentState = 'current';
   }
+/*  onResize(){
+    console.log(event.target['innerWidth']);
+  }*/
 }

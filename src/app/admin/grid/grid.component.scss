@@ -6,6 +6,15 @@ select>option {
   padding: 1rem;
   margin-right: -1rem;
 }
+.input2,
+select>option {
+  font-family: "Roboto";
+  font-size: 1.7rem;
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  margin-right: -1rem;
+  margin-bottom: 1.5rem;
+}
 .panel{
     background-color: #eee;
     padding: 1rem;
@@ -31,16 +40,18 @@ mat-icon{
  
 
 }
-button.small{
-  font-size: 1.3rem;
-  cursor: pointer;
-}
+
 button.add{
-  background-color: #00e;
-  color: #fff;
-  padding: 5px;
-  border:0;
-  border-radius: 5px;
+  margin-top: 10px;
+    background-color: #333333;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
 }
 button.danger{
   background-color: #e00;
