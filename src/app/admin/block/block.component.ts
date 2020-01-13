@@ -9,11 +9,27 @@ export class BlockComponent implements OnInit {
 
   @Input() data;
   @Output() closeEvent = new EventEmitter<string>();
+  
+  listoftypes= [
+    'text',
+    'image',
+    'text_image_right',
+    'grid',
+    'tab',
+    'accordion',
+    'timeline',
+    'checklist',
+    'ordered_list',
+    'unordered_list'
+
+  ]
+ 
   constructor() { }
 
   ngOnInit() {
   }
 
+ 
   addText() {
     this.data.push({
       "type": "text",
@@ -61,7 +77,7 @@ export class BlockComponent implements OnInit {
   addGridImageText() {
     this.data.push({
 
-      "type": "grid_image_text",
+      "type": "grid",
       "content": {
         "setting": {
           "row": 3,
@@ -94,7 +110,7 @@ export class BlockComponent implements OnInit {
 
   addTab() {
     this.data.push({
-      "type": "tab_image_text",
+      "type": "tab",
       "content": {
         "setting": {
           "row": 3,
@@ -191,6 +207,64 @@ export class BlockComponent implements OnInit {
     this.closeEvent.emit();
   }
 
+  addChecklist() {
+    this.data.push({
+      "type": "checklist",
+      "data": [
+        {
+          "text": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected humour and the like."
 
+        },
+        {
+          "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
+        },
+        {
+          "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+        }
+      ]
+    })
+    this.closeEvent.emit();
   }
-  
+
+  addOrdered_list() {
+    this.data.push({
+      "type": "ordered_list",
+      "data": [
+        {
+          "text": "Lorem Ipsum  and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. "
+
+        },
+        {
+          "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. "
+        },
+        {
+          "text": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Grid 1 Grid 1 Grid Description of the text to be added in the "
+        }
+
+
+
+      ]
+    })
+    this.closeEvent.emit();
+  }
+  addUnordered_list() {
+    this.data.push({
+      "type": "unordered_list",
+      "data": [
+        {
+          "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+
+        },
+        {
+          "text": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet."
+        },
+        {
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+        }
+      ]
+    })
+    this.closeEvent.emit();
+  }
+
+}
+

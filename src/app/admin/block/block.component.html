@@ -1,19 +1,23 @@
+
 <div class="block_container">
-  <div class="block" (click)="addText()">
+  <input type="text" class="input1" placeholder="search..." [(ngModel)]="searchValue">
+<div *ngFor="let type of this.listoftypes | search : searchValue">
+
+  <div class="block" *ngIf="type=='text'" (click)="addText()">
       <p>
           <b>Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua.
         </p>
   </div>
 
-  <div class="block" (click)="addTextWidthHeader()">
+  <div class="block"  *ngIf="type=='text'" (click)="addTextWidthHeader()">
       <h1>Heading + text</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.
       </p>
   </div>
-  <div class="block" (click)="addTextImage()">
+  <div class="block"  *ngIf="type=='text_image_right'" (click)="addTextImage()">
       <p class="heading">Text & Image</p>
       <div class="flex">
         <div class="item left">
@@ -27,7 +31,7 @@
           </div>
       </div>
     </div>
-  <div class="block" (click)="addImage()">
+  <div class="block"  *ngIf="type=='image'" (click)="addImage()">
       <p class="heading">Image Only</p>
       <div class="item">
         <img class="full-width" src="assets/admin/image_only.png" />
@@ -37,20 +41,33 @@
   
 
 
-  <div class="block" (click)="addGridImageText()">
-    <p class="heading">Grid Image & Text</p> 
+  <div class="block" *ngIf="type=='grid'"  (click)="addGridImageText()">
+    <p class="heading">Grid</p> 
   </div>
 
-  <div class="block" (click)="addTab()">
+  <div class="block" *ngIf="type=='tab'" (click)="addTab()">
     <p class="heading">Tab</p> 
   </div>
 
-  <div class="block" (click)="addAccordion()">
-    <p class="heading">Accordian</p> 
+  <div class="block" *ngIf="type=='accordion'" (click)="addAccordion()">
+    <p class="heading">Accordion</p> 
   </div>
 
-  <div class="block" (click)="addTimeline()">
+  <div class="block" *ngIf="type=='timeline'" (click)="addTimeline()">
     <p class="heading">Timeline</p> 
   </div>
 
+  <div class="block" *ngIf="type=='checklist'" (click)="addChecklist()">
+    <p class="heading">CheckList</p> 
+  </div>
+
+  <div class="block" *ngIf="type=='ordered_list'" (click)="addOrdered_list()">
+    <p class="heading">Ordered List</p> 
+  </div>
+
+  <div class="block" *ngIf="type=='unordered_list'" (click)="addUnordered_list()">
+    <p class="heading">Unordered List</p> 
+  </div>
+ 
+</div>
 </div>

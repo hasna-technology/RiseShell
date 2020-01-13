@@ -2,13 +2,13 @@
 <label class="label">Type</label>
 </div>
 <select class="input2" [(ngModel)]="data.type">
-  <option value="grid_image_text">Grid Image Text</option>
-  <option value="tab_image_text">Tab</option>
+  <option value="grid">Grid</option>
+  <option value="tab">Tab</option>
   <option value="accordion">Accordian</option>
   <option value="timeline">Timeline</option>
 </select>
 
-<div *ngIf="data.type == 'grid_image_text'">
+<div *ngIf="data.type == 'grid'">
 <div>
 
   <label class="label">Item per row</label>
