@@ -10,7 +10,7 @@
           {{this.content.settings.title}}
         </div>
         <div class="course_progress">
-          <div class="progress">
+          <div class="progress"> 
             <div class="value" [style.width.%]="this.service.getProgress()">
 
             </div>
@@ -116,7 +116,6 @@
               *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' || item.type == 'text_image_top' || item.type == 'text_image_bottom' "
               [value]="item"></app-text-image>
 
-<<<<<<< HEAD
           <!-- Gird Component -->
           <app-grid-image-text *ngIf="item.type == 'grid'" [value]="item"></app-grid-image-text>
 
@@ -125,13 +124,6 @@
           
           <!-- Accordion Component -->
           <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
-=======
-            <!-- Gird Component -->
-            <app-grid-image-text *ngIf="item.type == 'grid_image_text'" [value]="item"></app-grid-image-text>
-
-            <!-- Tab Component -->
-            <app-tab-image-text *ngIf="item.type == 'tab_image_text'" [value]="item"></app-tab-image-text>
->>>>>>> 2c4f62954b37c6a013350faf2d9846a2f489412c
 
             <!-- Accordion Component -->
             <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
