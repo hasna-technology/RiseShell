@@ -54,7 +54,7 @@ import { environment } from 'src/environments/environment';
 export class PageComponent implements OnInit {
 
   onResize(event){
-    //\console.log(window.innerWidth); // window width
+    //console.log(event.target.innerWidth); // window width
     if(event.target.innerWidth < 980){
       this.menu_close = true;
     }
@@ -181,7 +181,5 @@ export class PageComponent implements OnInit {
     menu_icon.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     this.currentState = 'current';
   }
-/*  onResize(){
-    console.log(event.target['innerWidth']);
-  }*/
+
 }

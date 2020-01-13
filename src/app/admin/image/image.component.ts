@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MainService } from 'src/app/service/main.service';
 import { RequestMethod } from '@angular/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'admin-image',
@@ -13,7 +14,9 @@ import { RequestMethod } from '@angular/http';
 })
 export class ImageComponent implements OnInit {
 
-  SERVER_URL: string = "http://localhost/CI_Upload/index.php/file/upload";
+  //SERVER_URL: string = "http://localhost/CI_Upload/index.php/file/upload";
+
+  SERVER_URL: string = environment.apiUrl + "/file/upload";
 
   constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private service: MainService) { }
 
@@ -34,7 +37,7 @@ export class ImageComponent implements OnInit {
   form;
   percentage;
   file_info;
-  progress;
+  progress = 0;
   ngOnInit() {
     this.form = this.formBuilder.group({
       asset: ['']
@@ -54,8 +57,8 @@ export class ImageComponent implements OnInit {
         if (event.type === HttpEventType.UploadProgress) {
    
           // calculate the progress percentage
-          const percentDone = Math.round(100 * event.loaded / event.total);
-          console.log("percentDone = " + percentDone);
+          this.progress = Math.round(100 * event.loaded / event.total);
+          console.log("percentDone = " + this.progress);
           // pass the percentage into the progress-stream
           //progress.next(percentDone);
         } else if (event instanceof HttpResponse) {
@@ -65,6 +68,7 @@ export class ImageComponent implements OnInit {
           console.log("percentDone = completed");
           console.log(event.body.data);
           this.src = event.body.data.filePath;
+          this.progress = 0;
           //progress.complete();
         }
       })

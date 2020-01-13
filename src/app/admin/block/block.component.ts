@@ -29,55 +29,66 @@ export class BlockComponent implements OnInit {
   ngOnInit() {
   }
 
- 
+  property = {
+    "paddingTop": "50",
+    "paddingBottom": "50",
+    "fullwidth": false,
+    "backgroundColor": "#ffffff"
+  }
+
   addText() {
     this.data.push({
       "type": "text",
+      "property": this.property,
       "content": `
       <p>
         <b>Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.
       </p>`
     })
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
 
   addTextWidthHeader() {
     this.data.push({
       "type": "text",
+      "property": this.property,
       "content": `<h1>Heading + text</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.
       </p>`
     })
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
 
   addImage() {
     this.data.push({
       "type": "image",
+      "property": this.property,
       "image": "assets/admin/image_only.png"
     })
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
 
   addTextImage() {
     this.data.push({
       "type": "text_image_right",
+      "property": this.property,
       "image": "assets/admin/watermelon.png",
       "content": `<p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
       magna aliqua.
     </p>`
     })
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
 
   addGridImageText() {
     this.data.push({
 
       "type": "grid",
+      "property": this.property,
       "content": {
         "setting": {
           "row": 3,
@@ -105,12 +116,14 @@ export class BlockComponent implements OnInit {
       }
     }
     )
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
 
   addTab() {
     this.data.push({
       "type": "tab",
+      
+      "property": this.property,
       "content": {
         "setting": {
           "row": 3,
@@ -136,13 +149,14 @@ export class BlockComponent implements OnInit {
         ]
       }
     })
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
 
   addAccordion() {
     this.data.push({
 
       "type": "accordion",
+      "property": this.property,
       "content": {
         "setting": {
           "row": 3,
@@ -168,12 +182,13 @@ export class BlockComponent implements OnInit {
         ]
       }
     })
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
 
   addTimeline() {
     this.data.push({
       "type": "timeline",
+      "property": this.property,
       "content": {
         "setting": {
           "row": 3,
@@ -204,7 +219,7 @@ export class BlockComponent implements OnInit {
       }
 
     })
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
 
   addChecklist() {

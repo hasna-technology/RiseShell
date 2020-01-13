@@ -51,12 +51,13 @@
           <!-- Property Tab -->
           <div class="page_content" *ngIf="selectedPage.header != true" cdkDropList (cdkDropListDropped)="drop($event)">
 
-            <div class="block" *ngFor="let item of selectedPage.page.block; let i = index"  cdkDrag>
+            <div class="block" *ngFor="let item of selectedPage.page.block; let i = index" cdkDrag>
               <mat-icon cdkDragHandle>drag_indicator</mat-icon>
               <div class="text" (click)="gotoSetting(item)">
                 {{item.type.split("_").join(" ").toUpperCase()}}
               </div>
-              <app-dropdown [(data)]="drop_down" [(selectedData)]="selectedPage" [index]="i"></app-dropdown>
+              <mat-icon (click)="showpagepropertyState(item)">settings</mat-icon>
+              <app-dropdown [(data)]="drop_down" (clickEmit)="dropDownClick($event)" [index]="i"></app-dropdown>
             </div>
             <div class="btn_add" (click)="openBlock()">Add Block</div>
 
@@ -115,18 +116,22 @@
           <!--Bullet Block-->
           <app-bullet [data]="selectedBlock"
             *ngIf="selectedBlock.type == 'checklist' || selectedBlock.type == 'ordered_list' || selectedBlock.type == 'unordered_list'">
-          </app-bullet>          
+          </app-bullet>
 
         </div>
 
 
-        <admin-page class="sidePanel" (closeEvent)="closePanel()" [data]="data" [@changeState]="pageState"></admin-page>
+        <admin-page class="sidePanel" (closeEvent)="closePanel($event)" [data]="data" [@changeState]="pageState">
+        </admin-page>
 
-        <app-block class="sidePanel" (closeEvent)="closePanel()" [data]="selectedPage.page.block"
+        <app-block class="sidePanel" (closeEvent)="closePanel($event)" [data]="selectedPage.page.block"
           [@changeState]="blockState"></app-block>
 
-        <admin-settings class="sidePanel" (closeEvent)="closePanel()" [data]="data" [@changeState]="settingState">
+        <admin-settings class="sidePanel" (closeEvent)="closePanel($event)" [data]="data" [@changeState]="settingState">
         </admin-settings>
+
+        <page-property class="sidePanel" (closeEvent)="closePanel($event)" [data]="selectedBlock" [@changeState]="pagepropertyState">
+        </page-property>
 
       </div>
 

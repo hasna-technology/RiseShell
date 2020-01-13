@@ -15,7 +15,7 @@ export class AdminPageComponent implements OnInit {
 
   @Output() closeEvent = new EventEmitter<string>();
   constructor(private router: Router) {
-    
+
   }
 
   ngOnInit() {
@@ -25,18 +25,37 @@ export class AdminPageComponent implements OnInit {
     moveItemInArray(this.data.course, event.previousIndex, event.currentIndex);
   }
   gotoPage(i) {
-    this.closeEvent.emit();
-    this.router.navigate(['page/' + i]);
+
+    if (this.data.course[i].header != true) {
+      this.router.navigate(['page/' + i]);
+      this.closeEvent.emit();
+    }
   }
   addPage() {
     var page = {
       "title": "New Page",
       "page": {
         "block": [
+          {
+            "type": "text",
+            "content": "<p>AK-<span style='color: rgb(107, 36, 178);'>CC55 </span>Case <span style='background-color: rgb(230, 0, 0);'>Controller </span>system view is a connection that consists of case controllers (AK-CC55 Compact, Single Coil, Single Coil UI and Multi Coil), displays (AK-UI Bluetooth, Set and Info), KoolProg and the Connect App.</p>"
+          },
         ]
       }
     }
     this.data.course.push(page);
-  } 
+  }
+
+  dropDownClick(event) {
+    console.log(event);
+    if (event.name == "duplicate") {
+      var new_obj = JSON.parse(JSON.stringify(this.data.course[event.index]));
+      this.data.course.splice(event.index, 0, new_obj);
+    } else if (event.name == "header") {
+      this.data.course[event.index].header = !this.data.course[event.index].header;
+    } else if (event.name == "delete") {
+      this.data.course.splice(event.index, 1);
+    }
+  }
 }
 

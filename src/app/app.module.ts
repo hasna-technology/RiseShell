@@ -35,6 +35,7 @@ import { TimelineComponent } from './component/timeline/timeline.component';
 import { DropdownComponent } from './component/dropdown/dropdown.component';
 import { BulletComponent } from './admin/bullet/bullet.component';
 import { SearchPipe } from './admin/search.pipe';
+import { PagePropertyComponent } from './admin/page-property/page-property.component';
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
@@ -64,7 +65,8 @@ import { SearchPipe } from './admin/search.pipe';
     TimelineComponent,
     DropdownComponent,
     BulletComponent,
-    SearchPipe
+    SearchPipe,
+    PagePropertyComponent
     
   ],
   imports: [
