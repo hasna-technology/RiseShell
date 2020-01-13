@@ -21,12 +21,12 @@ $admin_panel_width : 450px;
 
 .admin_panel {
   position: fixed;
-  right: 0px;
+  right: 10px;
   width: 450px;
   transform: translateX(550px);
   top: 10px;
   bottom: 10px;
-  right: 60px;
+  /*right: 60px;*/
   overflow: auto;
   overflow-x: hidden;
   background-color: white;

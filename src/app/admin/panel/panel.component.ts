@@ -32,27 +32,9 @@ export class PanelComponent implements OnInit {
   
   constructor() { }
 
-  drop_down = [{
-    name:"Duplicate",
-    action:this.duplicateAction,
-  },
-  {
-    name:"Delete",
-    action:this.deleteAction,
-  }]
-
-  duplicateAction(i){
-    console.log("duplicateAction", i )
-    console.log(this.selectedPage)
-    //var new_obj = JSON.parse(JSON.stringify(this.selectedPage.block[i]));
-    //this.selectedPage.page.block.splice(i, 0, new_obj);
-    
-
-  }
-  deleteAction(i){
-    console.log("deleteAction", i )
-    console.log(this)
-  }
+  drop_down = ["Duplicate","Delete"];
+  
+  pagepropertyState;
 
   ngOnInit() {
     this.propertyState = 'Open';
@@ -62,6 +44,9 @@ export class PanelComponent implements OnInit {
     this.currentState = 'Open';
     this.selectedBlock = item;
     this.setBack = true;
+    var index = this.selectedPage.page.block.indexOf(item);
+    console.log(index);
+    document.getElementById("item_" + index).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
   }
   goBack() {
     this.propertyState = 'Open';
@@ -69,6 +54,7 @@ export class PanelComponent implements OnInit {
     this.pageState = 'Close';
     this.blockState = 'Close';
     this.settingState = 'Close';
+    this.pagepropertyState = 'Close';
     this.setBack = false;
   }
   showSettings(){
@@ -91,9 +77,24 @@ export class PanelComponent implements OnInit {
     moveItemInArray(this.selectedPage.page.block, event.previousIndex, event.currentIndex);
   }
 
-  closePanel() {
-    this.selectedTab = 1;
+
+  showpagepropertyState(item){
+    this.selectedBlock = item;
     this.goBack();
+    this.setBack = true;
+    this.pagepropertyState = 'Open';
+  }
+
+  closePanel(event) {
+    this.selectedTab = 1;
+    console.log(event);
+    this.goBack();
+    if(event == "block"){
+      //this.settingState = 'Open';
+      this.setBack = true;
+      this.gotoSetting(this.selectedPage.page.block[this.selectedPage.page.block.length - 1])
+    }else{
+    }
   }
 
   openBlock() {
@@ -101,9 +102,16 @@ export class PanelComponent implements OnInit {
     this.setBack = true;
   }
 
-  doSomething(event){
-    console.log(event);
-    //this.admin.save();
+  
+  dropDownClick(event){
+    if (event.name == "duplicate") {
+      console.log(this.selectedPage.page);
+      var new_obj = JSON.parse(JSON.stringify(this.selectedPage.page.block[event.index]));
+      this.selectedPage.page.block.splice(event.index, 0, new_obj);
+    } else if (event.name == "delete") {
+      this.selectedPage.page.block.splice(event.index, 1);
+    }
   }
+
  
 }

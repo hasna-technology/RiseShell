@@ -1,5 +1,8 @@
-Progress {{progress}}
+<!-- Progress {{progress}} -->
 <div class="image_box" [style.backgroundImage]="'url('+src+')'">
-    <input type="file" #file class="hidden" accept="image/x-png,image/gif,image/jpeg" (change)="onFileSelect($event)" />
-    <div class="change" (click)="file.click()">Change</div>
+  <input type="file" #file class="hidden" accept="image/x-png,image/gif,image/jpeg" (change)="onFileSelect($event)" />
+  <div class="change" (click)="file.click()">Change</div>
+</div>
+<div class="progress" *ngIf="progress > 0">
+  <div class="progress_bar" [style.width]="progress+'%'"></div>
 </div>

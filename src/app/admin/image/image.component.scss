@@ -28,3 +28,11 @@
 .hidden {
   display: none;
 }
+
+.progress{
+  background-color: #ddd;
+  .progress_bar{
+      height: 2px;
+      background-color: #b2000F;
+  }
+}

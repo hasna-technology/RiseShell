@@ -13,8 +13,9 @@
     </div>
   </div>
   <div class="content">
-    <div class="container_middle description" *ngIf="this.content.settings.description != ''">
-      {{this.content.settings.description}}
+    <div class="container_middle description" *ngIf="this.content.settings.description != ''"
+    [innerHtml] ="this.content.settings.description" >
+      <!-- {{this.content.settings.description}} -->
     </div>
     <div class="menu container_middle">
       <ul>

@@ -3,19 +3,23 @@
   <admin-panel [data]="this.content" [selectedPage]="page"></admin-panel>
 
   <div [className]="menu_close ? 'menu close' : 'menu'">
-    <div class="menu_title">
-      <div class="menu_header">
-        {{this.content.settings.title}}
-      </div>
-      <div class="course_progress">
-        <div class="progress">
-          <div class="value" [style.width.%]="this.service.getProgress()">
 
-          </div>
+    <div class="menu_title">
+      <a class="noline" routerLink="/">
+        <div class="menu_header">
+          {{this.content.settings.title}}
         </div>
-        {{this.service.getProgress()}} %
-      </div>
+        <div class="course_progress">
+          <div class="progress">
+            <div class="value" [style.width.%]="this.service.getProgress()">
+
+            </div>
+          </div>
+          {{this.service.getProgress()}} %
+        </div>
+      </a>
     </div>
+
     <ul>
       <li *ngFor="let item of this.course; let i = index">
         <div class="section" *ngIf="item.header == true">
@@ -98,37 +102,44 @@
 
       <!-- Place the content type here-->
 
-      <div class="content" *ngIf="this.page.page != undefined">
-        <div class="block" *ngFor="let item of this.page.page.block">
-          <!-- Text Component -->
-          <app-text *ngIf="item.type == 'text'" [value]="item.content"></app-text>
-          
-          <!-- Image Component -->
-          <app-text-image
-            *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' || item.type == 'text_image_top' || item.type == 'text_image_bottom' "
-            [value]="item"></app-text-image>
+      <div class="" *ngIf="this.page.page != undefined">
+        <div  *ngFor="let item of this.page.page.block; let i = index"
+          [ngClass]="{'content': item.property.fullwidth != true}"
+          [style.backgroundColor]="item.property.backgroundColor" [style.paddingTop]="item.property.paddingTop+'px'"
+          [style.paddingBottom]="item.property.paddingBottom+'px'">
+          <div class="block" id="item_{{i}}">
+            <!-- Text Component -->
+            <app-text *ngIf="item.type == 'text'" [value]="item.content"></app-text>
 
-          <!-- Gird Component -->
-          <app-grid-image-text *ngIf="item.type == 'grid_image_text'" [value]="item"></app-grid-image-text>
+            <!-- Image Component -->
+            <app-text-image
+              *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' || item.type == 'text_image_top' || item.type == 'text_image_bottom' "
+              [value]="item"></app-text-image>
 
-          <!-- Tab Component -->
-          <app-tab-image-text *ngIf="item.type == 'tab_image_text'" [value]="item"></app-tab-image-text>
-          
-          <!-- Accordion Component -->
-          <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
+            <!-- Gird Component -->
+            <app-grid-image-text *ngIf="item.type == 'grid_image_text'" [value]="item"></app-grid-image-text>
 
-          <!-- Timeline Component -->
-          <app-timeline *ngIf="item.type == 'timeline'" [value]="item"></app-timeline>
+            <!-- Tab Component -->
+            <app-tab-image-text *ngIf="item.type == 'tab_image_text'" [value]="item"></app-tab-image-text>
 
-           <!-- Audio Component -->
-           <app-audio *ngIf="item.type == 'audio'" [value]="item"></app-audio>
+            <!-- Accordion Component -->
+            <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
 
-           <!-- Video Component -->
-           <app-video *ngIf="item.type == 'video'"  [value]="item"></app-video>
+            <!-- Timeline Component -->
+            <app-timeline *ngIf="item.type == 'timeline'" [value]="item"></app-timeline>
 
-           <!-- bullets component -->
-           <app-bullets *ngIf="item.type == 'checklist' || item.type == 'ordered_list' || item.type == 'unordered_list'"  [value]="item"></app-bullets>
+            <!-- Audio Component -->
+            <app-audio *ngIf="item.type == 'audio'" [value]="item"></app-audio>
 
+            <!-- Video Component -->
+            <app-video *ngIf="item.type == 'video'" [value]="item"></app-video>
+
+            <!-- bullets component -->
+            <app-bullets
+              *ngIf="item.type == 'checklist' || item.type == 'ordered_list' || item.type == 'unordered_list'"
+              [value]="item"></app-bullets>
+
+          </div>
         </div>
       </div>
       <!-- content type end-->

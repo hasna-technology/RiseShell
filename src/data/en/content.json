@@ -17,16 +17,34 @@
                 "block": [
                     {
                         "type": "audio",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "autoplay": false,
                         "source": "assets/audio/sample_audio.mp3"
                     },
                     {
                         "type": "video",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "autoplay": false,
                         "source": "assets/video/video_sample.mp4"
                     },
                     {
                         "type": "text_image_right",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "image": "assets/p1.jpg",
                         "content": "<ul><li>AK-CC55 Connect app</span><ul><li>AK-CC55 system view</li><li>Bluetooth &amp; AK-CC55 Connect app</li><li>Dashboard</li><li>Alarms, Controls and I/O</li><li>Menu functions&nbsp;</li></ul></li><li>KoolProg<ul><li>Set Parameters</li><li>Copy to Controller</li><li>Service and Test</li></ul></li><li>SM-8xx Bluetooth lock function</li><li>Quiz</li></ul>"
                     }
@@ -35,6 +53,12 @@
         },
         {
             "title": "AK-CC55 CONNECT APP",
+            "property" : {
+                "paddingTop" : "50",
+                "paddingBottom" : "50",
+                "fullwidth": false,
+                "backgroundColor": "#ffffff"
+            },
             "header": true,
             "level": 1
         },
@@ -44,10 +68,16 @@
                 "block": [
                     {
                         "type": "accordion",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "content": {
                             "setting": {
-                                "row" : 3,
-                                "image_position" : "left", 
+                                "row": 3,
+                                "image_position": "left",
                                 "background_color": "#efefef"
                             },
                             "data": [
@@ -71,15 +101,27 @@
                     },
                     {
                         "type": "text_image_left",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "image": "assets/p1.jpg",
                         "content": "<ul><li>AK-CC55 Connect app</span><ul><li>AK-CC55 system view</li><li>Bluetooth &amp; AK-CC55 Connect app</li><li>Dashboard</li><li>Alarms, Controls and I/O</li><li>Menu functions&nbsp;</li></ul></li><li>KoolProg<ul><li>Set Parameters</li><li>Copy to Controller</li><li>Service and Test</li></ul></li><li>SM-8xx Bluetooth lock function</li><li>Quiz</li></ul>"
                     },
                     {
                         "type": "grid_image_text",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "content": {
                             "setting": {
-                                "row" : 3,
-                                "image_position" : "left", 
+                                "row": 3,
+                                "image_position": "left",
                                 "background_color": "#efefef"
                             },
                             "data": [
@@ -98,16 +140,21 @@
                                     "image": "assets/icon3.jpg",
                                     "desc": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
                                 }
-                                
                             ]
                         }
                     },
                     {
                         "type": "tab_image_text",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "content": {
                             "setting": {
-                                "row" : 3,
-                                "image_position" : "left", 
+                                "row": 3,
+                                "image_position": "left",
                                 "background_color": "#efefef"
                             },
                             "data": [
@@ -131,37 +178,40 @@
                     },
                     {
                         "type": "timeline",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "content": {
                             "setting": {
-                                "row" : 3,
-                                "image_position" : "left", 
+                                "row": 3,
+                                "image_position": "left",
                                 "background_color": "#efefef"
                             },
                             "data": [
-                                {   "date":"Date 1",
+                                {
+                                    "date": "Date 1",
                                     "title": "Grid 1",
                                     "desc": "Description of the text to be added in the part.It is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long established fact that a reader willIt is long",
-                                    "image": "assets/p1.jpg"   
-                                },
-                                {   
-                                    "date":"Date 2",
-                                    "title": "Grid 2",
-                                    "desc": "The standard chunk of Lorem Ipsum used since the 1500s.It is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long established fact that a reader willIt is long",
-                                    "image": "assets/p1.jpg" 
+                                    "image": "assets/p1.jpg"
                                 },
                                 {
-                                    "date":"Date 3",
+                                    "date": "Date 2",
+                                    "title": "Grid 2",
+                                    "desc": "The standard chunk of Lorem Ipsum used since the 1500s.It is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long established fact that a reader willIt is long",
+                                    "image": "assets/p1.jpg"
+                                },
+                                {
+                                    "date": "Date 3",
                                     "title": "Grid 3",
                                     "desc": "It is a long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is a long established fact that a reader willIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-                                    "image": "assets/p1.jpg" 
+                                    "image": "assets/p1.jpg"
                                 }
-                                
                             ]
                         }
                     }
-                   
-
-                    
                 ]
             }
         },
@@ -170,11 +220,23 @@
             "page": {
                 "block": [
                     {
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "type": "text",
                         "content": "<p>AK-<span style='color: rgb(107, 36, 178);'>CC55 </span>Case <span style='background-color: rgb(230, 0, 0);'>Controller </span>system view is a connection that consists of case controllers (AK-CC55 Compact, Single Coil, Single Coil UI and Multi Coil), displays (AK-UI Bluetooth, Set and Info), KoolProg and the Connect App.</p>"
                     },
                     {
                         "type": "image",
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "image": "assets/p1.jpg"
                     }
                 ]
@@ -186,63 +248,84 @@
                 "block": [
                     {
                         "type": "text",
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "content": "<p>AK-CC55 Case Controller system view is a connection that consists of case controllers (AK-CC55 Compact, Single Coil, Single Coil UI and Multi Coil), displays (AK-UI Bluetooth, Set and Info), KoolProg and the Connect App. </p>"
                     },
                     {
                         "type": "image",
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "image": "assets/p1.jpg"
                     },
                     {
                         "type": "checklist",
-                            "data": [
-                                {
-                                    "text": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected humour and the like."
-                                    
-                                },
-                                {
-                                    "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
-                                },
-                                {
-                                    "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text." 
-                                }
-                               
-                                
-                            ]
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
                         },
-                        {
-                            "type": "ordered_list",
-                                "data": [
-                                    {
-                                        "text": "Lorem Ipsum  and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. "
-                                        
-                                    },
-                                    {
-                                        "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. "
-                                    },
-                                    {
-                                        "text": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Grid 1 Grid 1 Grid Description of the text to be added in the "
-                                    }
-                                    
-                                   
-                                    
-                                ]
+                        "data": [
+                            {
+                                "text": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected humour and the like."
                             },
                             {
-                                "type": "unordered_list",
-                                    "data": [
-                                        {
-                                            "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
-                                            
-                                        },
-                                        {
-                                            "text": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet."
-                                        },
-                                        {
-                                            "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." 
-                                        } 
-                                    ]
-                                }
-                    
+                                "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
+                            },
+                            {
+                                "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "ordered_list",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "data": [
+                            {
+                                "text": "Lorem Ipsum  and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. "
+                            },
+                            {
+                                "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. "
+                            },
+                            {
+                                "text": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Grid 1 Grid 1 Grid Description of the text to be added in the "
+                            }
+                        ]
+                    },
+                    {
+                        "type": "unordered_list",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "data": [
+                            {
+                                "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+                            },
+                            {
+                                "text": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet."
+                            },
+                            {
+                                "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                            }
+                        ]
+                    }
                 ]
             }
         }
