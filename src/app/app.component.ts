@@ -2,7 +2,7 @@ import { Component, KeyValueDiffer, KeyValueDiffers, KeyValueChanges } from '@an
 import { MainService } from './service/main.service';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import localdata  from '../data/en/content.json';
+import localdata from '../data/en/content.json';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,13 @@ import localdata  from '../data/en/content.json';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+
   title = 'Shell Template';
   course_id;
 
   constructor(private service: MainService, private route: ActivatedRoute) {
     console.log('Called Constructor');
-    
+
   }
 
   data;
@@ -26,18 +26,24 @@ export class AppComponent {
     this.service.load_course(course_id).subscribe(
       res => {
         //console.log(res);
-        this.service.setPath(res.data.filename);
-        this.service.setData(JSON.parse(res.data.json));
+        if (environment.production == true) {
+          this.service.setPath(res.data.filename);
+          this.service.setData(JSON.parse(res.data.json));
+        } else {
+          console.log("res", res);
+          this.service.setPath("assets/json/content.json");
+          this.service.setData(res);
+        }
         this.data = this.service.getData();
       },
       err => {
         console.log(err);
       }
     )
-  } 
+  }
 
   ngOnInit() {
-    
+
     /* comment below 2 lines for loading data from server*/
     this.service.setData(localdata);
     this.data = this.service.getData();
@@ -63,7 +69,7 @@ export class AppComponent {
         console.log(err);
       }
     )*/
-    
+
 
   }
 }

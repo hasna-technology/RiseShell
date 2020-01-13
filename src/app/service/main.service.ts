@@ -54,8 +54,13 @@ export class MainService {
   }
 
   load_course(course_id: number) {
-    return this.request("File/load_course/"+course_id, RequestMethod.Get);
+    if(environment.production == true){
+      return this.request("File/load_course/"+course_id, RequestMethod.Get);
+    }else {
+      return this.http.get<any>("assets/json/content.json");
+    }
   }
+
   request(url: string, method: RequestMethod, body?: Object, showLoader: boolean = true) {
     const _url = `${this.baseUrl}${url}`;
     if (method == RequestMethod.Get) {
@@ -70,7 +75,7 @@ export class MainService {
   }
   setData(d) {
     this.json = d;
-    console.log(this.json)
+    console.log("setData = ", this.json)
   }
   getData(): any {
     return this.json;

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../service/main.service.js';
-import localdata from '../../data/en/content.json';
+//import localdata from '../../data/en/content.json';
 import { trigger, sequence, keyframes, state, style, animate, transition } from '@angular/animations';
 import { environment } from 'src/environments/environment';
 
@@ -53,9 +53,9 @@ import { environment } from 'src/environments/environment';
 //@HostListener('window:resize', ['$event'])
 export class PageComponent implements OnInit {
 
-  onResize(event){
+  onResize(event) {
     //console.log(event.target.innerWidth); // window width
-    if(event.target.innerWidth < 980){
+    if (event.target.innerWidth < 980) {
       this.menu_close = true;
     }
   }
@@ -78,14 +78,21 @@ export class PageComponent implements OnInit {
     } else {
       this.loadcourse(1)
     }
+
   }
-  loadcourse(course_id){
-    console.log("page course_id", course_id);
+  loadcourse(course_id) {
+    
     this.service.load_course(course_id).subscribe(
       res => {
-        //console.log(res);
-        this.service.setPath(res.data.filename);
-        this.service.setData(JSON.parse(res.data.json));
+        
+        if(environment.production == true){
+          this.service.setPath(res.data.filename);
+          this.service.setData(JSON.parse(res.data.json));
+        }else{
+          this.service.setPath("assets/json/content.json");
+          this.service.setData(res);
+          console.log("service subscribe ", this);
+        }
         this.init();
       },
       err => {
@@ -93,16 +100,11 @@ export class PageComponent implements OnInit {
       }
     )
   }
+  
   init() {
     this.route.paramMap.subscribe(params => {
       var data = this.service.getData();
-      
-      /* comment below 2 lines for loading data from server*/
-      this.service.setData(localdata);
-       data = this.service.getData();
 
-
-      //console.log("init", data);
       if (data != undefined) {
         this.lesson_no = params.get('i');
         //this.page_no = params.get('j');
@@ -110,27 +112,15 @@ export class PageComponent implements OnInit {
         this.content = this.service.getData();
         this.common_text = this.service.getData().common_text;
         this.page = this.service.getData().course[this.lesson_no];
-      
+
         if (this.ngOnInit)
           this.ngOnInit()
       } else {
-     
-        setTimeout( ()=>{
-          // var filename = this.service.getFilename();
-          // this.service.loadJson().subscribe(
-          //   res => {
-              
-          //     this.service.setData(JSON.parse(res.data.json));
-          //     data = this.service.getData();
-          //     this.init();
-          //   },
-          //   err => {
-          //     console.log(err);
-          //   }
-          // )
+
+        setTimeout(() => {
           this.loadcourse(this.course_id);
         }, 5000)
-        
+
       }
 
     });
@@ -140,7 +130,7 @@ export class PageComponent implements OnInit {
 
   ngDoCheck(): void {
     this.service.doCheck();
-   
+
   }
 
   prev() {
