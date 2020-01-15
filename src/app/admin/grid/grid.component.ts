@@ -34,9 +34,9 @@ export class GridComponent implements OnInit {
   addItem() {
     this.data.content.data.push(
       {
-        "title": "Grid Title",
+        "title": "Title",
         "image": "assets/icon1.jpg",
-        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
       }
     )
   }

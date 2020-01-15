@@ -20,18 +20,214 @@ export class BlockComponent implements OnInit {
     'timeline',
     'checklist',
     'ordered_list',
-    'unordered_list'
+    'unordered_list',
+    'divider',
+]
+arrays=[
+  {
+    "content":`<div>
+    <p class="sec_title">Text</p>
+  </div>`
+  },
+  {
+  "title":"Text",
+  "type":"text",
+  "content":`<div>
+  <p>
+      <b>Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
+    </p>
+</div>`,
+  "clickable": ()=>{
+    this.addText()
+  }
+},
+{
+  "title":"Heading + text",
+  "type":"text",
+  "content":`<div>
+  <h1>Heading + text</h1>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+    magna aliqua.
+  </p>
+</div>`,
+  "clickable": ()=>{
+    this.addTextWidthHeader()
+  }
+},
+{
+  "content":`<div>
+  <p class="sec_title">Image<\/p>
+</div>`
+},
+{
+  "title":"Text & Image",
+  "type":"text_image_right",
+  "content":`<div>
+  
+  <p class="heading"><b>Text & Image</b></p>
+  <div class="flex">
+    <div class="item left">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.
+          </p>
+    </div>
+    <div class="item">
+        <img src="assets/admin/watermelon.png" />
+      </div>
+  </div>
+</div>`,
+  "clickable":()=>{
+    this.addTextImage()
+  }
+},
+{
+  "title":"Image Only",
+  "type":"image",
+  "content":`<div>
+  <p class="heading"><b>Image Only</b></p>
+  <div class="item">
+    <img class="full-width" src="assets/admin/image_only.png" />
+  </div>
+</div>`,
+  "clickable":()=>{
+    this.addImage()
+  }
+},
+{
+  "content":`<div>
+  <p class="sec_title">Interactive</p>
+</div>`
+},
+{
+  "title":"Grid",
+  "type":"grid",
+  "content":` <div>
+  <p class="heading"><b>Grid</b></p> 
+  <div class="item">
+    <img class="full-width" src="assets/Block/grid.png" />
+  </div>
+</div>`,
+  "clickable":()=>{
+    this.addGridImageText()
+  }
+},
+{
+  "title":"Tab",
+  "type":"tab",
+  "content":`<div>
+  <p class="heading"><b>Tab</b></p> 
+  <div class="item">
+    <img class="full-width" src="assets/Block/tab.png" />
+  </div>
+</div>`,
+  "clickable":()=>{
+    this.addTab()
+  }
+},
+{
+  "title":"Accordion",
+  "type":"accordion",
+  "content":`<div>
+  <p class="heading"><b>Accordion</b></p> 
+  <div class="item">
+    <img class="full-width" src="assets/Block/accordion.png" />
+  </div>
+</div>`,
+  "clickable":()=>{
+    this.addAccordion()
+  }
+},
+{
+  "title":"Timeline",
+  "type":"timeline",
+  "content":`<div>
+  <p class="heading"><b>Timeline</b></p> 
+  <div class="item">
+    <img class="full-width" src="assets/Block/timeline.png" />
+  </div>
+</div>`,
+  "clickable":()=>{
+    this.addTimeline()
+  }
+},
+{
+  "content":`<div >
+  <p class="sec_title">List</p>
+</div>`
+},
+{
+  "title":"CheckList",
+  "type":"checklist",
+  "content":`<div>
+  <p class="heading"><b>CheckList</b></p> 
+  <div class="item">
+    <img class="full-width" src="assets/Block/checklist.png" />
+  </div>
+</div>`,
+  "clickable":()=>{
+    this.addChecklist()
+  }
+},
 
-  ]
+{
+  "title":"Ordered List",
+  "type":"ordered_list",
+  "content":`<div>
+  <p class="heading"><b>Ordered List</b></p> 
+  <div class="item">
+    <img class="full-width" src="assets/Block/orderedlist.png" />
+  </div>
+</div>`,
+  "clickable":()=>{
+    this.addOrdered_list()
+  }
+},
+{
+  "title":"Unordered List",
+  "type":"unordered_list",
+  "content":`<div>
+  <p class="heading"><b>Unordered List</b></p> 
+  <div class="item">
+    <img class="full-width" src="assets/Block/unorderedlist.png" />
+  </div>
+</div>`,
+  "clickable": ()=>{
+    this.addUnordered_list()
+  }
+},
+{
+  "content":`<div >
+  <p class="sec_title">Divider</p>
+</div>`
+},
+{
+  "title":"Divider",
+  "type":"divider",
+  "content":`<div>
+  <p class="heading"><b>Divider</b></p> 
+  <div class="line">`,
+  "clickable": ()=>{
+    this.addDivider()
+  }
+}
+
+]
  
+
+
+
   constructor() { }
 
   ngOnInit() {
+   
   }
 
   property = {
     "paddingTop": "50",
-    "paddingBottom": "50",
+    "paddingBottom": '50',
     "fullwidth": false,
     "backgroundColor": "#ffffff"
   }
@@ -99,17 +295,17 @@ export class BlockComponent implements OnInit {
           {
             "title": "Grid 1",
             "image": "assets/icon1.jpg",
-            "desc": "Description of the text to be added in the part."
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
           },
           {
             "title": "Grid 2",
             "image": "assets/icon2.jpg",
-            "desc": "The standard chunk of Lorem Ipsum used since the 1500s."
+            "desc": "<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"
           },
           {
             "title": "Grid 3",
             "image": "assets/icon3.jpg",
-            "desc": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+            "desc": "<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>"
           }
 
         ]
@@ -134,17 +330,17 @@ export class BlockComponent implements OnInit {
           {
             "title": "Tab 1",
             "image": "assets/p1.jpg",
-            "desc": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English."
+            "desc": "<P>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>"
           },
           {
             "title": "Tab 2",
             "image": "assets/icon2.jpg",
-            "desc": "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy."
+            "desc": "<p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>"
           },
           {
             "title": "Tab 3",
             "image": "assets/icon3.jpg",
-            "desc": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+            "desc": "<p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>"
           }
         ]
       }
@@ -167,17 +363,17 @@ export class BlockComponent implements OnInit {
           {
             "title": "Accordion 1",
             "image": "assets/p1.jpg",
-            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+            "desc": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>"
           },
           {
             "title": "Accordion 2",
             "image": "assets/icon2.jpg",
-            "desc": " It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages."
+            "desc": "<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>"
           },
           {
             "title": "Accordion 3",
             "image": "assets/icon3.jpg",
-            "desc": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."
+            "desc": "<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>"
           }
         ]
       }
@@ -199,19 +395,19 @@ export class BlockComponent implements OnInit {
           {
             "date": "Date 1",
             "title": "Grid 1",
-            "desc": "Description of the text to be added in the part.It is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long established fact that a reader willIt is long",
+            "desc": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>",
             "image": "assets/p1.jpg"
           },
           {
             "date": "Date 2",
             "title": "Grid 2",
-            "desc": "The standard chunk of Lorem Ipsum used since the 1500s.It is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long established fact that a reader willIt is long",
+            "desc": "<p>The standard chunk of Lorem Ipsum used since the 1500s.It is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long established fact that a reader willIt is long</p>",
             "image": "assets/p1.jpg"
           },
           {
             "date": "Date 3",
             "title": "Grid 3",
-            "desc": "It is a long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is a long established fact that a reader willIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "desc": "<p>It is a long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is a long established fact that a reader willIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>",
             "image": "assets/p1.jpg"
           }
 
@@ -225,16 +421,22 @@ export class BlockComponent implements OnInit {
   addChecklist() {
     this.data.push({
       "type": "checklist",
+      "property": {
+      "paddingTop": "30",
+      "paddingBottom": "30",
+      "fullwidth": false,
+      "backgroundColor": "#ffffff"
+  },
       "data": [
         {
-          "text": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected humour and the like."
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
 
         },
         {
-          "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
+          "text": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. "
         },
         {
-          "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+          "text": "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         }
       ]
     })
@@ -244,16 +446,22 @@ export class BlockComponent implements OnInit {
   addOrdered_list() {
     this.data.push({
       "type": "ordered_list",
+      "property": {
+        "paddingTop": "30",
+        "paddingBottom": "30",
+        "fullwidth": false,
+        "backgroundColor": "#ffffff"
+    },
       "data": [
         {
           "text": "Lorem Ipsum  and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. "
 
         },
         {
-          "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. "
+          "text": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. "
         },
         {
-          "text": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Grid 1 Grid 1 Grid Description of the text to be added in the "
+          "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
         }
 
 
@@ -265,20 +473,44 @@ export class BlockComponent implements OnInit {
   addUnordered_list() {
     this.data.push({
       "type": "unordered_list",
+      "property": {
+        "paddingTop": "30",
+        "paddingBottom": "30",
+        "fullwidth": false,
+        "backgroundColor": "#ffffff"
+    },
       "data": [
         {
-          "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+          "text": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested."
 
         },
         {
           "text": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet."
         },
         {
-          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+          "text": "Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
         }
       ]
     })
     this.closeEvent.emit();
+  }
+  addDivider() {
+    this.data.push({
+  "type": "divider",
+  "property": {
+      "paddingTop": "30",
+      "paddingBottom": "30",
+      "fullwidth": false,
+      "backgroundColor": "#ffffff"
+  },
+  "data":{
+      "backgroundColor":"red",
+      "height":"4",
+      "paddingTop": "0",
+      "paddingBottom": "0"
+  }
+})
+this.closeEvent.emit();
   }
 
 }

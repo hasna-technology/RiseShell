@@ -2,7 +2,7 @@
     "settings": {
         "title": "AK-CC55 Connect app",
         "description": "",
-        "image": ""
+        "image": "assets/admin/image_only.png"
     },
     "common_text": {
         "lesson": "Lesson",
@@ -45,7 +45,7 @@
                             "fullwidth": false,
                             "backgroundColor": "#ffffff"
                         },
-                        "image": "assets/p1.jpg",
+                        "image": "assets/2.jpg",
                         "content": "<ul><li>AK-CC55 Connect app</span><ul><li>AK-CC55 system view</li><li>Bluetooth &amp; AK-CC55 Connect app</li><li>Dashboard</li><li>Alarms, Controls and I/O</li><li>Menu functions&nbsp;</li></ul></li><li>KoolProg<ul><li>Set Parameters</li><li>Copy to Controller</li><li>Service and Test</li></ul></li><li>SM-8xx Bluetooth lock function</li><li>Quiz</li></ul>"
                     }
                 ]
@@ -83,18 +83,18 @@
                             "data": [
                                 {
                                     "title": "Accordion 1",
-                                    "image": "assets/p1.jpg",
-                                    "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                                    "image": "assets/3.jpg",
+                                    "desc": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>"
                                 },
                                 {
                                     "title": "Accordion 2",
-                                    "image": "assets/icon2.jpg",
-                                    "desc": " It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages."
+                                    "image": "assets/p1.jpg",
+                                    "desc": "<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>"
                                 },
                                 {
                                     "title": "Accordion 3",
                                     "image": "assets/icon3.jpg",
-                                    "desc": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."
+                                    "desc": "<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>"
                                 }
                             ]
                         }
@@ -107,11 +107,17 @@
                             "fullwidth": false,
                             "backgroundColor": "#ffffff"
                         },
-                        "image": "assets/p1.jpg",
+                        "image": "assets/3.jpg",
                         "content": "<ul><li>AK-CC55 Connect app</span><ul><li>AK-CC55 system view</li><li>Bluetooth &amp; AK-CC55 Connect app</li><li>Dashboard</li><li>Alarms, Controls and I/O</li><li>Menu functions&nbsp;</li></ul></li><li>KoolProg<ul><li>Set Parameters</li><li>Copy to Controller</li><li>Service and Test</li></ul></li><li>SM-8xx Bluetooth lock function</li><li>Quiz</li></ul>"
                     },
                     {
                         "type": "grid",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "content": {
                             "setting": {
                                 "row": 3,
@@ -121,24 +127,30 @@
                             "data": [
                                 {
                                     "title": "Grid 1",
-                                    "image": "assets/icon1.jpg",
-                                    "desc": "Description of the text to be added in the part."
+                                    "image": "assets/3.jpg",
+                                    "desc": "<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.<p>"
                                 },
                                 {
                                     "title": "Grid 2",
-                                    "image": "assets/icon2.jpg",
-                                    "desc": "The standard chunk of Lorem Ipsum used since the 1500s."
+                                    "image": "assets/p1.jpg",
+                                    "desc": "<p>The standard chunk of Lorem Ipsum used since the 1500s.<p>"
                                 },
                                 {
                                     "title": "Grid 3",
                                     "image": "assets/icon3.jpg",
-                                    "desc": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+                                    "desc": "<p>It is a long established fact that a reader will be distracted.<p>"
                                 }
                             ]
                         }
                     },
                     {
                         "type": "tab",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
                         "content": {
                             "setting": {
                                 "row": 3,
@@ -148,18 +160,18 @@
                             "data": [
                                 {
                                     "title": "Tab 1",
-                                    "image": "assets/p1.jpg",
-                                    "desc": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English."
+                                    "image": "assets/3.jpg",
+                                    "desc": "<p>Lorem Ipsum is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long.</P>"
                                 },
                                 {
                                     "title": "Tab 2",
-                                    "image": "assets/icon2.jpg",
-                                    "desc": "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy."
+                                    "image": "assets/p1.jpg",
+                                    "desc": "<p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>"
                                 },
                                 {
                                     "title": "Tab 3",
                                     "image": "assets/icon3.jpg",
-                                    "desc": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                                    "desc": "<p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>"
                                 }
                             ]
                         }
@@ -181,20 +193,20 @@
                             "data": [
                                 {
                                     "date": "Date 1",
-                                    "title": "Grid 1",
-                                    "desc": "Description of the text to be added in the part.It is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long established fact that a reader willIt is long",
-                                    "image": "assets/p1.jpg"
+                                    "title": "Timeline 1",
+                                    "desc": "<p>Lorem Ipsum is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long.</p>",
+                                    "image": "assets/2.jpg"
                                 },
                                 {
                                     "date": "Date 2",
-                                    "title": "Grid 2",
-                                    "desc": "The standard chunk of Lorem Ipsum used since the 1500s.It is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long established fact that a reader willIt is long",
+                                    "title": "Timeline 2",
+                                    "desc": "<p>The standard chunk of Lorem Ipsum used since the 1500s.It is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long established fact that a reader willIt is long</p>",
                                     "image": "assets/p1.jpg"
                                 },
                                 {
                                     "date": "Date 3",
-                                    "title": "Grid 3",
-                                    "desc": "It is a long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is a long established fact that a reader willIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                                    "title": "Timeline 3",
+                                    "desc": "<p>It is a long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is a long established fact that a reader willIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>",
                                     "image": "assets/p1.jpg"
                                 }
                             ]
@@ -225,7 +237,7 @@
                             "fullwidth": false,
                             "backgroundColor": "#ffffff"
                         },
-                        "image": "assets/p1.jpg"
+                        "image": "assets/3.jpg"
                     }
                 ]
             }
@@ -252,7 +264,7 @@
                             "fullwidth": false,
                             "backgroundColor": "#ffffff"
                         },
-                        "image": "assets/p1.jpg"
+                        "image": "assets/3.jpg"
                     },
                     {
                         "type": "checklist",
@@ -290,7 +302,7 @@
                                 "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. "
                             },
                             {
-                                "text": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Grid 1 Grid 1 Grid Description of the text to be added in the "
+                                "text": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s "
                             }
                         ]
                     },
@@ -304,18 +316,35 @@
                         },
                         "data": [
                             {
-                                "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+                                "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
                             },
                             {
                                 "text": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet."
                             },
                             {
-                                "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                                "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
                             }
                         ]
+                    },
+                    {
+                        "type": "divider",
+                        "property": {
+                            "paddingTop": "30",
+                            "paddingBottom": "30",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "data":{
+                            "backgroundColor": "red",
+                            "height":"4",
+                            "paddingTop": "0",
+                            "paddingBottom": "0"
+                        }
                     }
                 ]
             }
+            
         }
+       
     ]
 }

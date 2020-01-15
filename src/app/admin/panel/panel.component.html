@@ -117,6 +117,9 @@
           <app-bullet [data]="selectedBlock"
             *ngIf="selectedBlock.type == 'checklist' || selectedBlock.type == 'ordered_list' || selectedBlock.type == 'unordered_list'">
           </app-bullet>
+          <!-- Divider block -->
+          <app-divide [data]="selectedBlock" *ngIf="selectedBlock.type == 'divider'">
+          </app-divide>
 
         </div>
 

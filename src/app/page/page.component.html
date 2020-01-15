@@ -4,9 +4,9 @@
 
   <div [className]="menu_close ? 'menu close' : 'menu'">
 
-    <div class="menu_title">
+    <div class="menu_title" [style.backgroundImage]="'url('+ content.settings.image +')'">
       <a class="noline" routerLink="/">
-        <div class="menu_header">
+        <div class="menu_header" >
           {{this.content.settings.title}}
         </div>
         <div class="course_progress">
@@ -125,9 +125,6 @@
           <!-- Accordion Component -->
           <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
 
-            <!-- Accordion Component -->
-            <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
-
             <!-- Timeline Component -->
             <app-timeline *ngIf="item.type == 'timeline'" [value]="item"></app-timeline>
 
@@ -138,9 +135,12 @@
             <app-video *ngIf="item.type == 'video'" [value]="item"></app-video>
 
             <!-- bullets component -->
-            <app-bullets
-              *ngIf="item.type == 'checklist' || item.type == 'ordered_list' || item.type == 'unordered_list'"
+            <app-bullets *ngIf="item.type == 'checklist' || item.type == 'ordered_list' || item.type == 'unordered_list'"
               [value]="item"></app-bullets>
+
+            <!-- Divider Component -->
+            <app-divider *ngIf="item.type == 'divider'" [value]="item"></app-divider>
+
 
           </div>
         </div>

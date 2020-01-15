@@ -1,4 +1,4 @@
-
+@import '../../_variable.scss';
 
 .block {
   background-color: #f2f9ff;
@@ -10,7 +10,9 @@
   border-radius: 5px;
   .heading{
     font-weight:bold;
+    border: 2px solid red;
   }
+  
 }
 .flex {
   display: flex;
@@ -37,4 +39,28 @@
   padding: 1rem;
   margin-right: -1rem;
   margin: 15px 0px;
+}
+.line{
+  background-color: $brand_color;
+  height: 3px;
+ margin: 20px;
+  margin-bottom: 30px;
+  
+}
+.sec_title {
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  padding: .5rem 0;
+  color: #313537;
+  font-family: lato, sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .06rem;
+  border-bottom: .1rem solid rgba(49, 53, 55, .1);
+  padding: 0 6px;
+  cursor: pointer;
+}
+.first{
+  margin-top: 0px;
 }

@@ -1,23 +1,32 @@
+<input type="text" class="input1" placeholder="search..." [(ngModel)]="searchValue">
+<div *ngFor="let type of this.arrays | search : searchValue" >
 
-<div class="block_container">
-  <input type="text" class="input1" placeholder="search..." [(ngModel)]="searchValue">
-<div *ngFor="let type of this.listoftypes | search : searchValue">
+  <div class="block"  [innerHtml]="type.content" (click)="type.clickable()" ></div>
 
-  <div class="block" *ngIf="type=='text'" (click)="addText()">
+
+
+</div>
+
+<!--<div *ngIf="type=='text'">
+    <p class="sec_title first">Text</p>
+    </div>-->
+<!--<div *ngIf="type=='text'"(click)="addText()">
       <p>
-          <b>Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          <b>123Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua.
         </p>
   </div>
 
-  <div class="block"  *ngIf="type=='text'" (click)="addTextWidthHeader()">
+  <div  *ngIf="type=='text'" (click)="addTextWidthHeader()">
       <h1>Heading + text</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.
       </p>
   </div>
-  <div class="block"  *ngIf="type=='text_image_right'" (click)="addTextImage()">
+
+  
+  <div  *ngIf="type=='text_image_right'" (click)="addTextImage()">
       <p class="heading">Text & Image</p>
       <div class="flex">
         <div class="item left">
@@ -31,7 +40,10 @@
           </div>
       </div>
     </div>
-  <div class="block"  *ngIf="type=='image'" (click)="addImage()">
+
+
+    
+  <div   *ngIf="type=='image'" (click)="addImage()">
       <p class="heading">Image Only</p>
       <div class="item">
         <img class="full-width" src="assets/admin/image_only.png" />
@@ -39,35 +51,61 @@
   </div>
 
   
-
-
-  <div class="block" *ngIf="type=='grid'"  (click)="addGridImageText()">
+  
+ 
+  <div  *ngIf="type=='grid'"  (click)="addGridImageText()">
     <p class="heading">Grid</p> 
+    <div class="item">
+      <img class="full-width" src="assets/Block/grid.png" />
+    </div>
   </div>
+  
+  
 
-  <div class="block" *ngIf="type=='tab'" (click)="addTab()">
+  <div *ngIf="type=='tab'" (click)="addTab()">
     <p class="heading">Tab</p> 
+    <div class="item">
+      <img class="full-width" src="assets/Block/tab.png" />
+    </div>
   </div>
 
-  <div class="block" *ngIf="type=='accordion'" (click)="addAccordion()">
+  <div  *ngIf="type=='accordion'" (click)="addAccordion()">
     <p class="heading">Accordion</p> 
+    <div class="item">
+      <img class="full-width" src="assets/Block/accordion.png" />
+    </div>
   </div>
 
-  <div class="block" *ngIf="type=='timeline'" (click)="addTimeline()">
+  <div  *ngIf="type=='timeline'" (click)="addTimeline()">
     <p class="heading">Timeline</p> 
-  </div>
-
-  <div class="block" *ngIf="type=='checklist'" (click)="addChecklist()">
-    <p class="heading">CheckList</p> 
-  </div>
-
-  <div class="block" *ngIf="type=='ordered_list'" (click)="addOrdered_list()">
-    <p class="heading">Ordered List</p> 
-  </div>
-
-  <div class="block" *ngIf="type=='unordered_list'" (click)="addUnordered_list()">
-    <p class="heading">Unordered List</p> 
+    <div class="item">
+      <img class="full-width" src="assets/Block/timeline.png" />
+    </div>
   </div>
  
-</div>
-</div>
+  <div  *ngIf="type=='checklist'" (click)="addChecklist()">
+    <p class="heading">CheckList</p> 
+    <div class="item">
+      <img class="full-width" src="assets/Block/checklist.png" />
+    </div>
+  </div>
+
+  <div  *ngIf="type=='ordered_list'" (click)="addOrdered_list()">
+    <p >Ordered List</p> 
+    <div class="item">
+      <img class="full-width" src="assets/Block/orderedlist.png" />
+    </div>
+  </div>
+
+  <div  *ngIf="type=='unordered_list'" (click)="addUnordered_list()">
+    <p class="heading">Unordered List</p> 
+    <div class="item">
+      <img class="full-width" src="assets/Block/unorderedlist.png" />
+    </div>
+  </div>
+
+  <div  *ngIf="type=='divider'" (click)="addDivider()">
+    <p class="heading">Divider</p> 
+    <div class="line">
+    -->
+

@@ -36,6 +36,8 @@ import { DropdownComponent } from './component/dropdown/dropdown.component';
 import { BulletComponent } from './admin/bullet/bullet.component';
 import { SearchPipe } from './admin/search.pipe';
 import { PagePropertyComponent } from './admin/page-property/page-property.component';
+import { DividerComponent } from './component/divider/divider.component';
+import { DivideComponent } from './admin/divide/divide.component';
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
@@ -66,7 +68,9 @@ import { PagePropertyComponent } from './admin/page-property/page-property.compo
     DropdownComponent,
     BulletComponent,
     SearchPipe,
-    PagePropertyComponent
+    PagePropertyComponent,
+    DividerComponent,
+    DivideComponent
     
   ],
   imports: [
