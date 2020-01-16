@@ -2,7 +2,8 @@
     "settings": {
         "title": "AK-CC55 Connect app",
         "description": "",
-        "image": "assets/admin/image_only.png"
+        "image": "assets/admin/image_only.png",
+        "brandColor":"#b6000f"
     },
     "common_text": {
         "lesson": "Lesson",

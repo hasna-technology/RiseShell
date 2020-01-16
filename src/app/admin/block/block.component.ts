@@ -9,8 +9,8 @@ export class BlockComponent implements OnInit {
 
   @Input() data;
   @Output() closeEvent = new EventEmitter<string>();
-  
-  listoftypes= [
+
+  listoftypes = [
     'text',
     'image',
     'text_image_right',
@@ -22,49 +22,78 @@ export class BlockComponent implements OnInit {
     'ordered_list',
     'unordered_list',
     'divider',
-]
-arrays=[
-  {
-    "content":`<div>
+  ]
+  arrays = [
+    {
+      "content": `<div>
+    <p class="sec_title">Media</p>
+  </div>`
+    },
+    {
+      "title": "Audio",
+      "type": "audio",
+      "content": `<div>
+    <p>
+        <b>Audio</b>
+      </p>
+  </div>`,
+      "clickable": () => {
+        this.addAudio()
+      }
+    },
+    {
+      "title": "Video",
+      "type": "video",
+      "content": `<div>
+    <p>
+        <b>Video</b>
+      </p>
+  </div>`,
+      "clickable": () => {
+        this.addVideo()
+      }
+    },
+    {
+      "content": `<div>
     <p class="sec_title">Text</p>
   </div>`
-  },
-  {
-  "title":"Text",
-  "type":"text",
-  "content":`<div>
+    },
+    {
+      "title": "Text",
+      "type": "text",
+      "content": `<div>
   <p>
       <b>Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
       magna aliqua.
     </p>
 </div>`,
-  "clickable": ()=>{
-    this.addText()
-  }
-},
-{
-  "title":"Heading + text",
-  "type":"text",
-  "content":`<div>
+      "clickable": () => {
+        this.addText()
+      }
+    },
+    {
+      "title": "Heading + text",
+      "type": "text",
+      "content": `<div>
   <h1>Heading + text</h1>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
     magna aliqua.
   </p>
 </div>`,
-  "clickable": ()=>{
-    this.addTextWidthHeader()
-  }
-},
-{
-  "content":`<div>
+      "clickable": () => {
+        this.addTextWidthHeader()
+      }
+    },
+    {
+      "content": `<div>
   <p class="sec_title">Image<\/p>
 </div>`
-},
-{
-  "title":"Text & Image",
-  "type":"text_image_right",
-  "content":`<div>
+    },
+    {
+      "title": "Text & Image",
+      "type": "text_image_right",
+      "content": `<div>
   
   <p class="heading"><b>Text & Image</b></p>
   <div class="flex">
@@ -79,150 +108,150 @@ arrays=[
       </div>
   </div>
 </div>`,
-  "clickable":()=>{
-    this.addTextImage()
-  }
-},
-{
-  "title":"Image Only",
-  "type":"image",
-  "content":`<div>
+      "clickable": () => {
+        this.addTextImage()
+      }
+    },
+    {
+      "title": "Image Only",
+      "type": "image",
+      "content": `<div>
   <p class="heading"><b>Image Only</b></p>
   <div class="item">
     <img class="full-width" src="assets/admin/image_only.png" />
   </div>
 </div>`,
-  "clickable":()=>{
-    this.addImage()
-  }
-},
-{
-  "content":`<div>
+      "clickable": () => {
+        this.addImage()
+      }
+    },
+    {
+      "content": `<div>
   <p class="sec_title">Interactive</p>
 </div>`
-},
-{
-  "title":"Grid",
-  "type":"grid",
-  "content":` <div>
+    },
+    {
+      "title": "Grid",
+      "type": "grid",
+      "content": ` <div>
   <p class="heading"><b>Grid</b></p> 
   <div class="item">
     <img class="full-width" src="assets/Block/grid.png" />
   </div>
 </div>`,
-  "clickable":()=>{
-    this.addGridImageText()
-  }
-},
-{
-  "title":"Tab",
-  "type":"tab",
-  "content":`<div>
+      "clickable": () => {
+        this.addGridImageText()
+      }
+    },
+    {
+      "title": "Tab",
+      "type": "tab",
+      "content": `<div>
   <p class="heading"><b>Tab</b></p> 
   <div class="item">
     <img class="full-width" src="assets/Block/tab.png" />
   </div>
 </div>`,
-  "clickable":()=>{
-    this.addTab()
-  }
-},
-{
-  "title":"Accordion",
-  "type":"accordion",
-  "content":`<div>
+      "clickable": () => {
+        this.addTab()
+      }
+    },
+    {
+      "title": "Accordion",
+      "type": "accordion",
+      "content": `<div>
   <p class="heading"><b>Accordion</b></p> 
   <div class="item">
     <img class="full-width" src="assets/Block/accordion.png" />
   </div>
 </div>`,
-  "clickable":()=>{
-    this.addAccordion()
-  }
-},
-{
-  "title":"Timeline",
-  "type":"timeline",
-  "content":`<div>
+      "clickable": () => {
+        this.addAccordion()
+      }
+    },
+    {
+      "title": "Timeline",
+      "type": "timeline",
+      "content": `<div>
   <p class="heading"><b>Timeline</b></p> 
   <div class="item">
     <img class="full-width" src="assets/Block/timeline.png" />
   </div>
 </div>`,
-  "clickable":()=>{
-    this.addTimeline()
-  }
-},
-{
-  "content":`<div >
+      "clickable": () => {
+        this.addTimeline()
+      }
+    },
+    {
+      "content": `<div >
   <p class="sec_title">List</p>
 </div>`
-},
-{
-  "title":"CheckList",
-  "type":"checklist",
-  "content":`<div>
+    },
+    {
+      "title": "CheckList",
+      "type": "checklist",
+      "content": `<div>
   <p class="heading"><b>CheckList</b></p> 
   <div class="item">
     <img class="full-width" src="assets/Block/checklist.png" />
   </div>
 </div>`,
-  "clickable":()=>{
-    this.addChecklist()
-  }
-},
+      "clickable": () => {
+        this.addChecklist()
+      }
+    },
 
-{
-  "title":"Ordered List",
-  "type":"ordered_list",
-  "content":`<div>
+    {
+      "title": "Ordered List",
+      "type": "ordered_list",
+      "content": `<div>
   <p class="heading"><b>Ordered List</b></p> 
   <div class="item">
     <img class="full-width" src="assets/Block/orderedlist.png" />
   </div>
 </div>`,
-  "clickable":()=>{
-    this.addOrdered_list()
-  }
-},
-{
-  "title":"Unordered List",
-  "type":"unordered_list",
-  "content":`<div>
+      "clickable": () => {
+        this.addOrdered_list()
+      }
+    },
+    {
+      "title": "Unordered List",
+      "type": "unordered_list",
+      "content": `<div>
   <p class="heading"><b>Unordered List</b></p> 
   <div class="item">
     <img class="full-width" src="assets/Block/unorderedlist.png" />
   </div>
 </div>`,
-  "clickable": ()=>{
-    this.addUnordered_list()
-  }
-},
-{
-  "content":`<div >
+      "clickable": () => {
+        this.addUnordered_list()
+      }
+    },
+    {
+      "content": `<div >
   <p class="sec_title">Divider</p>
 </div>`
-},
-{
-  "title":"Divider",
-  "type":"divider",
-  "content":`<div>
+    },
+    {
+      "title": "Divider",
+      "type": "divider",
+      "content": `<div>
   <p class="heading"><b>Divider</b></p> 
   <div class="line">`,
-  "clickable": ()=>{
-    this.addDivider()
-  }
-}
+      "clickable": () => {
+        this.addDivider()
+      }
+    }
 
-]
- 
+  ]
+
 
 
 
   constructor() { }
 
   ngOnInit() {
-   
+
   }
 
   property = {
@@ -231,6 +260,40 @@ arrays=[
     "fullwidth": false,
     "backgroundColor": "#ffffff"
   }
+
+  addAudio() {
+    this.data.push({
+      "type": "audio",
+      "property": {
+        "paddingTop": "50",
+        "paddingBottom": "50",
+        "fullwidth": false,
+        "backgroundColor": "#ffffff"
+      },
+      "autoplay": false,
+      "source": "assets/audio/sample_audio.mp3"
+
+    })
+
+  }
+
+  addVideo() {
+    this.data.push({
+      "type": "video",
+      "property": {
+        "paddingTop": "50",
+        "paddingBottom": "50",
+        "fullwidth": false,
+        "backgroundColor": "#ffffff"
+      },
+      "autoplay": false,
+      "source": "assets/video/video_sample.mp4"
+
+    })
+
+  }
+
+
 
   addText() {
     this.data.push({
@@ -318,7 +381,7 @@ arrays=[
   addTab() {
     this.data.push({
       "type": "tab",
-      
+
       "property": this.property,
       "content": {
         "setting": {
@@ -422,11 +485,11 @@ arrays=[
     this.data.push({
       "type": "checklist",
       "property": {
-      "paddingTop": "30",
-      "paddingBottom": "30",
-      "fullwidth": false,
-      "backgroundColor": "#ffffff"
-  },
+        "paddingTop": "30",
+        "paddingBottom": "30",
+        "fullwidth": false,
+        "backgroundColor": "#ffffff"
+      },
       "data": [
         {
           "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
@@ -451,7 +514,7 @@ arrays=[
         "paddingBottom": "30",
         "fullwidth": false,
         "backgroundColor": "#ffffff"
-    },
+      },
       "data": [
         {
           "text": "Lorem Ipsum  and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. "
@@ -478,7 +541,7 @@ arrays=[
         "paddingBottom": "30",
         "fullwidth": false,
         "backgroundColor": "#ffffff"
-    },
+      },
       "data": [
         {
           "text": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested."
@@ -496,21 +559,21 @@ arrays=[
   }
   addDivider() {
     this.data.push({
-  "type": "divider",
-  "property": {
-      "paddingTop": "30",
-      "paddingBottom": "30",
-      "fullwidth": false,
-      "backgroundColor": "#ffffff"
-  },
-  "data":{
-      "backgroundColor":"red",
-      "height":"4",
-      "paddingTop": "0",
-      "paddingBottom": "0"
-  }
-})
-this.closeEvent.emit();
+      "type": "divider",
+      "property": {
+        "paddingTop": "30",
+        "paddingBottom": "30",
+        "fullwidth": false,
+        "backgroundColor": "#ffffff"
+      },
+      "data": {
+        "backgroundColor": "red",
+        "height": "4",
+        "paddingTop": "0",
+        "paddingBottom": "0"
+      }
+    })
+    this.closeEvent.emit();
   }
 
 }
