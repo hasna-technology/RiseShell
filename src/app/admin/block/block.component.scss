@@ -10,9 +10,15 @@
   border-radius: 5px;
   .heading{
     font-weight:bold;
-    border: 2px solid red;
   }
-  
+  &.section_title{
+    background-color: #003b6d;
+    border: 1px solid #042c4c;
+    color: #fff;
+  }
+}
+.full-width{
+  width: 100%;
 }
 .flex {
   display: flex;

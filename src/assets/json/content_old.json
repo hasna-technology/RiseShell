@@ -65,7 +65,7 @@
                             "paddingBottom" : "50",
                             "fullwidth": false,
                             "backgroundColor": "#ffffff"
-                        },
+                        }
                     }
                 ]
             }
