@@ -1,7 +1,7 @@
 @import '../_variable.scss';
 $menu_width: 280px;
 $admin_panel_width: 450px;
-$page_width: $menu_width + $admin_panel_width;
+$page_width: $menu_width+$admin_panel_width;
 
 .navigation {
   display: flex;
@@ -35,7 +35,7 @@ $page_width: $menu_width + $admin_panel_width;
 }
 
 .menu_title {
-  
+
   padding: 5rem 3rem 1rem 2rem;
   background-color: rgba(0, 0, 0, 0.4);
   background-position: center;
@@ -92,9 +92,9 @@ $page_width: $menu_width + $admin_panel_width;
   transition: all 0.5s ease;
   /*position: fixed;
   overflow: auto;*/
-  
+
   height: 100vh;
-  
+
   &.admin_panel_open {
     /*margin-right: 451px;*/
   }
@@ -230,6 +230,10 @@ $page_width: $menu_width + $admin_panel_width;
       transition: background-color .3s;
       cursor: pointer;
 
+      &.selected {
+        background-color: #efefef;
+      }
+
       .icon {
         color: #aaa;
         position: relative;
@@ -237,7 +241,19 @@ $page_width: $menu_width + $admin_panel_width;
 
       }
 
+      .page_indicator {
+        height: 71px;
+        width: 4px;
+        margin-right: 10px;
 
+        &.selected {
+          background-color: #b6000f;
+        }
+      }
+
+      .status_indicator {
+        margin-right: 1rem;
+      }
 
       .text {
         flex: 1;
@@ -250,10 +266,6 @@ $page_width: $menu_width + $admin_panel_width;
         text-decoration: none;
         color: #313537;
       }
-
-
     }
   }
 }
-
-

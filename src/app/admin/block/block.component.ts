@@ -1,36 +1,27 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-block',
   templateUrl: './block.component.html',
-  styleUrls: ['./block.component.scss']
+  styleUrls: ['./block.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class BlockComponent implements OnInit {
 
   @Input() data;
   @Output() closeEvent = new EventEmitter<string>();
 
-  listoftypes = [
-    'text',
-    'image',
-    'text_image_right',
-    'grid',
-    'tab',
-    'accordion',
-    'timeline',
-    'checklist',
-    'ordered_list',
-    'unordered_list',
-    'divider',
-  ]
+  
   arrays = [
     {
+      "type": "heading",
       "content": `<div>
-    <p class="sec_title">Media</p>
-  </div>`
+                    <p class="sec_title">Media</p>
+                  </div>`
     },
     {
       "title": "Audio",
+      "grouptype": "Media",
       "type": "audio",
       "content": `<div>
     <p>
@@ -43,6 +34,7 @@ export class BlockComponent implements OnInit {
     },
     {
       "title": "Video",
+      "grouptype": "Media",
       "type": "video",
       "content": `<div>
     <p>
@@ -54,9 +46,10 @@ export class BlockComponent implements OnInit {
       }
     },
     {
+      "type": "heading",
       "content": `<div>
-    <p class="sec_title">Text</p>
-  </div>`
+                    <p class="sec_title">Text</p>
+                  </div>`
     },
     {
       "title": "Text",
@@ -86,6 +79,7 @@ export class BlockComponent implements OnInit {
       }
     },
     {
+      "type": "heading",
       "content": `<div>
   <p class="sec_title">Image<\/p>
 </div>`
@@ -126,12 +120,14 @@ export class BlockComponent implements OnInit {
       }
     },
     {
+      "type": "heading",
       "content": `<div>
   <p class="sec_title">Interactive</p>
 </div>`
     },
     {
       "title": "Grid",
+      "grouptype": "Interactive",
       "type": "grid",
       "content": ` <div>
   <p class="heading"><b>Grid</b></p> 
@@ -145,6 +141,7 @@ export class BlockComponent implements OnInit {
     },
     {
       "title": "Tab",
+      "grouptype": "Interactive",
       "type": "tab",
       "content": `<div>
   <p class="heading"><b>Tab</b></p> 
@@ -158,6 +155,7 @@ export class BlockComponent implements OnInit {
     },
     {
       "title": "Accordion",
+      "grouptype": "Interactive",
       "type": "accordion",
       "content": `<div>
   <p class="heading"><b>Accordion</b></p> 
@@ -171,6 +169,7 @@ export class BlockComponent implements OnInit {
     },
     {
       "title": "Timeline",
+      "grouptype": "Interactive",
       "type": "timeline",
       "content": `<div>
   <p class="heading"><b>Timeline</b></p> 
@@ -183,6 +182,7 @@ export class BlockComponent implements OnInit {
       }
     },
     {
+      "type": "heading",
       "content": `<div >
   <p class="sec_title">List</p>
 </div>`
@@ -228,6 +228,7 @@ export class BlockComponent implements OnInit {
       }
     },
     {
+      "type": "heading",
       "content": `<div >
   <p class="sec_title">Divider</p>
 </div>`

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../service/main.service.js';
-import localdata from '../../data/en/content.json';
+//import localdata from '../../data/en/content.json';
 import { trigger, sequence, keyframes, state, style, animate, transition } from '@angular/animations';
 import { environment } from 'src/environments/environment';
 
@@ -53,39 +53,40 @@ import { environment } from 'src/environments/environment';
 //@HostListener('window:resize', ['$event'])
 export class PageComponent implements OnInit {
 
-  onResize(event){
+  onResize(event) {
     //console.log(event.target.innerWidth); // window width
-    if(event.target.innerWidth < 980){
+    if (event.target.innerWidth < 980) {
       this.menu_close = true;
     }
   }
-
+  admin;
   lesson_no;
   //page_no; 
   content; course; page; common_text;
-  menu_close = true;
+  menu_close = false;
   admin_panel = true;
   currentState;
   course_id;
+  currentNumber; prevString; nextString;
+
   constructor(public route: ActivatedRoute, private service: MainService, private router: Router) {
     this.init();
-
-    if (environment.production == true) {
-      this.route.queryParams.subscribe(params => {
-        this.course_id = params['id'];
-        this.loadcourse(this.course_id)
-      });
-    } else {
-      this.loadcourse(1)
-    }
+    this.admin = environment.admin;
   }
-  loadcourse(course_id){
-    console.log("page course_id", course_id);
+
+  loadcourse(course_id) {
+    console.log("course_id = " + course_id);
     this.service.load_course(course_id).subscribe(
       res => {
-        //console.log(res);
-        this.service.setPath(res.data.filename);
-        this.service.setData(JSON.parse(res.data.json));
+        if (environment.production == true) {
+          this.service.setPath(res.data.filename);
+          this.service.setData(JSON.parse(res.data.json));
+          console.log("app component course is loaded from course id " + course_id);
+        } else {
+          console.log("app component course is loaded from local assets/json/content.json");
+          this.service.setPath("assets/json/content.json");
+          this.service.setData(res);
+        }
         this.init();
       },
       err => {
@@ -93,16 +94,21 @@ export class PageComponent implements OnInit {
       }
     )
   }
+
   init() {
     this.route.paramMap.subscribe(params => {
+
+      console.log("environment.production = " + environment.production);
+      this.course_id = params.get('id');
+      if (!environment.production){
+        this.course_id = 1
+      }
+      this.service.setCourseID(this.course_id);
+      console.log("From page ", this.service);
+      //this.loadcourse(this.course_id)
+
       var data = this.service.getData();
-      
-      /* comment below 2 lines for loading data from server*/
-      this.service.setData(localdata);
-       data = this.service.getData();
 
-
-      //console.log("init", data);
       if (data != undefined) {
         this.lesson_no = params.get('i');
         //this.page_no = params.get('j');
@@ -110,47 +116,45 @@ export class PageComponent implements OnInit {
         this.content = this.service.getData();
         this.common_text = this.service.getData().common_text;
         this.page = this.service.getData().course[this.lesson_no];
-      
+
         if (this.ngOnInit)
-          this.ngOnInit()
+          this.ngOnInit() 
       } else {
-     
-        setTimeout( ()=>{
-          // var filename = this.service.getFilename();
-          // this.service.loadJson().subscribe(
-          //   res => {
-              
-          //     this.service.setData(JSON.parse(res.data.json));
-          //     data = this.service.getData();
-          //     this.init();
-          //   },
-          //   err => {
-          //     console.log(err);
-          //   }
-          // )
+
+        setTimeout(() => {
           this.loadcourse(this.course_id);
-        }, 5000)
-        
+        }, 1000)
+
       }
 
     });
     //this.onResize();
   }
-  currentNumber; prevString; nextString;
+
+  ngOnInit() {
+    if (this.course != undefined) {
+      this.prevString = (Number(this.lesson_no) - 1)
+      this.nextString = (Number(this.lesson_no) + 1);
+      this.currentNumber = this.service.getPage(this.lesson_no)
+    }
+
+  }
+
+ 
 
   ngDoCheck(): void {
     this.service.doCheck();
-   
+
   }
 
   prev() {
     this.currentState = "top_bottom"
-    this.router.navigate(['page/' + this.prevString]);
+    this.router.navigate(['c/'+ this.course_id +'/p/' + this.prevString]);
   }
   sequence;
   next() {
     this.currentState = 'bottom_top';
-    this.router.navigate(['page/' + this.nextString]);
+    this.router.navigate(['c/'+ this.course_id +'/p/' + this.nextString]);
   }
 
   goto(i) {
@@ -164,17 +168,10 @@ export class PageComponent implements OnInit {
       this.currentState = 'bottom_top';
 
     }
-    this.router.navigate(['page/' + i]);
+    this.router.navigate(['c/'+ this.course_id +'/p/' + i]);
   }
 
-  ngOnInit() {
-    if (this.course != undefined) {
-      this.prevString = (Number(this.lesson_no) - 1)
-      this.nextString = (Number(this.lesson_no) + 1);
-      this.currentNumber = this.service.getPage(this.lesson_no)
-    }
 
-  }
   animEnd(event) {
     var menu_icon = document.getElementById('menu_icon');
     document.body.scrollTop = menu_icon.offsetTop;

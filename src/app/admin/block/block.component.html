@@ -1,10 +1,7 @@
 <input type="text" class="input1" placeholder="search..." [(ngModel)]="searchValue">
-<div *ngFor="let type of this.arrays | search : searchValue" >
-
-  <div class="block"  [innerHtml]="type.content" (click)="type.clickable()" ></div>
-
-
-
+<div *ngFor="let block of this.arrays | search : searchValue">
+  <div class="" *ngIf="block.type == 'heading'" [innerHtml]="block.content"></div>
+  <div class="block" *ngIf="block.type != 'heading'" [innerHtml]="block.content" (click)="block.clickable()"></div>
 </div>
 
 <!--<div *ngIf="type=='text'">
@@ -108,4 +105,3 @@
     <p class="heading">Divider</p> 
     <div class="line">
     -->
-

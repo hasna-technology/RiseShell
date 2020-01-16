@@ -8,7 +8,7 @@
     <input type="file" accept=".mp3,audio/*" #file class="hidden" (change)="onFileSelect($event)" />
 
     <div class="group">
-      <input type="text" [(ngModel)]="item.source" class="full-width">
+      <input disabled type="text" [(ngModel)]="item.source" class="full-width">
       <button (click)="file.click()">Browse</button>
     </div>
   </div>
@@ -18,7 +18,7 @@
     <input type="file" accept=".mp4,video/*" #file class="hidden" (change)="onFileSelect($event)" />
 
     <div class="group">
-      <input type="text" [(ngModel)]="item.source" class="full-width">
+      <input disabled type="text" [(ngModel)]="item.source" class="full-width">
       <button (click)="file.click()">Browse</button>
     </div>
   </div>

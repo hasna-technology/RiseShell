@@ -4,9 +4,11 @@
 
 export const environment = {
   //apiUrl: "http://localhost/CI_Upload/index.php/",
-  //apiUrl: "http://192.168.1.6/CI_Upload/index.php/",
-  apiUrl: "http://192.168.1.2/course/",
-  production: false 
+  apiUrl: "http://192.168.1.6/course/",
+  //apiUrl: "http://192.168.1.2/course/",
+  admin:true,
+  production: true ,
+ 
 };
 
 /*

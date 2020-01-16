@@ -38,6 +38,12 @@ export class AdminPageComponent implements OnInit {
         "block": [
           {
             "type": "text",
+            "property" : {
+              "paddingTop" : "50",
+              "paddingBottom" : "50",
+              "fullwidth": false,
+              "backgroundColor": "#ffffff"
+             },
             "content": "<p>AK-<span style='color: rgb(107, 36, 178);'>CC55 </span>Case <span style='background-color: rgb(230, 0, 0);'>Controller </span>system view is a connection that consists of case controllers (AK-CC55 Compact, Single Coil, Single Coil UI and Multi Coil), displays (AK-UI Bluetooth, Set and Info), KoolProg and the Connect App.</p>"
           },
         ]

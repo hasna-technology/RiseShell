@@ -36,6 +36,9 @@ import { DropdownComponent } from './component/dropdown/dropdown.component';
 import { BulletComponent } from './admin/bullet/bullet.component';
 import { SearchPipe } from './admin/search.pipe';
 import { PagePropertyComponent } from './admin/page-property/page-property.component';
+import { MainService } from './service/main.service';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
 import { DividerComponent } from './component/divider/divider.component';
 import { DivideComponent } from './admin/divide/divide.component';
 
@@ -67,6 +70,9 @@ import { DivideComponent } from './admin/divide/divide.component';
     TimelineComponent,
     DropdownComponent,
     BulletComponent,
+    PagePropertyComponent,
+    NotFoundComponent,
+    HomeComponent,
     SearchPipe,
     PagePropertyComponent,
     DividerComponent,
@@ -111,7 +117,7 @@ import { DivideComponent } from './admin/divide/divide.component';
       }
     })
   ],
-  providers: [],
+  providers: [MainService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

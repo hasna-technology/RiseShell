@@ -3,7 +3,7 @@
     <label class="label">Course Title</label>
   </div>
   <div>
-    <input class="input" type="text" [(ngModel)]="data.settings.title">
+    <input class="input" type="text" [(ngModel)]="data.settings.title" (ngModelChange)="changeTitle()">
   </div>
   <div>
     <label class="label">Description</label>

@@ -1,4 +1,7 @@
-<!-- <div class="text" [innerHTML]="value.content"></div> -->
+<ng-container *ngIf="admin == true">
+  <quill-editor [(ngModel)]="value" theme="bubble"></quill-editor>
+</ng-container>
 
-<quill-editor [(ngModel)]="value" theme="bubble"></quill-editor>
-
+<ng-container *ngIf="admin != true">
+  <div class="text ql-editor" [innerHTML]="value"></div>
+</ng-container>

@@ -8,14 +8,14 @@
     <img src="{{value.image}}" alt="">
   </div>
   <div class="text">
-    <quill-editor [(ngModel)]="value.content" theme="bubble"></quill-editor>
+    <app-text [(value)]="value.content"></app-text>
   </div>
 
 </div>
 
 <div class="text_image" *ngIf="value.type == 'text_image_right'">
   <div class="text">
-    <quill-editor [(ngModel)]="value.content" theme="bubble"></quill-editor>
+    <app-text [(value)]="value.content"></app-text>
   </div>
   <div class="image">
     <img src="{{value.image}}" alt="">
@@ -24,7 +24,7 @@
 </div>
 
 <div class="" *ngIf="value.type == 'text_image_bottom'">
-  <quill-editor [(ngModel)]="value.content" theme="bubble"></quill-editor>
+  <app-text [(value)]="value.content"></app-text>
   <div class="image">
     <img src="{{value.image}}" alt="">
   </div>
@@ -36,5 +36,5 @@
   <div class="image">
     <img src="{{value.image}}" alt="">
   </div>
-  <quill-editor [(ngModel)]="value.content" theme="bubble"></quill-editor>
+  <app-text [(value)]="value.content"></app-text>
 </div>

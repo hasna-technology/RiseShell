@@ -1,0 +1,32 @@
+{
+    "settings": {
+        "title": "Course Title",
+        "description": "",
+        "image": ""
+    },
+    "common_text": {
+        "lesson": "Lesson",
+        "start_course": "Start Course",
+        "details": "Details"
+    },
+    "course": [
+        {
+            "title": "Page 1",
+            "header": false,
+            "page": {
+                "block": [
+                    {
+                        "type": "text",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+                    }
+                ]
+            }
+        }
+    ]
+}
