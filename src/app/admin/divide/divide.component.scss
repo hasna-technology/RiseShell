@@ -1,0 +1,14 @@
+.label{width: 100%;
+font-size: 1rem;
+text-transform: uppercase;
+color: #aaaaaa
+}
+.input{
+  font-family: "Roboto";
+  font-size: 1.4rem;
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  margin-right: -1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

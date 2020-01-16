@@ -98,7 +98,7 @@
               <label class="label">Content</label>
             </div>
             <div>
-              <quill-editor [(ngModel)]="selectedBlock.title" theme="snow"></quill-editor>
+              <quill-editor [(ngModel)]="selectedBlock.content" theme="snow"></quill-editor>
             </div>
             <div>
               <label class="label">Image</label>
@@ -110,13 +110,16 @@
 
           <!-- Grid Image block -->
           <admin-grid [data]="selectedBlock"
-            *ngIf="selectedBlock.type == 'grid_image_text' || selectedBlock.type == 'accordion' || selectedBlock.type == 'tab_image_text' || selectedBlock.type == 'timeline'">
+            *ngIf="selectedBlock.type == 'grid' || selectedBlock.type == 'accordion' || selectedBlock.type == 'tab' || selectedBlock.type == 'timeline'">
           </admin-grid>
 
           <!--Bullet Block-->
           <app-bullet [data]="selectedBlock"
             *ngIf="selectedBlock.type == 'checklist' || selectedBlock.type == 'ordered_list' || selectedBlock.type == 'unordered_list'">
           </app-bullet>
+          <!-- Divider block -->
+          <app-divide [data]="selectedBlock" *ngIf="selectedBlock.type == 'divider'">
+          </app-divide>
 
         </div>
 

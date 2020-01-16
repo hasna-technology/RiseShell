@@ -6,13 +6,13 @@
 
   <div [className]="menu_close ? 'menu close' : 'menu'">
 
-    <div class="menu_title">
+    <div class="menu_title" [style.backgroundImage]="'url('+ content.settings.image +')'">
       <a class="noline" routerLink="/">
-        <div class="menu_header">
+        <div class="menu_header" >
           {{this.content.settings.title}}
         </div>
         <div class="course_progress">
-          <div class="progress">
+          <div class="progress"> 
             <div class="value" [style.width.%]="this.service.getProgress()">
 
             </div>
@@ -108,14 +108,14 @@
               *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' || item.type == 'text_image_top' || item.type == 'text_image_bottom' "
               [value]="item"></app-text-image>
 
-            <!-- Gird Component -->
-            <app-grid-image-text *ngIf="item.type == 'grid_image_text'" [value]="item"></app-grid-image-text>
+          <!-- Gird Component -->
+          <app-grid-image-text *ngIf="item.type == 'grid'" [value]="item"></app-grid-image-text>
 
-            <!-- Tab Component -->
-            <app-tab-image-text *ngIf="item.type == 'tab_image_text'" [value]="item"></app-tab-image-text>
-
-            <!-- Accordion Component -->
-            <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
+          <!-- Tab Component -->
+          <app-tab-image-text *ngIf="item.type == 'tab'" [value]="item"></app-tab-image-text>
+          
+          <!-- Accordion Component -->
+          <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
 
             <!-- Timeline Component -->
             <app-timeline *ngIf="item.type == 'timeline'" [value]="item"></app-timeline>
@@ -127,9 +127,12 @@
             <app-video *ngIf="item.type == 'video'" [value]="item"></app-video>
 
             <!-- bullets component -->
-            <app-bullets
-              *ngIf="item.type == 'checklist' || item.type == 'ordered_list' || item.type == 'unordered_list'"
+            <app-bullets *ngIf="item.type == 'checklist' || item.type == 'ordered_list' || item.type == 'unordered_list'"
               [value]="item"></app-bullets>
+
+            <!-- Divider Component -->
+            <app-divider *ngIf="item.type == 'divider'" [value]="item"></app-divider>
+
 
           </div>
         </div>

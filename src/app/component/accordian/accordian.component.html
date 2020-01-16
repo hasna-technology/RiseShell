@@ -1,7 +1,5 @@
 <div class="row accordion">
-  <div class="item" [ngClass]="{'selected': selectedtab == i}"
-    *ngFor="let data of this.value.content.data; let i = index"
-    id="{{'item'+i}}">
+  <div class="item" *ngFor="let data of this.value.content.data; let i = index">
     <div class="title">
       <div class="text">
         {{data.title}}

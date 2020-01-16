@@ -1,0 +1,35 @@
+
+
+<div class="setting" *ngIf="data != undefined">
+    <div>
+      <label class="label">Padding Top</label>
+    </div>
+    <div>
+      <input class="input" type="number" max="100" min="0" [(ngModel)]="data.data.paddingTop">
+    </div>
+    <div>
+      <label class="label">Padding Bottom</label>
+    </div>
+    <div>
+      <input class="input" type="number" max="100" min="0" [(ngModel)]="data.data.paddingBottom">
+    </div>
+    <div>
+      <label class="label">Backgournd Color</label>
+    </div>
+    <div>
+      <input class="input" type="color" [(ngModel)]="data.data.backgroundColor">
+    </div>
+    <div>
+        <label class="label">Height</label>
+      </div>
+      <div>
+        <input class="input" type="number" [(ngModel)]="data.data.height">
+      </div>
+    
+    <div>
+      <label class="label">Full width</label>
+    </div>
+    <div>
+      <input type="checkbox" [(ngModel)]="data.property.fullwidth"> Full Width
+    </div>
+  </div>

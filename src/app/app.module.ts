@@ -34,10 +34,16 @@ import { TimelineComponent } from './component/timeline/timeline.component';
 
 import { DropdownComponent } from './component/dropdown/dropdown.component';
 import { BulletComponent } from './admin/bullet/bullet.component';
+import { SearchPipe } from './admin/search.pipe';
 import { PagePropertyComponent } from './admin/page-property/page-property.component';
+<<<<<<< HEAD
 import { MainService } from './service/main.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
+=======
+import { DividerComponent } from './component/divider/divider.component';
+import { DivideComponent } from './admin/divide/divide.component';
+>>>>>>> bf82cef9104fd64d27408d55850e49e05c26de7a
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
@@ -67,9 +73,16 @@ import { HomeComponent } from './home/home.component';
     TimelineComponent,
     DropdownComponent,
     BulletComponent,
+<<<<<<< HEAD
     PagePropertyComponent,
     NotFoundComponent,
     HomeComponent
+=======
+    SearchPipe,
+    PagePropertyComponent,
+    DividerComponent,
+    DivideComponent
+>>>>>>> bf82cef9104fd64d27408d55850e49e05c26de7a
     
   ],
   imports: [
