@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import data from '../../data/en/content.json';
+import { MainService } from '../service/main.service';
 
 @Component({
   selector: 'app-overview',
@@ -9,12 +9,14 @@ import data from '../../data/en/content.json';
 export class OverviewComponent implements OnInit {
 
   content;
-  constructor() {
+  course_id;
+  constructor(public service:MainService) {
 
   }
 
   ngOnInit() {
-     this.content = data;  
+     this.content = this.service.getData();  
+     this.course_id = this.service.getCourseId();
   }
 
 }

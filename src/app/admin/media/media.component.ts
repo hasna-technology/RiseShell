@@ -51,9 +51,9 @@ export class MediaComponent implements OnInit {
     console.log(event.target.files)
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      console.log(file);
       this.form.get(_fileasset).setValue(file);
       const formData = new FormData();
+      formData.append('course_id', this.service.getCourseId());
       formData.append(_fileasset, this.form.get(_fileasset).value);
       this.httpClient.post<any>(this.SERVER_URL, formData, {
         reportProgress: true,

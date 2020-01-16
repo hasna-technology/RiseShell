@@ -1,6 +1,8 @@
 <div class="main" *ngIf="page">
 
-  <admin-panel [data]="this.content" [selectedPage]="page"></admin-panel>
+  <ng-container *ngIf="admin">
+      <admin-panel [data]="this.content" [selectedPage]="page"></admin-panel>
+  </ng-container>
 
   <div [className]="menu_close ? 'menu close' : 'menu'">
 
@@ -25,27 +27,17 @@
         <div class="section" *ngIf="item.header == true">
           <section>
             <div class="sec_title">{{item.title}}</div>
-            <!-- <ul>
-              <li *ngFor="let list of item.children; let j = index">
-                <a class="link" (click)="goto(i, j)">
-                  <div class="icon">
-                    <mat-icon> notes</mat-icon>
-                  </div>
-                  <div class="text">{{list.title}}</div>
-                  <div class="status_indicator"></div>
-                </a>
-              </li>
-            </ul> -->
           </section>
         </div>
 
         <div class="section" *ngIf="item.header != true">
-          <a class="link" (click)="goto(i)">
+          <a class="link" (click)="goto(i)" [ngClass]="{'selected': this.lesson_no  == i}">
+            <div class="page_indicator" [ngClass]="{'selected': this.lesson_no  == i}"></div>
             <div class="icon">
               <mat-icon> notes</mat-icon>
             </div>
             <div class="text">{{item.title}}</div>
-            <div class="status_indicator"></div>
+            <div class="status_indicator"><mat-icon class="brand-color" *ngIf="this.service.getPageCompleted(i)">check_circle</mat-icon></div>
           </a>
         </div>
       </li>

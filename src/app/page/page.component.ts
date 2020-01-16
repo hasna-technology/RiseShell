@@ -59,39 +59,33 @@ export class PageComponent implements OnInit {
       this.menu_close = true;
     }
   }
-
+  admin;
   lesson_no;
   //page_no; 
   content; course; page; common_text;
-  menu_close = true;
+  menu_close = false;
   admin_panel = true;
   currentState;
   course_id;
+  currentNumber; prevString; nextString;
+
   constructor(public route: ActivatedRoute, private service: MainService, private router: Router) {
     this.init();
-
-    if (environment.production == true) {
-      this.route.queryParams.subscribe(params => {
-        this.course_id = params['id'];
-        this.loadcourse(this.course_id)
-      });
-    } else {
-      this.loadcourse(1)
-    }
-
+    this.admin = environment.admin;
   }
+
   loadcourse(course_id) {
-    
+    console.log("course_id = " + course_id);
     this.service.load_course(course_id).subscribe(
       res => {
-        
-        if(environment.production == true){
+        if (environment.production == true) {
           this.service.setPath(res.data.filename);
           this.service.setData(JSON.parse(res.data.json));
-        }else{
+          console.log("app component course is loaded from course id " + course_id);
+        } else {
+          console.log("app component course is loaded from local assets/json/content.json");
           this.service.setPath("assets/json/content.json");
           this.service.setData(res);
-          console.log("service subscribe ", this);
         }
         this.init();
       },
@@ -100,9 +94,19 @@ export class PageComponent implements OnInit {
       }
     )
   }
-  
+
   init() {
     this.route.paramMap.subscribe(params => {
+
+      console.log("environment.production = " + environment.production);
+      this.course_id = params.get('id');
+      if (!environment.production){
+        this.course_id = 1
+      }
+      this.service.setCourseID(this.course_id);
+      console.log("From page ", this.service);
+      //this.loadcourse(this.course_id)
+
       var data = this.service.getData();
 
       if (data != undefined) {
@@ -114,19 +118,29 @@ export class PageComponent implements OnInit {
         this.page = this.service.getData().course[this.lesson_no];
 
         if (this.ngOnInit)
-          this.ngOnInit()
+          this.ngOnInit() 
       } else {
 
         setTimeout(() => {
           this.loadcourse(this.course_id);
-        }, 5000)
+        }, 1000)
 
       }
 
     });
     //this.onResize();
   }
-  currentNumber; prevString; nextString;
+
+  ngOnInit() {
+    if (this.course != undefined) {
+      this.prevString = (Number(this.lesson_no) - 1)
+      this.nextString = (Number(this.lesson_no) + 1);
+      this.currentNumber = this.service.getPage(this.lesson_no)
+    }
+
+  }
+
+ 
 
   ngDoCheck(): void {
     this.service.doCheck();
@@ -135,12 +149,12 @@ export class PageComponent implements OnInit {
 
   prev() {
     this.currentState = "top_bottom"
-    this.router.navigate(['page/' + this.prevString]);
+    this.router.navigate(['c/'+ this.course_id +'/p/' + this.prevString]);
   }
   sequence;
   next() {
     this.currentState = 'bottom_top';
-    this.router.navigate(['page/' + this.nextString]);
+    this.router.navigate(['c/'+ this.course_id +'/p/' + this.nextString]);
   }
 
   goto(i) {
@@ -154,17 +168,10 @@ export class PageComponent implements OnInit {
       this.currentState = 'bottom_top';
 
     }
-    this.router.navigate(['page/' + i]);
+    this.router.navigate(['c/'+ this.course_id +'/p/' + i]);
   }
 
-  ngOnInit() {
-    if (this.course != undefined) {
-      this.prevString = (Number(this.lesson_no) - 1)
-      this.nextString = (Number(this.lesson_no) + 1);
-      this.currentNumber = this.service.getPage(this.lesson_no)
-    }
 
-  }
   animEnd(event) {
     var menu_icon = document.getElementById('menu_icon');
     document.body.scrollTop = menu_icon.offsetTop;

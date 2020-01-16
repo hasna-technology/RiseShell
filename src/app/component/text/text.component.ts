@@ -1,4 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -11,9 +12,12 @@ export class TextComponent implements OnInit {
   @Input() value;
 
   constructor() {
+    this.admin = environment.admin;
   }
 
+  admin;
   ngOnInit() {
+    
   }
 
 }

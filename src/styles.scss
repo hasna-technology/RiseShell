@@ -4,6 +4,9 @@
 
 $_fontname : 'Roboto';
 $_font_black: #313537;
+
+@import "app/variable";
+
 html{
     font-size: 62.5%;
 }
@@ -49,7 +52,7 @@ a.noline{
 }
 
 .menu ul li{
-    margin-top: 1.4rem;
+    /*margin-top: 1.4rem;*/
 }
 
 
@@ -82,4 +85,7 @@ a.noline{
 
 .flex1{
     flex: 1;
+}
+.brand-color{
+    color:$brand_color;
 }

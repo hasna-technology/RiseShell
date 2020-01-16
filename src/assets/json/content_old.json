@@ -52,15 +52,22 @@
             }
         },
         {
-            "title": "AK-CC55 CONNECT APP",
-            "property" : {
-                "paddingTop" : "50",
-                "paddingBottom" : "50",
-                "fullwidth": false,
-                "backgroundColor": "#ffffff"
-            },
+            "title": "AK-CC55 CONNECT APP - Header",
             "header": true,
-            "level": 1
+            "level": 1,
+            "page": {
+                "block": [
+                    {
+                        "type": "accordion",
+                        "property" : {
+                            "paddingTop" : "50",
+                            "paddingBottom" : "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                    }
+                ]
+            }
         },
         {
             "title": "AK-CC55 Connect app",

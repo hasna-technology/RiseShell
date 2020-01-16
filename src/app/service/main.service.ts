@@ -1,5 +1,4 @@
-import { Injectable, KeyValueDiffer, KeyValueDiffers, KeyValueChanges } from '@angular/core';
-
+import { Injectable} from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { RequestMethod } from "@angular/http";
@@ -9,14 +8,11 @@ import { RequestMethod } from "@angular/http";
 })
 
 export class MainService {
-  filename: any;
-  
-  
 
+  filename: any;
   baseUrl = environment.apiUrl;
-  
   //set the below boolean to true to save the files in server
-  startSaving  = false;
+  startSaving = true;
 
   json;
   prevData;
@@ -28,14 +24,13 @@ export class MainService {
     var jsonValue = this.jsonEqual(this.prevData, this.json);
     if (jsonValue == false) {
       this.prevData = JSON.parse(JSON.stringify(this.json));
-      console.log("prevData Changed");
       this.save();
     }
   }
   setPath(filename: any) {
     this.filename = filename;
   }
-  
+
   jsonEqual(a, b) {
 
     //console.log(JSON.stringify(a)+" === "+JSON.stringify(b));
@@ -43,20 +38,16 @@ export class MainService {
   }
   loadJson() {
     return this.request("File/load/content.json", RequestMethod.Get);
-
-    /*.subscribe(
-      res => {
-       this.json = JSON.parse(res.data);
-        this.startSaving = true;
-      }, err => {
-        console.error(err.message);
-      });*/
   }
 
   load_course(course_id: number) {
-    if(environment.production == true){
-      return this.request("File/load_course/"+course_id, RequestMethod.Get);
-    }else {
+
+    if (environment.production == true) {
+      if (course_id == undefined)
+        return;
+
+      return this.request("File/load_course/" + course_id, RequestMethod.Get);
+    } else {
       return this.http.get<any>("assets/json/content.json");
     }
   }
@@ -75,7 +66,7 @@ export class MainService {
   }
   setData(d) {
     this.json = d;
-    console.log("setData = ", this.json)
+    //console.log("setData = ", this.json)
   }
   getData(): any {
     return this.json;
@@ -85,15 +76,57 @@ export class MainService {
 
   save() {
     if (this.saving == false && this.startSaving == true) {
+      console.log("Saving data...");
       this.saving = true;
-      this.request("File/save", RequestMethod.Post, JSON.stringify(this.json)).subscribe(
+      this.request("File/save/"+this.course_id, RequestMethod.Post, JSON.stringify(this.json)).subscribe(
         res => {
-          console.log(res);
+          console.log("Saved...");
           this.saving = false
         }, err => {
           console.error(err.message);
           this.saving = false
         });
+    }
+  }
+
+  course_id;
+
+  setCourseID(id) {
+    this.course_id = id;
+    console.log("course id is set to ", this.course_id);
+  }
+
+  getCourseId(): any {
+    return this.course_id;
+  }
+
+  getCourseTitle() {
+    if (this.course_id != undefined) {
+      this.request("course/get_title/" + this.course_id, RequestMethod.Get).subscribe(
+        res => {
+          console.log("get title = " + res);
+        }, err => {
+          console.error(err.message);
+        });
+    }
+    else {
+      console.log("course id is undefined");
+    }
+  }
+
+  setCourseTitle(title) {
+    if (this.course_id != undefined) {
+      const formData = new FormData();
+      formData.append('title', title);
+      this.request("data/set_title/" + this.course_id, RequestMethod.Post, formData).subscribe(
+        res => {
+          console.log("get title = " + res);
+        }, err => {
+          console.error(err.message);
+        });
+    }
+    else {
+      console.log("course id is undefined");
     }
   }
 
@@ -104,6 +137,11 @@ export class MainService {
     return index;
   }
 
+  getPageCompleted(lessonNo){
+      var count = this.json.course.filter(s => s.header == true && this.json.course.indexOf(s) < lessonNo).length;
+      var index = Number(lessonNo) + 1 - count;
+      return this.progArr[index - 1];
+  }
 
   prevPage(lessonNo, pageNo) {
     lessonNo = Number(lessonNo);
@@ -134,7 +172,6 @@ export class MainService {
 
   progArr;
   getProgress() {
-
     return Math.floor(this.progArr.filter(s => s == true).length / this.getTotalPage() * 100);
   }
 

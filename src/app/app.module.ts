@@ -35,6 +35,9 @@ import { TimelineComponent } from './component/timeline/timeline.component';
 import { DropdownComponent } from './component/dropdown/dropdown.component';
 import { BulletComponent } from './admin/bullet/bullet.component';
 import { PagePropertyComponent } from './admin/page-property/page-property.component';
+import { MainService } from './service/main.service';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
@@ -64,7 +67,9 @@ import { PagePropertyComponent } from './admin/page-property/page-property.compo
     TimelineComponent,
     DropdownComponent,
     BulletComponent,
-    PagePropertyComponent
+    PagePropertyComponent,
+    NotFoundComponent,
+    HomeComponent
     
   ],
   imports: [
@@ -105,7 +110,7 @@ import { PagePropertyComponent } from './admin/page-property/page-property.compo
       }
     })
   ],
-  providers: [],
+  providers: [MainService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

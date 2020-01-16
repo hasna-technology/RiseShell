@@ -10,9 +10,14 @@ export class SettingsComponent implements OnInit {
 
   @Input() data;
 
-  constructor(private service: MainService) { }
+  constructor(public service: MainService) {
+    console.log("From admin settings ", this.service);
+   }
 
   ngOnInit() {
   }
-
+  changeTitle(){
+    
+    this.service.setCourseTitle(this.data.settings.title);
+  }
 }
