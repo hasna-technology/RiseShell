@@ -4,7 +4,7 @@
 
 <!-- <input type="text" [(ngModel)]="selectedPage.title" (ngModelChange)="doSomething($event)" /> -->
 
-<div class="admin_panel" [@changeState]="adminPanelState">
+<div class="admin_panel" [@changeState]="adminPanelState" *ngIf="selectedPage">
   <div class="admin">
     <header>
       <div class="left">

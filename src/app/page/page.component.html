@@ -8,7 +8,7 @@
     <!--Menu Start-->
     <div [className]="menu_close ? 'menu close' : 'menu'">
       <div class="menu_title" [style.backgroundImage]="'url('+ content.settings.image +')'">
-        <a class="noline" routerLink="/">
+        <a class="noline" routerLink="/" queryParamsHandling="merge">
           <div class="menu_header">
             {{this.content.settings.title}}
           </div>
@@ -101,8 +101,8 @@
         <!-- Place the content type here-->
 
         <div class="" *ngIf="this.page.page != undefined">
-          <div *ngFor="let item of this.page.page.block; let i = index"
-            [ngClass]="{'content': item.property.fullwidth != true}"
+          <div *ngFor="let item of this.page.page.block; let i = index" class="content"
+            [ngClass]="{'maxWidth' : item.property.fullwidth == true}"
             [style.backgroundColor]="item.property.backgroundColor" [style.paddingTop]="item.property.paddingTop+'px'"
             [style.paddingBottom]="item.property.paddingBottom+'px'">
 
@@ -145,19 +145,19 @@
             </div>
           </div>
         </div>
-        <!-- content type end-->
-        <div class="navigation grey-bg align-center" *ngIf="nextString != course.length">
-          <div>
 
-            <div class="cursor" (click)="next()">
-              {{this.common_text.lesson}} {{currentNumber + 1}} - {{this.service.getLessonName(nextString)}}
-            </div>
-          </div>
-          <mat-icon>keyboard_arrow_down</mat-icon>
-        </div>
+        <!-- content type end-->
 
       </div>
 
+      <div class="navigation grey-bg align-center" *ngIf="nextString != course.length">
+        <div>
+          <div class="cursor" (click)="next()">
+            {{this.common_text.lesson}} {{currentNumber + 1}} - {{this.service.getLessonName(nextString)}}
+          </div>
+        </div>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </div>
     </div>
     <!-- Page End-->
   </div>

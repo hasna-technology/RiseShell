@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-page',
- 
+
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.scss'],
   animations: [
@@ -50,18 +50,8 @@ import { environment } from 'src/environments/environment';
     '(window:resize)': 'onResize($event)'
   }
 })
-//@HostListener('window:resize', ['$event'])
-
 export class PageComponent implements OnInit {
 
-  //@ViewChild(PanelComponent, {static: false}) adminComponent:PanelComponent;
- 
-  onResize(event) {
-    //console.log(event.target.innerWidth); // window width
-    if (event.target.innerWidth < 980) {
-      this.menu_close = true;
-    }
-  }
   admin;
   lesson_no;
   //page_no; 
@@ -72,27 +62,24 @@ export class PageComponent implements OnInit {
   course_id;
   currentNumber; prevString; nextString;
   item;
+  sequence;
 
   constructor(public route: ActivatedRoute, public service: MainService, private router: Router) {
-    this.init();
+    //this.init();
     this.admin = environment.admin;
+    
+    console.log("constructor from page")
+  }
 
-    /*this.service.request("json/course/123", RequestMethod.Get).subscribe(data=>{
-      console.log(data);
-      this.result = data;
-    })*/
+  onResize(event) {
+    if (event.target.innerWidth < 980) {
+      this.menu_close = true;
+    }
   }
 
   result;
-
-    
   
-  openAdmin(i){
-    console.log(i);
-    //.openItem(i);
-  }
- 
-  
+  /*
   loadcourse(course_id) {
     console.log("course_id = " + course_id);
     this.service.load_course(course_id).subscribe(
@@ -113,7 +100,8 @@ export class PageComponent implements OnInit {
       }
     )
   }
-
+*/
+  /*
   init() {
     this.route.paramMap.subscribe(params => {
 
@@ -134,6 +122,7 @@ export class PageComponent implements OnInit {
         this.content = this.service.getData();
         this.common_text = this.service.getData().common_text;
         this.page = this.service.getData().course[this.lesson_no];
+        //this.service.pageWithOutHeader();
 
         if (this.ngOnInit)
           this.ngOnInit()
@@ -148,30 +137,53 @@ export class PageComponent implements OnInit {
     });
     //this.onResize();
   }
-
+*/
   ngOnInit() {
-    if (this.course != undefined) {
-      this.prevString = (Number(this.lesson_no) - 1)
-      this.nextString = (Number(this.lesson_no) + 1);
-      this.currentNumber = this.service.getPage(this.lesson_no)
+    var data = this.service.getData();
+    this.course_id = this.service.getCourseId();
+    if(this.course_id == -1){
+      this.admin = false;
+      this.service.setAdmin(false);
+    }else{
+      this.service.setAdmin(environment.admin);
     }
+    this.route.paramMap.subscribe(params => {
+      
+      if (data != undefined) {
+        
+        this.lesson_no = params.get('i');
+        //this.page_no = params.get('j');
+        this.course = this.service.getData().course;
+        this.content = this.service.getData();
+        this.common_text = this.service.getData().common_text;
+        this.page = this.service.getData().course[this.lesson_no];
+        console.log("ngOnInit from page", this.lesson_no)
+
+        //this.service.pageWithOutHeader();
+
+        if (this.course != undefined) {
+          this.prevString = Number(this.lesson_no - 1);
+          this.nextString = Number(this.lesson_no + 1);
+          this.currentNumber = this.service.getPage(this.lesson_no)
+        }
+      }
+    });
   }
-
-
 
   ngDoCheck(): void {
     this.service.doCheck();
-
   }
 
   prev() {
     this.currentState = "top_bottom"
     this.router.navigate(['c/' + this.course_id + '/p/' + this.prevString]);
   }
-  sequence;
+
+
   next() {
     this.currentState = 'bottom_top';
-    this.router.navigate(['c/' + this.course_id + '/p/' + this.nextString]);
+    console.log(this.service.getNextPage(this.lesson_no));
+    this.router.navigate([this.service.getNextPage(this.lesson_no)]);
   }
 
   goto(i) {
@@ -185,7 +197,7 @@ export class PageComponent implements OnInit {
       this.currentState = 'bottom_top';
 
     }
-    this.router.navigate(['c/' + this.course_id + '/p/' + i]);
+    this.router.navigate(['c/' + this.course_id + '/p/' + i], {preserveQueryParams:true});
   }
 
 
@@ -197,5 +209,7 @@ export class PageComponent implements OnInit {
       this.currentState = 'current';
     }
   }
-  
+
+
+
 }

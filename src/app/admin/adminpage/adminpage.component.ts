@@ -34,10 +34,12 @@ export class AdminPageComponent implements OnInit {
   addPage() {
     var page = {
       "title": "New Page",
+      "header" : false,
       "page": {
         "block": [
           {
             "type": "text",
+            
             "property" : {
               "paddingTop" : "50",
               "paddingBottom" : "50",

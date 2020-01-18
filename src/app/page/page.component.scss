@@ -111,7 +111,9 @@ $page_width: $menu_width+$admin_panel_width;
   padding-left: 2rem;
   padding-right: 2rem;
   max-width: 92rem;
-
+&.maxWidth{
+  max-width: inherit;
+}
 }
 
 .progress {

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { MainService } from 'src/app/service/main.service';
 
 
 @Component({
@@ -11,8 +12,8 @@ export class TextComponent implements OnInit {
 
   @Input() value;
 
-  constructor() {
-    this.admin = environment.admin;
+  constructor(private service:MainService) {
+    this.admin = this.service.isAdmin();
   }
 
   admin;
