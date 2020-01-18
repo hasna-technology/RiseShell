@@ -1,7 +1,7 @@
 <div>
   <label class="label">Type</label>
 </div>
-<select class="input2" [(ngModel)]="data.type">
+<select class="dropdown" [(ngModel)]="data.type">
   <option value="grid">Grid</option>
   <option value="tab">Tab</option>
   <option value="accordion">Accordion</option>
@@ -12,7 +12,7 @@
 <div>
   <label class="label">Item per row</label>
 </div>
-<select class="input1" [(ngModel)]="data.content.setting.row">
+<select class="dropdown" [(ngModel)]="data.content.setting.row">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
@@ -22,7 +22,7 @@
   <div>
     <label class="label">Image Position</label>
   </div>
-  <select class="input1" [(ngModel)]="data.content.setting.image_position">
+  <select class="dropdown" [(ngModel)]="data.content.setting.image_position">
     <option value="left">Left</option>
     <option value="top">Top</option>
     <option value="bottom">Bottom</option>
@@ -57,7 +57,7 @@
           <label class="label">Image</label>
         </div>
         <div>
-          <admin-image [src]="item.image"></admin-image>
+          <admin-image [(src)]="item.image"></admin-image>
         </div>
       </div>
 

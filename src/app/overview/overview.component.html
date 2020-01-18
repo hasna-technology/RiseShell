@@ -1,20 +1,26 @@
 <div class="overview_page">
-  <div [style.backgroundImage]="'url('+ content.settings.image +')'" class="header" >
-    <div class="title container_middle">
-      <h1>{{this.content.settings.title}}</h1>
-      <div>
-        <a  [routerLink]="['c', course_id, 'p', 0]" class="btn btn_white uppercase over_btn">{{this.content.common_text.start_course}}</a>
-        <a href="#" class="btn btn_white_text uppercase">{{this.content.common_text.details}}
-          <span class="down_arrow">
-            <mat-icon>keyboard_arrow_down</mat-icon>
-          </span>
-        </a>
+
+  <div 
+      [style.background]="'url('+ content.settings.image +')' " 
+      [style.background-size]="'cover'"
+      [style.backgroundColor]="'rgba(0,0,0,0.4)'"
+      class="header">
+      <div class="title container_middle">
+        <h1>{{this.content.settings.title}}</h1>
+        <div>
+          <a [routerLink]="['c', course_id, 'p', 0]"
+            class="btn btn_white uppercase over_btn">{{this.content.common_text.start_course}}</a>
+          <a href="#" class="btn btn_white_text uppercase">{{this.content.common_text.details}}
+            <span class="down_arrow">
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </span>
+          </a>
       </div>
     </div>
   </div>
   <div class="content">
     <div class="container_middle description" *ngIf="this.content.settings.description != ''"
-    [innerHtml] ="this.content.settings.description" >
+      [innerHtml]="this.content.settings.description">
       <!-- {{this.content.settings.description}} -->
     </div>
     <div class="menu container_middle">
@@ -43,7 +49,9 @@
                 <mat-icon> notes</mat-icon>
               </div>
               <div class="text">{{item.title}}</div>
-              <div class="status_indicator"><mat-icon class="brand-color" *ngIf="this.service.getPageCompleted(i)">check_circle</mat-icon></div>
+              <div class="status_indicator">
+                <mat-icon class="brand-color" *ngIf="this.service.getPageCompleted(i)">check_circle</mat-icon>
+              </div>
             </a>
           </div>
         </li>

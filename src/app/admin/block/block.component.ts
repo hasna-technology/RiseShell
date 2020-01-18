@@ -11,7 +11,7 @@ export class BlockComponent implements OnInit {
   @Input() data;
   @Output() closeEvent = new EventEmitter<string>();
 
-  
+  searchValue;
   arrays = [
     {
       "type": "heading",
@@ -130,13 +130,27 @@ export class BlockComponent implements OnInit {
       "grouptype": "Interactive",
       "type": "grid",
       "content": ` <div>
-  <p class="heading"><b>Grid</b></p> 
-  <div class="item">
-    <img class="full-width" src="assets/Block/grid.png" />
-  </div>
-</div>`,
+                  <p class="heading"><b>Grid</b></p> 
+                  <div class="item">
+                    <img class="full-width" src="assets/admin/grid.png" />
+                  </div>
+                </div>`,
       "clickable": () => {
         this.addGridImageText()
+      }
+    },
+    {
+      "title": "Image Column",
+      "grouptype": "Interactive",
+      "type": "grid",
+      "content": ` <div>
+                  <p class="heading"><b>Image Column</b></p> 
+                  <div class="item">
+                    <img class="full-width" src="assets/admin/imageColumn.png" />
+                  </div>
+                </div>`,
+      "clickable": () => { 
+        this.addColumImage()
       }
     },
     {
@@ -144,11 +158,11 @@ export class BlockComponent implements OnInit {
       "grouptype": "Interactive",
       "type": "tab",
       "content": `<div>
-  <p class="heading"><b>Tab</b></p> 
-  <div class="item">
-    <img class="full-width" src="assets/Block/tab.png" />
-  </div>
-</div>`,
+                <p class="heading"><b>Tab</b></p> 
+                <div class="item">
+                  <img class="full-width" src="assets/admin/tab.png" />
+                </div>
+              </div>`,
       "clickable": () => {
         this.addTab()
       }
@@ -160,7 +174,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
   <p class="heading"><b>Accordion</b></p> 
   <div class="item">
-    <img class="full-width" src="assets/Block/accordion.png" />
+    <img class="full-width" src="assets/admin/accordion.png" />
   </div>
 </div>`,
       "clickable": () => {
@@ -174,7 +188,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
   <p class="heading"><b>Timeline</b></p> 
   <div class="item">
-    <img class="full-width" src="assets/Block/timeline.png" />
+    <img class="full-width" src="assets/admin/timeline.png" />
   </div>
 </div>`,
       "clickable": () => {
@@ -193,7 +207,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
   <p class="heading"><b>CheckList</b></p> 
   <div class="item">
-    <img class="full-width" src="assets/Block/checklist.png" />
+    <img class="full-width" src="assets/admin/checklist.png" />
   </div>
 </div>`,
       "clickable": () => {
@@ -207,7 +221,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
   <p class="heading"><b>Ordered List</b></p> 
   <div class="item">
-    <img class="full-width" src="assets/Block/orderedlist.png" />
+    <img class="full-width" src="assets/admin/orderedlist.png" />
   </div>
 </div>`,
       "clickable": () => {
@@ -220,7 +234,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
   <p class="heading"><b>Unordered List</b></p> 
   <div class="item">
-    <img class="full-width" src="assets/Block/unorderedlist.png" />
+    <img class="full-width" src="assets/admin/unorderedlist.png" />
   </div>
 </div>`,
       "clickable": () => {
@@ -358,18 +372,53 @@ export class BlockComponent implements OnInit {
         "data": [
           {
             "title": "Grid 1",
-            "image": "assets/icon1.jpg",
+            "image": "assets/admin/icon1.png",
             "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
           },
           {
             "title": "Grid 2",
-            "image": "assets/icon2.jpg",
-            "desc": "<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"
+            "image": "assets/admin/icon2.png",
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
           },
           {
             "title": "Grid 3",
-            "image": "assets/icon3.jpg",
-            "desc": "<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>"
+            "image": "assets/admin/icon3.png",
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+          }
+
+        ]
+      }
+    }
+    )
+    this.closeEvent.emit("block");
+  }
+
+  addColumImage() {
+    this.data.push({
+
+      "type": "grid",
+      "property": this.property,
+      "content": {
+        "setting": {
+          "row": 3,
+          "image_position": "top",
+          "background_color": "#efefef"
+        },
+        "data": [
+          {
+            "title": "Title 1",
+            "image": "assets/admin/col1_image.png",
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+          },
+          {
+            "title": "Title 2",
+            "image": "assets/admin/col2_image.png",
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+          },
+          {
+            "title": "Title 3",
+            "image": "assets/admin/col3_image.png",
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
           }
 
         ]
@@ -398,12 +447,12 @@ export class BlockComponent implements OnInit {
           },
           {
             "title": "Tab 2",
-            "image": "assets/icon2.jpg",
+            "image": "assets/admin/icon2.jpg",
             "desc": "<p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>"
           },
           {
             "title": "Tab 3",
-            "image": "assets/icon3.jpg",
+            "image": "assets/admin/icon3.jpg",
             "desc": "<p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>"
           }
         ]
@@ -431,12 +480,12 @@ export class BlockComponent implements OnInit {
           },
           {
             "title": "Accordion 2",
-            "image": "assets/icon2.jpg",
+            "image": "assets/admin/icon2.jpg",
             "desc": "<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>"
           },
           {
             "title": "Accordion 3",
-            "image": "assets/icon3.jpg",
+            "image": "assets/admin/icon3.jpg",
             "desc": "<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>"
           }
         ]

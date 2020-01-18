@@ -36,7 +36,7 @@ export class MediaComponent implements OnInit {
   file_info;
   progress = 0;
 
-  
+
   ngOnInit() {
     this.form = this.formBuilder.group({
       asset: [''],
@@ -45,12 +45,26 @@ export class MediaComponent implements OnInit {
     });
   }
   onFileSelect(event) {
-    
+
     var _fileasset = this.item.type;
-    
+
     console.log(event.target.files)
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+
+      if(_fileasset == "audio"){
+        if (file.size > 10 * Math.pow(10, 6)) {
+          alert("Max size for audio upload is 10MB. This audio is  " + this.service.bytesToSize(file.size));
+          return;
+        }
+      }else if(_fileasset == "video"){
+        if (file.size > 100 * Math.pow(10, 6)) {
+          alert("Max size for video upload is 100MB. This video is  " + this.service.bytesToSize(file.size));
+          return;
+        }
+      }
+      
+
       this.form.get(_fileasset).setValue(file);
       const formData = new FormData();
       formData.append('course_id', this.service.getCourseId());

@@ -14,9 +14,35 @@ export class AppComponent {
   title = 'Shell Template';
   course_id;
 
-  constructor(private service: MainService, private route: ActivatedRoute, private router: Router) {
-   
-      
+  constructor(public service: MainService, private route: ActivatedRoute, private router: Router) {
+
+    let firsttime = false;
+    this.route.queryParams.subscribe((params: Params) => {
+      if(firsttime == false){
+        firsttime = true;
+        return;
+      }
+      console.log("environment.production = " + environment.production);
+
+      console.log("getCourseId = ", this.service.getCourseId());
+
+      this.course_id = params['id'];
+      console.log("this.course_id FROM params = " + this.course_id);
+      if (this.course_id != undefined) {
+        //this.course_id = 25;
+        //this.router.navigate(['c' , this.course_id])
+        if (environment.production == true) {
+          this.service.setCourseID(this.course_id);
+          this.loadcourse(this.course_id)
+        } else {
+          this.loadcourse(this.course_id);
+        }
+      } else {
+        //this.course_id = -1;
+        //this.service.setCourseID(this.course_id);
+        //this.loadcourse(this.course_id)
+      }
+    });
   }
 
   data;
@@ -24,7 +50,7 @@ export class AppComponent {
 
   loadcourse(course_id: number) {
     var load = this.service.load_course(course_id);
-    if (load != undefined) {
+    if (load != undefined && course_id != -1) {
       load.subscribe(
         res => {
           console.log("production = " + environment.production);
@@ -43,6 +69,12 @@ export class AppComponent {
           console.log(err);
         }
       )
+    } else {
+      this.service.loadJson().subscribe(res => {
+        this.service.setPath("assets/json/content.json");
+        this.service.setData(res);
+        this.data = this.service.getData();
+      })
     }
   }
 
@@ -53,25 +85,7 @@ export class AppComponent {
     //this.data = this.service.getData();
 
     /* Following code to get data from server*/
-    this.route.queryParams.subscribe((params: Params) => {
-      console.log("environment.production = " + environment.production);
-      this.course_id = params['id'];
-      console.log("this.course_id FROM params = " + this.course_id);
-      if(this.course_id != undefined)
-      {
-        //this.course_id = 25;
-        //this.router.navigate(['c' , this.course_id])
-        if (environment.production == true) {
-          this.service.setCourseID(this.course_id);
-          this.loadcourse(this.course_id)
-        } else {
-          this.loadcourse(this.course_id);
-        }
-      }
-
-      
-      
-    });
+    
 
   }
 }

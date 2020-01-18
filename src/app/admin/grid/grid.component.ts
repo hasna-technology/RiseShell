@@ -35,7 +35,7 @@ export class GridComponent implements OnInit {
     this.data.content.data.push(
       {
         "title": "Title",
-        "image": "assets/icon1.jpg",
+        "image": "assets/admin/icon1.jpg",
         "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
       }
     )

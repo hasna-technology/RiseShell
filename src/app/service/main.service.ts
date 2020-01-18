@@ -37,7 +37,7 @@ export class MainService {
     return JSON.stringify(a) === JSON.stringify(b);
   }
   loadJson() {
-    return this.request("File/load/content.json", RequestMethod.Get);
+    return  this.http.get<any>("assets/json/content.json");
   }
 
   load_course(course_id: number) {
@@ -75,7 +75,7 @@ export class MainService {
   saving = false;
 
   save() {
-    if (this.saving == false && this.startSaving == true) {
+    if (this.saving == false && this.startSaving == true && this.course_id != -1) {
       console.log("Saving data...");
       this.saving = true;
       this.request("File/save/"+this.course_id, RequestMethod.Post, JSON.stringify(this.json)).subscribe(
@@ -88,6 +88,21 @@ export class MainService {
         });
     }
   }
+
+  getCookie(name: string) {
+    let ca: Array<string> = document.cookie.split(';');
+    let caLen: number = ca.length;
+    let cookieName = `${name}=`;
+    let c: string;
+
+    for (let i: number = 0; i < caLen; i += 1) {
+        c = ca[i].replace(/^\s+/g, '');
+        if (c.indexOf(cookieName) == 0) {
+            return c.substring(cookieName.length, c.length);
+        }
+    }
+    return '';
+}
 
   course_id;
 
@@ -175,5 +190,10 @@ export class MainService {
     return Math.floor(this.progArr.filter(s => s == true).length / this.getTotalPage() * 100);
   }
 
-
+  bytesToSize(bytes) {
+    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) return '0 Byte';
+    var i = parseInt((Math.floor(Math.log(bytes) / Math.log(1024))).toString());
+    return Math.round(bytes / Math.pow(1024, i)) + ' ' + sizes[i];
+ }
 }

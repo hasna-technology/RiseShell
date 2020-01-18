@@ -4,25 +4,22 @@
   padding: 0;
 }
 
-.input1,
+.dropdown,
 select>option {
-  width: calc(100% - 2rem);
+  width: calc(100%);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 5px;
+  outline: 0;
 }
 
-.input2,
-select>option {
-  font-family: "Roboto";
-  width: calc(100% - 2rem);
-  padding: 1rem;
-  margin-right: -1rem;
-  margin-bottom: 1.5rem;
-}
 
 .input {
   border: 0px solid #fff;
   background-color: transparent;
   flex: 1;
   padding: 10px 0;
+  outline: 0;
 }
 
 .block {

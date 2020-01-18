@@ -14,7 +14,7 @@ export class AdminPageComponent implements OnInit {
   @Input() data;
 
   @Output() closeEvent = new EventEmitter<string>();
-  constructor(private router: Router) {
+  constructor(private router: Router, private service:MainService) {
 
   }
 
@@ -27,7 +27,7 @@ export class AdminPageComponent implements OnInit {
   gotoPage(i) {
 
     if (this.data.course[i].header != true) {
-      this.router.navigate(['page/' + i]);
+      this.router.navigate(['c/' + this.service.getCourseId() + '/p/' + i]);
       this.closeEvent.emit();
     }
   }
@@ -44,7 +44,7 @@ export class AdminPageComponent implements OnInit {
               "fullwidth": false,
               "backgroundColor": "#ffffff"
              },
-            "content": "<p>AK-<span style='color: rgb(107, 36, 178);'>CC55 </span>Case <span style='background-color: rgb(230, 0, 0);'>Controller </span>system view is a connection that consists of case controllers (AK-CC55 Compact, Single Coil, Single Coil UI and Multi Coil), displays (AK-UI Bluetooth, Set and Info), KoolProg and the Connect App.</p>"
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>"
           },
         ]
       }

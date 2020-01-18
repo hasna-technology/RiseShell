@@ -1,18 +1,20 @@
 <div class="main" *ngIf="page">
 
   <ng-container *ngIf="admin">
-      <admin-panel [data]="this.content" [selectedPage]="page"></admin-panel>
+    <admin-panel [data]="this.content" [selectedPage]="page"></admin-panel>
   </ng-container>
 
   <div [className]="menu_close ? 'menu close' : 'menu'">
 
-    <div class="menu_title" [style.backgroundImage]="'url('+ content.settings.image +')'">
+    <div class="menu_title" [style.background]="'url('+ content.settings.image +')' " 
+    [style.backgroundSize]="cover"
+      [style.backgroundPosition]="center" [style.backgroundColor]="'rgba(0,0,0,0.4)'">
       <a class="noline" routerLink="/">
-        <div class="menu_header" >
+        <div class="menu_header">
           {{this.content.settings.title}}
         </div>
         <div class="course_progress">
-          <div class="progress"> 
+          <div class="progress">
             <div class="value" [style.width.%]="this.service.getProgress()">
 
             </div>
@@ -37,7 +39,9 @@
               <mat-icon> notes</mat-icon>
             </div>
             <div class="text">{{item.title}}</div>
-            <div class="status_indicator"><mat-icon class="brand-color" *ngIf="this.service.getPageCompleted(i)">check_circle</mat-icon></div>
+            <div class="status_indicator">
+              <mat-icon class="brand-color" *ngIf="this.service.getPageCompleted(i)">check_circle</mat-icon>
+            </div>
           </a>
         </div>
       </li>
@@ -93,9 +97,10 @@
       </div>
 
       <!-- Place the content type here-->
-
+      
+      {{result | json}}
       <div class="" *ngIf="this.page.page != undefined">
-        <div  *ngFor="let item of this.page.page.block; let i = index"
+        <div *ngFor="let item of this.page.page.block; let i = index"
           [ngClass]="{'content': item.property.fullwidth != true}"
           [style.backgroundColor]="item.property.backgroundColor" [style.paddingTop]="item.property.paddingTop+'px'"
           [style.paddingBottom]="item.property.paddingBottom+'px'">
@@ -108,14 +113,14 @@
               *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' || item.type == 'text_image_top' || item.type == 'text_image_bottom' "
               [value]="item"></app-text-image>
 
-          <!-- Gird Component -->
-          <app-grid-image-text *ngIf="item.type == 'grid'" [value]="item"></app-grid-image-text>
+            <!-- Gird Component -->
+            <app-grid-image-text *ngIf="item.type == 'grid'" [value]="item"></app-grid-image-text>
 
-          <!-- Tab Component -->
-          <app-tab-image-text *ngIf="item.type == 'tab'" [value]="item"></app-tab-image-text>
-          
-          <!-- Accordion Component -->
-          <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
+            <!-- Tab Component -->
+            <app-tab-image-text *ngIf="item.type == 'tab'" [value]="item"></app-tab-image-text>
+
+            <!-- Accordion Component -->
+            <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
 
             <!-- Timeline Component -->
             <app-timeline *ngIf="item.type == 'timeline'" [value]="item"></app-timeline>
@@ -127,7 +132,8 @@
             <app-video *ngIf="item.type == 'video'" [value]="item"></app-video>
 
             <!-- bullets component -->
-            <app-bullets *ngIf="item.type == 'checklist' || item.type == 'ordered_list' || item.type == 'unordered_list'"
+            <app-bullets
+              *ngIf="item.type == 'checklist' || item.type == 'ordered_list' || item.type == 'unordered_list'"
               [value]="item"></app-bullets>
 
             <!-- Divider Component -->

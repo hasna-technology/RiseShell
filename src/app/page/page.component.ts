@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MainService } from '../service/main.service.js';
-//import localdata from '../../data/en/content.json';
+import { MainService } from '../service/main.service';
 import { trigger, sequence, keyframes, state, style, animate, transition } from '@angular/animations';
 import { environment } from 'src/environments/environment';
+import { RequestMethod } from '@angular/http';
 
 @Component({
   selector: 'app-page',
@@ -69,10 +69,17 @@ export class PageComponent implements OnInit {
   course_id;
   currentNumber; prevString; nextString;
 
-  constructor(public route: ActivatedRoute, private service: MainService, private router: Router) {
+  constructor(public route: ActivatedRoute, public service: MainService, private router: Router) {
     this.init();
     this.admin = environment.admin;
+
+    /*this.service.request("json/course/123", RequestMethod.Get).subscribe(data=>{
+      console.log(data);
+      this.result = data;
+    })*/
   }
+
+  result;
 
   loadcourse(course_id) {
     console.log("course_id = " + course_id);
@@ -100,13 +107,12 @@ export class PageComponent implements OnInit {
 
       console.log("environment.production = " + environment.production);
       this.course_id = params.get('id');
-      if (!environment.production){
+      if (!environment.production) {
         this.course_id = 1
       }
       this.service.setCourseID(this.course_id);
-      console.log("From page ", this.service);
-      //this.loadcourse(this.course_id)
 
+      //this.loadcourse(this.course_id)
       var data = this.service.getData();
 
       if (data != undefined) {
@@ -118,7 +124,7 @@ export class PageComponent implements OnInit {
         this.page = this.service.getData().course[this.lesson_no];
 
         if (this.ngOnInit)
-          this.ngOnInit() 
+          this.ngOnInit()
       } else {
 
         setTimeout(() => {
@@ -140,7 +146,7 @@ export class PageComponent implements OnInit {
 
   }
 
- 
+
 
   ngDoCheck(): void {
     this.service.doCheck();
@@ -149,12 +155,12 @@ export class PageComponent implements OnInit {
 
   prev() {
     this.currentState = "top_bottom"
-    this.router.navigate(['c/'+ this.course_id +'/p/' + this.prevString]);
+    this.router.navigate(['c/' + this.course_id + '/p/' + this.prevString]);
   }
   sequence;
   next() {
     this.currentState = 'bottom_top';
-    this.router.navigate(['c/'+ this.course_id +'/p/' + this.nextString]);
+    this.router.navigate(['c/' + this.course_id + '/p/' + this.nextString]);
   }
 
   goto(i) {
@@ -168,15 +174,17 @@ export class PageComponent implements OnInit {
       this.currentState = 'bottom_top';
 
     }
-    this.router.navigate(['c/'+ this.course_id +'/p/' + i]);
+    this.router.navigate(['c/' + this.course_id + '/p/' + i]);
   }
 
 
   animEnd(event) {
     var menu_icon = document.getElementById('menu_icon');
-    document.body.scrollTop = menu_icon.offsetTop;
-    menu_icon.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-    this.currentState = 'current';
+    if (menu_icon != null) {
+      document.body.scrollTop = menu_icon.offsetTop;
+      menu_icon.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+      this.currentState = 'current';
+    }
   }
 
 }

@@ -19,7 +19,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AdminPageComponent } from './admin/adminpage/adminpage.component';
 import { BlockComponent } from './admin/block/block.component';
 import { GridImageTextComponent } from './component/grid-image-text/grid-image-text.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ColorPickerComponent } from './admin/color-picker/color-picker.component';
 import { AudioComponent } from './component/audio/audio.component'; 
 import { VideoComponent } from './component/video/video.component';
@@ -41,6 +41,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { DividerComponent } from './component/divider/divider.component';
 import { DivideComponent } from './admin/divide/divide.component';
+import { AuthInterceptor } from './service/AuthInterceptor';
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
@@ -117,7 +118,7 @@ import { DivideComponent } from './admin/divide/divide.component';
       }
     })
   ],
-  providers: [MainService],
+  providers: [MainService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

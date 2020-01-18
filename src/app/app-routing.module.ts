@@ -24,10 +24,10 @@ const routes: Routes = [
     path: "c/:id/p/:i",
     component: PageComponent
   },
-  {
+  /*{
     path: "page/:i",
     component: PageComponent
-  },
+  },*/
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' }
 ];
