@@ -15,7 +15,8 @@
     <div *ngIf="this.value.content.data != undefined">
       <ul *ngFor="let data of this.value.content.data; let i = index">
         <div *ngIf="selectedtab == i">
-          <div class="text" [innerHTML]="data.desc"></div>
+          <app-text class="text" [(value)]="data.desc"></app-text>
+          
           <div *ngIf="data.image" class="image">
             <img src="{{data.image}}">
           </div>

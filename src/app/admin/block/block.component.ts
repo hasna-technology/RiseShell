@@ -534,12 +534,7 @@ export class BlockComponent implements OnInit {
   addChecklist() {
     this.data.push({
       "type": "checklist",
-      "property": {
-        "paddingTop": "30",
-        "paddingBottom": "30",
-        "fullwidth": false,
-        "backgroundColor": "#ffffff"
-      },
+      "property": this.property,
       "data": [
         {
           "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
@@ -553,18 +548,13 @@ export class BlockComponent implements OnInit {
         }
       ]
     })
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
 
   addOrdered_list() {
     this.data.push({
       "type": "ordered_list",
-      "property": {
-        "paddingTop": "30",
-        "paddingBottom": "30",
-        "fullwidth": false,
-        "backgroundColor": "#ffffff"
-      },
+      "property": this.property,
       "data": [
         {
           "text": "Lorem Ipsum  and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. "
@@ -581,17 +571,12 @@ export class BlockComponent implements OnInit {
 
       ]
     })
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
   addUnordered_list() {
     this.data.push({
       "type": "unordered_list",
-      "property": {
-        "paddingTop": "30",
-        "paddingBottom": "30",
-        "fullwidth": false,
-        "backgroundColor": "#ffffff"
-      },
+      "property": this.property,
       "data": [
         {
           "text": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested."
@@ -605,17 +590,12 @@ export class BlockComponent implements OnInit {
         }
       ]
     })
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
   addDivider() {
     this.data.push({
       "type": "divider",
-      "property": {
-        "paddingTop": "30",
-        "paddingBottom": "30",
-        "fullwidth": false,
-        "backgroundColor": "#ffffff"
-      },
+      "property": this.property,
       "data": {
         "backgroundColor": "red",
         "height": "4",
@@ -623,7 +603,7 @@ export class BlockComponent implements OnInit {
         "paddingBottom": "0"
       }
     })
-    this.closeEvent.emit();
+    this.closeEvent.emit("block");
   }
 
 }

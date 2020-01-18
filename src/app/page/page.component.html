@@ -1,10 +1,9 @@
-<div class="main" *ngIf="page">
 
   <ng-container *ngIf="admin">
     <admin-panel [data]="this.content" [selectedPage]="page"></admin-panel>
   </ng-container>
 
-  <div [className]="menu_close ? 'menu close' : 'menu'">
+<div class="main" *ngIf="page">
 
     <div class="menu_title" [style.background]="'url('+ content.settings.image +')' " 
     [style.backgroundSize]="cover"
@@ -16,21 +15,36 @@
         <div class="course_progress">
           <div class="progress">
             <div class="value" [style.width.%]="this.service.getProgress()">
+  <!-- <ng-container *ngIf="admin"> -->
+    <admin-panel #adminpanel  [data]="this.content" [selectedPage]="page"></admin-panel>
+  <!-- </ng-container> -->
 
-            </div>
+  <div class="{{this.content.settings.fontFamily}}">
+    <div [className]="menu_close ? 'menu close' : 'menu'">
+      <!--[style.font-family]="content.settings.font-family"  [style.color]="content.settings.brandColor" -->
+      <div class="menu_title" [style.backgroundImage]="'url('+ content.settings.image +')'">
+        <a class="noline" routerLink="/">
+          <div class="menu_header">
+            {{this.content.settings.title}}
           </div>
-          {{this.service.getProgress()}} %
-        </div>
-      </a>
-    </div>
+          <div class="course_progress">
+            <div class="progress">
+              <div class="value" [style.width.%]="this.service.getProgress()">
 
-    <ul>
-      <li *ngFor="let item of this.course; let i = index">
-        <div class="section" *ngIf="item.header == true">
-          <section>
-            <div class="sec_title">{{item.title}}</div>
-          </section>
-        </div>
+              </div>
+            </div>
+            {{this.service.getProgress()}} %
+          </div>
+        </a>
+      </div>
+
+      <ul>
+        <li *ngFor="let item of this.course; let i = index">
+          <div class="section" *ngIf="item.header == true">
+            <section>
+              <div class="sec_title">{{item.title}}</div>
+            </section>
+          </div>
 
         <div class="section" *ngIf="item.header != true">
           <a class="link" (click)="goto(i)" [ngClass]="{'selected': this.lesson_no  == i}">
@@ -47,54 +61,69 @@
       </li>
     </ul>
   </div>
-
-  <!-- [className]="menu_close ? 'page open' : 'page'" -->
-  <div [@changeState]="currentState" (@changeState.done)="animEnd($event)"
-    [ngClass]="{'page open':menu_close, 'page': menu_close != true, 'admin_panel_open':admin_panel}">
-
-    <div class="navigation grey-bg align-center" *ngIf="prevString != -1">
-
-      <mat-icon>keyboard_arrow_up</mat-icon>
-
-      <div>
-        <div class="cursor" (click)="prev()">
-          {{this.common_text.lesson}} {{currentNumber - 1}} - {{this.service.getLessonName(prevString)}}
-        </div>
-      </div>
+          <div class="section" *ngIf="item.header != true">
+            <a class="link" (click)="goto(i)" [ngClass]="{'selected': this.lesson_no  == i}">
+              <div class="page_indicator" [ngClass]="{'selected': this.lesson_no  == i}"></div>
+              <div class="icon">
+                <mat-icon> notes</mat-icon>
+              </div>
+              <div class="text">{{item.title}}</div>
+              <div class="status_indicator">
+                <mat-icon class="brand-color" *ngIf="this.service.getPageCompleted(i)">check_circle</mat-icon>
+              </div>
+            </a>
+          </div>
+        </li>
+      </ul>
     </div>
 
-    <!-- first page to home-->
-    <div class="navigation grey-bg align-center" *ngIf="prevString == -1">
-      <mat-icon>keyboard_arrow_up</mat-icon>
-      <div>
-        <a routerLink="/">
-          Home
-        </a>
-      </div>
-    </div>
+    <!-- [className]="menu_close ? 'page open' : 'page'" -->
+    <div [@changeState]="currentState" (@changeState.done)="animEnd($event)"
+      [ngClass]="{'page open':menu_close, 'page': menu_close != true, 'admin_panel_open':admin_panel}">
 
+      <div class="navigation grey-bg align-center" *ngIf="prevString != -1">
 
-    <div class="page_wrapper">
-      <div id="menu_icon" class="menu_icon ">
-        <mat-icon class="cursor" (click)="menu_close = !menu_close"> menu</mat-icon>
-      </div>
-      <div class="content">
+        <mat-icon>keyboard_arrow_up</mat-icon>
 
-        <div class="page_header ">
-          <div class="pageNo">
-            {{this.common_text.lesson}} {{currentNumber}} of {{this.service.getTotalPage()}}
+        <div>
+          <div class="cursor" (click)="prev()">
+            {{this.common_text.lesson}} {{currentNumber - 1}} - {{this.service.getLessonName(prevString)}}
           </div>
-          <div class="title">
-            {{this.page.title}}
-          </div>
-          <hr class="header_hr">
         </div>
       </div>
-      <div class="progress">
-        <div class="progress_container">
-          <div class="progress_indicator brand--background"></div>
+
+      <!-- first page to home-->
+      <div class="navigation grey-bg align-center" *ngIf="prevString == -1">
+        <mat-icon>keyboard_arrow_up</mat-icon>
+        <div>
+          <a routerLink="/">
+            Home
+          </a>
         </div>
       </div>
+
+
+      <div class="page_wrapper">
+        <div id="menu_icon" class="menu_icon ">
+          <mat-icon class="cursor" (click)="menu_close = !menu_close"> menu</mat-icon>
+        </div>
+        <div class="content">
+
+          <div class="page_header ">
+            <div class="pageNo">
+              {{this.common_text.lesson}} {{currentNumber}} of {{this.service.getTotalPage()}}
+            </div>
+            <div class="title">
+              {{this.page.title}}
+            </div>
+            <hr class="header_hr">
+          </div>
+        </div>
+        <div class="progress">
+          <div class="progress_container">
+            <div class="progress_indicator brand--background"></div>
+          </div>
+        </div>
 
       <!-- Place the content type here-->
       
@@ -107,11 +136,29 @@
           <div class="block" id="item_{{i}}">
             <!-- Text Component -->
             <app-text *ngIf="item.type == 'text'" [value]="item.content"></app-text>
+        <!-- Place the content type here-->
+        <div  *ngIf="this.page.page != undefined">
+          <div *ngFor="let item of this.page.page.block; let i = index"
+            [ngClass]="{'content': item.property.fullwidth != true}"
+            [style.backgroundColor]="item.property.backgroundColor" [style.paddingTop]="item.property.paddingTop+'px'"
+            [style.paddingBottom]="item.property.paddingBottom+'px'"
+            class="block_panel" >
+              <div class="settingicon" (click)="adminpanel.openItem(i)"><mat-icon >settings</mat-icon></div>
+            
+            <div class="block" id="item_{{i}}">
+              <!-- Text Component -->
+              <app-text *ngIf="item.type == 'text'" [value]="item.content"></app-text>
 
-            <!-- Image Component -->
-            <app-text-image
-              *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' || item.type == 'text_image_top' || item.type == 'text_image_bottom' "
-              [value]="item"></app-text-image>
+              <!-- Image Component -->
+              <app-text-image
+                *ngIf="item.type == 'image' || item.type == 'text_image_right' || item.type == 'text_image_left' || item.type == 'text_image_top' || item.type == 'text_image_bottom' "
+                [value]="item"></app-text-image>
+
+              <!-- Gird Component -->
+              <app-grid-image-text *ngIf="item.type == 'grid'" [value]="item"></app-grid-image-text>
+
+              <!-- Tab Component -->
+              <app-tab-image-text *ngIf="item.type == 'tab'" [value]="item"></app-tab-image-text>
 
             <!-- Gird Component -->
             <app-grid-image-text *ngIf="item.type == 'grid'" [value]="item"></app-grid-image-text>
@@ -121,39 +168,46 @@
 
             <!-- Accordion Component -->
             <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
+              <!-- Accordion Component -->
+              <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
 
-            <!-- Timeline Component -->
-            <app-timeline *ngIf="item.type == 'timeline'" [value]="item"></app-timeline>
+              <!-- Timeline Component -->
+              <app-timeline *ngIf="item.type == 'timeline'" [value]="item"></app-timeline>
 
-            <!-- Audio Component -->
-            <app-audio *ngIf="item.type == 'audio'" [value]="item"></app-audio>
+              <!-- Audio Component -->
+              <app-audio *ngIf="item.type == 'audio'" [value]="item"></app-audio>
 
-            <!-- Video Component -->
-            <app-video *ngIf="item.type == 'video'" [value]="item"></app-video>
+              <!-- Video Component -->
+              <app-video *ngIf="item.type == 'video'" [value]="item"></app-video>
+
+              <!-- bullets component -->
+              <app-bullets
+                *ngIf="item.type == 'checklist' || item.type == 'ordered_list' || item.type == 'unordered_list'"
+                [value]="item"></app-bullets>
 
             <!-- bullets component -->
             <app-bullets
               *ngIf="item.type == 'checklist' || item.type == 'ordered_list' || item.type == 'unordered_list'"
               [value]="item"></app-bullets>
+              <!-- Divider Component -->
+              <app-divider *ngIf="item.type == 'divider'" [value]="item"></app-divider>
 
-            <!-- Divider Component -->
-            <app-divider *ngIf="item.type == 'divider'" [value]="item"></app-divider>
 
+            </div>
 
           </div>
         </div>
+        <!-- content type end-->
       </div>
-      <!-- content type end-->
-    </div>
-    <div class="navigation grey-bg align-center" *ngIf="nextString != course.length">
-      <div>
+      <div class="navigation grey-bg align-center" *ngIf="nextString != course.length">
+        <div>
 
-        <div class="cursor" (click)="next()">
-          {{this.common_text.lesson}} {{currentNumber + 1}} - {{this.service.getLessonName(nextString)}}
+          <div class="cursor" (click)="next()">
+            {{this.common_text.lesson}} {{currentNumber + 1}} - {{this.service.getLessonName(nextString)}}
+          </div>
         </div>
+        <mat-icon>keyboard_arrow_down</mat-icon>
       </div>
-      <mat-icon>keyboard_arrow_down</mat-icon>
     </div>
   </div>
-
 </div>

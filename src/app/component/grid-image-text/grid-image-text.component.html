@@ -14,7 +14,7 @@
     
     <div class="text">
       <div class="title" [innerHTML]="data.title"></div>
-      <div [innerHTML]="data.desc"></div>
+      <app-text class="text" [(value)]="data.desc"></app-text>
     </div>
     <div class="image" *ngIf="value.content.setting.image_position == 'bottom'">
       <img class="fill-width" src="{{data.image}}" alt="">

@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
 
-$_fontname : 'Roboto';
+//$_fontname : 'Roboto';
 $_font_black: #313537;
 
 @import "app/variable";
@@ -11,7 +14,7 @@ html{
     font-size: 62.5%;
 }
 body {
-    font-family: $_fontname;
+    /*font-family: $_fontname;*/
     margin: 0px;
     font-size: 1.7em;
     line-height: 1.5;
@@ -23,7 +26,6 @@ a.noline{
 }
 .btn{
     font-family: Lato;
-    
     border:0;
     display: inline-block;
     font-size: 1.2rem;
@@ -89,3 +91,18 @@ a.noline{
 .brand-color{
     color:$brand_color;
 }
+
+.arial{
+    font-family: 'Arial';
+}
+
+.roboto{
+    font-family: 'Roboto';
+}
+.Oswald{
+    font-family: Oswald;
+}
+.Lora{
+    font-family: Lora;
+}
+

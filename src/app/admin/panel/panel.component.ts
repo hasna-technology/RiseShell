@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, animate, state, style, transition } from '@angular/animations';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'admin-panel',
@@ -38,6 +39,12 @@ export class PanelComponent implements OnInit {
 
   ngOnInit() {
     this.propertyState = 'Open';
+  }
+
+  public openItem(i){
+    this.adminPanelState = 'Open';
+    this.goBack();
+    this.gotoSetting(this.selectedPage.page.block[i]);
   }
 
   gotoSetting(item) {

@@ -1,3 +1,6 @@
+<div class="loading" *ngIf="this.data == undefined">
+  <img src="assets/admin/loading.gif" alt="">
+</div>
 <div class="main"  *ngIf="this.data != undefined ">
   <router-outlet></router-outlet>
 </div>

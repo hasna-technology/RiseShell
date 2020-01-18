@@ -17,7 +17,8 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
   }
   changeTitle(){
-    
     this.service.setCourseTitle(this.data.settings.title);
   }
+
+  
 }

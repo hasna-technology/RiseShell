@@ -3,10 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../service/main.service';
 import { trigger, sequence, keyframes, state, style, animate, transition } from '@angular/animations';
 import { environment } from 'src/environments/environment';
-import { RequestMethod } from '@angular/http';
 
 @Component({
   selector: 'app-page',
+ 
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.scss'],
   animations: [
@@ -51,8 +51,11 @@ import { RequestMethod } from '@angular/http';
   }
 })
 //@HostListener('window:resize', ['$event'])
+
 export class PageComponent implements OnInit {
 
+  //@ViewChild(PanelComponent, {static: false}) adminComponent:PanelComponent;
+ 
   onResize(event) {
     //console.log(event.target.innerWidth); // window width
     if (event.target.innerWidth < 980) {
@@ -68,6 +71,7 @@ export class PageComponent implements OnInit {
   currentState;
   course_id;
   currentNumber; prevString; nextString;
+  item;
 
   constructor(public route: ActivatedRoute, public service: MainService, private router: Router) {
     this.init();
@@ -81,6 +85,14 @@ export class PageComponent implements OnInit {
 
   result;
 
+    
+  
+  openAdmin(i){
+    console.log(i);
+    //.openItem(i);
+  }
+ 
+  
   loadcourse(course_id) {
     console.log("course_id = " + course_id);
     this.service.load_course(course_id).subscribe(
@@ -143,7 +155,6 @@ export class PageComponent implements OnInit {
       this.nextString = (Number(this.lesson_no) + 1);
       this.currentNumber = this.service.getPage(this.lesson_no)
     }
-
   }
 
 
@@ -186,5 +197,5 @@ export class PageComponent implements OnInit {
       this.currentState = 'current';
     }
   }
-
+  
 }

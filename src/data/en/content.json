@@ -5,8 +5,8 @@
         "image": "assets/admin/image_only.png",
         "brandColor":"#b6000f",
         "font-family": "fantasy"
-       
-    },
+
+    },  
     "common_text": {
         "lesson": "Lesson",
         "start_course": "Start Course",
@@ -25,6 +25,7 @@
                             "paddingBottom" : "50",
                             "fullwidth": false,
                             "backgroundColor": "#ffffff"
+                           
                         },
                         "autoplay": false,
                         "source": "assets/audio/sample_audio.mp3"
@@ -55,22 +56,15 @@
             }
         },
         {
-            "title": "AK-CC55 CONNECT APP - Header",
+            "title": "AK-CC55 CONNECT APP",
+            "property" : {
+                "paddingTop" : "50",
+                "paddingBottom" : "50",
+                "fullwidth": false,
+                "backgroundColor": "#ffffff"
+            },
             "header": true,
-            "level": 1,
-            "page": {
-                "block": [
-                    {
-                        "type": "accordion",
-                        "property" : {
-                            "paddingTop" : "50",
-                            "paddingBottom" : "50",
-                            "fullwidth": false,
-                            "backgroundColor": "#ffffff"
-                        }
-                    }
-                ]
-            }
+            "level": 1
         },
         {
             "title": "AK-CC55 Connect app",
