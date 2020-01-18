@@ -214,7 +214,7 @@ $page_width: $menu_width+$admin_panel_width;
       margin-bottom: 1.5rem;
       padding: .5rem 0;
       color: #313537;
-      font-family: lato, sans-serif;
+      /*font-family: lato, sans-serif;*/
       text-transform: uppercase;
       font-size: 1rem;
       font-weight: 700;
@@ -259,7 +259,7 @@ $page_width: $menu_width+$admin_panel_width;
         flex: 1;
         display: block;
         padding: 2rem 1rem;
-        font-family: lato, sans-serif;
+        /*font-family: lato, sans-serif;*/
         font-size: 1.3rem;
         line-height: 1.6rem;
         font-weight: 700;
@@ -268,4 +268,25 @@ $page_width: $menu_width+$admin_panel_width;
       }
     }
   }
+}
+
+
+.block_panel{
+position: relative;
+
+&:hover {
+  border: 1px dashed gray;
+}
+&:hover .settingicon{
+  opacity: 1;
+}
+.settingicon{
+  opacity: 0;
+  position: absolute;
+  right: 10px;
+  top:10px;
+  transition: opacity 0.5s ease;
+  cursor: pointer;
+}
+ 
 }

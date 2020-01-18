@@ -3,8 +3,10 @@
     <label class="label">Course Title</label>
   </div>
   <div>
-    <input class="input" type="text" [(ngModel)]="data.settings.title" (ngModelChange)="changeTitle()">
+    <input class="input" type="text" [style.font-family]="data.settings.fontFamily" 
+    [(ngModel)]="data.settings.title" (ngModelChange)="changeTitle()">
   </div>
+  
   <div>
     <label class="label">Description</label>
   </div>
@@ -18,7 +20,7 @@
     <admin-image [(src)]="data.settings.image"></admin-image>
   </div>
   <div>
-  <!--<label class="label">Brand Color</label>
+  <label class="label">Brand Color</label>
   </div>
   <div>
     <input class="input" type="color" [(ngModel)]="data.settings.brandColor">
@@ -28,13 +30,13 @@
   <div>
   <label class="label">Font Type</label>
 </div>
-<select class="input2">
-  <option >Arial</option>
-  <option >Roboto</option>
-  <option >Sans Serif</option>
-  <option >Alegreya</option>
+<select class="input" [(ngModel)]="data.settings.fontFamily">
+  <option value="arial">Arial</option>
+  <option value="roboto">Roboto</option>
+  <option value="Lora">Lora</option>
+  <option value="Oswald">Oswald</option>
 </select> 
-<div>-->
+<div>
     <label class="label">Translation</label>
   </div>
   <div>

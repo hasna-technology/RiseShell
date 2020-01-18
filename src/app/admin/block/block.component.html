@@ -1,4 +1,5 @@
 <input type="text" class="input1" placeholder="search..." [(ngModel)]="searchValue">
+<!--<div class="{{this.content.settings.fontFamily}}">-->
 <div *ngFor="let block of this.arrays | search : searchValue">
   <div class="" *ngIf="block.type == 'heading'" [innerHtml]="block.content"></div>
   <div class="block" *ngIf="block.type != 'heading'" [innerHtml]="block.content" (click)="block.clickable()"></div>

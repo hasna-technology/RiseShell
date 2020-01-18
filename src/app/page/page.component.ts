@@ -4,9 +4,11 @@ import { MainService } from '../service/main.service.js';
 //import localdata from '../../data/en/content.json';
 import { trigger, sequence, keyframes, state, style, animate, transition } from '@angular/animations';
 import { environment } from 'src/environments/environment';
+import { PanelComponent } from '../admin/panel/panel.component.js';
 
 @Component({
   selector: 'app-page',
+ 
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.scss'],
   animations: [
@@ -51,8 +53,11 @@ import { environment } from 'src/environments/environment';
   }
 })
 //@HostListener('window:resize', ['$event'])
+
 export class PageComponent implements OnInit {
 
+  //@ViewChild(PanelComponent, {static: false}) adminComponent:PanelComponent;
+ 
   onResize(event) {
     //console.log(event.target.innerWidth); // window width
     if (event.target.innerWidth < 980) {
@@ -68,12 +73,19 @@ export class PageComponent implements OnInit {
   currentState;
   course_id;
   currentNumber; prevString; nextString;
+  item;
 
   constructor(public route: ActivatedRoute, private service: MainService, private router: Router) {
     this.init();
     this.admin = environment.admin;
+    
   }
-
+  openAdmin(i){
+    console.log(i);
+    //.openItem(i);
+  }
+ 
+  
   loadcourse(course_id) {
     console.log("course_id = " + course_id);
     this.service.load_course(course_id).subscribe(
@@ -137,10 +149,8 @@ export class PageComponent implements OnInit {
       this.nextString = (Number(this.lesson_no) + 1);
       this.currentNumber = this.service.getPage(this.lesson_no)
     }
-
   }
 
- 
 
   ngDoCheck(): void {
     this.service.doCheck();
@@ -178,5 +188,5 @@ export class PageComponent implements OnInit {
     menu_icon.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     this.currentState = 'current';
   }
-
+  
 }

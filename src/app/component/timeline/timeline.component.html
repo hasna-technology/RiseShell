@@ -6,7 +6,7 @@
     <!--<div class="text data" >{{data.date}}</div>-->
     
     <div class="text title">{{data.title}}</div>
-    <div class="text desc" [innerHTML]="data.desc"></div>
+    <app-text class="text" [(value)]="data.desc"></app-text>
     <div *ngIf="data.image" class="image">
         <img src="{{data.image}}">
    </div>
