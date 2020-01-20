@@ -79,65 +79,6 @@ export class PageComponent implements OnInit {
 
   result;
   
-  /*
-  loadcourse(course_id) {
-    console.log("course_id = " + course_id);
-    this.service.load_course(course_id).subscribe(
-      res => {
-        if (environment.production == true) {
-          this.service.setPath(res.data.filename);
-          this.service.setData(JSON.parse(res.data.json));
-          console.log("app component course is loaded from course id " + course_id);
-        } else {
-          console.log("app component course is loaded from local assets/json/content.json");
-          this.service.setPath("assets/json/content.json");
-          this.service.setData(res);
-        }
-        this.init();
-      },
-      err => {
-        console.log(err);
-      }
-    )
-  }
-*/
-  /*
-  init() {
-    this.route.paramMap.subscribe(params => {
-
-      console.log("environment.production = " + environment.production);
-      this.course_id = params.get('id');
-      if (!environment.production) {
-        this.course_id = 1
-      }
-      this.service.setCourseID(this.course_id);
-
-      //this.loadcourse(this.course_id)
-      var data = this.service.getData();
-
-      if (data != undefined) {
-        this.lesson_no = params.get('i');
-        //this.page_no = params.get('j');
-        this.course = this.service.getData().course;
-        this.content = this.service.getData();
-        this.common_text = this.service.getData().common_text;
-        this.page = this.service.getData().course[this.lesson_no];
-        //this.service.pageWithOutHeader();
-
-        if (this.ngOnInit)
-          this.ngOnInit()
-      } else {
-
-        setTimeout(() => {
-          this.loadcourse(this.course_id);
-        }, 1000)
-
-      }
-
-    });
-    //this.onResize();
-  }
-*/
   ngOnInit() {
     var data = this.service.getData();
     this.course_id = this.service.getCourseId();
@@ -162,28 +103,56 @@ export class PageComponent implements OnInit {
         //this.service.pageWithOutHeader();
 
         if (this.course != undefined) {
-          this.prevString = Number(this.lesson_no - 1);
-          this.nextString = Number(this.lesson_no + 1);
+          this.prevString = this.findPrevString(this.lesson_no);
+          this.nextString = this.findNextString(this.lesson_no);
           this.currentNumber = this.service.getPage(this.lesson_no)
         }
       }
     });
   }
 
+  findPrevString(lesson_no){
+    
+    var start = Number(lesson_no) - 1;
+    console.log("start ", start);
+    if(start < 0)
+    return;
+
+    for(var i=start;i>=0;i--)
+    {
+      console.log(i);
+      if(this.course[i].header != true){
+        return i;
+      }
+    }
+    return undefined;
+  }
+
+  findNextString(lesson_no){
+    var start = Number(lesson_no) + 1;
+    for(var i=start;i<this.course.length;i++)
+    {
+      if(this.course[i].header != true){
+        return i;
+      }
+    }
+    return undefined;
+  }
   ngDoCheck(): void {
     this.service.doCheck();
   }
 
   prev() {
     this.currentState = "top_bottom"
-    this.router.navigate(['c/' + this.course_id + '/p/' + this.prevString]);
+    //this.router.navigate(['c/' + this.course_id + '/p/' + this.prevString]);
+    this.goto(this.prevString);
   }
 
 
   next() {
     this.currentState = 'bottom_top';
     console.log(this.service.getNextPage(this.lesson_no));
-    this.router.navigate([this.service.getNextPage(this.lesson_no)]);
+    this.goto(this.nextString);
   }
 
   goto(i) {

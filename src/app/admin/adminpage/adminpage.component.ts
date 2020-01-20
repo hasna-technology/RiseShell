@@ -27,7 +27,7 @@ export class AdminPageComponent implements OnInit {
   gotoPage(i) {
 
     if (this.data.course[i].header != true) {
-      this.router.navigate(['c/' + this.service.getCourseId() + '/p/' + i]);
+      this.router.navigate(['c/' + this.service.getCourseId() + '/p/' + i], {preserveQueryParams:true});
       this.closeEvent.emit();
     }
   }

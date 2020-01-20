@@ -20,6 +20,7 @@ export class PanelComponent implements OnInit {
 
   @Input() data;
   @Input() selectedPage;
+  @Input() admin;
 
   setBack;
   pageState;
@@ -108,7 +109,7 @@ export class PanelComponent implements OnInit {
     this.blockState = 'Open';
     this.setBack = true;
   }
-
+  
   
   dropDownClick(event){
     if (event.name == "duplicate") {
