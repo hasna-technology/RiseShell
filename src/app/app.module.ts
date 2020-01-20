@@ -41,6 +41,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { DividerComponent } from './component/divider/divider.component';
 import { DivideComponent } from './admin/divide/divide.component';
+import { SingleChoiceComponent } from './quiz/single-choice/single-choice.component';
+import { MultipleChoiceComponent } from './quiz/multiple-choice/multiple-choice.component';
+import { IntroTextComponent } from './quiz/intro-text/intro-text.component';
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
@@ -76,7 +79,10 @@ import { DivideComponent } from './admin/divide/divide.component';
     SearchPipe,
     PagePropertyComponent,
     DividerComponent,
-    DivideComponent
+    DivideComponent,
+    SingleChoiceComponent,
+    MultipleChoiceComponent,
+    IntroTextComponent
     
   ],
   imports: [

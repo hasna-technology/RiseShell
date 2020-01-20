@@ -15,7 +15,94 @@
     "course": [
         {
             "title": "Agenda",
+            "type":"quiz",
             "header": false,
+            "quiz":[
+                {
+                "intro_text":"",
+                    "settings":[{
+                        "passing_score":"75",
+                        "no_of_attempts":"unlimited",
+                        "randomize_questions":"false",
+                        "randomize_answer":"false",
+                        "reveal_answer":"false"
+                    }],
+                "type":"single_choice",
+                "question":{
+                    "text":"Enter a question title here...",
+                    "choices":[{
+                        "ans":"Choice 1",
+                        "value":"true",
+                        "feedback":[
+                            {
+                                "correct":"",
+                                "incorrect":""
+                            }
+                        ]
+                    },
+                    {
+                        "ans":"Choice 2",
+                        "value":"false"
+                    },
+                    {
+                        "ans":"Choice 3",
+                        "value":"false"
+                    }
+                
+                ]
+                    
+                }
+            },
+            {
+                "intro_text":"",
+                "settings":[{
+                    "passing_score":"75",
+                    "no_of_attempts":"unlimited",
+                    "randomize_questions":"false",
+                    "randomize_answer":"false",
+                    "reveal_answer":"false"
+                }],
+                "type":"multiple response",
+                "question":{
+                    "text":"Enter a question title here...",
+                    "choices":[{
+                        "ans":"Choice 1",
+                        "value":"true",
+                        "feedback":[
+                            {
+                                "correct":"",
+                                "incorrect":""
+                            }
+                        ]
+                    },
+                    {
+                        "ans":"Choice 2",
+                        "value":"true",
+                        "feedback":[
+                            {
+                                "correct":"",
+                                "incorrect":""
+                            }
+                        ]
+                    },
+                    {
+                        "ans":"Choice 3",
+                        "value":"false",
+                        "feedback":[
+                            {
+                                "correct":"",
+                                "incorrect":""
+                            }
+                        ]
+                    }
+                
+                ]
+                    
+                }
+            }
+        ]
+    },
+    { 
             "page": {
                 "block": [
                     {
