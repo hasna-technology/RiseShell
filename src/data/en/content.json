@@ -19,7 +19,7 @@
             "header": false,
             "quiz":[
                 {
-                "intro_text":"",
+                "intro_text":"First Quiz",
                     "settings":[{
                         "passing_score":"75",
                         "no_of_attempts":"unlimited",
@@ -54,15 +54,7 @@
                 }
             },
             {
-                "intro_text":"",
-                "settings":[{
-                    "passing_score":"75",
-                    "no_of_attempts":"unlimited",
-                    "randomize_questions":"false",
-                    "randomize_answer":"false",
-                    "reveal_answer":"false"
-                }],
-                "type":"multiple response",
+                "type":"multiple_choice",
                 "question":{
                     "text":"Enter a question title here...",
                     "choices":[{

@@ -7,11 +7,18 @@
   border: 1px solid #eee;
   /*position: absolute;*/
 
-  &:hover .change {
+  &:hover .button {
     opacity: 1;
   }
 
-  .change {
+  .button {
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .change,
+  .remove {
     position: relative;
     bottom: 0;
     width: 100%;
@@ -20,8 +27,7 @@
     padding: 0.5rem;
     text-align: center;
     color: #eee;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    border-right: 1px solid #eee;
   }
 }
 
@@ -29,10 +35,11 @@
   display: none;
 }
 
-.progress{
+.progress {
   background-color: #ddd;
-  .progress_bar{
-      height: 2px;
-      background-color: #b2000F;
+
+  .progress_bar {
+    height: 2px;
+    background-color: #b2000F;
   }
 }

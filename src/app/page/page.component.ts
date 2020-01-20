@@ -1,14 +1,12 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MainService } from '../service/main.service.js';
-//import localdata from '../../data/en/content.json';
+import { MainService } from '../service/main.service';
 import { trigger, sequence, keyframes, state, style, animate, transition } from '@angular/animations';
 import { environment } from 'src/environments/environment';
-import { PanelComponent } from '../admin/panel/panel.component.js';
 
 @Component({
   selector: 'app-page',
- 
+
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.scss'],
   animations: [
@@ -52,18 +50,8 @@ import { PanelComponent } from '../admin/panel/panel.component.js';
     '(window:resize)': 'onResize($event)'
   }
 })
-//@HostListener('window:resize', ['$event'])
-
 export class PageComponent implements OnInit {
 
-  //@ViewChild(PanelComponent, {static: false}) adminComponent:PanelComponent;
- 
-  onResize(event) {
-    //console.log(event.target.innerWidth); // window width
-    if (event.target.innerWidth < 980) {
-      this.menu_close = true;
-    }
-  }
   admin;
   lesson_no;
   //page_no; 
@@ -74,97 +62,97 @@ export class PageComponent implements OnInit {
   course_id;
   currentNumber; prevString; nextString;
   item;
+  sequence;
 
-  constructor(public route: ActivatedRoute, private service: MainService, private router: Router) {
-    this.init();
+  constructor(public route: ActivatedRoute, public service: MainService, private router: Router) {
+    //this.init();
     this.admin = environment.admin;
     
+    console.log("constructor from page")
   }
-  openAdmin(i){
-    console.log(i);
-    //.openItem(i);
+
+  onResize(event) {
+    if (event.target.innerWidth < 980) {
+      this.menu_close = true;
+    }
   }
- 
+
+  result;
   
-  loadcourse(course_id) {
-    console.log("course_id = " + course_id);
-    this.service.load_course(course_id).subscribe(
-      res => {
-        if (environment.production == true) {
-          this.service.setPath(res.data.filename);
-          this.service.setData(JSON.parse(res.data.json));
-          console.log("app component course is loaded from course id " + course_id);
-        } else {
-          console.log("app component course is loaded from local assets/json/content.json");
-          this.service.setPath("assets/json/content.json");
-          this.service.setData(res);
-        }
-        this.init();
-      },
-      err => {
-        console.log(err);
-      }
-    )
-  }
-
-  init() {
+  ngOnInit() {
+    var data = this.service.getData();
+    this.course_id = this.service.getCourseId();
+    if(this.course_id == -1){
+      this.admin = false;
+      this.service.setAdmin(false);
+    }else{
+      this.service.setAdmin(environment.admin);
+    }
     this.route.paramMap.subscribe(params => {
-
-      console.log("environment.production = " + environment.production);
-      this.course_id = params.get('id');
-      if (!environment.production){
-        this.course_id = 1
-      }
-      this.service.setCourseID(this.course_id);
-      console.log("From page ", this.service);
-      //this.loadcourse(this.course_id)
-
-      var data = this.service.getData();
-
+      
       if (data != undefined) {
+        
         this.lesson_no = params.get('i');
         //this.page_no = params.get('j');
         this.course = this.service.getData().course;
         this.content = this.service.getData();
         this.common_text = this.service.getData().common_text;
         this.page = this.service.getData().course[this.lesson_no];
+        console.log("ngOnInit from page", this.lesson_no)
 
-        if (this.ngOnInit)
-          this.ngOnInit() 
-      } else {
+        //this.service.pageWithOutHeader();
 
-        setTimeout(() => {
-          this.loadcourse(this.course_id);
-        }, 1000)
-
+        if (this.course != undefined) {
+          this.prevString = this.findPrevString(this.lesson_no);
+          this.nextString = this.findNextString(this.lesson_no);
+          this.currentNumber = this.service.getPage(this.lesson_no)
+        }
       }
-
     });
-    //this.onResize();
   }
 
-  ngOnInit() {
-    if (this.course != undefined) {
-      this.prevString = (Number(this.lesson_no) - 1)
-      this.nextString = (Number(this.lesson_no) + 1);
-      this.currentNumber = this.service.getPage(this.lesson_no)
+  findPrevString(lesson_no){
+    
+    var start = Number(lesson_no) - 1;
+    console.log("start ", start);
+    if(start < 0)
+    return;
+
+    for(var i=start;i>=0;i--)
+    {
+      console.log(i);
+      if(this.course[i].header != true){
+        return i;
+      }
     }
+    return undefined;
   }
 
-
+  findNextString(lesson_no){
+    var start = Number(lesson_no) + 1;
+    for(var i=start;i<this.course.length;i++)
+    {
+      if(this.course[i].header != true){
+        return i;
+      }
+    }
+    return undefined;
+  }
   ngDoCheck(): void {
     this.service.doCheck();
-
   }
 
   prev() {
     this.currentState = "top_bottom"
-    this.router.navigate(['c/'+ this.course_id +'/p/' + this.prevString]);
+    //this.router.navigate(['c/' + this.course_id + '/p/' + this.prevString]);
+    this.goto(this.prevString);
   }
-  sequence;
+
+
   next() {
     this.currentState = 'bottom_top';
-    this.router.navigate(['c/'+ this.course_id +'/p/' + this.nextString]);
+    console.log(this.service.getNextPage(this.lesson_no));
+    this.goto(this.nextString);
   }
 
   goto(i) {
@@ -178,15 +166,19 @@ export class PageComponent implements OnInit {
       this.currentState = 'bottom_top';
 
     }
-    this.router.navigate(['c/'+ this.course_id +'/p/' + i]);
+    this.router.navigate(['c/' + this.course_id + '/p/' + i], {preserveQueryParams:true});
   }
 
 
   animEnd(event) {
     var menu_icon = document.getElementById('menu_icon');
-    document.body.scrollTop = menu_icon.offsetTop;
-    menu_icon.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-    this.currentState = 'current';
+    if (menu_icon != null) {
+      document.body.scrollTop = menu_icon.offsetTop;
+      menu_icon.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+      this.currentState = 'current';
+    }
   }
-  
+
+
+
 }

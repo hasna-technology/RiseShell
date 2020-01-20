@@ -1,5 +1,7 @@
 var fs = require('fs');
 var path = require('path');
+const fsExtra = require('fs-extra');
+
 var version = "0.0.2"
 var oldPath = "F:/GIT/Project/HasnaTech/RiseShell/dist/";
 var newPath = "C:/wamp64/www/course/001_package/template/1/editor/"+version;
@@ -20,8 +22,16 @@ case '-published':
 default:
     newPath = "C:/wamp64/www/course/001_package/template/1/editor/"+version;
 }
-copyFolderRecursiveSync(oldPath, newPath);
-console.log("\nVersion " + version);
+
+
+startOperation();
+async function startOperation() {
+    await fsExtra.emptyDir(newPath);
+    copyFolderRecursiveSync(oldPath, newPath);
+    console.log("\nVersion " + version);
+}
+
+
 /*
 const readline = require("readline");
 const rl = readline.createInterface({

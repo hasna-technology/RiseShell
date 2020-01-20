@@ -27,13 +27,14 @@
     .text,
     .image {
       width: 100%;
-      
+     
     }
   }
 }
 
 .image {
+  text-align: center;
   img {
     max-width: 100%;
-  }
+  } 
 }

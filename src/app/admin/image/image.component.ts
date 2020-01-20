@@ -36,10 +36,18 @@ export class ImageComponent implements OnInit {
   ngOnInit() {
 
   }
+
+ 
   onFileSelect(event) {
 
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      
+      if(file.size > 5 * Math.pow(10, 6) ){
+        alert("Max size for image upload is 5MB. This image is  " + this.service.bytesToSize(file.size));
+        return;
+      }
+
       const formData = new FormData();
       formData.append('image', file);
       formData.append('course_id', this.service.getCourseId());
@@ -75,5 +83,10 @@ export class ImageComponent implements OnInit {
       reportProgress: true,
       observe: 'events'
     });
+  }
+
+  remove(){
+    this.src = "";
+    this.progress = 0;
   }
 }

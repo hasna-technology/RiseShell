@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
     path: "",
-    component: OverviewComponent
+    component: OverviewComponent,
     //pathMatch: 'full',
     //redirectTo: "/c/0"
   },
@@ -24,10 +24,10 @@ const routes: Routes = [
     path: "c/:id/p/:i",
     component: PageComponent
   },
-  {
+  /*{
     path: "page/:i",
     component: PageComponent
-  },
+  },*/
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' }
 ];

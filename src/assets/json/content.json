@@ -2,7 +2,9 @@
     "settings": {
         "title": "Course Title",
         "description": "",
-        "image": ""
+        "image": "",
+        "fontFamily": "roboto",
+        "brandColor":""
     },
     "common_text": {
         "lesson": "Lesson",

@@ -1,7 +1,10 @@
 <!-- Progress {{progress}} -->
-<div class="image_box" [style.backgroundImage]="'url('+src+')'">
+<div class="image_box" [style.backgroundImage]="src == '' ? '' : 'url('+src+')'">
   <input type="file" #file class="hidden" accept="image/x-png,image/gif,image/jpeg" (change)="onFileSelect($event)" />
-  <div class="change" (click)="file.click()">Change</div>
+  <div class="flex button">
+    <div class="change" (click)="file.click()">{{src == '' ? 'Add' : 'Change'}}</div>
+    <div class="remove" (click)="remove()">Remove</div>
+  </div>
 </div>
 <div class="progress" *ngIf="progress > 0">
   <div class="progress_bar" [style.width]="progress+'%'"></div>

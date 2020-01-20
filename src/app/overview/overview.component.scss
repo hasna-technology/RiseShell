@@ -14,10 +14,21 @@ h1 {
   .header {
     padding: 7vw 0;
     background-color: #b2b2b2;
-  //background-repeat: no-repeat;
-  background-position: center;
-    background-size:cover;
-  
+    //background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: multiply;
+
+    .background-opacity {
+      background-color: rgba(0, 0, 0, 0.3);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      right: 0;
+
+    }
+
     .title {
       color: #fff;
 

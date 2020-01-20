@@ -1,10 +1,10 @@
 
 
 <div class="flex-row wrap">
-  
+  <!-- [style.backgroundColor]="value.content.setting.background_color" -->
   <div class="item"  *ngFor="let data of this.value.content.data"
     [style.width]="((100 / value.content.setting.row) - 3)+'%'"
-    [style.backgroundColor]="value.content.setting.background_color"
+    
     [ngClass]="{'left': value.content.setting.image_position == 'left'}">
     
     <div class="image"
