@@ -11,7 +11,8 @@
     <label class="label">Description</label>
   </div>
   <div>
-    <quill-editor [(ngModel)]="data.settings.description" theme="snow"></quill-editor>
+    <!-- <quill-editor [(ngModel)]="data.settings.description" theme="snow"></quill-editor> -->
+    <admin-textblock [(content)]="data.settings.description"></admin-textblock>
   </div>
   <div>
     <label class="label">Cover Image</label>

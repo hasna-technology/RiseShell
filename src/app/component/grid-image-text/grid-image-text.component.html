@@ -1,17 +1,15 @@
-
-
 <div class="flex-row wrap">
   <!-- [style.backgroundColor]="value.content.setting.background_color" -->
-  <div class="item"  *ngFor="let data of this.value.content.data"
+  <div class="item" *ngFor="let data of this.value.content.data; let i = index"
     [style.width]="((100 / value.content.setting.row) - 3)+'%'"
-    
-    [ngClass]="{'left': value.content.setting.image_position == 'left'}">
-    
-    <div class="image"
+    [ngClass]="{'left': value.content.setting.image_position == 'left'}"
+    data-aos="fade-up" [attr.data-aos-delay]="(i+1) * 500">
+
+    <div class="image" 
       *ngIf="value.content.setting.image_position == 'top' || value.content.setting.image_position == 'left'">
       <img class="fill-width" src="{{data.image}}" alt="">
     </div>
-    
+
     <div class="text">
       <div class="title" [innerHTML]="data.title"></div>
       <app-text class="text" [(value)]="data.desc"></app-text>
@@ -22,5 +20,5 @@
 
   </div>
 
-  
+
 </div>

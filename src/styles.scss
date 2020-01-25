@@ -5,6 +5,8 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
 
+@import url('./../node_modules/aos/dist/aos.css');
+
 //$_fontname : 'Roboto';
 $_font_black: #313537;
 
@@ -57,6 +59,21 @@ a.noline{
     /*margin-top: 1.4rem;*/
 }
 
+table{
+    width: 100%;
+    table-layout: fixed;
+    thead {
+        color: #fff;
+        background-color: $brand_color;
+        text-align: center;
+    }
+    th, td{
+        padding: 10px;
+    }
+}
+table, th, td {
+    border: 1px solid $brand_color;
+}
 
 .ql-editor
 {

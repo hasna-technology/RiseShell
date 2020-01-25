@@ -1,16 +1,15 @@
-
 <div class="row">
-    
-<div *ngFor="let data of this.value.content.data" class="timeline">
-   
+
+  <div *ngFor="let data of this.value.content.data" class="timeline" data-aos="fade-up">
+
     <!--<div class="text data" >{{data.date}}</div>-->
-    
+
     <div class="text title">{{data.title}}</div>
     <app-text class="text" [(value)]="data.desc"></app-text>
     <div *ngIf="data.image" class="image">
-        <img src="{{data.image}}">
-   </div>
-   <div class = "vertical" [hidden]="hideme" ></div>
-</div>
- 
+      <img src="{{data.image}}">
+    </div>
+    <div class="vertical" [hidden]="hideme"></div>
+  </div>
+
 </div>

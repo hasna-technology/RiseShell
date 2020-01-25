@@ -131,18 +131,22 @@ export class MainService {
 
   saving = false;
 
+  saveObj;
   save() {
     if (this.saving == false && this.startSaving == true && this.course_id != -1) {
-      console.log("Saving data...");
-      this.saving = true;
-      this.request("File/save/" + this.course_id, RequestMethod.Post, JSON.stringify(this.json)).subscribe(
-        res => {
-          console.log("Saved...");
-          this.saving = false
-        }, err => {
-          console.error(err.message);
-          this.saving = false
-        });
+      clearTimeout(this.saveObj);
+      this.saveObj = setTimeout(()=>{
+        console.log("Saving data...");
+        this.saving = true;
+        this.request("File/save/" + this.course_id, RequestMethod.Post, JSON.stringify(this.json)).subscribe(
+          res => {
+            console.log("Saved...");
+            this.saving = false
+          }, err => {
+            console.error(err.message);
+            this.saving = false
+          });
+      }, 2000)
     }
   }
 
@@ -252,5 +256,18 @@ export class MainService {
     if (bytes == 0) return '0 Byte';
     var i = parseInt((Math.floor(Math.log(bytes) / Math.log(1024))).toString());
     return Math.round(bytes / Math.pow(1024, i)) + ' ' + sizes[i];
+  }
+
+  getCKEditorToolbar(){
+    // return { toolbar: [ [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat', 'NumberedList', 'BulletedList', '-',  'PasteText', 'PasteFromWord', '-', 'Table'],
+    // [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Outdent', 'Indent', '-', 'Undo', 'Redo'],
+    // [ 'Link', 'Unlink', '-', 'TextColor', 'BGColor' ],
+    // [ 'Styles', 'Format', 'Font', 'FontSize' ],
+    // [ 'Maximize', 'Source']
+    // ] };
+
+    return { toolbar: [ [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat', 'NumberedList', 'BulletedList', '-',  'PasteText', 'PasteFromWord', '-', 
+     '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Outdent', 'Indent', '-', 'Undo', 'Redo', '-', 'Link', 'Unlink', '-', 'TextColor', 'BGColor', 'Styles', 'Format', 'Font', 'FontSize', '-', 'Table', 'Maximize', 'Source']
+    ] };
   }
 }

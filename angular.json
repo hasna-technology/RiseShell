@@ -28,6 +28,7 @@
               { "glob": "**/*", "input": "./src/SCORM_WRAPPER", "output": "./" }
             ],
             "styles": [
+              
               "src/styles.scss"
             ],
             "scripts": [],

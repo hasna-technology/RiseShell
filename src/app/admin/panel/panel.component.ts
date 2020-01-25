@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { trigger, animate, state, style, transition } from '@angular/animations';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
+import { MainService } from 'src/app/service/main.service';
 
 @Component({
   selector: 'admin-panel',
@@ -32,7 +33,7 @@ export class PanelComponent implements OnInit {
   adminPanelState;
   selectedTab = 1;
   
-  constructor() { }
+  constructor(public service:MainService) { }
 
   drop_down = ["Duplicate","Delete"];
   

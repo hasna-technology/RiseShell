@@ -2,6 +2,7 @@ import { Component, KeyValueDiffer, KeyValueDiffers, KeyValueChanges } from '@an
 import { MainService } from './service/main.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import * as AOS from 'aos';
 //import localdata from '../data/en/content.json';
 
 @Component({
@@ -49,6 +50,12 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    AOS.init({
+      delay: 200, // values from 0 to 3000, with step 50ms
+      duration: 800, // values from 0 to 3000, with step 50ms
+      easing: 'ease',
+      once: false
+    });
     console.log("ngOnInit from app.component");
     let firsttime = false;
     console.log("getCourseId = ", this.service.getCourseId());
@@ -64,7 +71,7 @@ export class AppComponent {
           this.service.setCourseID(this.course_id);
           this.loadcourse(this.course_id)
         } else {
-          if(this.course_id == undefined){
+          if (this.course_id == undefined) {
             console.log("this.course_id FROM params = " + this.course_id);
             this.loadcourse(-1);
           }

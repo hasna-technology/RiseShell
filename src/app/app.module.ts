@@ -43,9 +43,14 @@ import { DividerComponent } from './component/divider/divider.component';
 import { DivideComponent } from './admin/divide/divide.component';
 import { AuthInterceptor } from './service/AuthInterceptor';
 
+import { CKEditorModule } from 'ckeditor4-angular';
+import { SafeHtmlPipe } from './service/pipe/SafeHtmlPipe';
+import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock.component'; 
+ 
+
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -67,6 +72,7 @@ import { AuthInterceptor } from './service/AuthInterceptor';
     TabImageTextComponent,
     AccordianComponent,
     TruncatePipe,
+    SafeHtmlPipe,
     BulletsComponent,
     TimelineComponent,
     DropdownComponent,
@@ -77,7 +83,8 @@ import { AuthInterceptor } from './service/AuthInterceptor';
     SearchPipe,
     PagePropertyComponent,
     DividerComponent,
-    DivideComponent
+    DivideComponent,
+    AdminTextblockComponent
     
   ],
   imports: [
@@ -85,6 +92,7 @@ import { AuthInterceptor } from './service/AuthInterceptor';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    CKEditorModule,
     AppRoutingModule,
     MatIconModule,
     DragDropModule,

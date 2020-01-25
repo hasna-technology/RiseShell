@@ -47,7 +47,8 @@
           <label class="label">Content</label>
         </div>
         <div>
-          <quill-editor [(ngModel)]="item.desc" theme="snow"></quill-editor>
+          <!-- <quill-editor [(ngModel)]="item.desc" theme="snow"></quill-editor> -->
+          <admin-textblock [(content)]="item.desc"></admin-textblock>
         </div>
       </div>
 
