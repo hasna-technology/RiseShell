@@ -21,7 +21,7 @@ import { BlockComponent } from './admin/block/block.component';
 import { GridImageTextComponent } from './component/grid-image-text/grid-image-text.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ColorPickerComponent } from './admin/color-picker/color-picker.component';
-import { AudioComponent } from './component/audio/audio.component'; 
+import { AudioComponent } from './component/audio/audio.component';  
 import { VideoComponent } from './component/video/video.component';
 import { MediaComponent } from './admin/media/media.component';
 import { SettingsComponent } from './admin/settings/settings.component';
@@ -41,6 +41,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { DividerComponent } from './component/divider/divider.component';
 import { DivideComponent } from './admin/divide/divide.component';
+import { SingleChoiceComponent } from './quiz/single-choice/single-choice.component';
+import { MultipleChoiceComponent } from './quiz/multiple-choice/multiple-choice.component';
+import { IntroTextComponent } from './quiz/intro-text/intro-text.component';
 import { AuthInterceptor } from './service/AuthInterceptor';
 
 import { CKEditorModule } from 'ckeditor4-angular';
@@ -84,7 +87,10 @@ import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock
     PagePropertyComponent,
     DividerComponent,
     DivideComponent,
-    AdminTextblockComponent
+    AdminTextblockComponent,
+    SingleChoiceComponent,
+    MultipleChoiceComponent,
+    IntroTextComponent
     
   ],
   imports: [
