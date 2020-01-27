@@ -1,3 +1,4 @@
+@import '../../_variable.scss';
 .full-width-tabs>ul.nav.nav-tabs {
   width: 100%;
   border: none;
@@ -64,7 +65,7 @@ a {
 /*.nav-link:hover*/
 .nav-link.selected {
   background: #fff;
-  color: #b6000f;
+  color: $brand_color;
   border: 1px solid #ddd;
   border-bottom: 1px solid #fff;
   border-top: none;

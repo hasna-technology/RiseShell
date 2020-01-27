@@ -77,7 +77,7 @@ export class AppComponent {
           this.loadcourse(-1);
         }
 
-      }, 5000);
+      }, 2000);
     }
   }
 }

@@ -1,0 +1,67 @@
+<div class="quiz">
+  <div *ngIf="!intro" class="intro">
+    <div>{{value.intro_text}}</div>
+    <button (click)="show()"><b>Start Quiz  ></b></button>
+  </div>
+
+  <!--<div *ngFor="let data of this.value.quiz;let  i=index" >-->
+  <div *ngIf="current_ques != undefined">
+      <div class="count">
+        <p>Question</p>
+     <div class="number"> 0{{this.current_no}} /
+       0{{this.value.quiz.length}}</div>
+    </div>
+    <div *ngIf="current_ques.type == 'single_choice' ">
+      <div>
+        <div class="question" [innerHTML]="this.current_ques.question.content"></div>
+
+        <div *ngFor="let ans of this.current_ques.question.choices;let i=index">
+          <div class="rad">
+            <p class="correct">
+           <label class="container">
+                <input type="radio" class="radio" name="{{'choices_'+current_ques_no}}" value="{{ans.content}}"
+                (change)="check(i)"    [disabled]="disabled"> <span class="checkmark"  ></span></label>
+              </p>
+          
+            <p class="choice"> {{ans.content}}</p>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="current_ques.type == 'multiple_choice'">
+      <div>
+        <div class="question"  [innerHTML]="this.current_ques.question.content"></div>
+
+
+        <div *ngFor="let ans of this.current_ques.question.choices;let i=index">
+          <div class="check">
+            <p class="correct">
+              <label class="main">
+                <input  type="checkbox" name="{{'ques_'+current_ques_no}}" value="{{ans.content}}"
+                  (change)="check_multiple(ans,i)" class="checkbox"  [disabled]="disabled"><span class="geekmark"  ></span></label> </p>
+            <p class="choice"> {{ans.content}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+ <div class="submit"><button (click)="submit()" [hidden]="ishidden">SUBMIT</button></div>
+ <div class="submit"><button (click)="next()" [hidden]="isnext">NEXT</button></div>
+   
+  </div>
+
+  <div *ngIf="result_page">
+  
+    {{percentage}}%
+    
+       
+<div *ngIf="!try" class="tryagain">
+  <p>try again</p>
+  <mat-icon (click)="replay()">replay</mat-icon>
+</div>
+    
+  </div>
+
+</div>

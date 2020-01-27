@@ -1,6 +1,6 @@
 
 <div *ngFor="let data of this.value.data">
-    <div *ngIf="this.value.type == 'checklist'" class="title checklist"  >
+    <div *ngIf="this.value.type == 'checklist'" class="title checklist">
         <label class="main"> <input type="checkbox" checked class="checkbox"><span class="geekmark"></span></label>
   <app-text class="text" [(value)]="data.text"></app-text>
 </div>

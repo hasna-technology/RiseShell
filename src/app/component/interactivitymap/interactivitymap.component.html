@@ -1,0 +1,62 @@
+
+<div class="interactivity" >
+<div class="map">  
+     <div class="heading">
+       <div class="row">
+          <div class="col-md-4">    
+              <div class="intro" [innerHtml]="value.introduction"></div>
+          <div class="v1" ></div>
+       </div>
+     </div>
+  </div>
+
+
+     <div *ngFor="let data of this.value.content.data;let i=index" class="timeline">
+          <div class="row">
+             <div class="title">{{data.title}}
+                <div class="titledesc" *ngIf="selectedtab == i">
+                <div  [innerHtml]="data.desc" ></div>
+                <div  *ngIf="data.image" class="image">
+                    <img src="{{data.image}}">
+                  </div>
+                </div>
+             </div>
+
+                    <div class="button ">
+                        <button type="button" class="btn btn-primary btn-circle btn-lg " > 
+                            <mat-icon (click)="tab(i)" *ngIf="selectedtab != i" >add</mat-icon>
+                        <mat-icon (click)="close(i)" *ngIf="selectedtab == i">minimize</mat-icon>
+                      </button>
+                   <div class="vertical"></div>
+                 </div>
+               <div class="desc" *ngIf="selectedtab == i" >
+               <div [innerHtml]="data.desc"></div>
+                <div  *ngIf="data.image" class="image">
+                    <img src="{{data.image}}">
+                  </div>
+               
+               </div>
+               
+             </div>  
+         </div>
+
+
+     <div class="heading">
+        <div class="row">
+            
+           <div class="col-md-4">
+        <div class="intro" [innerHtml]="value.summarry" ></div>
+    </div>
+      </div>
+     
+   
+   </div>
+</div></div>
+
+ <!--[style.backgroundColor]="value.backgroundColor"
+                <select class="input" [(ngModel)]="value.backgroundColor">
+                    <option value="#b6000f">BrandColor</option>
+                    <option value="green">Roboto</option>
+                    <option value="blue">Lora</option>
+                    <option value="#ffff00">Oswald</option>
+                </select>-->

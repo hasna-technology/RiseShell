@@ -4,6 +4,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { PageComponent } from './page/page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
+import { QuizComponent } from './component/quiz/quiz/quiz.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: "c/:id/p/:i",
     component: PageComponent
+  },
+  {
+    path:"quiz",
+    component:QuizComponent
   },
   /*{
     path: "page/:i",

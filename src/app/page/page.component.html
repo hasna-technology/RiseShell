@@ -1,19 +1,23 @@
-<admin-panel #adminpanel [admin]="admin" [data]="this.content" [selectedPage]="page"></admin-panel>
 
 
 <div class="main" *ngIf="page">
-  <div class="{{this.content.settings.fontFamily}}">
 
-    <!--Menu Start-->
+  <!-- <ng-container *ngIf="admin"> -->
+    <admin-panel #adminpanel  [data]="this.content" [selectedPage]="page"></admin-panel>
+  <!-- </ng-container> -->
+
+  <div class="{{this.content.settings.fontFamily}}">
     <div [className]="menu_close ? 'menu close' : 'menu'">
+      <!--[style.font-family]="content.settings.font-family"  [style.color]="content.settings.brandColor" -->
       <div class="menu_title" [style.backgroundImage]="'url('+ content.settings.image +')'">
-        <a class="noline" routerLink="/" queryParamsHandling="merge">
+        <a class="noline" routerLink="/">
           <div class="menu_header">
             {{this.content.settings.title}}
           </div>
           <div class="course_progress">
             <div class="progress">
               <div class="value" [style.width.%]="this.service.getProgress()">
+
               </div>
             </div>
             {{this.service.getProgress()}} %
@@ -44,36 +48,34 @@
         </li>
       </ul>
     </div>
-    <!--Menu End-->
 
-    <!--Page Start -->
+    <!-- [className]="menu_close ? 'page open' : 'page'" -->
     <div [@changeState]="currentState" (@changeState.done)="animEnd($event)"
       [ngClass]="{'page open':menu_close, 'page': menu_close != true, 'admin_panel_open':admin_panel}">
 
-      <div class="navigation grey-bg align-center" *ngIf="prevString != undefined" (click)="prev()">
+      <div class="navigation grey-bg align-center" *ngIf="prevString != -1">
 
         <mat-icon>keyboard_arrow_up</mat-icon>
 
         <div>
-          <div class="cursor">
+          <div class="cursor" (click)="prev()">
             {{this.common_text.lesson}} {{currentNumber - 1}} - {{this.service.getLessonName(prevString)}}
           </div>
         </div>
       </div>
 
-      <!--home Navigation-->
-      <div class="navigation grey-bg align-center" *ngIf="prevString == undefined">
-        <a routerLink="/" queryParamsHandling="merge">
-          <mat-icon>keyboard_arrow_up</mat-icon>
-          <div>
+      <!-- first page to home-->
+      <div class="navigation grey-bg align-center" *ngIf="prevString == -1">
+        <mat-icon>keyboard_arrow_up</mat-icon>
+        <div>
+          <a routerLink="/">
             Home
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
 
-      <div class="page_wrapper">
 
-        <!-- Top part-->
+      <div class="page_wrapper">
         <div id="menu_icon" class="menu_icon ">
           <mat-icon class="cursor" (click)="menu_close = !menu_close"> menu</mat-icon>
         </div>
@@ -94,22 +96,30 @@
             <div class="progress_indicator brand--background"></div>
           </div>
         </div>
-
-        <!-- Top part End-->
-
+     
+        <div *ngIf="this.page != undefined && this.page.type == 'quiz'">
+     
+        
+          <app-quiz  [value]="this.page"></app-quiz>
+ 
+         
+          </div> 
         <!-- Place the content type here-->
+        <div  *ngIf="this.page.page != undefined">
 
-        <div class="" *ngIf="this.page.page != undefined">
-          <div *ngFor="let item of this.page.page.block; let i = index" class="content"
-            [ngClass]="{'maxWidth' : item.property.fullwidth == true, 'admin' : admin}"
+
+         
+          
+          <div *ngFor="let item of this.page.page.block; let i = index"
+            [ngClass]="{'content': item.property.fullwidth != true}"
             [style.backgroundColor]="item.property.backgroundColor" [style.paddingTop]="item.property.paddingTop+'px'"
-            [style.paddingBottom]="item.property.paddingBottom+'px'">
-
-            <div class="setting" *ngIf="admin">
-              <mat-icon class="cursor" (click)="adminpanel.openItem(i)"> settings</mat-icon>
-            </div>
-
+            [style.paddingBottom]="item.property.paddingBottom+'px'"
+            class="block_panel" >
+              <div class="settingicon" (click)="adminpanel.openItem(i)"><mat-icon >settings</mat-icon></div>
+            
             <div class="block" id="item_{{i}}">
+
+
               <!-- Text Component -->
               <app-text *ngIf="item.type == 'text'" [value]="item.content"></app-text>
 
@@ -130,6 +140,8 @@
               <!-- Timeline Component -->
               <app-timeline *ngIf="item.type == 'timeline'" [value]="item"></app-timeline>
 
+              <!-- Timeline Component -->
+              <app-interactivitymap *ngIf="item.type == 'interactivity'" [value]="item"></app-interactivitymap>
               <!-- Audio Component -->
               <app-audio *ngIf="item.type == 'audio'" [value]="item"></app-audio>
 
@@ -146,22 +158,20 @@
 
 
             </div>
+
           </div>
         </div>
-
         <!-- content type end-->
-
       </div>
-
-      <div class="navigation grey-bg align-center" *ngIf="nextString != undefined" (click)="next()">
+      <div class="navigation grey-bg align-center" *ngIf="nextString != course.length">
         <div>
-          <div class="cursor" >
+
+          <div class="cursor" (click)="next()">
             {{this.common_text.lesson}} {{currentNumber + 1}} - {{this.service.getLessonName(nextString)}}
           </div>
         </div>
         <mat-icon>keyboard_arrow_down</mat-icon>
       </div>
     </div>
-    <!-- Page End-->
   </div>
 </div>
