@@ -24,7 +24,7 @@
   <label class="label">Brand Color</label>
   </div>
   <div>
-    <input class="input" type="color" [(ngModel)]="data.settings.brandColor">
+    <input class="input" type="color" (change)="brandColorChange()" [(ngModel)]="data.settings.brandColor">
   </div>
   <div>
     

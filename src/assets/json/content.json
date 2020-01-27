@@ -3,8 +3,13 @@
         "title": "Course Title",
         "description": "",
         "image": "",
-        "fontFamily": "roboto",
-        "brandColor":""
+        "fontFamily": "arial",
+        "brandColor": "#B6000F"
+    },
+    "publish_setting": {
+        "publishType": "scorm",
+        "version": "2004",
+        "complete_status": "passed/failed"
     },
     "common_text": {
         "lesson": "Lesson",
@@ -19,13 +24,14 @@
                 "block": [
                     {
                         "type": "text",
-                        "property" : {
-                            "paddingTop" : "50",
-                            "paddingBottom" : "50",
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
                             "fullwidth": false,
+                            "contentwidth": false,
                             "backgroundColor": "#ffffff"
                         },
-                        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+                        "content": "<p><strong>Text only template</strong>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloremagna aliqua.</p>\n"
                     }
                 ]
             }

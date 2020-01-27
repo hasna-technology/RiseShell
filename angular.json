@@ -24,8 +24,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              { "glob": "**/*", "input": "./src/SCORM_WRAPPER", "output": "./" }
+              "src/assets"
             ],
             "styles": [
               

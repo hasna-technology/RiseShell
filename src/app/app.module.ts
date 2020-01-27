@@ -49,6 +49,7 @@ import { AuthInterceptor } from './service/AuthInterceptor';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { SafeHtmlPipe } from './service/pipe/SafeHtmlPipe';
 import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock.component'; 
+import { CourseService } from './service/publish/Course.service';
  
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
@@ -103,7 +104,7 @@ import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock
     MatIconModule,
     DragDropModule,
     HttpClientModule,
-    QuillModule.forRoot({
+    /*QuillModule.forRoot({
       modules: {
         toolbar: [
           ['bold', 'italic', 'underline', 'strike', 'link'],        // toggled buttons
@@ -130,9 +131,9 @@ import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock
           
         ]
       }
-    })
+    })*/
   ],
-  providers: [MainService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [MainService,  CourseService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

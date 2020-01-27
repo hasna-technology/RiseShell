@@ -1,4 +1,4 @@
-import {pipwerks} from './scorm_api_wrapper.js';
+import { pipwerks } from './scorm_api_wrapper.js';
 var scorm = pipwerks.SCORM;
 let StartTime;
 export class SCORM {
@@ -29,12 +29,11 @@ export class SCORM {
     Complete(value) {
         var success;
         //console.log("Setting course status .");
-
         switch (scorm.version) {
             case "1.2": success = scorm.set("cmi.core.lesson_status", value); break;
             case "2004": success = scorm.set("cmi.completion_status", value); break;
         }
-        console.log("The course is completed = " + success+". " + scorm.version + " - " + value);
+        console.log("The course is completed = " + success + ". " + scorm.version + " - " + value);
         //alert("The course is completed = " + success + ". SCORM version :" + scorm.version);
     }
     SessionTime() {
@@ -49,7 +48,7 @@ export class SCORM {
     }
     Score(Raw) {
         var success;
-        //console.log("Setting course score.");
+        console.log("Setting course score ", Raw);
         switch (scorm.version) {
             case "1.2":
                 success = scorm.set("cmi.core.score.min", "0");
@@ -107,6 +106,27 @@ export class SCORM {
         }
         //console.log("Call succeeded? " +success);
     }
+    setBookmark(sLocation) {
+        var success = "";
+        switch (scorm.version) {
+            case "1.2":
+                success = scorm.set("cmi.core.lesson_location", sLocation);
+                break;
+            case "2004":
+                success = scorm.set("cmi.location", sLocation);
+                break;
+        }
+        return success;
+    }
+    getBookmark() {
+        switch (scorm.version) {
+            case "1.2":
+                return scorm.get("cmi.core.lesson_location");
+            case "2004":
+                return scorm.get("cmi.location");
+        }
+    }
+
     SuspendData(lastCount) {
         var success;
         //console.log("Setting course Suspend Data.");
@@ -136,7 +156,7 @@ export class SCORM {
     }
     Resume() {
         /*var sMode = scorm.get("cmi.mode");
-
+    
         var sLocation = '';
         if (sMode == "browse" || sMode == "review" || sMode == "teacher" || sMode == "instructor" || sMode == "author") {
             // code for teacher 

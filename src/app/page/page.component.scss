@@ -18,14 +18,14 @@ $page_width: $menu_width+$admin_panel_width;
   overflow: hidden;
 
   &:hover {
-    color: $brand_color;
+    color: var(--brand-color);
 
     mat-icon {
-      color: $brand_color;
+      color: var(--brand-color);
     }
 
     a {
-      color: $brand_color;
+      color: var(--brand-color);
     }
   }
 
@@ -69,7 +69,7 @@ $page_width: $menu_width+$admin_panel_width;
 
       .value {
         height: 0.2rem;
-        background-color: $brand_color;
+        background-color: var(--brand-color);
         transition: width 1s ease;
       }
     }
@@ -145,11 +145,11 @@ $page_width: $menu_width+$admin_panel_width;
 }
 
 .brand--background {
-  background-color: $brand_color;
+  background-color: var(--brand-color);
 }
 
 .header_hr {
-  background-color: $brand_color;
+  background-color: var(--brand-color);
   width: 16rem;
   height: .3rem;
   text-align: left;
@@ -255,7 +255,7 @@ $page_width: $menu_width+$admin_panel_width;
         margin-right: 10px;
 
         &.selected {
-          background-color: #b6000f;
+          background-color: var(--brand-color);
         }
       }
 
@@ -294,7 +294,7 @@ $page_width: $menu_width+$admin_panel_width;
   .setting {
     opacity: 0;
     position: absolute;
-    right: 10px;
+    left: 10px;
     top: 10px;
     transition: opacity 1s ease;
     cursor: pointer;

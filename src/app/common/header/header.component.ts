@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SCORM } from  './../../SCORM';
+/*import { SCORM } from  './../../SCORM/SCORM';*/
 //let scorm = require('./../../SCORM');
 
 @Component({
@@ -10,10 +10,10 @@ import { SCORM } from  './../../SCORM';
 export class HeaderComponent implements OnInit {
 
   constructor() {
-    var scorm = new SCORM();
+  /*  var scorm = new SCORM();
     scorm.Init("1.2");
     scorm.Complete("completed");
-    //scorm.wrapper();
+    //scorm.wrapper();*/
    }
 
   ngOnInit() {

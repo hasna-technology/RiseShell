@@ -64,7 +64,7 @@ a {
 /*.nav-link:hover*/
 .nav-link.selected {
   background: #fff;
-  color: #b6000f;
+  color: var(--brand-color);
 }
 
 img {

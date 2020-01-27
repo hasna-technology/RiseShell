@@ -12,13 +12,17 @@ export class SettingsComponent implements OnInit {
 
   constructor(public service: MainService) {
     console.log("From admin settings ", this.service);
-   }
+  }
 
   ngOnInit() {
   }
-  changeTitle(){
+  changeTitle() {
     this.service.setCourseTitle(this.data.settings.title);
   }
 
-  
+  brandColorChange() {
+    console.log(this.data.settings.brandColor);
+    this.service.setBrandColor();
+    //document.documentElement.style.setProperty('--brand-color', this.data.settings.brandColor);
+  }
 }

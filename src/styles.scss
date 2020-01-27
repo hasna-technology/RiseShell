@@ -64,7 +64,7 @@ table{
     table-layout: fixed;
     thead {
         color: #fff;
-        background-color: $brand_color;
+        background-color: var(--brand-color);
         text-align: center;
     }
     th, td{
@@ -72,7 +72,7 @@ table{
     }
 }
 table, th, td {
-    border: 1px solid $brand_color;
+    border: 1px solid var(--brand-color);
 }
 
 .ql-editor
@@ -106,7 +106,7 @@ table, th, td {
     flex: 1;
 }
 .brand-color{
-    color:$brand_color;
+    color: var(--brand-color);
 }
 
 .arial{

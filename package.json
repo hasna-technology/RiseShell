@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:prod": "ng build --prod --base-href ./ && node movefile.js -editor",
-    "build:publish": "node movefile.js -published",
-    "build": "ng build --base-href ./ && node movefile.js -editor",
+    "build:prod": "ng build --prod --base-href ./ && node scripts/movefile.js -editor",
+    "build:publish": "node scripts/movefile.js -published",
+    "build": "ng build --base-href ./ && node  scripts/movefile.js -editor",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

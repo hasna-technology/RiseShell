@@ -18,7 +18,7 @@ mat-icon {
   border-top: 0px;
   .item {
     &.selected {
-      border-left: 4px solid $brand_color;
+      border-left: 4px solid var(--brand-color);
     }
   }
 

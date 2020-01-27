@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../service/main.service';
 import { trigger, sequence, keyframes, state, style, animate, transition } from '@angular/animations';
 import { environment } from 'src/environments/environment';
+import { CourseService } from '../service/publish/Course.service';
 
 @Component({
   selector: 'app-page',
@@ -64,7 +65,7 @@ export class PageComponent implements OnInit {
   item;
   sequence;
 
-  constructor(public route: ActivatedRoute, public service: MainService, private router: Router) {
+  constructor(public route: ActivatedRoute, public courseService: CourseService,  public service: MainService, private router: Router) {
     //this.init();
     this.admin = environment.admin;
     
@@ -109,6 +110,10 @@ export class PageComponent implements OnInit {
         }
       }
     });
+
+    if(this.courseService.getScorm() == undefined){
+      this.courseService.initialize();
+    }
   }
 
   findPrevString(lesson_no){
@@ -165,6 +170,11 @@ export class PageComponent implements OnInit {
     } else {
       this.currentState = 'bottom_top';
 
+    }
+    this.courseService.setBookmark(i);
+    
+    if(this.service.getPageCompletedCount() == this.service.getTotalPage()){
+      this.courseService.complete();
     }
     this.router.navigate(['c/' + this.course_id + '/p/' + i], {preserveQueryParams:true});
   }

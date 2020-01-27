@@ -219,6 +219,10 @@ export class MainService {
     return this.progArr[index - 1];
   }
 
+  getPageCompletedCount() {
+    return this.progArr.filter(s=>s == true).length;
+  }
+
   prevPage(lessonNo, pageNo) {
     lessonNo = Number(lessonNo);
     pageNo = Number(pageNo);
@@ -269,5 +273,8 @@ export class MainService {
     return { toolbar: [ [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat', 'NumberedList', 'BulletedList', '-',  'PasteText', 'PasteFromWord', '-', 
      '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Outdent', 'Indent', '-', 'Undo', 'Redo', '-', 'Link', 'Unlink', '-', 'TextColor', 'BGColor', 'Styles', 'Format', 'Font', 'FontSize', '-', 'Table', 'Maximize', 'Source']
     ] };
+  }
+  setBrandColor(){
+    document.documentElement.style.setProperty('--brand-color', this.json.settings.brandColor);
   }
 }
