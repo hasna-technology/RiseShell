@@ -1,0 +1,7 @@
+copy files from one folder to output
+"architect": {
+        "build": {
+          "options": {
+            "assets": [
+              { "glob": "**/*", "input": "./src/SCORM_WRAPPER", "output": "./" }
+            ],

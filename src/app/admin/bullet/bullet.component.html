@@ -17,7 +17,8 @@
     <mat-icon class="drag" cdkDragHandle>more_vert</mat-icon>
       <mat-icon class="delete" (click)="deleteItem(i)">delete</mat-icon>
      </div>
-   <quill-editor class="text" [(ngModel)]="item.text" theme="snow"></quill-editor>
+   <!-- <quill-editor class="text" [(ngModel)]="item.text" theme="snow"></quill-editor> -->
+   <admin-textblock [(content)]="item.text"></admin-textblock>
   </div>
 
 </div>

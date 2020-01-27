@@ -1,4 +1,4 @@
-<div class="row accordion">
+<div class="row accordion" data-aos="fade-up">
   <div class="item" *ngFor="let data of this.value.content.data; let i = index">
     <div class="title">
       <div class="text">
@@ -7,7 +7,7 @@
       <mat-icon (click)="tab(i)" *ngIf="selectedtab != i">add</mat-icon>
       <mat-icon (click)="close(i)" *ngIf="selectedtab == i">minimize</mat-icon>
     </div>
-    <section class="content" *ngIf="selectedtab == i">
+    <section class="content" *ngIf="selectedtab == i" data-aos="fade-up">
       <app-text class="text" [(value)]="data.desc"></app-text>
       <div *ngIf="data.image" class="image">
         <img src="{{data.image}}">

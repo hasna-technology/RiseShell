@@ -4,7 +4,9 @@
 
 export const environment = {
   //apiUrl: "http://localhost/CI_Upload/index.php/",
-  apiUrl: "http://192.168.1.6/course/",
+  //apiUrl: "http://192.168.1.6/course/",
+  apiUrl: "http://localhost/course/",
+  //apiUrl: "http://elearn.hasnatech.com/",
   //apiUrl: "http://192.168.1.2/course/",
   admin:true,
   production: true ,

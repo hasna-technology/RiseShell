@@ -2,6 +2,11 @@
   <quill-editor [(ngModel)]="value" theme="snow"></quill-editor>
 </ng-container>
 
-<ng-container *ngIf="admin != true"> -->
-  <div class="text ql-editor" [innerHTML]="value"></div>
+<ng-container *ngIf="admin != true"> 
+  NOTE: removed ql-editor from class, now changed the editor to ckeditor
+-->
+  <div class="text " 
+        [innerHTML]="value | safeHtml"
+  
+  ></div>
 <!-- </ng-container> -->

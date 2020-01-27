@@ -11,7 +11,8 @@
     <label class="label">Description</label>
   </div>
   <div>
-    <quill-editor [(ngModel)]="data.settings.description" theme="snow"></quill-editor>
+    <!-- <quill-editor [(ngModel)]="data.settings.description" theme="snow"></quill-editor> -->
+    <admin-textblock [(content)]="data.settings.description"></admin-textblock>
   </div>
   <div>
     <label class="label">Cover Image</label>
@@ -23,7 +24,7 @@
   <label class="label">Brand Color</label>
   </div>
   <div>
-    <input class="input" type="color" [(ngModel)]="data.settings.brandColor">
+    <input class="input" type="color" (change)="brandColorChange()" [(ngModel)]="data.settings.brandColor">
   </div>
   <div>
     

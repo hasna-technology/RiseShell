@@ -129,7 +129,7 @@ console.log(this.percentage)
     this.intro=false;
     this.result_page=false;
 
-    for (let i = 0; i <= this.value.quiz.length; i++){
+    for (let i = 0; i < this.value.quiz.length; i++){
 
       if(this.value.quiz[i].type === 'single_choice')
       {
@@ -139,7 +139,7 @@ console.log(this.percentage)
 
       if(this.value.quiz[i].type === 'multiple_choice'){
         
-        for(let j = 0; j <= this.value.quiz[i].question.choices.length; j++)
+        for(let j = 0; j < this.value.quiz[i].question.choices.length; j++)
         {
         
           this.value.quiz[i].question.choices[j].selected = false;

@@ -71,7 +71,14 @@
             <!-- Text block  -->
             <div *ngIf="selectedBlock.type == 'text'">
               <!-- <textarea class="input" [(ngModel)]="selectedBlock.content" cols="30" rows="10"></textarea> -->
-              <quill-editor [(ngModel)]="selectedBlock.content" theme="snow"></quill-editor>
+              <!-- <quill-editor [(ngModel)]="selectedBlock.content" theme="snow"></quill-editor> -->
+              <!-- <ckeditor data="<p>Hello, world!</p>"></ckeditor>
+              [config]="{ toolbar: [ [ 'Bold' , 'Italic' ], [ 'Source' ] ] }"
+            -->
+
+              <admin-textblock [(content)]="selectedBlock.content"></admin-textblock>
+
+              <!-- <ckeditor [(ngModel)]="selectedBlock.content" [config]="this.service.getCKEditorToolbar()"></ckeditor> -->
 
             </div>
 
@@ -101,7 +108,8 @@
                 <label class="label">Content</label>
               </div>
               <div>
-                <quill-editor [(ngModel)]="selectedBlock.content" theme="snow"></quill-editor>
+                <!-- <quill-editor [(ngModel)]="selectedBlock.content" theme="snow"></quill-editor> -->
+                <admin-textblock [(content)]="selectedBlock.content"></admin-textblock>
               </div>
               <div>
                 <label class="label">Image</label>

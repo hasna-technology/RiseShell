@@ -32,10 +32,19 @@ export class GridComponent implements OnInit {
     this.selectedtab = -1;
   }
   addItem() {
+    console.log(this.data)
+    var img = "";
+    if(this.data.content.setting.image_position == 'left'){
+      img = "assets/admin/icon1.png";
+    }else if(this.data.content.setting.image_position == 'top'){
+      img = "assets/admin/col1_image.png";
+    }else {
+      img = "";
+    }
     this.data.content.data.push(
       {
         "title": "Title",
-        "image": "assets/admin/icon1.jpg",
+        "image": img,
         "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
       }
     )

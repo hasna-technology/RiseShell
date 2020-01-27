@@ -1,9 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-block',
   templateUrl: './block.component.html',
   styleUrls: ['./block.component.scss'],
+
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class BlockComponent implements OnInit {
@@ -12,6 +14,8 @@ export class BlockComponent implements OnInit {
   @Output() closeEvent = new EventEmitter<string>();
 
   searchValue;
+  default_asset_path = environment.apiUrl + '002_default_assets/';
+  //default_asset_path = 'assets/admin/';
   arrays = [
     {
       "type": "heading",
@@ -54,12 +58,7 @@ export class BlockComponent implements OnInit {
     {
       "title": "Text",
       "type": "text",
-      "content": `<div>
-  <p>
-      <b>Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua.
-    </p>
-</div>`,
+      "content": `<div><p><b>Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloremagna aliqua.</p></div>`,
       "clickable": () => {
         this.addText()
       }
@@ -88,17 +87,13 @@ export class BlockComponent implements OnInit {
       "title": "Text & Image",
       "type": "text_image_right",
       "content": `<div>
-  
   <p class="heading"><b>Text & Image</b></p>
   <div class="flex">
     <div class="item left">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua.
-          </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloremagna aliqua.</p>
     </div>
     <div class="item">
-        <img src="assets/admin/watermelon.png" />
+        <img src="` + this.default_asset_path + `watermelon.png" />
       </div>
   </div>
 </div>`,
@@ -112,7 +107,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
   <p class="heading"><b>Image Only</b></p>
   <div class="item">
-    <img class="full-width" src="assets/admin/image_only.png" />
+    <img class="full-width" src="` + this.default_asset_path + `image_only.png" />
   </div>
 </div>`,
       "clickable": () => {
@@ -132,7 +127,7 @@ export class BlockComponent implements OnInit {
       "content": ` <div>
                   <p class="heading"><b>Grid</b></p> 
                   <div class="item">
-                    <img class="full-width" src="assets/admin/grid.png" />
+                    <img class="full-width" src="` + this.default_asset_path + `grid.png" />
                   </div>
                 </div>`,
       "clickable": () => {
@@ -146,7 +141,7 @@ export class BlockComponent implements OnInit {
       "content": ` <div>
                   <p class="heading"><b>Image Column</b></p> 
                   <div class="item">
-                    <img class="full-width" src="assets/admin/imageColumn.png" />
+                    <img class="full-width" src="` + this.default_asset_path + `imageColumn.png" />
                   </div>
                 </div>`,
       "clickable": () => { 
@@ -160,7 +155,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
                 <p class="heading"><b>Tab</b></p> 
                 <div class="item">
-                  <img class="full-width" src="assets/admin/tab.png" />
+                  <img class="full-width" src="` + this.default_asset_path + `tab.png" />
                 </div>
               </div>`,
       "clickable": () => {
@@ -174,7 +169,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
   <p class="heading"><b>Accordion</b></p> 
   <div class="item">
-    <img class="full-width" src="assets/admin/accordion.png" />
+    <img class="full-width" src="` + this.default_asset_path + `accordion.png" />
   </div>
 </div>`,
       "clickable": () => {
@@ -188,7 +183,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
   <p class="heading"><b>Timeline</b></p> 
   <div class="item">
-    <img class="full-width" src="assets/admin/timeline.png" />
+    <img class="full-width" src="` + this.default_asset_path + `timeline.png" />
   </div>
 </div>`,
       "clickable": () => {
@@ -207,7 +202,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
   <p class="heading"><b>CheckList</b></p> 
   <div class="item">
-    <img class="full-width" src="assets/admin/checklist.png" />
+    <img class="full-width" src="` + this.default_asset_path + `checklist.png" />
   </div>
 </div>`,
       "clickable": () => {
@@ -221,7 +216,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
   <p class="heading"><b>Ordered List</b></p> 
   <div class="item">
-    <img class="full-width" src="assets/admin/orderedlist.png" />
+    <img class="full-width" src="` + this.default_asset_path + `orderedlist.png" />
   </div>
 </div>`,
       "clickable": () => {
@@ -234,7 +229,7 @@ export class BlockComponent implements OnInit {
       "content": `<div>
   <p class="heading"><b>Unordered List</b></p> 
   <div class="item">
-    <img class="full-width" src="assets/admin/unorderedlist.png" />
+    <img class="full-width" src="` + this.default_asset_path + `unorderedlist.png" />
   </div>
 </div>`,
       "clickable": () => {
@@ -273,6 +268,7 @@ export class BlockComponent implements OnInit {
     "paddingTop": "50",
     "paddingBottom": '50',
     "fullwidth": false,
+    "contentwidth": false,
     "backgroundColor": "#ffffff"
   }
 
@@ -286,8 +282,8 @@ export class BlockComponent implements OnInit {
         "backgroundColor": "#ffffff"
       },
       "autoplay": false,
-      "source": "assets/audio/sample_audio.mp3"
-
+      "source": this.default_asset_path + "sample_audio.mp3"
+      
     })
 
   }
@@ -295,14 +291,14 @@ export class BlockComponent implements OnInit {
   addVideo() {
     this.data.push({
       "type": "video",
-      "property": {
+      "property": { 
         "paddingTop": "50",
         "paddingBottom": "50",
         "fullwidth": false,
         "backgroundColor": "#ffffff"
       },
       "autoplay": false,
-      "source": "assets/video/video_sample.mp4"
+      "source": this.default_asset_path + "video_sample.mp4"
 
     })
 
@@ -314,11 +310,7 @@ export class BlockComponent implements OnInit {
     this.data.push({
       "type": "text",
       "property": this.property,
-      "content": `
-      <p>
-        <b>Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.
-      </p>`
+      "content": `<p><b>Text only template</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloremagna aliqua.</p>`
     })
     this.closeEvent.emit("block");
   }
@@ -327,11 +319,7 @@ export class BlockComponent implements OnInit {
     this.data.push({
       "type": "text",
       "property": this.property,
-      "content": `<h1>Heading + text</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.
-      </p>`
+      "content": `<h1>Heading + text</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloremagna aliqua.</p>`
     })
     this.closeEvent.emit("block");
   }
@@ -340,7 +328,7 @@ export class BlockComponent implements OnInit {
     this.data.push({
       "type": "image",
       "property": this.property,
-      "image": "assets/admin/image_only.png"
+      "image": this.default_asset_path + "image_only.png"
     })
     this.closeEvent.emit("block");
   }
@@ -349,11 +337,8 @@ export class BlockComponent implements OnInit {
     this.data.push({
       "type": "text_image_right",
       "property": this.property,
-      "image": "assets/admin/watermelon.png",
-      "content": `<p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua.
-    </p>`
+      "image": this.default_asset_path + "watermelon.png",
+      "content": `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>`
     })
     this.closeEvent.emit("block");
   }
@@ -372,17 +357,17 @@ export class BlockComponent implements OnInit {
         "data": [
           {
             "title": "Grid 1",
-            "image": "assets/admin/icon1.png",
+            "image": this.default_asset_path + "icon1.png",
             "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
           },
           {
             "title": "Grid 2",
-            "image": "assets/admin/icon2.png",
+            "image": this.default_asset_path + "icon2.png",
             "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
           },
           {
             "title": "Grid 3",
-            "image": "assets/admin/icon3.png",
+            "image": this.default_asset_path + "icon3.png",
             "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
           }
 
@@ -407,17 +392,17 @@ export class BlockComponent implements OnInit {
         "data": [
           {
             "title": "Title 1",
-            "image": "assets/admin/col1_image.png",
+            "image": this.default_asset_path + "col1_image.png",
             "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
           },
           {
             "title": "Title 2",
-            "image": "assets/admin/col2_image.png",
+            "image": this.default_asset_path + "col2_image.png",
             "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
           },
           {
             "title": "Title 3",
-            "image": "assets/admin/col3_image.png",
+            "image": this.default_asset_path + "col3_image.png",
             "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
           }
 
@@ -436,23 +421,23 @@ export class BlockComponent implements OnInit {
       "content": {
         "setting": {
           "row": 3,
-          "image_position": "left",
+          "image_position": "bottom",
           "background_color": "#efefef"
         },
         "data": [
           {
             "title": "Tab 1",
-            "image": "assets/p1.jpg",
+            "image": "",
             "desc": "<P>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>"
           },
           {
             "title": "Tab 2",
-            "image": "assets/admin/icon2.jpg",
+            "image": "",
             "desc": "<p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>"
           },
           {
             "title": "Tab 3",
-            "image": "assets/admin/icon3.jpg",
+            "image": "",
             "desc": "<p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>"
           }
         ]
@@ -469,23 +454,23 @@ export class BlockComponent implements OnInit {
       "content": {
         "setting": {
           "row": 3,
-          "image_position": "left",
+          "image_position": "bottom",
           "background_color": "#efefef"
         },
         "data": [
           {
             "title": "Accordion 1",
-            "image": "assets/p1.jpg",
+            "image": "",
             "desc": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>"
           },
           {
             "title": "Accordion 2",
-            "image": "assets/admin/icon2.jpg",
+            "image": "",
             "desc": "<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>"
           },
           {
             "title": "Accordion 3",
-            "image": "assets/admin/icon3.jpg",
+            "image": "",
             "desc": "<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>"
           }
         ]
@@ -501,27 +486,27 @@ export class BlockComponent implements OnInit {
       "content": {
         "setting": {
           "row": 3,
-          "image_position": "left",
+          "image_position": "bottom",
           "background_color": "#efefef"
         },
         "data": [
           {
             "date": "Date 1",
-            "title": "Grid 1",
+            "title": "Timeline 1",
             "desc": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>",
-            "image": "assets/p1.jpg"
+            "image": ""
           },
           {
             "date": "Date 2",
-            "title": "Grid 2",
+            "title": "Timeline 2",
             "desc": "<p>The standard chunk of Lorem Ipsum used since the 1500s.It is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long established fact that a reader willIt is long</p>",
-            "image": "assets/p1.jpg"
+            "image": ""
           },
           {
             "date": "Date 3",
-            "title": "Grid 3",
+            "title": "Timeline 3",
             "desc": "<p>It is a long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is a long established fact that a reader willIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>",
-            "image": "assets/p1.jpg"
+            "image": ""
           }
 
         ]
@@ -537,14 +522,14 @@ export class BlockComponent implements OnInit {
       "property": this.property,
       "data": [
         {
-          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim tincidunt libero et euismod. </p>"
 
         },
         {
-          "text": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. "
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim tincidunt libero et euismod. </p>"
         },
         {
-          "text": "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim tincidunt libero et euismod. </p>"
         }
       ]
     })
@@ -557,14 +542,14 @@ export class BlockComponent implements OnInit {
       "property": this.property,
       "data": [
         {
-          "text": "Lorem Ipsum  and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. "
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim tincidunt libero et euismod. </p>"
 
         },
         {
-          "text": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. "
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim tincidunt libero et euismod. </p>"
         },
         {
-          "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim tincidunt libero et euismod. </p>"
         }
 
 
@@ -579,14 +564,14 @@ export class BlockComponent implements OnInit {
       "property": this.property,
       "data": [
         {
-          "text": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested."
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim tincidunt libero et euismod. </p>"
 
         },
         {
-          "text": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet."
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim tincidunt libero et euismod. </p>"
         },
         {
-          "text": "Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim tincidunt libero et euismod. </p>"
         }
       ]
     })
@@ -597,8 +582,8 @@ export class BlockComponent implements OnInit {
       "type": "divider",
       "property": this.property,
       "data": {
-        "backgroundColor": "red",
-        "height": "4",
+        "backgroundColor": "#b4600F",
+        "height": "2",
         "paddingTop": "0",
         "paddingBottom": "0"
       }

@@ -21,7 +21,7 @@ import { BlockComponent } from './admin/block/block.component';
 import { GridImageTextComponent } from './component/grid-image-text/grid-image-text.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ColorPickerComponent } from './admin/color-picker/color-picker.component';
-import { AudioComponent } from './component/audio/audio.component'; 
+import { AudioComponent } from './component/audio/audio.component';  
 import { VideoComponent } from './component/video/video.component';
 import { MediaComponent } from './admin/media/media.component';
 import { SettingsComponent } from './admin/settings/settings.component';
@@ -45,10 +45,15 @@ import { AuthInterceptor } from './service/AuthInterceptor';
 
 import { QuizComponent } from './component/quiz/quiz/quiz.component';
 import { InteractivitymapComponent } from './component/interactivitymap/interactivitymap.component';
+import { CKEditorModule } from 'ckeditor4-angular';
+import { SafeHtmlPipe } from './service/pipe/SafeHtmlPipe';
+import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock.component'; 
+import { CourseService } from './service/publish/Course.service';
+ 
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -70,6 +75,7 @@ import { InteractivitymapComponent } from './component/interactivitymap/interact
     TabImageTextComponent,
     AccordianComponent,
     TruncatePipe,
+    SafeHtmlPipe,
     BulletsComponent,
     TimelineComponent,
     DropdownComponent,
@@ -88,6 +94,8 @@ import { InteractivitymapComponent } from './component/interactivitymap/interact
     
     InteractivitymapComponent,
    
+    AdminTextblockComponent,
+    
     
   ],
   imports: [
@@ -95,11 +103,12 @@ import { InteractivitymapComponent } from './component/interactivitymap/interact
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    CKEditorModule,
     AppRoutingModule,
     MatIconModule,
     DragDropModule,
     HttpClientModule,
-    QuillModule.forRoot({
+    /*QuillModule.forRoot({
       modules: {
         toolbar: [
           ['bold', 'italic', 'underline', 'strike', 'link'],        // toggled buttons
@@ -126,9 +135,9 @@ import { InteractivitymapComponent } from './component/interactivitymap/interact
           
         ]
       }
-    })
+    })*/
   ],
-  providers: [MainService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [MainService,  CourseService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
