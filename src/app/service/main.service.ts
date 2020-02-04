@@ -10,28 +10,35 @@ import { RequestMethod } from "@angular/http";
 export class MainService {
 
   _noHeaderPage;
-  
-  pageWithOutHeader(){
+
+  pageWithOutHeader() {
     this._noHeaderPage = [];
     this.json.course.forEach((currElement, index) => {
-        if( currElement.header != true ){
-          this._noHeaderPage.push(
-            {
-              original_index : index,
-              data : currElement
-            }
-          )
-        };
+      if (currElement.header != true) {
+        this._noHeaderPage.push(
+          {
+            original_index: index,
+            data: currElement
+          }
+        )
+      };
     });
     console.log(this._noHeaderPage)
   }
   _admin;
-  setAdmin(a){
+  setAdmin(a) {
     this._admin = a;
   }
-  isAdmin()
-  {
+  isAdmin() {
     return this._admin;
+  }
+
+  _adminparam = false;
+  setAdminParam(val) {
+    this._adminparam = val;
+  }
+  getAdminParam(): any {
+    return this._adminparam;
   }
 
   getPreviousPage(lessonNo: number): any {
@@ -100,12 +107,12 @@ export class MainService {
   load_course(course_id: number) {
 
     //if (environment.production == true) {
-      if (course_id == undefined)
-        return;
-      //this.jsonFrom = "server";
-      return this.request("File/load_course/" + course_id, RequestMethod.Get);
+    if (course_id == undefined)
+      return;
+    //this.jsonFrom = "server";
+    return this.request("File/load_course/" + course_id, RequestMethod.Get);
     //} else {
-      //return this.http.get<any>("assets/json/content.json");
+    //return this.http.get<any>("assets/json/content.json");
     //}
   }
 
@@ -135,7 +142,7 @@ export class MainService {
   save() {
     if (this.saving == false && this.startSaving == true && this.course_id != -1) {
       clearTimeout(this.saveObj);
-      this.saveObj = setTimeout(()=>{
+      this.saveObj = setTimeout(() => {
         console.log("Saving data...");
         this.saving = true;
         this.request("File/save/" + this.course_id, RequestMethod.Post, JSON.stringify(this.json)).subscribe(
@@ -220,7 +227,7 @@ export class MainService {
   }
 
   getPageCompletedCount() {
-    return this.progArr.filter(s=>s == true).length;
+    return this.progArr.filter(s => s == true).length;
   }
 
   prevPage(lessonNo, pageNo) {
@@ -262,7 +269,7 @@ export class MainService {
     return Math.round(bytes / Math.pow(1024, i)) + ' ' + sizes[i];
   }
 
-  getCKEditorToolbar(){
+  getCKEditorToolbar() {
     // return { toolbar: [ [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat', 'NumberedList', 'BulletedList', '-',  'PasteText', 'PasteFromWord', '-', 'Table'],
     // [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Outdent', 'Indent', '-', 'Undo', 'Redo'],
     // [ 'Link', 'Unlink', '-', 'TextColor', 'BGColor' ],
@@ -270,11 +277,13 @@ export class MainService {
     // [ 'Maximize', 'Source']
     // ] };
 
-    return { toolbar: [ [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat', 'NumberedList', 'BulletedList', '-',  'PasteText', 'PasteFromWord', '-', 
-     '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Outdent', 'Indent', '-', 'Undo', 'Redo', '-', 'Link', 'Unlink', '-', 'TextColor', 'BGColor', 'Styles', 'Format', 'Font', 'FontSize', '-', 'Table', 'Maximize', 'Source']
-    ] };
+    return {
+      toolbar: [['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat', 'NumberedList', 'BulletedList', '-', 'PasteText', 'PasteFromWord', '-',
+        '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Outdent', 'Indent', '-', 'Undo', 'Redo', '-', 'Link', 'Unlink', '-', 'TextColor', 'BGColor', 'Styles', 'Format', 'Font', 'FontSize', '-', 'Table', 'Maximize', 'Source']
+      ]
+    };
   }
-  setBrandColor(){
+  setBrandColor() {
     document.documentElement.style.setProperty('--brand-color', this.json.settings.brandColor);
   }
 }

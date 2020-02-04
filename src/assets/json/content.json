@@ -23,6 +23,65 @@
             "page": {
                 "block": [
                     {
+                        "type": "grid1",
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "contentwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "content": {
+                            "setting": {
+                                "row": 3,
+                                "image_position": "left",
+                                "background_color": "#efefef"
+                            },
+                            "data": [
+                                {
+                                    "title": "Grid 1",
+                                    "image": "http://localhost/course/002_default_assets/icon1.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 2",
+                                    "image": "http://localhost/course/002_default_assets/icon2.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 3",
+                                    "image": "http://localhost/course/002_default_assets/icon3.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 1",
+                                    "image": "http://localhost/course/002_default_assets/icon1.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 2",
+                                    "image": "http://localhost/course/002_default_assets/icon2.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 3",
+                                    "image": "http://localhost/course/002_default_assets/icon3.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 1",
+                                    "image": "http://localhost/course/002_default_assets/icon1.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 2",
+                                    "image": "http://localhost/course/002_default_assets/icon2.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                }
+                            ]
+                        }
+                    },
+                    {
                         "type": "text",
                         "property": {
                             "paddingTop": "50",

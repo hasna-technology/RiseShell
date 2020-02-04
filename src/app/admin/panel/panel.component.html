@@ -120,9 +120,17 @@
             </div>
 
             <!-- Grid Image block -->
+            <admin-grid1 [data]="selectedBlock" *ngIf="selectedBlock.type == 'grid1'">
+            </admin-grid1>
+
+            <!-- Grid Image block -->
             <admin-grid [data]="selectedBlock"
               *ngIf="selectedBlock.type == 'grid' || selectedBlock.type == 'accordion' || selectedBlock.type == 'tab' || selectedBlock.type == 'timeline'">
             </admin-grid>
+
+            <!-- Card block -->
+            <admin-card [data]="selectedBlock" *ngIf="selectedBlock.type == 'card'">
+            </admin-card>
 
             <!--Bullet Block-->
             <app-bullet [data]="selectedBlock"
@@ -131,7 +139,7 @@
             <!-- Divider block -->
             <app-divide [data]="selectedBlock" *ngIf="selectedBlock.type == 'divider'">
             </app-divide>
-
+ 
           </div>
 
 

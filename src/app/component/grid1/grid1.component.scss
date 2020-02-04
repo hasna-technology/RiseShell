@@ -1,0 +1,72 @@
+@import "../../variable";
+
+.grid {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template-columns: repeat(3, auto);
+  transition: grid-template-columns 0.5s;
+
+}
+
+@include sm {
+  .grid {
+    grid-template-columns: none;
+    .item:first-child {
+      grid-row-start: 1;
+      grid-row-end: 2;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+  }
+}
+
+.item {
+  display: inline-grid;
+  color: #fff;
+
+  .bg {
+    padding: 10px;
+    background-position: center;
+    background-size: cover;
+    background-color: var(--brand-color);
+    position: relative;
+    min-height: 230px;
+    overflow: hidden;
+    cursor: pointer;
+    &:hover .content {
+      top: 0%;
+    }
+
+    .content {
+      position: absolute;
+      padding: 20px;
+      top: calc(100% - 60px);
+      left: 0;
+      bottom: 0;
+      background-color: #00000094;
+      transition: top 0.5s ease;
+
+      .title {
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  &:first-child {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  /*
+  &:nth-child(4){
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  &:nth-child(5){
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }*/
+}

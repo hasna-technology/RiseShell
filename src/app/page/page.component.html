@@ -129,9 +129,14 @@
                   <app-text-image [value]="item"></app-text-image>
                 </div>
 
+                <!-- Gird Component -->
+                <app-grid *ngIf="item.type == 'grid1'" [value]="item"></app-grid>
 
                 <!-- Gird Component -->
                 <app-grid-image-text *ngIf="item.type == 'grid'" [value]="item"></app-grid-image-text>
+
+                <!-- Gird Component -->
+                <app-card *ngIf="item.type == 'card'" [value]="item"></app-card>
 
                 <!-- Tab Component -->
                 <app-tab-image-text *ngIf="item.type == 'tab'" [value]="item"></app-tab-image-text>

@@ -1,0 +1,16 @@
+<div class="grid" >
+  <div class="item" *ngFor="let item of value.content.data">
+    <div class="bg"
+    [ngStyle]="{ 'background-image': 'url(' + item.image +')' }"
+    >
+      <div class="content">
+        <div class="title">{{item.title}}</div>
+        <div class="description" [innerHTML]="item.desc"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+  [ngStyle]="{ 'grid-template-columns': 'repeat('+value.content.setting.row  +', 1fr)'}"
+  [ngStyle]="{ 'grid-row-start': item.rowStart , 'grid-row-end': item.rowEnd,  'grid-column-start': item.colStart , 'grid-column-end': item.colEnd }"
+-->

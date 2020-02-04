@@ -1,0 +1,17 @@
+<div class="card ">
+  <!--*ngIf="value.content.setting.style == 'style1'"-->
+  <div class="{{value.content.setting.style}}" >
+    <div class="item" *ngFor="let item of value.content.data; let i = index"
+      [ngClass]="{ 'reverse': Math.floor(i / 2) % 2 == 1,
+                   'is-clicked': clicked[i] == true}"
+      (click) ="clicked[i] = !clicked[i]"
+      >
+
+      <div class="bg child" [ngStyle]="{ 'background-image': 'url(' + item.image +')' }">
+      </div>
+      <div class="content child">
+        <div class="description" [innerHTML]="item.desc"></div>
+      </div>
+    </div>
+  </div>
+</div>

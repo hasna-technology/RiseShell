@@ -50,6 +50,10 @@ import { CKEditorModule } from 'ckeditor4-angular';
 import { SafeHtmlPipe } from './service/pipe/SafeHtmlPipe';
 import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock.component'; 
 import { CourseService } from './service/publish/Course.service';
+import { GridComponent1 } from './component/grid1/grid1.component';
+import { Grid1Component } from './admin/grid1/grid1.component';
+import { CardComponent } from './component/card/card.component';
+import { AdminCardComponent } from './admin/card/card.component';
  
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
@@ -91,7 +95,11 @@ import { CourseService } from './service/publish/Course.service';
     AdminTextblockComponent,
     SingleChoiceComponent,
     MultipleChoiceComponent,
-    IntroTextComponent
+    IntroTextComponent,
+    GridComponent1,
+    Grid1Component,
+    CardComponent,
+    AdminCardComponent
     
   ],
   imports: [
