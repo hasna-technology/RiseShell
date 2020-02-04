@@ -1,0 +1,307 @@
+//@import '../../_variable.scss';
+.quiz {
+  padding: 30px 40px;
+  margin-left: 110px;
+  margin-right: 70px;
+
+  /*font-size: 2rem;*/
+  /*font-weight: 500;*/
+  .intro {
+   
+    button {
+      padding: 50px 0px;
+      background-color: white;
+      border: none;
+      color: #b6000f;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+
+    }
+  }
+  .submit {
+    text-align: center;
+  }
+  .submit button {
+    margin: 20px 0px;
+    cursor: pointer;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    min-width: 10rem;
+    max-width: 17rem;
+    height: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 3.4rem;
+    text-overflow: ellipsis;
+    color: rgb(255, 255, 255);
+    background-color: #b6000f;
+    box-sizing: border-box;
+    text-decoration: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+    border-radius: 2rem;
+    transition: background 0.3s ease 0s, color 0.3s ease 0s, opacity 0.3s ease 0s;
+   
+  }
+  
+}
+
+.question {
+  border-bottom: 1px solid rgb(206, 199, 199);
+  padding: 30px;
+  margin-bottom: 20px;
+}
+.count{
+    p{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-block-end:0px ;
+}
+}
+.number{
+    display: flex;
+    color: #b6000f;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+
+.rad,.check {
+  width: 100%;
+  text-align: center;
+  display: flex;
+
+  //border-bottom: 1px solid rgb(206, 199, 199);
+  .correct {
+    padding: 17px 0px;
+    width: 8%;
+    padding-left: 20px;
+  }
+
+  .choice {
+    padding: 17px;
+   
+    width: 90%;
+    text-align: left;
+  }
+}
+.check .correct{
+    padding-top: 12px;
+}
+
+.check:hover {
+  background: rgb(230, 230, 230);
+}
+.rad:hover{
+    background: rgb(230, 230, 230);
+}
+
+input[type=radio] {
+  border: 0px;
+  width: 100%;
+  height: 1.5em;
+  cursor: pointer;
+
+}
+input[type=radio]:checked ~ .check::before{
+    background: red;
+  }
+  
+
+
+.main {
+  // display: block; 
+  position: relative;
+  cursor: pointer;
+
+}
+input[type=checkbox] {
+    height: 20px;
+    width: 20px;
+  
+  }
+/* Hide the default checkbox */
+input[type=checkbox] {
+  visibility: hidden;
+}
+
+/* Creating a custom checkbox 
+ based on demand */
+.geekmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  border: 1px solid #dfdfdf;
+  border-radius: 3px;
+
+}
+
+/*.main input:checked ~ .geekmark { 
+     background-color:#b6000f; 
+ } */
+
+
+/*For click tik button*/
+.geekmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Display checkmark when checked*/
+.main input:checked~.geekmark:after {
+  display: block;
+}
+
+/* Rotated the rectangle by 45 degree and  
+ showing only two border to make it look 
+ like a tickmark */
+.main .geekmark:after {
+  left: 8px;
+  bottom: 7px;
+  width: 6px;
+  height: 12px;
+  border: solid #b6000f;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+  }
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid rgb(206, 201, 201);
+    
+   
+  }
+  
+  /* On mouse-over, add a grey background color
+  .container:hover input ~ .checkmark {
+   background-color: red;
+  } */
+  
+  /* When the radio button is checked, add a blue background 
+  .container input:checked ~ .checkmark {
+ background-color: white;
+  }*/
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #b6000f;
+    
+  }
+  mat-icon
+  {
+    cursor: pointer;
+   padding-left: 12px;
+   
+  }
+  .tryagain:hover{
+    color: #b6000f;
+  }
+
+  /*.circle-wrap {
+    margin: 50px auto;
+    width: 150px;
+    height: 150px;
+    background: #e6e2e7;
+    border-radius: 50%;
+  }
+  .circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 50%;
+}
+.circle-wrap .circle .mask {
+  clip: rect(0px, 150px, 150px, 75px);
+}
+.circle-wrap .circle .mask .fill {
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: #9e00b1;
+}
+.circle-wrap .circle .mask.full,
+.circle-wrap .circle .fill {
+  animation: fill ease-in-out 3s;
+  transform: rotate(126deg);
+}
+ 
+@keyframes fill {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(126deg);
+  }
+}
+.circle-wrap .inside-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #fff;
+  line-height: 130px;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  position: absolute;
+  z-index: 100;
+  font-weight: 700;
+  font-size: 2em;
+}*/

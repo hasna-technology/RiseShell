@@ -1,10 +1,10 @@
 {
     "settings": {
-        "title": "Course Title",
+        "title": "AK-CC55 Connect app",
         "description": "",
-        "image": "",
-        "fontFamily": "arial",
-        "brandColor": "#B6000F"
+        "image": "assets/admin/image_only.png",
+        "brandColor": "#b6000f",
+        "fontFamily": "roboto"
     },
     "publish_setting": {
         "publishType": "scorm",
@@ -18,7 +18,105 @@
     },
     "course": [
         {
-            "title": "Page 1",
+            "title": "Quiz",
+            "header": false,
+            "type": "quiz",
+            "intro_text": "Click Start Quiz to answer the following quiz. To pass the quiz you need to score 75%.",
+            "settings": [
+                {
+                    "passing_score": "75",
+                    "no_of_attempts": "unlimited",
+                    "randomize_questions": "false",
+                    "randomize_answer": "false",
+                    "reveal_answer": "false"
+                }
+            ],
+            "quiz": [
+                {
+                    "type": "single_choice",
+                    "question": {
+                        "content": "Where do you choose which parameters to view in the graph?",
+                        "selected": "0",
+                        "choices": [
+                            {
+                                "content": "In the parameter menu",
+                                "correct": "true",
+                                "feedback": [
+                                    {
+                                        "correct": "",
+                                        "incorrect": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "content": "In the filter function for the graphs  ",
+                                "correct": "false",
+                                "feedback": [
+                                    {
+                                        "correct": "",
+                                        "incorrect": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "content": "In the case controller",
+                                "correct": "false",
+                                "feedback": [
+                                    {
+                                        "correct": "",
+                                        "incorrect": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "multiple_choice",
+                    "question": {
+                        "content": "How do you identify whether a case controller is connected via Bluetooth?  ",
+                        "choices": [
+                            {
+                                "content": "The Blue LED on the controller is solid ",
+                                "selected": false,
+                                "correct": "true",
+                                "feedback": [
+                                    {
+                                        "correct": "",
+                                        "incorrect": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "content": "The Blue LED on the display is solid ",
+                                "selected": false,
+                                "correct": "true",
+                                "feedback": [
+                                    {
+                                        "correct": "",
+                                        "incorrect": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "content": "The Blue LED on the display is flashing",
+                                "selected": false,
+                                "correct": "false",
+                                "feedback": [
+                                    {
+                                        "correct": "",
+                                        "incorrect": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Agenda",
+            "type": "page",
             "header": false,
             "page": {
                 "block": [
@@ -87,10 +185,94 @@
                             "paddingTop": "50",
                             "paddingBottom": "50",
                             "fullwidth": false,
-                            "contentwidth": false,
                             "backgroundColor": "#ffffff"
                         },
-                        "content": "<p><strong>Text only template</strong>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloremagna aliqua.</p>\n"
+                        "content": "<p>AK-CC55 Case Controller system view is a connection that consists of case controllers (AK-CC55 Compact, Single Coil, Single Coil UI and Multi Coil), displays (AK-UI Bluetooth, Set and Info), KoolProg and the Connect App. </p>"
+                    },
+                    {
+                        "type": "image",
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "image": "assets/3.jpg"
+                    },
+                    {
+                        "type": "checklist",
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "data": [
+                            {
+                                "text": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected humour and the like."
+                            },
+                            {
+                                "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
+                            },
+                            {
+                                "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "ordered_list",
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "data": [
+                            {
+                                "text": "Lorem Ipsum  and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. "
+                            },
+                            {
+                                "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. "
+                            },
+                            {
+                                "text": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s "
+                            }
+                        ]
+                    },
+                    {
+                        "type": "unordered_list",
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "data": [
+                            {
+                                "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                            },
+                            {
+                                "text": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet."
+                            },
+                            {
+                                "text": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "divider",
+                        "property": {
+                            "paddingTop": "30",
+                            "paddingBottom": "30",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "data": {
+                            "backgroundColor": "red",
+                            "height": "4",
+                            "paddingTop": "0",
+                            "paddingBottom": "0"
+                        }
                     }
                 ]
             }

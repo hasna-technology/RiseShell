@@ -1,0 +1,166 @@
+@import "../../variable";
+@import '../../_variable.scss';
+.interactivity{
+
+    padding: 20px 10px;
+    border:2px solid red;
+   
+        .v1{
+            width: 4px;
+            background-color: #ffff00;
+        height: 80px;
+        position: relative;
+        left: 49%;
+        top: 0;
+        }
+        .vertical{
+            flex-grow: 1;
+            width: 4px;
+            background-color: #ffff00;
+            min-height: 80px;
+        }
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            line-height: 1.428571429;
+            border-radius: 15px;
+            background-color: #ffff00;
+            border: 1px solid gray;
+            outline: none;
+        
+        }
+        .btn-circle.btn-lg {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            line-height: 1.33;
+            border-radius: 25px;
+        }
+ 
+    .row{
+        
+        display: flex;
+        max-width: 100%;
+      
+
+            .button{
+                text-align: center;
+                width: 10%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                padding: 0; 
+            }
+
+            .title{
+                width: 45%;
+                text-align: right;  
+               .titledesc {
+                background: rgb(204, 197, 197);
+                    margin-bottom: 10px;
+                    display: none;
+                }  
+                }
+
+                .desc{
+                     width:41%;
+                     background: rgb(204, 197, 197);
+                     margin-bottom: 10px;
+                     border-radius: 5px;
+                     padding:0% 2%;
+                     img {
+                        max-width: 100%;
+                        align-items: center;
+                      }
+                    }
+
+        }  
+
+        .heading{
+            .row{
+                justify-content: center;
+            }
+            .intro{
+                padding:10px 25px;
+                 border:2px solid gray;
+                 background-color: #ffff00;
+                 margin: 0px 180px;               
+                }
+            }
+  }
+
+ 
+ 
+ .timeline:nth-child(even) {
+    .row{
+    flex-direction: row-reverse;
+    .title{
+        text-align: left;
+    }
+  } 
+}
+
+
+@include sm {
+
+
+    .interactivity{
+       display: flex;
+
+       .row{
+       display: inline-flex   ;
+         
+         .desc{
+             display: none;
+             width: auto;
+             }
+         .title{
+            width: auto;
+            }
+         .button{
+           width: auto;
+           }
+        }
+
+      .heading{
+            .row{
+                justify-content: left;
+                .v1{
+                    left: 16%;
+                   }
+                   .intro{
+                       margin: 0px;
+                   }
+                }
+            }    
+        
+     }
+    .timeline {
+            .row{
+            flex-direction: row-reverse;
+            .title{
+            text-align: left;
+            padding-left: 10px;
+                .titledesc {
+                   background: rgb(204, 197, 197);
+                   margin: 10px 0px;
+                   display: block;
+                   border-radius: 5px;
+                   padding:10px 20px;
+                   img {
+                    max-width: 100%;
+                    align-items: center;
+                  }
+                  
+                          }  
+                }
+               }
+              }
+         }
+        
+        

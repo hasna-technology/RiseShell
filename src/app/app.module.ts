@@ -21,7 +21,7 @@ import { BlockComponent } from './admin/block/block.component';
 import { GridImageTextComponent } from './component/grid-image-text/grid-image-text.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ColorPickerComponent } from './admin/color-picker/color-picker.component';
-import { AudioComponent } from './component/audio/audio.component';  
+import { AudioComponent } from './component/audio/audio.component';
 import { VideoComponent } from './component/video/video.component';
 import { MediaComponent } from './admin/media/media.component';
 import { SettingsComponent } from './admin/settings/settings.component';
@@ -41,24 +41,23 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { DividerComponent } from './component/divider/divider.component';
 import { DivideComponent } from './admin/divide/divide.component';
-import { SingleChoiceComponent } from './quiz/single-choice/single-choice.component';
-import { MultipleChoiceComponent } from './quiz/multiple-choice/multiple-choice.component';
-import { IntroTextComponent } from './quiz/intro-text/intro-text.component';
 import { AuthInterceptor } from './service/AuthInterceptor';
 
+import { QuizComponent } from './component/quiz/quiz/quiz.component';
+import { InteractivitymapComponent } from './component/interactivitymap/interactivitymap.component';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { SafeHtmlPipe } from './service/pipe/SafeHtmlPipe';
-import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock.component'; 
+import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock.component';
 import { CourseService } from './service/publish/Course.service';
 import { GridComponent1 } from './component/grid1/grid1.component';
-import { Grid1Component } from './admin/grid1/grid1.component';
 import { CardComponent } from './component/card/card.component';
 import { AdminCardComponent } from './admin/card/card.component';
- 
+import { Grid1Component } from './admin/grid1/grid1.component';
+
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
-  declarations: [ 
+  declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -92,15 +91,13 @@ import { AdminCardComponent } from './admin/card/card.component';
     PagePropertyComponent,
     DividerComponent,
     DivideComponent,
-    AdminTextblockComponent,
-    SingleChoiceComponent,
-    MultipleChoiceComponent,
-    IntroTextComponent,
-    GridComponent1,
     Grid1Component,
+    GridComponent1,
     CardComponent,
-    AdminCardComponent
-    
+    AdminCardComponent,
+    QuizComponent,
+    InteractivitymapComponent,
+    AdminTextblockComponent,
   ],
   imports: [
     BrowserModule,
@@ -141,7 +138,7 @@ import { AdminCardComponent } from './admin/card/card.component';
       }
     })*/
   ],
-  providers: [MainService,  CourseService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [MainService, CourseService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
