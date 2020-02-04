@@ -5,7 +5,7 @@
 
   <!-- <input type="text" [(ngModel)]="selectedPage.title" (ngModelChange)="doSomething($event)" /> -->
 
-  <div class="admin_panel" [@changeState]="adminPanelState" *ngIf="selectedPage">
+  <div class="admin_panel" [ngClass]="{'maximize':maximize}"  [@changeState]="adminPanelState" *ngIf="selectedPage">
     <div class="admin">
       <header>
         <div class="left">
@@ -20,6 +20,9 @@
         <div class="menu_btn settings" title="Settings">
           <mat-icon>settings_applications</mat-icon>
         </div>-->
+        <div class="menu_btn settings" title="Settings" (click)="maximize = !maximize">
+          <mat-icon>{{!maximize ? 'fullscreen' : 'fullscreen_exit' }}</mat-icon>
+        </div>
           <div class="menu_btn settings" title="Settings" (click)="adminPanelState = 'Close'">
             <mat-icon>close</mat-icon>
           </div>
@@ -128,9 +131,12 @@
             <app-bullet [data]="selectedBlock"
               *ngIf="selectedBlock.type == 'checklist' || selectedBlock.type == 'ordered_list' || selectedBlock.type == 'unordered_list'">
             </app-bullet>
+
             <!-- Divider block -->
             <app-divide [data]="selectedBlock" *ngIf="selectedBlock.type == 'divider'">
             </app-divide>
+
+            <app-quizedit [data]="selectedBlock" *ngIf="selectedBlock.type == 'quiz'"></app-quizedit>
 
           </div>
 

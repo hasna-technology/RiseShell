@@ -3,7 +3,7 @@
 <div class="main" *ngIf="page">
 
   <!-- <ng-container *ngIf="admin"> -->
-    <admin-panel #adminpanel  [data]="this.content" [selectedPage]="page"></admin-panel>
+    <admin-panel #adminpanel [admin]="admin" [data]="this.content" [selectedPage]="page"></admin-panel>
   <!-- </ng-container> -->
 
   <div class="{{this.content.settings.fontFamily}}">
@@ -96,14 +96,11 @@
             <div class="progress_indicator brand--background"></div>
           </div>
         </div>
-     
-        <div *ngIf="this.page != undefined && this.page.type == 'quiz'">
-     
-        
-          <app-quiz  [value]="this.page"></app-quiz>
- 
-         
+       
+        <div *ngIf="this.page != undefined && this.page.page.block[0].type == 'quiz'" >
+          <app-quiz  [value]="this.page.page.block[0]"></app-quiz>
           </div> 
+       
         <!-- Place the content type here-->
         <div  *ngIf="this.page.page != undefined">
 
@@ -148,9 +145,15 @@
                 <!-- Accordion Component -->
                 <app-accordian *ngIf="item.type == 'accordion'" [value]="item"></app-accordian>
 
-              <!-- Timeline Component -->
-              <app-interactivitymap *ngIf="item.type == 'interactivity'" [value]="item"></app-interactivitymap>
-             
+                 <!-- CssGrid Component -->
+                <app-cssgrid *ngIf="item.type == 'cssgrid'" [value]="item"></app-cssgrid>
+
+                <!-- interactivitymap Component -->
+                <app-interactivitymap *ngIf="item.type == 'interactivity'" [value]="item"></app-interactivitymap>
+              
+                <!-- slideimage Component -->
+                <app-slideimage *ngIf="item.type == 'slideimage'" [value]="item"></app-slideimage>
+              
                 <!-- Timeline Component -->
                 <app-timeline *ngIf="item.type == 'timeline'" [value]="item"></app-timeline>
 
@@ -179,12 +182,9 @@
       </div>
       <div class="navigation grey-bg align-center" *ngIf="nextString != course.length">
         <div>
-<<<<<<< HEAD
 
           <div class="cursor" (click)="next()">
-=======
           <div class="cursor">
->>>>>>> cc06fe85eebb17bdf641bbafbd3d530583e461c5
             {{this.common_text.lesson}} {{currentNumber + 1}} - {{this.service.getLessonName(nextString)}}
           </div>
         </div>

@@ -1,22 +1,22 @@
 @import "../../variable";
-@import '../../_variable.scss';
+
 .interactivity{
 
     padding: 20px 10px;
-    border:2px solid red;
+   
    
         .v1{
-            width: 4px;
-            background-color: #ffff00;
+        width: 4px;
+        background-color: var(--brand-color);
         height: 80px;
         position: relative;
-        left: 49%;
+        left: 50%;
         top: 0;
         }
         .vertical{
             flex-grow: 1;
             width: 4px;
-            background-color: #ffff00;
+            background-color: var(--brand-color);;
             min-height: 80px;
         }
         .btn-circle {
@@ -27,9 +27,10 @@
             font-size: 12px;
             line-height: 1.428571429;
             border-radius: 15px;
-            background-color: #ffff00;
+            background-color: var(--brand-color);;
             border: 1px solid gray;
             outline: none;
+            color: rgb(255, 254, 254);
         
         }
         .btn-circle.btn-lg {
@@ -72,7 +73,7 @@
                      background: rgb(204, 197, 197);
                      margin-bottom: 10px;
                      border-radius: 5px;
-                     padding:0% 2%;
+                     padding:1% 2%;
                      img {
                         max-width: 100%;
                         align-items: center;
@@ -88,8 +89,9 @@
             .intro{
                 padding:10px 25px;
                  border:2px solid gray;
-                 background-color: #ffff00;
-                 margin: 0px 180px;               
+                 background-color: var(--brand-color);;
+                 margin: 0px 180px;  
+                 color: rgb(255, 254, 254);            
                 }
             }
   }

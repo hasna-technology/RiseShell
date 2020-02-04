@@ -1,0 +1,166 @@
+.admin-quiz{
+display: flex;
+width: 100%;
+
+.left_content{
+ 
+  counter-reset:my-sec-counter;
+  background-color:  #ebebeb;
+  padding: 20px;
+  padding-right: 0px;
+  height: 75vh;
+  font-size: 16px;
+  //position: fixed;
+  width: 30%;
+  
+  .title1{
+    color: rgb(175, 174, 174);
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+ .title,.title1{
+  border-bottom: 0.01em solid rgb(184, 175, 175);
+  padding: 20px 0px;
+  
+ }
+ 
+ .drag{
+   display: flex;
+   border-bottom: 0.01em solid  rgb(184, 175, 175) ;
+   padding: 10px 0px;
+   font-size: 14px;
+   padding-right: 10px;
+   
+   .left_question{
+    cursor: pointer;
+   }
+   .icon{
+    color:  rgb(175, 174, 174);
+    padding: 10px;
+  }
+  .icon_del{
+    color:  rgb(175, 174, 174);
+    opacity: 0;
+  }
+   }
+  
+  .drag:hover{
+    .icon_del{
+      opacity: 1;
+    }
+  }
+ 
+ .btn_add {
+  margin: 10px;
+  margin-bottom: 0px;
+  background-color: #333333;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  padding: 2rem;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+ width: 25%;
+  //display: contents;
+ 
+}
+
+
+}
+
+
+
+ .right_content{
+  
+   width: 70%;
+   counter-reset: my-sec-counter;
+  padding: 20px;
+  background-color:#fff;
+  overflow: auto;
+   box-shadow: 0px 0px 10px 0px #888888;
+    height: 75vh;
+
+  .pad{
+    margin: 25px;
+  
+    .btn_add {
+      margin: 10px;
+      margin-bottom: 0px;
+      background-color: #333333;
+      color: #fff;
+      text-align: center;
+      cursor: pointer;
+      padding: 2rem;
+      font-size: 1.3rem;
+      border-radius: 5px;
+    }
+    .question{
+      font-size: 19px;
+      font-weight: 300px;
+      border-bottom: 1px solid rgb(184, 175, 175) ;
+      margin-bottom: 20px;
+      padding:5px;
+    }
+  }
+  
+ }
+  
+ /* .question::before{
+    counter-increment: my-sec-counter;
+    content:"0" counter(my-sec-counter);
+
+  }*/
+  .head{
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight:bold;
+    color:  rgb(175, 174, 174)
+  }
+  .headings{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid  rgb(184, 175, 175) ;
+    padding: 15px;
+  
+    .correct{
+      width: 20%;
+      text-align: center;
+      left: 0;
+      display: flex;
+    }
+    .choicetext{
+      width: 60%;
+    }
+    .select{
+      width: 20%;
+      text-align: right;
+     select{
+       border: 0;
+       outline: 0;
+     }
+    }
+    .checkbox{
+      width: 20px;
+      height: 20px;
+    }
+    .icon{
+      color: rgb(175, 174, 174);
+     opacity: 0;
+     cursor: pointer;
+    }
+   
+  }
+
+.content:hover{
+ background-color: rgb(236, 236, 236);
+  .icon{
+    opacity:1;
+  }
+  
+}
+
+
+}

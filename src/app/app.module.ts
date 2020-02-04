@@ -49,7 +49,11 @@ import { CKEditorModule } from 'ckeditor4-angular';
 import { SafeHtmlPipe } from './service/pipe/SafeHtmlPipe';
 import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock.component'; 
 import { CourseService } from './service/publish/Course.service';
+import { SlideimageComponent } from './component/slideimage/slideimage.component';
+import { CssgridComponent } from './component/cssgrid/cssgrid.component';
+import { QuizeditComponent } from './admin/quizedit/quizedit.component';
  
+
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
@@ -87,15 +91,13 @@ import { CourseService } from './service/publish/Course.service';
     PagePropertyComponent,
     DividerComponent,
     DivideComponent,
-   
-    
     QuizComponent,
-   
-    
     InteractivitymapComponent,
-   
     AdminTextblockComponent,
-    
+    SlideimageComponent,
+    CssgridComponent,
+    QuizeditComponent,
+  
     
   ],
   imports: [
@@ -138,6 +140,7 @@ import { CourseService } from './service/publish/Course.service';
     })*/
   ],
   providers: [MainService,  CourseService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+ 
 })
 export class AppModule { }

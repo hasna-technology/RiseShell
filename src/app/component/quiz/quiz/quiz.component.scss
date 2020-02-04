@@ -12,7 +12,7 @@
       padding: 50px 0px;
       background-color: white;
       border: none;
-      color: #b6000f;
+      color: var(--brand-color);
       font-size: 1.2rem;
       letter-spacing: 0.1em;
       font-weight: bold;
@@ -41,7 +41,7 @@
     line-height: 3.4rem;
     text-overflow: ellipsis;
     color: rgb(255, 255, 255);
-    background-color: #b6000f;
+    background-color: var(--brand-color);;
     box-sizing: border-box;
     text-decoration: none;
     border-width: 2px;
@@ -49,8 +49,9 @@
     border-color: transparent;
     border-image: initial;
     border-radius: 2rem;
-    transition: background 0.3s ease 0s, color 0.3s ease 0s, opacity 0.3s ease 0s;
-   
+   // transition: background 0.3s ease 0s, color 0.3s ease 0s, opacity 0.3s ease 0s;
+   transition:all 0.5s ease-in-out;
+  
   }
   
 }
@@ -69,7 +70,7 @@
 }
 .number{
     display: flex;
-    color: #b6000f;
+    color: var(--brand-color);;
     font-size: 25px;
     font-weight: bold;
 }
@@ -174,7 +175,7 @@ input[type=checkbox] {
   bottom: 7px;
   width: 6px;
   height: 12px;
-  border: solid #b6000f;
+  border: solid var(--brand-color);;
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -243,7 +244,7 @@ input[type=checkbox] {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #b6000f;
+      background: var(--brand-color);;
     
   }
   mat-icon
@@ -253,7 +254,7 @@ input[type=checkbox] {
    
   }
   .tryagain:hover{
-    color: #b6000f;
+    color: var(--brand-color);;
   }
 
   /*.circle-wrap {

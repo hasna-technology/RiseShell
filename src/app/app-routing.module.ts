@@ -25,10 +25,7 @@ const routes: Routes = [
     path: "c/:id/p/:i",
     component: PageComponent
   },
-  {
-    path:"quiz",
-    component:QuizComponent
-  },
+  
   /*{
     path: "page/:i",
     component: PageComponent

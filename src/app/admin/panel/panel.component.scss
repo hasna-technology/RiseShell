@@ -37,7 +37,9 @@ $admin_panel_width : 450px;
   z-index: 101;
   box-shadow: -5px 0px 5px 5px #dadada;
 }
-
+.maximize{
+  width:100%;
+}
 .admin {
   height: calc(100% - 4px);
 

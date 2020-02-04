@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { trigger, animate, state, style, transition } from '@angular/animations';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
@@ -11,11 +11,12 @@ import { MainService } from 'src/app/service/main.service';
   animations: [
     trigger('changeState', [
       state('Open', style({ transform: 'translateX(10px)' })),
-      state('Close', style({ transform: 'translateX(550px)' })),
+      state('Close', style({ transform: 'translateX(110%)' })),
       transition('*=>Open', animate('500ms ease-out')),
       transition('*=>Close', animate('500ms ease-in'))
     ])
   ]
+ 
 })
 export class PanelComponent implements OnInit {
 
@@ -57,6 +58,7 @@ export class PanelComponent implements OnInit {
     console.log(index);
     document.getElementById("item_" + index).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
   }
+  maximize = false;
   goBack() {
     this.propertyState = 'Open';
     this.currentState = 'Close';

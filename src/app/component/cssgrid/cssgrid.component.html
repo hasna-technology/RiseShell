@@ -1,0 +1,19 @@
+
+
+<div class="grid-container">
+
+<div *ngFor="let data of this.value.content.data; let i= index" class="timeline" >
+
+     <div class="text">
+        <div class="image" [style.background-image]="'url('+data.image+')'">
+         <div id="divTAReviews"  class="title">
+    <div [innerHtml]="data.title" class="title1"> </div>
+    <div [innerHtml]="data.desc" class="desc" ></div>   
+</div>
+</div>
+   
+       
+   
+</div>
+</div>
+

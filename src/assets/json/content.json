@@ -6,6 +6,11 @@
         "brandColor": "#b6000f",
         "fontFamily": "roboto"
     },
+    "publish_setting": {
+        "publishType": "scorm",
+        "version": "2004",
+        "complete_status": "passed/failed"
+    },
     "common_text": {
         "lesson": "Lesson",
         "start_course": "Start Course",
@@ -16,6 +21,17 @@
             "title": "Quiz",
             "header": false,
             "type": "quiz",
+            "page":{
+                "block":[
+                    {
+                    
+            "type": "quiz",
+            "property": {
+                "paddingTop": "50",
+                "paddingBottom": "50",
+                "fullwidth": false,
+                "backgroundColor": "#ffffff"
+            },
             "intro_text": "Click Start Quiz to answer the following quiz. To pass the quiz you need to score 75%.",
             "settings": [
                 {
@@ -26,6 +42,7 @@
                     "reveal_answer": "false"
                 }
             ],
+            
             "quiz": [
                 {
                     "type": "single_choice",
@@ -108,7 +125,11 @@
                     }
                 }
             ]
-        },
+                
+        }
+    ]
+}
+        } ,
         {
             "title": "Agenda",
             "type": "page",
@@ -168,6 +189,88 @@
             "type": "page",
             "page": {
                 "block": [
+                    {
+                        "type": "cssgrid",
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "content": {
+                            "setting": {
+                                "row": 3,
+                                "image_position": "left",
+                                "background_color": "#efefef"
+                            },
+                            "data": [
+                                {
+                                    "title": "Grid 1",
+                                    "image": "assets/admin/5.jpg",
+                                    "desc": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>"
+                                },
+                                {
+                                    "title": "Grid 2",
+                                    "image": "assets/admin/1.jpg",
+                                    "desc": "<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>"
+                                },
+                                {
+                                    "title": "Grid 3",
+                                    "image": "assets/admin/2.jpg",
+                                    "desc": "<p>from 45 BC, making it over 2000 years old.</p>"
+                                },
+                                {
+                                    "title": "Grid 3",
+                                    "image": "assets/admin/3.jpg",
+                                    "desc": "<p>from 45 BC, making it over 2000 years old.</p>"
+                                },  
+                                {
+                                    "title": "Grid 3",
+                                    "image": "assets/admin/4.jpg",
+                                    "desc": "<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>"
+                                }
+                               
+                            ]
+                        }
+                    },
+                    {
+                        "type": "slideimage",
+                        "introduction":"introduction",
+                        "summarry":"summarry   ", 
+                        "backgroundColor":"#b6000f",
+                        "property": {
+                            "paddingTop": "50",
+                            "paddingBottom": "50",
+                            "fullwidth": false,
+                            "backgroundColor": "#ffffff"
+                        },
+                        "content": {
+                            "setting": {
+                                "row": 3,
+                                "image_position": "left",
+                                "background_color": "#efefef"
+                            },
+                            "data": [
+                                {
+                                    "title": "interactivity 1",
+                                    "image": "assets/admin/3.jpg",
+                                    "desc": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>"
+                                },
+                                {
+                                    "title": "interactivity 2",
+                                    "image": "assets/admin/4.jpg",
+                                    "desc": "<p>It has survived not only five centuries,It has survived not only five centuries,  It has survived not only five centuries,  It has survived not only five centuries,  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>"
+                                },
+                                {
+                                    "title": "interactivity 3",
+                                    "image": "assets/admin/2.jpg",
+                                    "desc": "<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>"
+                                }
+                                
+                            ]
+                        }
+                    }, 
+                    
                      {
                         "type": "interactivity",
                         "introduction":"introduction",

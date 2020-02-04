@@ -1,0 +1,38 @@
+<div class="slide" *ngIf="data && isdata">
+  <div class="myslide">
+    <div class="title1">
+      <div class="head" [innerHtml]="data.title"></div>
+      <mat-icon (click)="visible()" class="icon">add</mat-icon>
+    </div>
+    <div class="background">
+      <div *ngIf="showDiv" class="image" [@flyinout]=currentstate [style.background-image]="'url('+data.image+')'">
+      </div>
+    </div>
+    <div class="plus" *ngIf="isplus">
+      <a class="prev" *ngIf="isprev" (click)="prev()">&#10094;</a>
+      <a class="next" *ngIf="isnext" (click)="next()">&#10095;</a>
+    </div>
+    <div class="round" *ngIf="isround">
+      <div *ngFor="let data of this.value.content.data;let i = index" class="circle">
+        <div class="dot" (click)="tab(i)" [ngClass]="{'selected' : data_no == i}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text">
+    <div class="text1">
+      <div class="title" [innerHtml]="data.title"></div>
+      <div class="desc" [innerHtml]="data.desc"></div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="data && isvisible" class="visible">
+
+  <div class="title">
+    <div class="sub" [innerHtml]="data.title"></div>
+    <mat-icon class="icon" (click)="close()">cancel</mat-icon>
+  </div>
+  <div class="desc" [innerHtml]="data.desc"></div>
+
+</div>

@@ -62,15 +62,15 @@ a {
 .nav.nav-tabs .nav-item:first-child .nav-link{
   border-left: 0;
 }
-/*.nav-link:hover*/
+
 .nav-link.selected {
   background: #fff;
-  //color: $brand_color;
+ // color: $brand_color;
   border: 1px solid #ddd;
   border-bottom: 1px solid #fff;
   border-top: none;
   border-left: none;
-  //color: var(--brand-color);
+  color: var(--brand-color);
 }
 
 img {

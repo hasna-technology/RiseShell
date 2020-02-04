@@ -1,0 +1,101 @@
+@import "../../variable";
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+  //  background-color: #2196F3;
+  // background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    .timeline {
+      
+        text-align: center;
+        //padding: 10px;
+        overflow: hidden;
+        .text{
+            position: relative;
+
+            .image{
+                text-align: center;
+                background-repeat: no-repeat;
+                background-size:cover;
+                background-position: center;
+                height: 200px;
+              
+                .title{
+                    padding: 5px;
+                    color: white;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    top: 80%;
+                    background-color:#222222ab;
+                    transition:all 0.5s ease-in-out;
+                   
+                   
+                    .title1{
+                        font-size: 18px;
+                     }
+                     .desc{
+                         font-size: 14px;
+                     }
+                     
+                  }
+               }
+            }
+      
+         }
+  
+      }
+  
+      .desc{
+        display: none;
+        }
+
+    .timeline:nth-child(1){
+        grid-column-start:1;
+        grid-column-end:3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+         } 
+    .timeline:nth-child(2){
+            grid-column-start:3;
+            grid-column-end:4;
+         } 
+
+
+  .text:hover{
+         .desc{
+         display: inline-block; 
+         }
+      
+  
+      #divTAReviews {
+        top: 0%;
+      
+      }
+     .title{
+        top:0;
+        overflow:hidden;
+        
+     } 
+  }
+ 
+  @include sm {
+.timeline{
+   grid-column-start:1;
+   grid-column-end: 4;
+}
+.timeline:nth-child(1){
+   grid-column-start:1;
+   grid-column-end:4;
+    } 
+.timeline:nth-child(2){
+       grid-column-start:1;
+       grid-column-end:4;
+    } 
+
+  } 
+ 
+

@@ -1,0 +1,53 @@
+
+<div class="admin-quiz" #fullScreen>
+
+        <div class="left_content">
+            <div class="title"><p>Title Screen</p></div>
+                <div class="title1"><p>Question Order</p></div>
+                    <div cdkDropList (cdkDropListDropped)="drop1($event)">
+                    <div *ngFor="let item of this.data.quiz;let i = index" cdkDrag>
+                        <div class="drag">
+                    <mat-icon class="icon" cdkDragHandle>dehaze</mat-icon>
+                    <div class="left_question" (click)="tab(i)" [innerHtml]="item.question.content | truncate:[30]"></div>
+                <div class="select"><mat-icon class="icon_del" (click)="deleteQuestion(i)">delete</mat-icon></div>
+                </div>
+            </div>
+        </div>
+      <div class="btn_add" (click)="additem()">Add Question</div>
+  </div>
+
+
+
+
+      <div class="right_content">
+           <div class="pad">  
+
+              <div *ngFor="let item of this.data.quiz;let i = index">
+                 <div class="pad"  *ngIf="selectedtab == i">
+                   <div class="question" [innerHtml]="item.question.content"></div>
+
+                     <div class="headings head">
+                       <p class="correct">Correct</p>
+                        <p class="choicetext">Choice Text</p>
+                          <p class="select" ><select [(ngModel)]="item.type">
+                        <option value="single_choice">Single Choice</option>
+                     <option value="multiple_choice">Multiple Choice</option>
+                  </select></p>
+               </div>
+
+
+ <div cdkDropList (cdkDropListDropped)="drop($event,i)">
+    <div div *ngFor="let choice of this.item.question.choices; let i = index" cdkDrag class="headings content">
+         <div class="correct" > <mat-icon class="icon" cdkDragHandle>more_vert</mat-icon>
+             <input  *ngIf="item.type == 'single_choice'" type="radio" name="radio" class="checkbox">
+                 <input  *ngIf="item.type == 'multiple_choice'"   [checked]="choice.correct == 'true'" type="checkbox" class="checkbox"></div>
+                    <div class="choicetext" ><input type="text" [(ngModel)]="choice.content"></div>
+                      <div class="select"><mat-icon class="icon" (click)="deleteItem(i)">delete</mat-icon></div>
+                        </div>
+                     <div class="btn_add" (click)="addchoice(selectedtab)">Add Chices</div>
+                  </div>
+               </div>
+             </div>
+          </div>
+       </div>
+     </div>
