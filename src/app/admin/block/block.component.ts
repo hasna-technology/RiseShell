@@ -450,8 +450,10 @@ export class BlockComponent implements OnInit {
       "property": this.property,
       "content": {
         "setting": {
-          "style":"style 1"
+          "style":"style 1",
+          "height":"250"
         },
+        "instruction" : "",
         "data": [
           {
             "title": "Title 1",

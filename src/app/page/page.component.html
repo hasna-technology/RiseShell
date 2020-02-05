@@ -3,7 +3,11 @@
 <div class="main" *ngIf="page">
 
   <!-- <ng-container *ngIf="admin"> -->
+<<<<<<< HEAD
     <admin-panel #adminpanel [admin]="admin" [data]="this.content" [selectedPage]="page"></admin-panel>
+=======
+    <admin-panel #adminpanel [admin]="this.admin" [data]="this.content" [selectedPage]="page"></admin-panel>
+>>>>>>> c2366646f468db1a40c7ae5eaa7e74fc45d915ca
   <!-- </ng-container> -->
 
   <div class="{{this.content.settings.fontFamily}}">

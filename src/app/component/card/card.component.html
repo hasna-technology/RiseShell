@@ -1,7 +1,9 @@
 <div class="card ">
   <!--*ngIf="value.content.setting.style == 'style1'"-->
+  <div class="instr" [innerHTML]="value.content.instruction | safeHtml"></div>
   <div class="{{value.content.setting.style}}" >
     <div class="item" *ngFor="let item of value.content.data; let i = index"
+    [ngStyle]="{'height': value.content.setting.height +'px'}"
       [ngClass]="{ 'reverse': Math.floor(i / 2) % 2 == 1,
                    'is-clicked': clicked[i] == true}"
       (click) ="clicked[i] = !clicked[i]"
