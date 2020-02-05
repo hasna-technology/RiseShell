@@ -27,6 +27,7 @@ export class MainService {
   }
   _admin;
   setAdmin(a) {
+    console.log("show Admin = " ,a);
     this._admin = a;
   }
   isAdmin() {

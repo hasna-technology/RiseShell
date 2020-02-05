@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'admin-card', 
+  selector: 'admin-card',
   template: `
         <div>
         <label class="label">Type</label>
@@ -13,6 +13,17 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
         <option value="style2">Style 2</option>
         <option value="style3">Style 3</option>
       </select>
+      <div>
+
+      <label class="label">Height - {{data.content.setting.height + 'px'}}</label>
+      <div>
+        <input class="input" type="range" min="150" max="500" [(ngModel)]="data.content.setting.height">
+      </div>
+      <label class="label">Instruction</label>
+      <div>
+        <admin-textblock [(content)]="data.content.instruction"></admin-textblock>
+      </div>
+    </div>
 
       <hr>
       <div cdkDropList (cdkDropListDropped)="drop($event)">
@@ -81,7 +92,7 @@ export class AdminCardComponent implements OnInit {
     this.selectedtab = -1;
   }
   addItem() {
-    console.log(this.data) 
+    console.log(this.data)
     this.data.content.data.push(
       {
         "title": "Title",

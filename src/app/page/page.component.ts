@@ -88,7 +88,8 @@ export class PageComponent implements OnInit {
       this.service.setAdmin(false);
     }else{
       //this.service.setAdmin(environment.admin);
-      console.log(this.service.getAdminParam());
+      //console.log(this.service.getAdminParam());
+      
       this.admin = this.service.getAdminParam().toString() == "true";
       this.service.setAdmin(this.service.getAdminParam());
     }
@@ -123,7 +124,7 @@ export class PageComponent implements OnInit {
   findPrevString(lesson_no){
     
     var start = Number(lesson_no) - 1;
-    console.log("start ", start);
+    
     if(start < 0)
     return;
 
