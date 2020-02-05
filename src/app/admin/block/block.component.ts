@@ -28,10 +28,10 @@ export class BlockComponent implements OnInit {
       "grouptype": "Media",
       "type": "audio",
       "content": `<div>
-    <p>
-        <b>Audio</b>
-      </p>
-  </div>`,
+                  <p>
+                      <b>Audio</b>
+                    </p>
+                </div>`,
       "clickable": () => {
         this.addAudio()
       }
@@ -41,10 +41,10 @@ export class BlockComponent implements OnInit {
       "grouptype": "Media",
       "type": "video",
       "content": `<div>
-    <p>
-        <b>Video</b>
-      </p>
-  </div>`,
+                  <p>
+                      <b>Video</b>
+                    </p>
+                </div>`,
       "clickable": () => {
         this.addVideo()
       }
@@ -134,6 +134,38 @@ export class BlockComponent implements OnInit {
         this.addGridImageText()
       }
     },
+
+    {
+      "title": "Grid 1",
+      "grouptype": "Interactive",
+      "type": "grid1",
+      "content": ` <div>
+                  <p class="heading"><b>Grid 1</b></p> 
+                  <div class="item">
+                    <img class="full-width" src="` + this.default_asset_path + `grid.png" />
+                  </div>
+                </div>`,
+      "clickable": () => {
+        this.addGrid1ImageText()
+      }
+    },
+
+    
+    {
+      "title": "Card",
+      "grouptype": "Interactive",
+      "type": "card",
+      "content": ` <div>
+                  <p class="heading"><b>Card</b></p> 
+                  <div class="item">
+                    <img class="full-width" src="` + this.default_asset_path + `card.png" />
+                  </div>
+                </div>`,
+      "clickable": () => {
+        this.Card()
+      }
+    },
+
     {
       "title": "Image Column",
       "grouptype": "Interactive",
@@ -144,7 +176,7 @@ export class BlockComponent implements OnInit {
                     <img class="full-width" src="` + this.default_asset_path + `imageColumn.png" />
                   </div>
                 </div>`,
-      "clickable": () => { 
+      "clickable": () => {
         this.addColumImage()
       }
     },
@@ -283,7 +315,7 @@ export class BlockComponent implements OnInit {
       },
       "autoplay": false,
       "source": this.default_asset_path + "sample_audio.mp3"
-      
+
     })
 
   }
@@ -291,7 +323,7 @@ export class BlockComponent implements OnInit {
   addVideo() {
     this.data.push({
       "type": "video",
-      "property": { 
+      "property": {
         "paddingTop": "50",
         "paddingBottom": "50",
         "fullwidth": false,
@@ -368,6 +400,72 @@ export class BlockComponent implements OnInit {
           {
             "title": "Grid 3",
             "image": this.default_asset_path + "icon3.png",
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+          }
+
+        ]
+      }
+    }
+    )
+    this.closeEvent.emit("block");
+  }
+
+  addGrid1ImageText() {
+    this.data.push({
+
+      "type": "grid1",
+      "property": this.property,
+      "content": {
+        "setting": {
+        },
+        "data": [
+          {
+            "title": "Grid 1",
+            "image": "",
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+          },
+          {
+            "title": "Grid 2",
+            "image": "",
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+          },
+          {
+            "title": "Grid 3",
+            "image": "",
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+          }
+
+        ]
+      }
+    }
+    )
+    this.closeEvent.emit("block");
+  }
+
+
+  Card() {
+    this.data.push({
+
+      "type": "card",
+      "property": this.property,
+      "content": {
+        "setting": {
+          "style":"style 1"
+        },
+        "data": [
+          {
+            "title": "Title 1",
+            "image": "",
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+          },
+          {
+            "title": "Title 2",
+            "image": "",
+            "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+          },
+          {
+            "title": "Title 3",
+            "image": "",
             "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
           }
 

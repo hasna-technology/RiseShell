@@ -69,6 +69,14 @@ export class AppComponent {
         }
         this.course_id = params['id'];
         if (this.course_id != undefined) {
+
+          if (params['admin'] != undefined) {
+            this.service.setAdminParam(params['admin'])
+          }else
+          {
+            this.service.setAdminParam(true);
+          }
+
           this.service.setCourseID(this.course_id);
           this.loadcourse(this.course_id)
         } else {
@@ -77,6 +85,7 @@ export class AppComponent {
             this.loadcourse(-1);
           }
         }
+
       });
       /* Following code to get data from server*/
       setTimeout(() => {
@@ -85,7 +94,7 @@ export class AppComponent {
           this.loadcourse(-1);
         }
 
-      }, 2000);
+      }, 1000);
     }
   }
 }

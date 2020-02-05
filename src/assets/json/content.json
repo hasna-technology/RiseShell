@@ -280,83 +280,7 @@
                             "paddingTop": "50",
                             "paddingBottom": "50",
                             "fullwidth": false,
-                            "backgroundColor": "#ffffff"
-                        },
-                        "content": {
-                            "setting": {
-                                "row": 3,
-                                "image_position": "left",
-                                "background_color": "#efefef"
-                            },
-                            "data": [
-                                {
-                                    "title": "interactivity 1",
-                                    "image": "assets/admin/3.jpg",
-                                    "desc": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>"
-                                },
-                                {
-                                    "title": "interactivity 2",
-                                  
-                                    "desc": "<p>It has survived not only five centuries,It has survived not only five centuries,  It has survived not only five centuries,  It has survived not only five centuries,  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>"
-                                },
-                                {
-                                    "title": "interactivity 3",
-                                    
-                                    "desc": "<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "type": "accordion",
-                        "property": {
-                            "paddingTop": "50",
-                            "paddingBottom": "50",
-                            "fullwidth": false,
-                            "backgroundColor": "#ffffff"
-                        },
-                        "content": {
-                            "setting": {
-                                "row": 3,
-                                "image_position": "left",
-                                "background_color": "#efefef"
-                            },
-                            "data": [
-                                {
-                                    "title": "Accordion 1",
-                                    "image": "assets/3.jpg",
-                                    "desc": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>"
-                                },
-                                {
-                                    "title": "Accordion 2",
-                                    "image": "assets/p1.jpg",
-                                    "desc": "<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>"
-                                },
-                                {
-                                    "title": "Accordion 3",
-                                    "image": "assets/icon3.jpg",
-                                    "desc": "<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "type": "text_image_left",
-                        "property": {
-                            "paddingTop": "50",
-                            "paddingBottom": "50",
-                            "fullwidth": false,
-                            "backgroundColor": "#ffffff"
-                        },
-                        "image": "assets/3.jpg",
-                        "content": "<ul><li>AK-CC55 Connect app</span><ul><li>AK-CC55 system view</li><li>Bluetooth &amp; AK-CC55 Connect app</li><li>Dashboard</li><li>Alarms, Controls and I/O</li><li>Menu functions&nbsp;</li></ul></li><li>KoolProg<ul><li>Set Parameters</li><li>Copy to Controller</li><li>Service and Test</li></ul></li><li>SM-8xx Bluetooth lock function</li><li>Quiz</li></ul>"
-                    },
-                    {
-                        "type": "grid",
-                        "property": {
-                            "paddingTop": "50",
-                            "paddingBottom": "50",
-                            "fullwidth": false,
+                            "contentwidth": false,
                             "backgroundColor": "#ffffff"
                         },
                         "content": {
@@ -368,127 +292,47 @@
                             "data": [
                                 {
                                     "title": "Grid 1",
-                                    "image": "assets/3.jpg",
-                                    "desc": "<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.<p>"
+                                    "image": "http://localhost/course/002_default_assets/icon1.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
                                 },
                                 {
                                     "title": "Grid 2",
-                                    "image": "assets/p1.jpg",
-                                    "desc": "<p>The standard chunk of Lorem Ipsum used since the 1500s.<p>"
+                                    "image": "http://localhost/course/002_default_assets/icon2.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
                                 },
                                 {
                                     "title": "Grid 3",
-                                    "image": "assets/icon3.jpg",
-                                    "desc": "<p>It is a long established fact that a reader will be distracted.<p>"
+                                    "image": "http://localhost/course/002_default_assets/icon3.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 1",
+                                    "image": "http://localhost/course/002_default_assets/icon1.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 2",
+                                    "image": "http://localhost/course/002_default_assets/icon2.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 3",
+                                    "image": "http://localhost/course/002_default_assets/icon3.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 1",
+                                    "image": "http://localhost/course/002_default_assets/icon1.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+                                },
+                                {
+                                    "title": "Grid 2",
+                                    "image": "http://localhost/course/002_default_assets/icon2.png",
+                                    "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
                                 }
                             ]
                         }
                     },
-                    {
-                        "type": "tab",
-                        "property": {
-                            "paddingTop": "50",
-                            "paddingBottom": "50",
-                            "fullwidth": false,
-                            "backgroundColor": "#ffffff"
-                        },
-                        "content": {
-                            "setting": {
-                                "row": 3,
-                                "image_position": "left",
-                                "background_color": "#efefef"
-                            },
-                            "data": [
-                                {
-                                    "title": "Tab 1",
-                                    "image": "assets/3.jpg",
-                                    "desc": "<p>Lorem Ipsum is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long.</P>"
-                                },
-                                {
-                                    "title": "Tab 2",
-                                    "image": "assets/p1.jpg",
-                                    "desc": "<p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>"
-                                },
-                                {
-                                    "title": "Tab 3",
-                                    "image": "assets/icon3.jpg",
-                                    "desc": "<p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "type": "timeline",
-                        "property": {
-                            "paddingTop": "50",
-                            "paddingBottom": "50",
-                            "fullwidth": false,
-                            "backgroundColor": "#ffffff"
-                        },
-                        "content": {
-                            "setting": {
-                                "row": 3,
-                                "image_position": "left",
-                                "background_color": "#efefef"
-                            },
-                            "data": [
-                                {
-                                    "date": "Date 1",
-                                    "title": "Timeline 1",
-                                    "desc": "<p>Lorem Ipsum is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long.</p>",
-                                    "image": "assets/2.jpg"
-                                },
-                                {
-                                    "date": "Date 2",
-                                    "title": "Timeline 2",
-                                    "desc": "<p>The standard chunk of Lorem Ipsum used since the 1500s.It is a long established fact that a reader willIt is long established fact that a reader willIt is long It is a long established fact that a reader willIt is long established fact that a reader willIt is long</p>",
-                                    "image": "assets/p1.jpg"
-                                },
-                                {
-                                    "date": "Date 3",
-                                    "title": "Timeline 3",
-                                    "desc": "<p>It is a long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is long established fact that a reader willIt is a long established fact that a reader willIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>",
-                                    "image": "assets/p1.jpg"
-                                }
-                            ]
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "title": "AK-CC55: System view",
-            "type": "page",
-            "page": {
-                "block": [
-                    {
-                        "property": {
-                            "paddingTop": "50",
-                            "paddingBottom": "50",
-                            "fullwidth": false,
-                            "backgroundColor": "#ffffff"
-                        },
-                        "type": "text",
-                        "content": "<p>AK-<span style='color: rgb(107, 36, 178);'>CC55 </span>Case <span style='background-color: rgb(230, 0, 0);'>Controller </span>system view is a connection that consists of case controllers (AK-CC55 Compact, Single Coil, Single Coil UI and Multi Coil), displays (AK-UI Bluetooth, Set and Info), KoolProg and the Connect App.</p>"
-                    },
-                    {
-                        "type": "image",
-                        "property": {
-                            "paddingTop": "50",
-                            "paddingBottom": "50",
-                            "fullwidth": false,
-                            "backgroundColor": "#ffffff"
-                        },
-                        "image": "assets/3.jpg"
-                    }
-                ]
-            }
-        },
-        {
-            "title": "AK-CC55: Bluetooth & AK-CC55 Connect app",
-            "type": "page",
-            "page": {
-                "block": [
                     {
                         "type": "text",
                         "property": {

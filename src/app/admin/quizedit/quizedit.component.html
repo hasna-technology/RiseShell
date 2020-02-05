@@ -39,7 +39,7 @@
  <div cdkDropList (cdkDropListDropped)="drop($event,i)">
     <div div *ngFor="let choice of this.item.question.choices; let i = index" cdkDrag class="headings content">
          <div class="correct" > <mat-icon class="icon" cdkDragHandle>more_vert</mat-icon>
-             <input  *ngIf="item.type == 'single_choice'" type="radio" name="radio" class="checkbox">
+             <input  *ngIf="item.type == 'single_choice'"  type="radio" name="radio" class="checkbox">
                  <input  *ngIf="item.type == 'multiple_choice'"   [checked]="choice.correct == 'true'" type="checkbox" class="checkbox"></div>
                     <div class="choicetext" ><input type="text" [(ngModel)]="choice.content"></div>
                       <div class="select"><mat-icon class="icon" (click)="deleteItem(i)">delete</mat-icon></div>

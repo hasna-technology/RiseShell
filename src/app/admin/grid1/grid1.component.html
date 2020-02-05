@@ -1,0 +1,62 @@
+<!--<div>
+  <label class="label">Type</label>
+</div>
+
+<div>
+  <label class="label">Item per row</label>
+</div>
+<input type="number" class="input" [(ngModel)]="data.content.setting.row" />
+
+<div>
+  <label class="label">Image Position</label>
+</div>
+<select class="dropdown" [(ngModel)]="data.content.setting.image_position">
+  <option value="left">Left</option>
+  <option value="top">Top</option>
+  <option value="bottom">Bottom</option>
+</select>
+-->
+<hr>
+<div cdkDropList (cdkDropListDropped)="drop($event)">
+  <div *ngFor="let item of this.data.content.data; let i=index" cdkDrag class="">
+
+    <div class="flex block">
+      <mat-icon cdkDragHandle>more_vert</mat-icon>
+      <input type="text" [(ngModel)]="item.title" class="input" /> &nbsp;
+      <mat-icon (click)="tab(i)" *ngIf="selectedtab != i">keyboard_arrow_down</mat-icon>
+      <mat-icon (click)="close(i)" *ngIf="selectedtab == i">close</mat-icon>
+    </div>
+
+    <div class="content" *ngIf="this.data.content.data != undefined && selectedtab == i">
+      <!-- <input type="number" class="input" [(ngModel)]="item.rowStart" />
+      <input type="number" class="input" [(ngModel)]="item.rowEnd" />
+      <input type="number" class="input" [(ngModel)]="item.colStart" />
+      <input type="number" class="input" [(ngModel)]="item.colEnd" /> -->
+      <div>
+        <div>
+          <label class="label">Content</label>
+        </div>
+        <div>
+          <!-- <quill-editor [(ngModel)]="item.desc" theme="snow"></quill-editor> -->
+          <admin-textblock [(content)]="item.desc"></admin-textblock>
+        </div>
+      </div>
+
+
+      <div>
+        <div>
+          <label class="label">Image</label>
+        </div>
+        <div>
+          <admin-image [(src)]="item.image"></admin-image>
+        </div>
+      </div>
+
+      <button class="small danger" (click)="deleteItem(i)">Delete</button>
+
+    </div>
+  </div>
+</div>
+
+
+<button class="small add" (click)="addItem()">Add Item</button>

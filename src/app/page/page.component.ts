@@ -87,7 +87,10 @@ export class PageComponent implements OnInit {
       this.admin = false;
       this.service.setAdmin(false);
     }else{
-      this.service.setAdmin(environment.admin);
+      //this.service.setAdmin(environment.admin);
+      console.log(this.service.getAdminParam());
+      this.admin = this.service.getAdminParam().toString() == "true";
+      this.service.setAdmin(this.service.getAdminParam());
     }
     this.route.paramMap.subscribe(params => {
       
@@ -115,6 +118,7 @@ export class PageComponent implements OnInit {
       this.courseService.initialize();
     }
   }
+
 
   findPrevString(lesson_no){
     

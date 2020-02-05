@@ -21,7 +21,7 @@ import { BlockComponent } from './admin/block/block.component';
 import { GridImageTextComponent } from './component/grid-image-text/grid-image-text.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ColorPickerComponent } from './admin/color-picker/color-picker.component';
-import { AudioComponent } from './component/audio/audio.component';  
+import { AudioComponent } from './component/audio/audio.component';
 import { VideoComponent } from './component/video/video.component';
 import { MediaComponent } from './admin/media/media.component';
 import { SettingsComponent } from './admin/settings/settings.component';
@@ -47,17 +47,23 @@ import { QuizComponent } from './component/quiz/quiz/quiz.component';
 import { InteractivitymapComponent } from './component/interactivitymap/interactivitymap.component';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { SafeHtmlPipe } from './service/pipe/SafeHtmlPipe';
-import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock.component'; 
+import { AdminTextblockComponent } from './admin/admin-textblock/admin-textblock.component';
 import { CourseService } from './service/publish/Course.service';
 import { SlideimageComponent } from './component/slideimage/slideimage.component';
 import { CssgridComponent } from './component/cssgrid/cssgrid.component';
 import { QuizeditComponent } from './admin/quizedit/quizedit.component';
+import { Grid1Component } from './admin/grid1/grid1.component';
+import { GridComponent1 } from './component/grid1/grid1.component';
+import { CardComponent } from './component/card/card.component';
+import { AdminCardComponent } from './admin/card/card.component';
  
+
+
 
 
 //https://rise.articulate.com/share/tniPwr69Sd_d2w8qginMEbpizH5woF8B
 @NgModule({
-  declarations: [ 
+  declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -99,6 +105,13 @@ import { QuizeditComponent } from './admin/quizedit/quizedit.component';
     QuizeditComponent,
   
     
+    Grid1Component,
+    GridComponent1,
+    CardComponent,
+    AdminCardComponent,
+    QuizComponent,
+    InteractivitymapComponent,
+    AdminTextblockComponent,
   ],
   imports: [
     BrowserModule,
@@ -142,5 +155,7 @@ import { QuizeditComponent } from './admin/quizedit/quizedit.component';
   providers: [MainService,  CourseService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent],
  
+ // providers: [MainService, CourseService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  //bootstrap: [AppComponent]
 })
 export class AppModule { }
